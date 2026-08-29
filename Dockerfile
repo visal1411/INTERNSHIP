@@ -1,15 +1,28 @@
-FROM node:18-slim
+FROM node:22-bookworm-slim
+
+# Install OpenSSL for Prisma and clean cache
+RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Install system dependencies for node-canvas or other native modules if ever needed
-# RUN apt-get update && apt-get install -y python3 make g++
-
+# Install project dependencies
 COPY package*.json ./
 RUN npm install
 
+# Copy application source code
 COPY . .
+
+# Generate Prisma Client
+RUN npx prisma generate
 
 EXPOSE 3002
 
-CMD ["node", "server.js"]
+# Push database schema migrations and launch Express server on startup
+CMD ["sh", "-c", "npx prisma db push && node src/server.js"]
+
+
+
+
+
+
+

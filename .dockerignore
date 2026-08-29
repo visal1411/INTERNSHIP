@@ -1,6 +1,12 @@
+# Ignore host node_modules to ensure container builds its own dependencies
 node_modules
 npm-debug.log
-.env
+
+# Ignore local sqlite files if any
 database.sqlite
+
+# Ignore docker configuration files inside container context
 docker-compose.yml
 Dockerfile
+
+
