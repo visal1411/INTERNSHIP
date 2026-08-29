@@ -9,4 +9,7 @@ database.sqlite
 docker-compose.yml
 Dockerfile
 
+#.env removed for now
+
+
 
