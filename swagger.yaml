@@ -1,0 +1,700 @@
+openapi: 3.0.0
+info:
+  title: AgroScale Cow Weight Monitoring & Analytics API
+  version: 1.0.0
+  description: |
+      
+      ## Overview
+      AgroScale is a multi-tenant IoT & AI-powered livestock weight monitoring platform.
+      This API facilitates:
+      1. **IoT Ingestion:** Secure data capture from ESP32 gateway load-cell scales.
+      2. **AI / Rule-Based Classification:** Automated evaluation of cow weight against standards or Python ML models.
+      3. **Multi-Tenant Farmer Dashboard:** Isolated cow records, real-time weight histories, 30-day weight trends, and growth curves.
+      
+      ## Authentication Mechanisms
+      - **Farmer Authentication (`BearerAuth`):** Standard JWT Bearer token required for all Farmer Dashboard endpoints (`/api/v1/cows/*`, `/api/v1/dashboard/*`). Obtain via `POST /api/v1/auth/login`.
+      - **IoT Hardware Authentication (`ApiKeyAuth`):** Custom HTTP header (`x-api-key`) required for hardware scale data transmission (`/api/v1/iot/*`).
+      
+  contact:
+    name: AgroScale Engineering Team
+    email: support@agroscale.com
+  license:
+    name: MIT
+    url: "https://opensource.org/licenses/MIT"
+servers:
+  - url: "http://localhost:3002"
+    description: Local Development Server
+  - url: "https://api.agroscale.com"
+    description: Production API Gateway
+tags:
+  - name: Health
+    description: System health check and database connectivity verification
+  - name: Authentication
+    description: Farmer authentication and JWT token issuance
+  - name: IoT Ingestion
+    description: ESP32 scale data ingestion and automated weight classification
+  - name: Cows
+    description: Livestock management, individual cow records, measurement logs, and growth charts
+  - name: Dashboard
+    description: Aggregated analytics, herd summaries, and 30-day weight trends
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: "JWT Bearer token for Farmer Dashboard endpoints. Pass as: `Bearer <token>`"
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Secret API key for IoT scale gateways. Passed in the `x-api-key` header.
+  schemas:
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: farmer1@agroscale.com
+          description: Registered farmer email address
+        password:
+          type: string
+          format: password
+          example: password123
+          description: Account password
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+          description: Signed JSON Web Token (JWT) valid for 7 days
+    Cow:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+          description: Database primary key identifier
+        cowId:
+          type: string
+          example: COW-1042
+          description: Unique tag/identifier for the cow within the farmer farm
+        breed:
+          type: string
+          example: Holstein
+          description: Breed of the cow
+        sex:
+          type: string
+          enum:
+            - male
+            - female
+            - any
+          example: female
+          description: Biological sex of the cow
+        dateOfBirth:
+          type: string
+          format: date-time
+          nullable: true
+          example: "2024-08-22T00:00:00.000Z"
+          description: Estimated or recorded date of birth
+        createdAt:
+          type: string
+          format: date-time
+          example: "2026-08-22T09:15:30.000Z"
+          description: Timestamp when the cow was first registered/upserted
+    CowDetail:
+      allOf:
+        - $ref: "#/components/schemas/Cow"
+        - type: object
+          properties:
+            farmerId:
+              type: integer
+              example: 1
+              description: ID of the owning farmer
+    WeightMeasurement:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 501
+          description: Measurement record ID
+        cowId:
+          type: integer
+          example: 1
+          description: Internal cow ID reference
+        deviceId:
+          type: string
+          example: esp32-gateway-01
+          description: Identifier of the scale gateway that captured the weight
+        weightKg:
+          type: number
+          format: float
+          example: 350.5
+          description: Measured weight in kilograms
+        ageMonthsAtMeasurement:
+          type: integer
+          example: 24
+          description: Age of the cow in months at time of measurement
+        status:
+          type: string
+          nullable: true
+          enum:
+            - healthy
+            - underweight
+            - overweight
+            - null
+          example: healthy
+          description: Classification result status
+        confidence:
+          type: number
+          format: float
+          nullable: true
+          example: 0.95
+          description: Confidence score from ML model (0.0 to 1.0) or null if standard table fallback used
+        measuredAt:
+          type: string
+          format: date-time
+          example: "2026-08-22T09:15:30.000Z"
+          description: Timestamp when the scale physical weighing occurred
+        receivedAt:
+          type: string
+          format: date-time
+          example: "2026-08-22T09:15:31.000Z"
+          description: Timestamp when the backend ingested the payload
+    WeightMeasurementWithCow:
+      allOf:
+        - $ref: "#/components/schemas/WeightMeasurement"
+        - type: object
+          properties:
+            cow:
+              type: object
+              properties:
+                cowId:
+                  type: string
+                  example: COW-1042
+                  description: Cow tag/identifier
+    GrowthPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+          example: "2026-08-22T09:15:30.000Z"
+          description: Measurement timestamp
+        weight_kg:
+          type: number
+          format: float
+          example: 350.5
+          description: Recorded weight in kilograms
+    CowGrowthResponse:
+      type: object
+      properties:
+        points:
+          type: array
+          items:
+            $ref: "#/components/schemas/GrowthPoint"
+          description: Chronologically sorted historical weight data points for graphing
+    DashboardSummaryResponse:
+      type: object
+      properties:
+        totalCows:
+          type: integer
+          example: 24
+          description: Total number of cows registered under the farmer
+        recentActivity:
+          type: array
+          items:
+            $ref: "#/components/schemas/WeightMeasurementWithCow"
+          description: Up to 10 most recent weight measurements across the farm
+    TrendPoint:
+      type: object
+      properties:
+        date:
+          type: string
+          example: 2026-08-22
+          description: Date string (YYYY-MM-DD)
+        average_weight_kg:
+          type: number
+          format: float
+          example: 328.1
+          description: Average weight across all cows weighed on this date
+    DashboardTrendsResponse:
+      type: object
+      properties:
+        points:
+          type: array
+          items:
+            $ref: "#/components/schemas/TrendPoint"
+          description: Past 30 days daily average weight trends
+    IoTMeasurementRequest:
+      type: object
+      required:
+        - device_id
+        - cow_id
+        - breed
+        - age_months
+        - weight_kg
+      properties:
+        device_id:
+          type: string
+          example: esp32-gateway-01
+          description: Registered hardware scale gateway ID (must exist in Device table)
+        cow_id:
+          type: string
+          example: COW-1042
+          description: Tag / ID of the cow
+        breed:
+          type: string
+          example: Holstein
+          description: Breed of the cow
+        sex:
+          type: string
+          enum:
+            - male
+            - female
+            - any
+          default: any
+          example: female
+          description: "Biological sex of the cow (optional, defaults to \"any\")"
+        age_months:
+          type: integer
+          minimum: 0
+          example: 24
+          description: Age in months (must be non-negative)
+        weight_kg:
+          type: number
+          format: float
+          minimum: 0.1
+          example: 350.5
+          description: Weight measured by load-cell sensor in kg (must be positive)
+        measured_at:
+          type: string
+          format: date-time
+          example: "2026-08-22T09:15:30Z"
+          description: Optional ISO-8601 timestamp from device NTP clock (max 5 minutes into the future)
+    ClassificationResult:
+      type: object
+      nullable: true
+      properties:
+        label:
+          type: string
+          enum:
+            - healthy
+            - underweight
+            - overweight
+          example: healthy
+          description: Calculated health classification
+        confidence:
+          type: number
+          format: float
+          nullable: true
+          example: 0.95
+          description: Model confidence score (null if fallback standard was used)
+    IoTMeasurementResponse:
+      type: object
+      properties:
+        measurement_id:
+          type: integer
+          example: 501
+          description: Newly generated primary key for the measurement
+        cow_id:
+          type: string
+          example: COW-1042
+          description: Cow identifier tag
+        classification:
+          $ref: "#/components/schemas/ClassificationResult"
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+          description: API operational status
+        db:
+          type: string
+          enum:
+            - ok
+            - error
+          example: ok
+          description: Database connectivity status
+    ErrorDetail:
+      type: object
+      properties:
+        code:
+          type: string
+          example: UNAUTHORIZED
+          description: Machine-readable error code
+        message:
+          type: string
+          example: Invalid or missing credentials
+          description: Human-readable error description
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          $ref: "#/components/schemas/ErrorDetail"
+    ValidationErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: VALIDATION_ERROR
+              description: Validation failure error code
+            message:
+              description: Zod validation error details or message string
+              oneOf:
+                - type: array
+                  items:
+                    type: object
+                    properties:
+                      path:
+                        type: array
+                        items:
+                          type: string
+                      message:
+                        type: string
+                - type: string
+                  example: measured_at cannot be safely in the future
+    RateLimitErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: RATE_LIMIT_EXCEEDED
+            message:
+              type: string
+              example: Too many requests, please try again later.
+paths:
+  /api/v1/iot/measurements:
+    post:
+      summary: Ingest scale weight measurement from ESP32 gateway
+      description: |
+          Endpoint called by physical ESP32 gateway devices to ingest cow weight readings.
+          
+          **Workflow:**
+          1. Validates the `x-api-key` header against the system secret.
+          2. Resolves the owning `Farmer` by looking up the `device_id` in the `Device` table.
+          3. Upserts the `Cow` record scoped to the owning farmer.
+          4. Evaluates weight status via the external Python ML service (or falls back to the PostgreSQL `WeightStandard` reference table if ML is unavailable).
+          5. Saves the measurement and returns the generated measurement ID and classification label.
+          
+      tags:
+        - IoT Ingestion
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IoTMeasurementRequest"
+      responses:
+        201:
+          description: Measurement recorded and classified successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IoTMeasurementResponse"
+        400:
+          description: Validation error in request body or future timestamp exceeding tolerance
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorResponse"
+        401:
+          description: Unauthorized - missing/invalid `x-api-key` header, or `device_id` is not registered to any farmer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        429:
+          description: Rate limit exceeded (more than 60 requests/minute per IP)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RateLimitErrorResponse"
+        500:
+          description: Internal server error or misconfiguration
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /health:
+    get:
+      summary: System & Database Health Check
+      description: Performs a live database query (`SELECT 1`) to verify that both the Node.js Express server and the PostgreSQL database connection are fully operational.
+      tags:
+        - Health
+      responses:
+        200:
+          description: System and database are healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+        503:
+          description: Service unavailable - database query failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+  /api/v1/dashboard/summary:
+    get:
+      summary: Get high-level farm overview & recent activity
+      description: "Returns aggregated metrics for the authenticated farmer's dashboard, including the total count of registered cows and the 10 most recent weight measurement logs with cow tag metadata."
+      tags:
+        - Dashboard
+      security:
+        - BearerAuth: []
+      responses:
+        200:
+          description: Summary metrics retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardSummaryResponse"
+        401:
+          description: Unauthorized - missing, invalid, or expired JWT Bearer token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/v1/dashboard/trends:
+    get:
+      summary: Get 30-day farm-wide average weight trends
+      description: Calculates and aggregates daily average cow weights across the entire herd for the past 30 days, sorted chronologically ascending. Ready for chart rendering.
+      tags:
+        - Dashboard
+      security:
+        - BearerAuth: []
+      responses:
+        200:
+          description: 30-day average weight trends retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardTrendsResponse"
+        401:
+          description: Unauthorized - missing, invalid, or expired JWT Bearer token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/v1/cows:
+    get:
+      summary: List all cows owned by the authenticated farmer
+      description: Retrieves an array of all registered cows belonging to the logged-in farmer, ordered by registration date descending.
+      tags:
+        - Cows
+      security:
+        - BearerAuth: []
+      responses:
+        200:
+          description: List of cows retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Cow"
+        401:
+          description: Unauthorized - missing, invalid, or expired JWT Bearer token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/v1/cows/{id}:
+    get:
+      summary: Get single cow details by ID
+      description: Retrieves the profile and metadata for a specific cow owned by the authenticated farmer. If the cow belongs to another farmer or does not exist, a 404 is returned.
+      tags:
+        - Cows
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: Internal database primary key ID of the cow
+          example: 1
+      responses:
+        200:
+          description: Cow profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CowDetail"
+        401:
+          description: Unauthorized - missing, invalid, or expired JWT Bearer token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        404:
+          description: Cow not found or not owned by this farmer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/v1/cows/{id}/measurements:
+    get:
+      summary: List weight measurement history for a cow
+      description: Retrieves all historical weight readings recorded for a specific cow owned by the authenticated farmer, ordered by measurement timestamp descending.
+      tags:
+        - Cows
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: Internal database primary key ID of the cow
+          example: 1
+      responses:
+        200:
+          description: Array of historical weight measurements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WeightMeasurement"
+        401:
+          description: Unauthorized - missing, invalid, or expired JWT Bearer token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        404:
+          description: Cow not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/v1/cows/{id}/growth:
+    get:
+      summary: Get chronological growth tracking points for charting
+      description: Retrieves chronologically sorted (ascending by date) `{ date, weight_kg }` coordinate points for rendering growth trajectory line charts on the frontend.
+      tags:
+        - Cows
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: Internal database primary key ID of the cow
+          example: 1
+      responses:
+        200:
+          description: Growth data points for chart rendering
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CowGrowthResponse"
+        401:
+          description: Unauthorized - missing, invalid, or expired JWT Bearer token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        404:
+          description: Cow not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/v1/auth/login:
+    post:
+      summary: Authenticate farmer and obtain JWT token
+      description: |
+          Authenticates a farmer account using email and password.
+          On successful authentication, returns a signed JWT token valid for 7 days.
+          The token must be provided in the `Authorization: Bearer <token>` header for all farmer-scoped endpoints.
+          
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+      responses:
+        200:
+          description: Successfully authenticated. Returns JWT token.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        400:
+          description: Validation error (e.g. invalid email format or empty password)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorResponse"
+        401:
+          description: Invalid credentials (incorrect email or password)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        500:
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"

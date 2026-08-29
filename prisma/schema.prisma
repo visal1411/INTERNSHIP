@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Farmer {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+
+  cows    Cow[]
+  devices Device[]
+}
+
+model Device {
+  id        Int      @id @default(autoincrement())
+  deviceId  String   @unique
+  farmerId  Int
+  createdAt DateTime @default(now())
+
+  farmer Farmer @relation(fields: [farmerId], references: [id])
+}
+
+model Cow {
+  id          Int       @id @default(autoincrement())
+  cowId       String
+  farmerId    Int
+  breed       String
+  sex         String
+  dateOfBirth DateTime?
+  createdAt   DateTime  @default(now())
+
+  farmer Farmer @relation(fields: [farmerId], references: [id])
+  measurements WeightMeasurement[]
+
+  @@unique([farmerId, cowId])
+}
+
+model WeightMeasurement {
+  id                     Int       @id @default(autoincrement())
+  cowId                  Int
+  deviceId               String
+  weightKg               Float
+  ageMonthsAtMeasurement Int
+  status                 String?
+  confidence             Float?
+  measuredAt             DateTime
+  receivedAt             DateTime  @default(now())
+
+  cow Cow @relation(fields: [cowId], references: [id])
+
+  @@index([cowId, measuredAt])
+  @@index([status])
+}
+
+model WeightStandard {
+  id               Int    @id @default(autoincrement())
+  breed            String
+  sex              String
+  ageMinMonths     Int
+  ageMaxMonths     Int
+  minHealthyWeight Float
+  maxHealthyWeight Float
+}

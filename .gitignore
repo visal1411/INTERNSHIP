@@ -1,4 +1,26 @@
+# Dependencies
 node_modules/
+
+# Environment Variables
 .env
+.env.local
+.env.*.local
+
+# Databases & SQLite
 database.sqlite
+*.sqlite
+*.sqlite3
+*.db
+
+# Logs & Temporary test output
+*.log
+logs/
+test.txt
+testOutput.txt
+testSwaggerVerification.js
+
+# OS & Editor
 .DS_Store
+Thumbs.db
+.idea/
+.vscode/

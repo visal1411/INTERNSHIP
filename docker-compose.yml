@@ -1,15 +1,18 @@
-# services:
-#   db:
-#     image: mysql:8.0
-#     container_name: agro_scale_mysql
-#     restart: always
-#     environment:
-#       MYSQL_ROOT_PASSWORD: root
-#       MYSQL_DATABASE: agro_scale_db
-#     ports:
-#       - "3306:3306"
-#     volumes:
-#       - mysql_data:/var/lib/mysql
+version: '3.8'
 
-# volumes:
-#   mysql_data:
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: agro_scale_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: agro_user
+      POSTGRES_PASSWORD: agro_password
+      POSTGRES_DB: agro_scale_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
