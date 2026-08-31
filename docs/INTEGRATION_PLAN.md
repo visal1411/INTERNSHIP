@@ -4,19 +4,16 @@ This document outlines the end-to-end integration architecture and step-by-step 
 
 ---
 
-## 🎯 1. Key Principles & Confirmed Requirements
+### 🎯 1. Key Principles & Confirmed Requirements
 
-1. **Authentication & Multi-Tenancy (JWT In-Depth)**:
-   - **What is JWT?**: A JSON Web Token (JWT) is a cryptographically signed credential containing user claims (`farmerId`, `email`) and expiration.
-   - **How Backend Generates It**: When a farmer logs in (`POST /api/v1/auth/login`), the backend verifies their password hash with `bcrypt`, signs a token containing `{ farmerId: farmer.id }` using `JWT_SECRET`, and returns `{ token: "eyJ..." }`.
+1. **Authentication & Multi-Tenancy (Phone + Password JWT)**:
+   - **What is JWT?**: A JSON Web Token (JWT) is a cryptographically signed credential containing user claims (`farmerId`, `phone`, `name`) and expiration.
+   - **How Backend Generates It**: When a farmer logs in (`POST /api/v1/auth/login`), the backend looks up the farmer by `phone` (or `email`), verifies their password hash with `bcrypt`, signs a token containing `{ farmerId: farmer.id }` using `JWT_SECRET`, and returns `{ token: "eyJ...", farmer: { id, name, phone, email } }`.
    - **How Middleware Validates It (`farmerAuth.js`)**: On every protected request (`/api/v1/cows/*`, `/api/v1/dashboard/*`), the backend middleware extracts the `Authorization: Bearer <token>` header, verifies the cryptographic signature with `JWT_SECRET`, and sets `req.farmerId = decoded.farmerId`.
    - **Multi-Tenant Data Isolation**: Database queries use `where: { farmerId: req.farmerId }`, guaranteeing that Farmer 1 can never access Farmer 2's cows, scales, or weight history.
-   - **Frontend Auto-Session**: The frontend initializes a background auth session on startup for `farmer1@agroscale.com` (`password123`) and stores the JWT in `localStorage`.
-   - **Account Switcher**: In Settings, a farmer profile toggle lets you switch between Farmer 1 and Farmer 2 to test multi-tenancy live.
-
-> [!WARNING]
-> **No Dedicated Frontend Login/Register Page UI**:
-> The frontend does **not** currently have a dedicated standalone Login/Register screen or landing page. Authentication is handled automatically behind the scenes (auto-logging into `farmer1@agroscale.com` on app start) and through the **Account Switcher** in the **Settings** tab. If a standalone login/signup screen is desired in the future, it should be built as a separate UI component.
+   - **Dedicated Frontend Login**: Unauthenticated visitors are presented with the **Farmer Login Screen** (entering their registered Phone Number and Password). Upon successful sign-in, the JWT token and user profile are persisted in `localStorage`.
+   - **Admin-Only Account Provisioning**: There is **no public sign-up/registration form** on the frontend. Farmer accounts are created directly in PostgreSQL by system administrators using `node scripts/adminCreateFarmer.js` or database seed scripts.
+   - **Logout Functionality**: Farmers can securely log out via the top header bar or the Settings tab, which clears the session from `localStorage` and returns to the Login screen.
 
 2. **Weight Units**:
    - **Kilograms (`kg`) strictly throughout** the database, API payloads, charts, KPI cards, device readings, and simulator. No lbs.
@@ -35,24 +32,33 @@ This document outlines the end-to-end integration architecture and step-by-step 
 
 ```
 +---------------------------------------------------------------------------------------+
-| 1. LOGIN / BOOTSTRAP (Frontend -> Backend)                                            |
+| 1. ADMIN ACCOUNT PROVISIONING (Backend / Database)                                     |
 |                                                                                       |
-|   POST /api/v1/auth/login                                                             |
-|   Body: { "email": "farmer1@agroscale.com", "password": "password123" }               |
-|                                                                                       |
-|   Backend Action:                                                                     |
-|     1. Finds farmer by email in PostgreSQL.                                           |
-|     2. Verifies passwordHash with bcrypt.compare().                                   |
-|     3. Signs JWT: jwt.sign({ farmerId: farmer.id }, JWT_SECRET, { expiresIn: '7d' }) |
-|     4. Returns: { "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }                |
-|                                                                                       |
-|   Frontend Action:                                                                    |
-|     1. Saves token to localStorage.setItem('token', token).                           |
+|   Admin CLI: node scripts/adminCreateFarmer.js --name "John" --phone "012345678" ...  |
+|   -> Hashes password and stores Farmer in PostgreSQL with unique phone number.        |
 +---------------------------------------------------------------------------------------+
                                            |
                                            v
 +---------------------------------------------------------------------------------------+
-| 2. PROTECTED API REQUEST (Frontend -> Backend)                                        |
+| 2. FARMER LOGIN (Frontend -> Backend)                                                 |
+|                                                                                       |
+|   POST /api/v1/auth/login                                                             |
+|   Body: { "phone": "012345678", "password": "password123" }                           |
+|                                                                                       |
+|   Backend Action:                                                                     |
+|     1. Finds farmer by phone in PostgreSQL.                                           |
+|     2. Verifies passwordHash with bcrypt.compare().                                   |
+|     3. Signs JWT: jwt.sign({ farmerId: farmer.id }, JWT_SECRET, { expiresIn: '7d' }) |
+|     4. Returns: { token: "eyJ...", farmer: { id: 1, name: "John Doe", phone: "..." } } |
+|                                                                                       |
+|   Frontend Action:                                                                    |
+|     1. Saves token & farmer info to localStorage.                                     |
+|     2. Transitions application state to Authenticated -> Renders Dashboard.           |
++---------------------------------------------------------------------------------------+
+                                           |
+                                           v
++---------------------------------------------------------------------------------------+
+| 3. PROTECTED API REQUEST (Frontend -> Backend)                                        |
 |                                                                                       |
 |   GET /api/v1/dashboard/summary                                                       |
 |   Headers: Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...              |
@@ -69,12 +75,11 @@ This document outlines the end-to-end integration architecture and step-by-step 
                                            |
                                            v
 +---------------------------------------------------------------------------------------+
-| 3. MULTI-TENANT SWITCHING (Settings Page)                                             |
+| 4. LOGOUT ACTION (Header / Settings)                                                  |
 |                                                                                       |
-|   - Click "Log in as Farmer 2 (Jane Smith)"                                           |
-|   - Calls /api/v1/auth/login with farmer2@agroscale.com credentials                   |
-|   - Updates localStorage with new token (farmerId = 2)                                |
-|   - Dashboard/Herd instantly re-fetches and displays Farmer 2's distinct cows/devices |
+|   - Click "Log Out" button                                                            |
+|   - Clears token and user info from localStorage                                      |
+|   - Returns application immediately to the Phone Number + Password Login screen       |
 +---------------------------------------------------------------------------------------+
 ```
 
@@ -118,8 +123,7 @@ This document outlines the end-to-end integration architecture and step-by-step 
 
 | Method | Path | Auth Required | Description |
 |---|---|---|---|
-| `POST` | `/api/v1/auth/register` | None | Register new farmer account (`name`, `email`, `password`), creates default scale device, returns signed JWT |
-| `POST` | `/api/v1/auth/login` | None | Farmer login with email & password, returns signed JWT |
+| `POST` | `/api/v1/auth/login` | None | Farmer login with phone number & password, returns signed JWT & farmer profile |
 | `POST` | `/api/v1/iot/measurements` | `x-api-key` | Ingest scale reading from ESP32 gateway, auto-classify weight |
 | `GET` | `/api/v1/cows` | Bearer JWT | List all cows owned by farmer with latest scale weight (kg) & status |
 | `POST` | `/api/v1/cows` | Bearer JWT | Register new cow (tag, breed, gender, age/DOB — no weight) |
@@ -143,18 +147,18 @@ This document outlines the end-to-end integration architecture and step-by-step 
     - **Continuous stream**: `npm run simulate:esp32 -- --interval 5000`
   - Colorized CLI output showing generated weight (kg), target tag, response classification (`healthy`, `overweight`, `underweight`), and measurement ID.
 
-### Step 2: Backend Database Seeder & Enhancements
+### Step 2: Backend Database Seeder, Admin Script & Auth
 * **File:** `backend/prisma/seed.js`
-  - Seeds `Farmer` records (`farmer1@agroscale.com`, `farmer2@agroscale.com`).
+  - Seeds `Farmer` records with unique phone numbers (`012345678`, `098765432`).
   - Seeds `Device` record (`esp32-gateway-01`).
   - Seeds `WeightStandard` reference benchmarks across standard breeds (`Angus`, `Brahman`, `Hereford`, `Holstein`) for automated weight classification fallback.
   - Seeds sample cows and 30-day historical weigh-ins in kg.
+* **File:** `backend/scripts/adminCreateFarmer.js`
+  - Admin CLI provisioning tool to register new farmer accounts with phone, name, password, and optional devices.
 * **File:** `backend/src/routes/authRoutes.js`, `backend/src/controllers/authController.js`, `backend/src/services/authService.js`
-  - Implement **`POST /api/v1/auth/register`**:
-    - **Request Body**: `{ "name": "John Doe", "email": "john@agroscale.com", "password": "password123" }`
-    - **Validation**: Name required, valid email format, password min 6 chars.
-    - **Action**: Hashes password with `bcrypt`, creates `Farmer` in PostgreSQL, binds default `esp32-gateway-01` device if needed, and returns signed JWT token + farmer profile.
-    - **Responses**: `201 Created` (returns `{ token, farmer }`), `400 Bad Request` (validation error), `409 Conflict` (email already exists).
+  - Implement **`POST /api/v1/auth/login`**:
+    - **Request Body**: `{ "phone": "012345678", "password": "password123" }`
+    - **Action**: Verifies password against PostgreSQL hash, returns `{ token, farmer: { id, name, phone, email } }`.
 * **File:** `backend/src/routes/cowRoutes.js` & `backend/src/services/cowService.js`
   - Implement **`POST /api/v1/cows`**: Accepts `cowId`, `breed`, `sex`, `dateOfBirth` / `ageMonths` (no manual weight).
   - Update **`GET /api/v1/cows`**: Automatically attaches each cow's latest scale measurement in kg, status label, and timestamp.

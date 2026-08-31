@@ -176,4 +176,28 @@ router.get('/:id/measurements', cowController.listMeasurements);
  */
 router.get('/:id/growth', cowController.getGrowth);
 
+/**
+ * @openapi
+ * /api/v1/cows:
+ *   post:
+ *     summary: Register a new cow
+ *     tags:
+ *       - Cows
+ *     security:
+ *       - BearerAuth: []
+ */
+router.post('/', cowController.createCow);
+
+/**
+ * @openapi
+ * /api/v1/cows/{id}:
+ *   put:
+ *     summary: Update cow details (breed, gender, age)
+ *     tags:
+ *       - Cows
+ *     security:
+ *       - BearerAuth: []
+ */
+router.put('/:id', cowController.updateCow);
+
 module.exports = router;

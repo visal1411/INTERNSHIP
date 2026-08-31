@@ -1,4 +1,4 @@
-const predictWeightStatus = async (breed, age_months, weight_kg) => {
+const predictWeightStatus = async (breed, gender, age_months, weight_kg) => {
   const url = process.env.ML_SERVICE_URL;
   if (!url) {
     throw new Error('ML_SERVICE_URL is not set');
@@ -11,7 +11,7 @@ const predictWeightStatus = async (breed, age_months, weight_kg) => {
     const response = await fetch(`${url}/predict`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ breed, age_months, weight_kg }),
+      body: JSON.stringify({ breed, age_months, gender, weight_kg }),
       signal: controller.signal
     });
 

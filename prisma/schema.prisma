@@ -8,7 +8,7 @@ datasource db {
 
 model Farmer {
   id           Int      @id @default(autoincrement())
-  email        String   @unique
+  phone        String   @unique
   passwordHash String
   name         String
   createdAt    DateTime @default(now())
@@ -30,8 +30,8 @@ model Cow {
   id          Int       @id @default(autoincrement())
   cowId       String
   farmerId    Int
-  breed       String
-  sex         String
+  breed       String?
+  sex         String?
   dateOfBirth DateTime?
   createdAt   DateTime  @default(now())
 

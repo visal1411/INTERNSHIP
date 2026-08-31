@@ -2,7 +2,7 @@ const prisma = require('../lib/prisma');
 const classificationService = require('./classificationService');
 
 const ingestMeasurement = async (payload) => {
-  const { device_id, cow_id, breed, sex, age_months, weight_kg, measured_at } = payload;
+  const { device_id, cow_id, weight_kg, measured_at } = payload;
 
   const device = await prisma.device.findUnique({
     where: { deviceId: device_id }
@@ -13,11 +13,11 @@ const ingestMeasurement = async (payload) => {
     error.code = 'UNAUTHORIZED';
     throw error;
   }
+  // Triggering reload for Prisma client update
 
   const farmerId = device.farmerId;
-  const dateOfBirth = new Date();
-  dateOfBirth.setMonth(dateOfBirth.getMonth() - age_months);
 
+  // Upsert cow (if it doesn't exist, create it as a placeholder)
   const cow = await prisma.cow.upsert({
     where: {
       farmerId_cowId: {
@@ -28,14 +28,22 @@ const ingestMeasurement = async (payload) => {
     update: {}, 
     create: {
       cowId: cow_id,
-      farmerId: farmerId,
-      breed: breed,
-      sex: sex,
-      dateOfBirth: dateOfBirth
+      farmerId: farmerId
     }
   });
 
-  const classification = await classificationService.classify(breed, sex, age_months, weight_kg);
+  // Calculate age if dateOfBirth is known
+  let age_months = null;
+  if (cow.dateOfBirth) {
+    const diffTime = Math.abs(new Date().getTime() - new Date(cow.dateOfBirth).getTime());
+    age_months = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 30.44)); // Approx months
+  }
+
+  // Classify health if we have all necessary data
+  let classification = null;
+  if (cow.breed && cow.sex && age_months !== null) {
+    classification = await classificationService.classify(cow.breed, cow.sex, age_months, weight_kg);
+  }
 
   let measureTime = new Date();
   if (measured_at) {
@@ -54,7 +62,7 @@ const ingestMeasurement = async (payload) => {
       cowId: cow.id,
       deviceId: device_id,
       weightKg: weight_kg,
-      ageMonthsAtMeasurement: age_months,
+      ageMonthsAtMeasurement: age_months || 0, // Default to 0 if unknown
       status: classification ? classification.label : null,
       confidence: classification ? classification.confidence : null,
       measuredAt: measureTime,

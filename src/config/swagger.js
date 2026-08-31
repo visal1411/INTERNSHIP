@@ -80,13 +80,18 @@ This API facilitates:
       // 1. Auth Schemas
       LoginRequest: {
         type: 'object',
-        required: ['email', 'password'],
+        required: ['password'],
         properties: {
+          phone: {
+            type: 'string',
+            example: '012345678',
+            description: 'Registered farmer phone number'
+          },
           email: {
             type: 'string',
             format: 'email',
             example: 'farmer1@agroscale.com',
-            description: 'Registered farmer email address'
+            description: 'Optional registered farmer email address'
           },
           password: {
             type: 'string',
@@ -103,6 +108,15 @@ This API facilitates:
             type: 'string',
             example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
             description: 'Signed JSON Web Token (JWT) valid for 7 days'
+          },
+          farmer: {
+            type: 'object',
+            properties: {
+              id: { type: 'integer', example: 1 },
+              name: { type: 'string', example: 'John Doe' },
+              phone: { type: 'string', example: '012345678' },
+              email: { type: 'string', example: 'farmer1@agroscale.com' }
+            }
           }
         }
       },

@@ -8,8 +8,9 @@ const authController = require('../controllers/authController');
  *   post:
  *     summary: Authenticate farmer and obtain JWT token
  *     description: |
- *       Authenticates a farmer account using email and password.
- *       On successful authentication, returns a signed JWT token valid for 7 days.
+ *       Authenticates a farmer account using phone number (or email) and password.
+ *       On successful authentication, returns a signed JWT token valid for 7 days
+ *       along with the farmer's profile information.
  *       The token must be provided in the `Authorization: Bearer <token>` header for all farmer-scoped endpoints.
  *     tags:
  *       - Authentication
@@ -21,19 +22,19 @@ const authController = require('../controllers/authController');
  *             $ref: '#/components/schemas/LoginRequest'
  *     responses:
  *       200:
- *         description: Successfully authenticated. Returns JWT token.
+ *         description: Successfully authenticated. Returns JWT token and farmer profile.
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/LoginResponse'
  *       400:
- *         description: Validation error (e.g. invalid email format or empty password)
+ *         description: Validation error (e.g. phone/email missing or empty password)
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/ValidationErrorResponse'
  *       401:
- *         description: Invalid credentials (incorrect email or password)
+ *         description: Invalid credentials (incorrect phone number or password)
  *         content:
  *           application/json:
  *             schema:

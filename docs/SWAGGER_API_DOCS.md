@@ -43,7 +43,7 @@ The API employs two independent security mechanisms:
 | Method | Path | Auth Required | Rate Limit | Description |
 |---|---|---|---|---|
 | `GET` | `/health` | None | None | Health check verifying API and PostgreSQL connectivity |
-| `POST` | `/api/v1/auth/login` | None | None | Farmer login with email & password, returns JWT token |
+| `POST` | `/api/v1/auth/login` | None | None | Farmer login with phone number & password, returns JWT token and farmer profile |
 | `POST` | `/api/v1/iot/measurements` | `x-api-key` | 60 req/min | Ingest scale reading from ESP32, auto-classify weight |
 | `GET` | `/api/v1/cows` | Bearer JWT | None | List all cows owned by the authenticated farmer |
 | `GET` | `/api/v1/cows/{id}` | Bearer JWT | None | Get single cow profile and metadata by ID |
@@ -82,12 +82,12 @@ Verifies server operation and performs a live query (`SELECT 1`) to check Postgr
 ### 4.2 Authentication
 
 #### `POST /api/v1/auth/login`
-Validates farmer email and password, returning a signed JWT token containing the `farmerId`.
+Validates farmer phone number (or email) and password, returning a signed JWT token containing the `farmerId` and the farmer profile.
 
 **Request Body (`application/json`):**
 ```json
 {
-  "email": "farmer1@agroscale.com",
+  "phone": "012345678",
   "password": "password123"
 }
 ```
@@ -95,7 +95,13 @@ Validates farmer email and password, returning a signed JWT token containing the
 **Response `200 OK`:**
 ```json
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmYXJtZXJJZCI6MSwiaWF0IjoxNzg4MDA..."
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmYXJtZXJJZCI6MSwiaWF0IjoxNzg4MDA...",
+  "farmer": {
+    "id": 1,
+    "name": "John Doe",
+    "phone": "012345678",
+    "email": "farmer1@agroscale.com"
+  }
 }
 ```
 
