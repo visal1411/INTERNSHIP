@@ -29,6 +29,7 @@ interface DevicesProps {
 
 export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = () => {}, weighingCowId = null, setWeighingCowId = () => {}, onRemoveDevice }: DevicesProps) {
   const { t } = useTranslation();
+  const [showGuide, setShowGuide] = useState(false);
   
   const selectedScale = activeScaleId ? scalesData.find(s => s.id === activeScaleId) || null : null;
 
@@ -167,11 +168,11 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
   }
 
   return (
-    <div className="transition-colors">
-      <div className="flex justify-between items-center mb-8">
+    <div className="h-full flex flex-col">
+      <div className="flex items-center justify-between mb-8">
         <div>
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t('devices.title')}</h2>
-          <p className="text-gray-500 dark:text-gray-400 mt-1">Manage your connected weighing hardware across all pastures.</p>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">{t('devices.subtitle')}</p>
         </div>
       </div>
 
@@ -232,14 +233,22 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
           ))}
         </div>
       ) : (
-        <div className="bg-white dark:bg-gray-800 rounded-2xl border border-dashed border-gray-300 dark:border-gray-700 p-12 flex flex-col items-center justify-center text-center">
-          <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-4">
-            <WifiOff className="w-8 h-8 text-gray-400 dark:text-gray-500" />
+        <div className="max-w-3xl mx-auto w-full bg-white rounded-2xl border border-dashed border-gray-300 p-12 flex flex-col items-center justify-center text-center mt-8">
+          <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+            <WifiOff className="w-8 h-8 text-gray-400" />
           </div>
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No Devices Connected</h3>
-          <p className="text-gray-500 dark:text-gray-400 max-w-md">
+          <h3 className="text-xl font-bold text-gray-900 mb-2">No Devices Connected</h3>
+          <p className="text-gray-500 max-w-md">
             You don't have any smart scales registered to your farm yet. Devices will appear here automatically once configured on the network.
           </p>
+          <div className="flex gap-3 mt-8">
+            <button onClick={() => { const name = prompt('Enter a name for the new scale device:'); if (name && name.trim()) onAddDevice?.(name.trim()); }} className="bg-[#5f76e8] text-white px-5 py-2.5 rounded-lg font-medium hover:bg-[#5f76e8]/90 transition-colors shadow-sm">
+                + Add Device Manually
+              </button>
+            <button onClick={() => setShowGuide(true)} className="border border-gray-300 text-gray-700 px-5 py-2.5 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                View Setup Guide
+              </button>
+          </div>
         </div>
       )}
     </div>

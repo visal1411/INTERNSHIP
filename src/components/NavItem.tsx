@@ -11,12 +11,17 @@ export function NavItem({ icon, label, active, onClick }: NavItemProps) {
   return (
     <button
       onClick={onClick}
-      className={`w-full flex items-center px-3 py-2.5 rounded-lg transition-colors ${active
-        ? 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 font-medium'
-        : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100'
+      className={`w-full flex items-center px-4 py-3 transition-colors mr-4 ${active
+        ? 'text-white font-medium'
+        : 'text-gray-600 hover:text-gray-900 opacity-80 hover:opacity-100'
         }`}
+      style={active ? { 
+        background: 'linear-gradient(to right, #8971ea, #7f72ea, #7574ea, #6a75e9, #5f76e8)', 
+        borderRadius: '0px 60px 60px 0px',
+        boxShadow: '0px 7px 12px 0px rgba(95, 118, 232, 0.21)'
+      } : {}}
     >
-      <span className="mr-3">{icon}</span>
+      <span className={`mr-3 ${active ? 'text-white' : 'text-gray-500'}`}>{icon}</span>
       {label}
     </button>
   );

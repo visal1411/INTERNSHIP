@@ -108,97 +108,96 @@ export function Home({ onNavigate }: HomeProps) {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Chart Section */}
-        <div className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm transition-colors">
-          <div className="flex justify-between items-center mb-6">
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">Average Weight Trend</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Trailing {timeFilter === '7days' ? '7 days' : timeFilter === '30days' ? '30 days' : 'year'} across all active scales</p>
-            </div>
-            
-            <div className="relative" ref={timeFilterRef}>
+  <div className="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-gray-200 transition-colors">
+    <div className="flex justify-between items-center mb-6">
+      <div>
+        <h3 className="text-lg font-bold text-gray-900">Average Weight Trend</h3>
+        <p className="text-sm text-gray-500">Trailing {timeFilter === '7days' ? '7 days' : timeFilter === '30days' ? '30 days' : 'year'} across all active scales</p>
+      </div>
+      
+      <div className="relative" ref={timeFilterRef}>
+        <button
+          onClick={() => setIsTimeFilterOpen(!isTimeFilterOpen)}
+          className="flex items-center justify-between w-full min-w-[160px] bg-gray-50 border border-gray-200 text-gray-700 text-sm rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#008ffb] font-sans cursor-pointer transition-colors hover:border-gray-300"
+        >
+          <span>{timeFilterOptions.find(opt => opt.value === timeFilter)?.label}</span>
+          <ChevronDown size={16} className={`text-gray-400 transition-transform ${isTimeFilterOpen ? 'rotate-180' : ''}`} />
+        </button>
+        
+        {isTimeFilterOpen && (
+          <div className="absolute top-full right-0 mt-2 w-full min-w-[160px] bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-10 animate-in fade-in slide-in-from-top-2 duration-200">
+            {timeFilterOptions.map(option => (
               <button
-                onClick={() => setIsTimeFilterOpen(!isTimeFilterOpen)}
-                className="flex items-center justify-between w-full min-w-[160px] bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-200 text-sm rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-green-500 font-sans cursor-pointer transition-colors hover:border-green-300 dark:hover:border-green-500"
+                key={option.value}
+                onClick={() => {
+                  setTimeFilter(option.value);
+                  setIsTimeFilterOpen(false);
+                }}
+                className={`w-full text-left px-4 py-2.5 text-sm transition-colors hover:bg-gray-50 ${
+                  timeFilter === option.value ? 'bg-blue-50 text-[#008ffb] font-medium' : 'text-gray-700'
+                }`}
               >
-                <span>{timeFilterOptions.find(opt => opt.value === timeFilter)?.label}</span>
-                <ChevronDown size={16} className={`text-gray-400 transition-transform ${isTimeFilterOpen ? 'rotate-180' : ''}`} />
+                {option.label}
               </button>
-              
-              {isTimeFilterOpen && (
-                <div className="absolute top-full right-0 mt-2 w-full min-w-[160px] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg overflow-hidden z-10 animate-in fade-in slide-in-from-top-2 duration-200">
-                  {timeFilterOptions.map(option => (
-                    <button
-                      key={option.value}
-                      onClick={() => {
-                        setTimeFilter(option.value as '7days' | '30days' | 'year');
-                        setIsTimeFilterOpen(false);
-                      }}
-                      className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${timeFilter === option.value ? 'bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 font-medium' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'}`}
-                    >
-                      {option.label}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+            ))}
           </div>
+        )}
+      </div>
+    </div>
 
-          <div className="h-[300px] w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={allWeightData[timeFilter]} margin={{ top: 10, right: 10, left: -20, bottom: 0 }} accessibilityLayer={false} style={{ outline: 'none' }}>
-                <defs>
-                  <linearGradient id="colorWeight" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#22c55e" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="#22c55e" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" className="dark:opacity-10" />
-                <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#6b7280', fontSize: 12 }} dy={10} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#6b7280', fontSize: 12 }} />
-                <Tooltip
-                  cursor={{ stroke: '#22c55e', strokeWidth: 1, strokeDasharray: '4 4', opacity: 0.4 }}
-                  animationDuration={300}
-                  animationEasing="ease-out"
-                  contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)', backgroundColor: 'var(--tw-prose-body, white)', color: '#111827' }}
-                  itemStyle={{ color: '#16a34a', fontWeight: 'bold' }}
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="weight" 
-                  stroke="#22c55e" 
-                  strokeWidth={3} 
-                  fillOpacity={1} 
-                  fill="url(#colorWeight)" 
-                  isAnimationActive={true}
-                  animationDuration={800}
-                  animationEasing="ease-in-out"
-                  activeDot={{ r: 6, fill: '#22c55e', stroke: '#ffffff', strokeWidth: 3, style: { filter: 'drop-shadow(0px 2px 4px rgba(34,197,94,0.4))', transition: 'all 0.2s ease' } }}
-                />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
-          
-          {/* Quick Actions Panel */}
-          <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h4>
-            <div className="flex gap-3">
-              <button 
-                onClick={() => setIsWeighInModalOpen(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/50 transition-colors font-medium text-sm border border-green-200 dark:border-green-800"
-              >
-                <Plus size={16} /> New Weigh-in
-              </button>
-              <button 
-                onClick={() => handleExport('report')}
-                className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors font-medium text-sm border border-gray-200 dark:border-gray-600 shadow-sm"
-              >
-                Generate Report
-              </button>
-            </div>
-          </div>
-        </div>
+    <div className="h-[350px] w-full mt-4">
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart data={allWeightData[timeFilter]} margin={{ top: 10, right: 10, left: -20, bottom: 0 }} accessibilityLayer={false} style={{ outline: 'none' }}>
+          <defs>
+            <linearGradient id="colorWeight" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#008ffb" stopOpacity={0.4} />
+              <stop offset="95%" stopColor="#008ffb" stopOpacity={0.0} />
+            </linearGradient>
+          </defs>
+          <CartesianGrid strokeDasharray="0" vertical={false} stroke="#e5e7eb" />
+          <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#6b7280', fontSize: 12 }} dy={10} />
+          <YAxis axisLine={false} tickLine={false} tick={{ fill: '#6b7280', fontSize: 12 }} />
+          <Tooltip
+            cursor={{ stroke: '#cbd5e1', strokeWidth: 1, strokeDasharray: '4 4' }}
+            animationDuration={300}
+            contentStyle={{ borderRadius: '8px', border: '1px solid #e2e8f0', backgroundColor: '#ffffff', color: '#111827', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+            itemStyle={{ fontWeight: 'bold' }}
+          />
+          <Area 
+            type="monotone" 
+            dataKey="weight" 
+            stroke="#008ffb" 
+            strokeWidth={3}
+            fillOpacity={1}
+            fill="url(#colorWeight)"
+            isAnimationActive={true}
+            activeDot={{ r: 6, fill: '#008ffb', stroke: '#ffffff', strokeWidth: 2 }}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
+    
+    {/* Quick Actions Panel */}
+    <div className="mt-6 pt-6 border-t border-gray-100">
+      <h4 className="text-sm font-semibold text-gray-900 mb-4">Quick Actions</h4>
+      <div className="flex gap-3">
+        <button 
+          onClick={() => setIsWeighInModalOpen(true)}
+          className="flex items-center gap-2 px-4 py-2 bg-[#008ffb]/10 text-[#007cdb] rounded-lg hover:bg-[#008ffb]/20 transition-colors font-medium text-sm border border-[#008ffb]/20"
+        >
+          <Plus size={16} /> New Weigh-in
+        </button>
+        <button 
+          onClick={() => handleExport('report')}
+          className="flex items-center gap-2 px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium text-sm border border-gray-200 shadow-sm"
+        >
+          Generate Report
+        </button>
+      </div>
+    </div>
+  </div>
 
-        {/* Recent Activity */}
+  {/* Recent Activity */}
         <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm flex flex-col h-[520px] transition-colors">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white">{t('dashboard.recentWeighIns')}</h3>

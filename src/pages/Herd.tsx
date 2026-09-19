@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Search, Plus, X, ArrowUpRight, ArrowDownRight, CheckCircle2, MoreVertical, Calendar, Heart, FileText, Filter, Download } from 'lucide-react';
+import { Search, Plus, X, ArrowUpRight, ArrowDownRight, CheckCircle2, MoreVertical, Calendar, Edit2, Trash2, Heart, FileText, Filter, Download } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import cowIcon from '../assets/cow.png';
 
@@ -38,6 +38,8 @@ export function Herd({ onNavigateToScale }: HerdProps) {
   const { t } = useTranslation();
   const [herdData, setHerdData] = useState(initialMockHerd);
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [editingCow, setEditingCow] = useState<any>(null);
   const [selectedCow, setSelectedCow] = useState<typeof initialMockHerd[0] | null>(null);
   const [showScaleModal, setShowScaleModal] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
@@ -249,9 +251,22 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                   </td>
                   <td className="py-4 px-6 text-sm text-gray-500 dark:text-gray-400">{cow.lastSync}</td>
                   <td className="py-4 px-6 text-right">
-                    <button className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={(e) => { e.stopPropagation(); /* Menu logic */ }}>
-                      <MoreVertical size={18} />
-                    </button>
+                      <div className="relative inline-block text-left">
+                        <button className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={(e) => { e.stopPropagation(); setActiveDropdown(activeDropdown === cow.id ? null : cow.id); }}>
+                          <MoreVertical size={18} />
+                        </button>
+                        {activeDropdown === cow.id && (
+                          <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-xl shadow-lg py-1.5 z-50 animate-in fade-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
+                            <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2 transition-colors" onClick={() => { setEditingCow(cow); setShowAddCowModal(true); setActiveDropdown(null); }}>
+                              <Edit2 size={14} className="text-gray-400" /> Edit Details
+                            </button>
+                            <div className="h-px bg-gray-100 my-1"></div>
+                            <button className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2 transition-colors" onClick={() => { setHerdData(herdData.filter(c => c.id !== cow.id)); setActiveDropdown(null); }}>
+                              <Trash2 size={14} className="text-red-500" /> Delete Cow
+                            </button>
+                          </div>
+                        )}
+                      </div>
                   </td>
                 </tr>
               )) : (
@@ -390,7 +405,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">Add New Cow</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Enter the details for the new livestock</p>
               </div>
-              <button onClick={() => setShowAddCowModal(false)} className="p-2 text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors">
+              <button onClick={() => { setShowAddCowModal(false); setEditingCow(null); }} className="p-2 text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors">
                 <X size={20} />
               </button>
             </div>
@@ -465,7 +480,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
               </div>
               
               <div className="pt-6 flex justify-end gap-3 border-t border-gray-100 dark:border-gray-700 mt-6">
-                <button type="button" onClick={() => setShowAddCowModal(false)} className="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors">
+                <button type="button" onClick={() => { setShowAddCowModal(false); setEditingCow(null); }} className="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors">
                   Cancel
                 </button>
                 <button type="submit" className="px-5 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium transition-colors shadow-sm">
