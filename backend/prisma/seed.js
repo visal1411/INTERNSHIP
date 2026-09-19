@@ -15,14 +15,14 @@ async function main() {
   const passwordHash = await bcrypt.hash('password123', 10);
 
   const farmer1 = await prisma.farmer.upsert({
-    where: { phone: '012345678' },
+    where: { email: 'farmer1@agroscale.com' },
     update: {
-      phone: '012345678',
+      email: 'farmer1@agroscale.com',
       name: 'John Doe',
       passwordHash
     },
     create: {
-      phone: '012345678',
+      email: 'farmer1@agroscale.com',
       passwordHash,
       name: 'John Doe',
       devices: {
@@ -34,14 +34,14 @@ async function main() {
   });
 
   const farmer2 = await prisma.farmer.upsert({
-    where: { phone: '098765432' },
+    where: { email: 'farmer2@agroscale.com' },
     update: {
-      phone: '098765432',
+      email: 'farmer2@agroscale.com',
       name: 'Jane Smith',
       passwordHash
     },
     create: {
-      phone: '098765432',
+      email: 'farmer2@agroscale.com',
       passwordHash,
       name: 'Jane Smith',
       devices: {
@@ -53,8 +53,8 @@ async function main() {
   });
 
   console.log(`✅ Seed successful!`);
-  console.log(`- Farmer 1: ${farmer1.name} (Phone: ${farmer1.phone}, Device: esp32-gateway-01)`);
-  console.log(`- Farmer 2: ${farmer2.name} (Phone: ${farmer2.phone}, Device: esp32-gateway-02)`);
+  console.log(`- Farmer 1: ${farmer1.name} (Email: ${farmer1.email}, Device: esp32-gateway-01)`);
+  console.log(`- Farmer 2: ${farmer2.name} (Email: ${farmer2.email}, Device: esp32-gateway-02)`);
 }
 
 main()

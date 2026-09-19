@@ -12,9 +12,9 @@ const healthRoutes = require('./routes/healthRoutes');
 
 const farmerAuth = require('./middleware/farmerAuth');
 const errorHandler = require('./middleware/errorHandler');
-const { iotRateLimiter } = require('./middleware/rateLimiter');
 
-const requiredParams = ['DATABASE_URL', 'IOT_API_KEY', 'JWT_SECRET', 'FRONTEND_URL', 'PORT'];
+
+const requiredParams = ['DATABASE_URL', 'IOT_API_KEY', 'JWT_SECRET', 'FRONTEND_URL'];
 for (const param of requiredParams) {
   if (!process.env[param]) {
     console.error(`🔥 CRITICAL FATAL: Missing required environment variable: ${param}`);
@@ -24,7 +24,22 @@ for (const param of requiredParams) {
 
 const app = express();
 
-app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
+const allowedOrigins = process.env.FRONTEND_URL
+  ? process.env.FRONTEND_URL.split(',').map((url) => url.trim().replace(/\/$/, ''))
+  : ['http://localhost:5173'];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes('*')) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS policy error: Origin ${origin} not allowed`));
+      }
+    },
+    credentials: true
+  })
+);
 app.use(bodyParser.json({ limit: '10mb' }));
 
 // Swagger UI Documentation & Spec Endpoint
@@ -49,7 +64,7 @@ app.get('/api-docs.json', (req, res) => {
 // Application Routes
 app.use('/health', healthRoutes);
 app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1/iot', iotRateLimiter, iotRoutes);
+app.use('/api/v1/iot', iotRoutes);
 app.use('/api/v1/cows', farmerAuth, cowRoutes);
 app.use('/api/v1/dashboard', farmerAuth, dashboardRoutes);
 

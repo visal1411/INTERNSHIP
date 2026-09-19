@@ -30,6 +30,7 @@ services:
     environment:
       PORT: 3002
       DATABASE_URL: postgresql://agro_user:agro_password@postgres:5432/agro_scale_db?schema=public
+      ML_SERVICE_URL: http://host.docker.internal:5000
     depends_on:
       postgres:
         condition: service_healthy

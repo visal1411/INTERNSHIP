@@ -2,20 +2,20 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const prisma = require('../lib/prisma');
 
-const login = async ({ phone, password }) => {
-  if (!phone) {
-    throw new Error('Phone number is required');
+const login = async ({ email, password }) => {
+  if (!email) {
+    throw new Error('Email is required');
   }
 
-  const farmer = await prisma.farmer.findUnique({ where: { phone } });
+  const farmer = await prisma.farmer.findUnique({ where: { email } });
 
   if (!farmer) {
-    throw new Error('Invalid phone number or password');
+    throw new Error('Invalid email or password');
   }
 
   const isMatch = await bcrypt.compare(password, farmer.passwordHash);
   if (!isMatch) {
-    throw new Error('Invalid phone number or password');
+    throw new Error('Invalid email or password');
   }
 
   const secret = process.env.JWT_SECRET;
@@ -27,7 +27,7 @@ const login = async ({ phone, password }) => {
     farmer: {
       id: farmer.id,
       name: farmer.name,
-      phone: farmer.phone
+      email: farmer.email
     }
   };
 };
