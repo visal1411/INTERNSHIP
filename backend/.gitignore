@@ -1,25 +1,37 @@
 # Dependencies
 node_modules/
 
-# Environment Variables
+# Environment Variables & Secrets (CRITICAL: NEVER commit .env to GitHub)
 .env
 .env.local
 .env.*.local
+*.env
 
-# Databases & SQLite
+# Build & Output
+dist/
+build/
+
+# Databases & Local Data
 database.sqlite
 *.sqlite
 *.sqlite3
 *.db
 
-# Logs & Temporary test output
+# Logs & Debugging Output
 *.log
 logs/
+npm-debug.log*
+yarn-debug.log*
+
+# Temporary Scratch / Test Files & Internal Progress Notes
 test.txt
 testOutput.txt
 testSwaggerVerification.js
+agroscale_backend_progress.md
+*_progress.md
+*draft*.md
 
-# OS & Editor
+# OS & Editor Settings
 .DS_Store
 Thumbs.db
 .idea/
