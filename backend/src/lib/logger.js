@@ -13,18 +13,21 @@ targets.push({
 
 // Loki target (if LOKI_HOST environment variable is configured)
 if (lokiHost) {
+  const cleanLokiHost = lokiHost.replace(/\/loki\/api\/v1\/push\/?$/, '');
+
   targets.push({
     target: 'pino-loki',
     options: {
       batching: true,
       interval: 5,
-      host: lokiHost,
+      host: cleanLokiHost,
       labels: { app: 'agroscale-backend', env: process.env.NODE_ENV || 'development' },
+      propsToLabels: [],
       ...(process.env.LOKI_USER && process.env.LOKI_PASSWORD
         ? {
             basicAuth: {
-              username: process.env.LOKI_USER,
-              password: process.env.LOKI_PASSWORD
+              username: String(process.env.LOKI_USER).trim(),
+              password: String(process.env.LOKI_PASSWORD).trim()
             }
           }
         : {})
