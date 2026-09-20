@@ -31,7 +31,8 @@ const requestLogger = pinoHttp({
         method: req.method,
         url: req.url,
         query: req.query,
-        remoteAddress: req.remoteAddress
+        remoteAddress: req.remoteAddress,
+        farmerId: (req.raw && req.raw.farmerId) || req.farmerId || undefined
       };
     },
     res(res) {
