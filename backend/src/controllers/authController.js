@@ -17,4 +17,15 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { login };
+const logout = async (req, res) => {
+  try {
+    if (req.log) {
+      req.log.info({ farmerId: req.farmerId || null }, 'User logged out successfully');
+    }
+    return res.json({ message: 'Logged out successfully' });
+  } catch (err) {
+    return res.status(500).json({ error: { code: 'INTERNAL_ERROR', message: err.message } });
+  }
+};
+
+module.exports = { login, logout };

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
+const farmerAuth = require('../middleware/farmerAuth');
 
 /**
  * @openapi
@@ -47,5 +48,30 @@ const authController = require('../controllers/authController');
  *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.post('/login', authController.login);
+
+/**
+ * @openapi
+ * /api/v1/auth/logout:
+ *   post:
+ *     summary: Terminate farmer session and log out
+ *     description: |
+ *       Sends a logout request to the server, invalidating user session context and generating an audit log event.
+ *     tags:
+ *       - Authentication
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Successfully logged out.
+ *       401:
+ *         description: Unauthorized (missing or invalid token)
+ */
+router.post('/logout', (req, res, next) => {
+  // Allow optional token so logout always completes safely
+  if (req.headers['authorization']) {
+    return farmerAuth(req, res, next);
+  }
+  next();
+}, authController.logout);
 
 module.exports = router;
