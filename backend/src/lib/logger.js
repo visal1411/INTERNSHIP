@@ -42,7 +42,7 @@ const logger = pino(
   {
     level: process.env.LOG_LEVEL || 'info',
     base: { app: 'agroscale-backend' },
-    timestamp: pino.stdTimeFunctions.isoTime
+    timestamp: pino.stdTimeFunctions.epochTime
   },
   transport
 );
