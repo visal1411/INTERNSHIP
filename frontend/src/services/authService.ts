@@ -1,7 +1,7 @@
 export interface FarmerUser {
   id: number;
   name: string;
-  phone: string;
+  email: string;
 }
 
 export interface AuthResponse {
@@ -31,13 +31,13 @@ export const authService = {
     return !!this.getToken();
   },
 
-  async login(phone: string, password: string): Promise<AuthResponse> {
+  async login(email: string, password: string): Promise<AuthResponse> {
     const response = await fetch('/api/v1/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ phone, password })
+      body: JSON.stringify({ email, password })
     });
 
     const data = await response.json();

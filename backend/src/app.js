@@ -12,17 +12,21 @@ const healthRoutes = require('./routes/healthRoutes');
 
 const farmerAuth = require('./middleware/farmerAuth');
 const errorHandler = require('./middleware/errorHandler');
+const requestLogger = require('./middleware/requestLogger');
 
+const logger = require('./lib/logger');
 
 const requiredParams = ['DATABASE_URL', 'IOT_API_KEY', 'JWT_SECRET', 'FRONTEND_URL'];
 for (const param of requiredParams) {
   if (!process.env[param]) {
-    console.error(`🔥 CRITICAL FATAL: Missing required environment variable: ${param}`);
+    logger.fatal(`🔥 CRITICAL FATAL: Missing required environment variable: ${param}`);
     process.exit(1);
   }
 }
 
+
 const app = express();
+app.use(requestLogger);
 
 const allowedOrigins = process.env.FRONTEND_URL
   ? process.env.FRONTEND_URL.split(',').map((url) => url.trim().replace(/\/$/, ''))

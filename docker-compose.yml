@@ -31,9 +31,38 @@ services:
       PORT: 3002
       DATABASE_URL: postgresql://agro_user:agro_password@postgres:5432/agro_scale_db?schema=public
       ML_SERVICE_URL: http://host.docker.internal:5000
+      LOKI_HOST: http://loki:3100
     depends_on:
       postgres:
         condition: service_healthy
 
+  loki:
+    image: grafana/loki:3.0.0
+    container_name: agro_scale_loki
+    restart: always
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./loki/loki-config.yaml:/etc/loki/local-config.yaml
+    command: -config.file=/etc/loki/local-config.yaml
+
+  grafana:
+    image: grafana/grafana:10.4.0
+    container_name: agro_scale_grafana
+    restart: always
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    depends_on:
+      - loki
+
 volumes:
   postgres_data:
+

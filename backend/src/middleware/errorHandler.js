@@ -1,5 +1,11 @@
+const logger = require('../lib/logger');
+
 const errorHandler = (err, req, res, next) => {
-  console.error('🔥 Request Error:', err);
+  if (req && req.log) {
+    req.log.error(err, '🔥 Request Error');
+  } else {
+    logger.error(err, '🔥 Request Error');
+  }
   if (err.name === 'ZodError') {
     return res.status(400).json({ error: { code: 'VALIDATION_ERROR', message: err.errors } });
   }
@@ -9,3 +15,4 @@ const errorHandler = (err, req, res, next) => {
   res.status(statusCode).json({ error: { code, message } });
 };
 module.exports = errorHandler;
+

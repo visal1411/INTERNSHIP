@@ -1,25 +1,27 @@
 require('dotenv').config();
 const app = require('./app');
+const logger = require('./lib/logger');
 
 const PORT = process.env.PORT || 3002;
 
 process.on('uncaughtException', (err) => {
-  console.error('🔥 CRITICAL ERROR (Uncaught Exception):', err);
+  logger.fatal(err, '🔥 CRITICAL FATAL (Uncaught Exception)');
 });
 
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('🔥 CRITICAL ERROR (Unhandled Rejection):', reason);
+process.on('unhandledRejection', (reason) => {
+  logger.error({ reason }, '🔥 CRITICAL ERROR (Unhandled Rejection)');
 });
 
 const server = app.listen(PORT, () => {
-  console.log(`🚀 API Server is UP on port ${PORT}`);
-  console.log(`📑 Swagger Documentation available at http://localhost:${PORT}/api-docs`);
+  logger.info(`🚀 API Server is UP on port ${PORT}`);
+  logger.info(`📑 Swagger Documentation available at http://localhost:${PORT}/api-docs`);
 });
 
 server.on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
-    console.error(`❌ Port ${PORT} is currently in use. Please free port ${PORT} or change PORT in .env`);
+    logger.fatal(`❌ Port ${PORT} is currently in use. Please free port ${PORT} or change PORT in .env`);
   } else {
-    console.error('🔥 Server error:', err);
+    logger.error(err, '🔥 Server error');
   }
 });
+

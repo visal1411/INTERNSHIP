@@ -26,6 +26,8 @@ yarn-debug.log*
 # Temporary Scratch / Test Files & Internal Progress Notes
 test.txt
 testOutput.txt
+Loki-Logs.txt
+*-Logs.txt
 testSwaggerVerification.js
 agroscale_backend_progress.md
 *_progress.md

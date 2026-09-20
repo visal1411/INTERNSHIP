@@ -1,4 +1,5 @@
 const prisma = require('../lib/prisma');
+const logger = require('../lib/logger');
 
 const getCows = async (farmerId) => {
   const cows = await prisma.cow.findMany({
@@ -110,7 +111,7 @@ const updateCow = async (farmerId, id, data) => {
           });
         }
       } catch (err) {
-        console.error('Failed to trigger ML classification after cow update:', err.message);
+        logger.error({ err }, 'Failed to trigger ML classification after cow update');
       }
     }
   }

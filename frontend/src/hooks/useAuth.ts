@@ -12,8 +12,8 @@ export function useAuth() {
     setIsAuthenticated(authService.isAuthenticated());
   }, []);
 
-  const login = useCallback(async (phone: string, pass: string) => {
-    const res = await authService.login(phone, pass);
+  const login = useCallback(async (email: string, pass: string) => {
+    const res = await authService.login(email, pass);
     setToken(res.token);
     setUser(res.farmer);
     setIsAuthenticated(true);

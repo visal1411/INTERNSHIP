@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { z } from 'zod';
-import { Phone, Lock, Eye, EyeOff, ShieldCheck, ArrowRight, AlertCircle, Sparkles, UserCheck } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, ShieldCheck, ArrowRight, AlertCircle, Sparkles, UserCheck } from 'lucide-react';
 import logoImg from '../assets/custom-logo.jpg';
 
 const loginSchema = z.object({
-  phone: z.string().min(6, 'Phone number must be at least 6 digits'),
+  email: z.string().email('Please enter a valid email address'),
   password: z.string().min(1, 'Password is required')
 });
 
 interface LoginProps {
-  onLoginSuccess: (phone: string, pass: string) => Promise<void>;
+  onLoginSuccess: (email: string, pass: string) => Promise<void>;
 }
 
 export function Login({ onLoginSuccess }: LoginProps) {
-  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +24,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
     
     try {
       // Validate inputs using Zod
-      loginSchema.parse({ phone: phone.trim(), password });
+      loginSchema.parse({ email: email.trim(), password });
     } catch (validationError) {
       if (validationError instanceof z.ZodError) {
         setError(validationError.errors[0].message);
@@ -36,7 +36,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
     setIsLoading(true);
 
     try {
-      await onLoginSuccess(phone.trim(), password);
+      await onLoginSuccess(email.trim(), password);
     } catch (err: any) {
       setError(err.message || 'Login failed. Please check your credentials.');
     } finally {
@@ -44,8 +44,8 @@ export function Login({ onLoginSuccess }: LoginProps) {
     }
   };
 
-  const handleQuickDemo = (demoPhone: string, demoPass: string) => {
-    setPhone(demoPhone);
+  const handleQuickDemo = (demoEmail: string, demoPass: string) => {
+    setEmail(demoEmail);
     setPassword(demoPass);
     setError(null);
   };
@@ -81,7 +81,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
           <div className="mb-6">
             <h2 className="text-xl font-semibold text-white">Farmer Sign In</h2>
             <p className="text-xs text-slate-400 mt-1">
-              Enter your registered phone number and password to access your herd dashboard.
+              Enter your registered email address and password to access your herd dashboard.
             </p>
           </div>
 
@@ -95,23 +95,23 @@ export function Login({ onLoginSuccess }: LoginProps) {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Phone Number Field */}
+            {/* Email Field */}
             <div>
               <label className="block text-xs font-medium text-slate-300 mb-1.5">
-                Phone Number
+                Email Address
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
-                  <Phone className="w-4 h-4" />
+                  <Mail className="w-4 h-4" />
                 </div>
                 <input
-                  type="text"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="e.g. 012345678"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="e.g. farmer1@agroscale.com"
                   className="w-full pl-10 pr-4 py-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
                   disabled={isLoading}
-                  autoComplete="tel"
+                  autoComplete="email"
                 />
               </div>
             </div>
@@ -176,26 +176,26 @@ export function Login({ onLoginSuccess }: LoginProps) {
             <div className="grid grid-cols-2 gap-2.5">
               <button
                 type="button"
-                onClick={() => handleQuickDemo('012345678', 'password123')}
+                onClick={() => handleQuickDemo('farmer1@agroscale.com', 'password123')}
                 className="p-2.5 bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 hover:border-emerald-500/50 rounded-xl text-left transition-all group cursor-pointer"
               >
                 <div className="text-xs font-medium text-slate-200 group-hover:text-emerald-400 flex items-center justify-between">
                   <span>Farmer 1 (John)</span>
                   <UserCheck className="w-3.5 h-3.5 text-slate-500 group-hover:text-emerald-400" />
                 </div>
-                <div className="text-[11px] text-slate-400 mt-0.5">📞 012345678</div>
+                <div className="text-[11px] text-slate-400 mt-0.5 font-mono truncate">✉️ farmer1@agroscale.com</div>
               </button>
 
               <button
                 type="button"
-                onClick={() => handleQuickDemo('098765432', 'password123')}
+                onClick={() => handleQuickDemo('farmer2@agroscale.com', 'password123')}
                 className="p-2.5 bg-slate-800/50 hover:bg-slate-800 border border-slate-700/60 hover:border-emerald-500/50 rounded-xl text-left transition-all group cursor-pointer"
               >
                 <div className="text-xs font-medium text-slate-200 group-hover:text-emerald-400 flex items-center justify-between">
                   <span>Farmer 2 (Jane)</span>
                   <UserCheck className="w-3.5 h-3.5 text-slate-500 group-hover:text-emerald-400" />
                 </div>
-                <div className="text-[11px] text-slate-400 mt-0.5">📞 098765432</div>
+                <div className="text-[11px] text-slate-400 mt-0.5 font-mono truncate">✉️ farmer2@agroscale.com</div>
               </button>
             </div>
           </div>

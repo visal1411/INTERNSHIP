@@ -1,5 +1,6 @@
 const { iotMeasurementSchema } = require('../schemas/iot.schema');
 const iotIngestionService = require('../services/iotIngestionService');
+const logger = require('../lib/logger');
 
 const ingest = async (req, res) => {
   try {
@@ -16,7 +17,11 @@ const ingest = async (req, res) => {
     if (err.code === 'VALIDATION_ERROR') {
       return res.status(400).json({ error: { code: err.code, message: err.message } });
     }
-    console.error('🔥 IoT Ingestion Error:', err);
+    if (req && req.log) {
+      req.log.error(err, '🔥 IoT Ingestion Error');
+    } else {
+      logger.error(err, '🔥 IoT Ingestion Error');
+    }
     return res.status(500).json({ error: { code: 'INTERNAL_ERROR', message: err.message || 'Internal Server Error' } });
   }
 };
