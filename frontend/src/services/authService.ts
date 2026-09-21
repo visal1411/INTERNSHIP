@@ -53,8 +53,45 @@ export const authService = {
     return data;
   },
 
-  logout(): void {
-    localStorage.removeItem(TOKEN_KEY);
-    localStorage.removeItem(USER_KEY);
+  async logout(): Promise<void> {
+    const token = this.getToken();
+    try {
+      if (token) {
+        await fetch('/api/v1/auth/logout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+      }
+    } catch (err) {
+      console.warn('Backend logout call failed:', err);
+    } finally {
+      localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem(USER_KEY);
+    }
+  },
+
+  async changePassword(currentPassword: string, newPassword: string): Promise<void> {
+    const token = this.getToken();
+    if (!token) {
+      throw new Error('Not authenticated. Please log in first.');
+    }
+
+    const response = await fetch('/api/v1/auth/password', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ currentPassword, newPassword })
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      const errorMsg = data.error?.message || 'Password update failed.';
+      throw new Error(typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg));
+    }
   }
 };

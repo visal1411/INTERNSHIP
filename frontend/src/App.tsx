@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { useLanguage } from './hooks/useLanguage';
 import { useAuth } from './hooks/useAuth';
 import {
+  Home as HomeIcon,
+  Users,
+  Cpu,
   LayoutDashboard,
   Scale,
   Settings as SettingsIcon,
@@ -71,72 +74,98 @@ export default function App() {
   const [scalesData, setScalesData] = useState<ScaleInterface[]>([]);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  const [notifications, setNotifications] = useState([
-    { id: 1, type: 'warning', text: 'TAG-8921 is overweight (1450 lbs)', time: '10 mins ago' },
-    { id: 2, type: 'error', text: 'Scale SCALE-02 is offline', time: '1 hour ago' },
-    { id: 3, type: 'info', text: 'Weekly report generated successfully', time: '2 hours ago' },
-  ]);
+  interface NotificationItem {
+    id: number | string;
+    type: 'warning' | 'error' | 'info';
+    text: string;
+    time: string;
+    tab?: string;
+  }
 
-  // Polling logic for when ESP32 or hardware connects
+  const [notifications, setNotifications] = useState<NotificationItem[]>([]);
+  const [unreadCount, setUnreadCount] = useState<number>(0);
+
   useEffect(() => {
-    const pollInterval = setInterval(async () => {
+    if (!isAuthenticated) return;
+    const fetchNotifications = async () => {
       try {
-        const res = await fetch('/api/devices');
-        if (!res.ok) return;
-        const rawDevices = await res.json();
-        const newScales: ScaleInterface[] = rawDevices.map((d: any) => ({
-          id: d.deviceId || d.id,
-          name: d.name || 'Unknown Device',
-          status: d.status || 'offline',
-          battery: d.battery || 100,
-          lastSync: d.lastSeen ? new Date(d.lastSeen).toLocaleTimeString() : 'Unknown',
-          currentReading: d.currentReading || '0 lbs'
-        }));
-        
-        setScalesData(prevScales => {
-          // Check for newly added devices
-          newScales.forEach(newScale => {
-            const exists = prevScales.find(s => s.id === newScale.id);
-            if (!exists) {
-              // Trigger Toast Notification
-              setToastMessage(`New device connected: ${newScale.name}`);
-              setTimeout(() => setToastMessage(null), 5000);
-              
-              // Add to notification center
-              setNotifications(prev => [
-                {
-                  id: Date.now(),
-                  type: 'info',
-                  text: `New device connected: ${newScale.name} (${newScale.id})`,
-                  time: 'Just now'
-                },
-                ...prev
-              ]);
+        const token = authService.getToken();
+        if (!token) return;
+        const res = await fetch('/api/v1/cows', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) {
+          const cows = await res.json();
+          const newNotifs: NotificationItem[] = [];
+
+          cows.forEach((cow: any) => {
+            const status = (cow.latestStatus || '').toLowerCase();
+            if (status.includes('underweight') || status.includes('critical') || status.includes('attention')) {
+              newNotifs.push({
+                id: `cow-warning-${cow.id}`,
+                type: 'error',
+                text: `Cow #${cow.cowId} status is ${cow.latestStatus || 'Critical'} (${cow.latestWeight ? cow.latestWeight + ' kg' : 'No weight'})`,
+                time: 'Recent',
+                tab: 'herd'
+              });
+            } else if (status.includes('overweight')) {
+              newNotifs.push({
+                id: `cow-overweight-${cow.id}`,
+                type: 'warning',
+                text: `Cow #${cow.cowId} is overweight (${cow.latestWeight} kg)`,
+                time: 'Recent',
+                tab: 'herd'
+              });
+            } else if (!cow.breed) {
+              newNotifs.push({
+                id: `cow-info-${cow.id}`,
+                type: 'info',
+                text: `Cow #${cow.cowId} needs complete registration info`,
+                time: 'Pending',
+                tab: 'herd'
+              });
             }
           });
-          return newScales;
-        });
+
+          if (newNotifs.length === 0 && cows.length > 0) {
+            newNotifs.push({
+              id: 'all-healthy',
+              type: 'info',
+              text: `All ${cows.length} cows in herd are in healthy weight range`,
+              time: 'Just now',
+              tab: 'herd'
+            });
+          }
+
+          setNotifications(newNotifs);
+          setUnreadCount(newNotifs.length);
+        }
       } catch (err) {
-        // Silent fail on polling if backend isn't up
+        console.error('Failed to load notifications from backend:', err);
       }
-    }, 3000);
+    };
+    fetchNotifications();
+  }, [isAuthenticated]);
 
-    return () => clearInterval(pollInterval);
-  }, []);
-
-  const handleRemoveDevice = async (id: string) => {
-    // Optimistic update
+  const handleAddDevice = (name: string) => {
+    const newDevice = {
+      id: 'SCALE-' + Math.floor(1000 + Math.random() * 9000),
+      name: name,
+      status: 'online',
+      battery: '100%',
+      lastSync: 'Just now',
+      currentReading: '0 kg'
+    };
+    setScalesData(prev => [...prev, newDevice as any]);
+    setToastMessage("Device added successfully");
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+  
+  const handleRemoveDevice = (id: string) => {
+    // Local device card removal
     setScalesData(prev => prev.filter(scale => scale.id !== id));
     setToastMessage("Device removed successfully");
     setTimeout(() => setToastMessage(null), 3000);
-    
-    try {
-      await fetch(`/api/devices/${id}`, {
-        method: 'DELETE',
-      });
-    } catch (err) {
-      console.error('Failed to delete device', err);
-    }
   };
 
   // If user is not authenticated, display the Login screen
@@ -150,28 +179,40 @@ export default function App() {
 
   return (
     <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-800'} flex font-sans transition-colors duration-200`}>
-      {/* Sidebar */}
-      <aside className={`w-64 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-r flex-shrink-0 hidden md:flex flex-col transition-colors duration-200`}>
-        <div className={`h-16 flex items-center px-6 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
-          <img src={logoImg} alt="AgroScale Logo" className="h-12 w-12 object-cover mr-3 rounded-full shadow-sm" />
-          <span className={`font-bold text-xl ${isDarkMode ? 'text-white' : 'text-gray-900'} tracking-tight font-sans`}>AgroScale</span>
+      {/* Sidebar - Frontend v2 Style */}
+      <aside className={`w-64 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-r flex-shrink-0 hidden md:flex flex-col transition-colors duration-200`} style={{ boxShadow: '0 3px 9px 0 rgba(169, 184, 200, .15)' }}>
+        <div className="h-20 flex items-center px-6">
+          <div className="flex items-center gap-3">
+            <img src={logoImg} alt="AgroScale Logo" className="w-10 h-10 object-cover rounded-lg" />
+            <span className={`text-2xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>AgroScale</span>
+          </div>
         </div>
 
-        <nav className="flex-1 py-6 px-4 space-y-1">
-          <NavItem icon={<LayoutDashboard size={20} />} label={t('nav.home')} active={activeTab === 'home'} onClick={() => setActiveTab('home')} />
-          <NavItem icon={<div className="w-5 h-5 bg-current" style={{ WebkitMaskImage: `url(${cowIcon})`, maskImage: `url(${cowIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />} label={t('nav.herd')} active={activeTab === 'herd'} onClick={() => setActiveTab('herd')} />
-          <NavItem icon={<Scale size={20} />} label={t('nav.devices')} active={activeTab === 'devices'} onClick={() => setActiveTab('devices')} />
-          <NavItem icon={<SettingsIcon size={20} />} label={t('nav.settings')} active={activeTab === 'settings'} onClick={() => setActiveTab('settings')} />
-        </nav>
+        <div className="flex-1 overflow-y-auto py-6 pl-4 pr-0 custom-scrollbar">
+          <div className="space-y-1">
+            <h5 className="pl-4 text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Dashboard</h5>
+            <NavItem icon={<HomeIcon size={20} />} label={t('nav.home')} active={activeTab === 'home'} onClick={() => setActiveTab('home')} />
+            
+            <div className="my-4 border-t border-gray-100 dark:border-gray-700 pr-4"></div>
+            <h5 className="pl-4 text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Applications</h5>
+            
+            <NavItem icon={<Users size={20} />} label={t('nav.herd')} active={activeTab === 'herd'} onClick={() => setActiveTab('herd')} />
+            <NavItem icon={<Cpu size={20} />} label={t('nav.devices')} active={activeTab === 'devices'} onClick={() => setActiveTab('devices')} />
+            
+            <div className="my-4 border-t border-gray-100 dark:border-gray-700 pr-4"></div>
+            
+            <NavItem icon={<SettingsIcon size={20} />} label={t('nav.settings')} active={activeTab === 'settings'} onClick={() => setActiveTab('settings')} />
+          </div>
+        </div>
 
-        <div className={`p-4 border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
-          <div className={`flex items-center p-2 rounded-lg ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'} cursor-pointer`} onClick={() => setActiveTab('settings')}>
-            <div className="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">
+        <div className={`p-4 border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-100'}`}>
+          <div className={`flex items-center p-2 rounded-xl ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'} cursor-pointer`} onClick={() => setActiveTab('settings')}>
+            <div className="w-9 h-9 rounded-full bg-[#5f76e8] text-white flex items-center justify-center font-bold text-sm shadow-sm">
               {initials}
             </div>
             <div className="ml-3 flex-1 min-w-0">
               <p className={`text-sm font-medium truncate ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{user?.name || 'Farmer Account'}</p>
-              <p className={`text-xs truncate ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>📞 {user?.phone || 'No phone'}</p>
+              <p className={`text-xs truncate ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>✉️ {user?.email || 'No email'}</p>
             </div>
           </div>
         </div>
@@ -213,7 +254,7 @@ export default function App() {
                 onClick={() => setShowNotifications(!showNotifications)}
               >
                 <Bell className="w-6 h-6" />
-                {notifications.length > 0 && (
+                {unreadCount > 0 && (
                   <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white dark:border-gray-800"></span>
                 )}
               </button>
@@ -223,13 +264,20 @@ export default function App() {
                 <div className={`absolute right-0 mt-2 w-80 rounded-xl shadow-lg border overflow-hidden z-50 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
                   <div className={`p-4 border-b flex justify-between items-center ${isDarkMode ? 'border-gray-700 bg-gray-800/50' : 'border-gray-100 bg-gray-50/50'}`}>
                     <h3 className={`font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Notifications</h3>
-                    <span className="text-xs bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 px-2 py-0.5 rounded-full font-medium">{notifications.length} new</span>
+                    <span className="text-xs bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 px-2 py-0.5 rounded-full font-medium">{unreadCount} new</span>
                   </div>
                   <div className="max-h-[300px] overflow-y-auto">
                     {notifications.length > 0 ? (
                       <div className={`divide-y ${isDarkMode ? 'divide-gray-700' : 'divide-gray-50'}`}>
                         {notifications.map((notif) => (
-                          <div key={notif.id} className={`p-4 transition-colors cursor-pointer flex gap-3 ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'}`}>
+                          <div 
+                            key={notif.id} 
+                            onClick={() => {
+                              if (notif.tab) setActiveTab(notif.tab);
+                              setShowNotifications(false);
+                            }}
+                            className={`p-4 transition-colors cursor-pointer flex gap-3 ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'}`}
+                          >
                             <div className={`mt-0.5 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                               notif.type === 'error' ? 'bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400' : 
                               notif.type === 'warning' ? 'bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400' : 
@@ -252,7 +300,12 @@ export default function App() {
                   </div>
                   {notifications.length > 0 && (
                     <div className={`p-3 border-t text-center ${isDarkMode ? 'border-gray-700' : 'border-gray-100'}`}>
-                      <button className="text-sm text-green-600 dark:text-green-400 font-medium hover:text-green-700 dark:hover:text-green-300">Mark all as read</button>
+                      <button 
+                        onClick={() => setUnreadCount(0)}
+                        className="text-sm text-green-600 dark:text-green-400 font-medium hover:text-green-700 dark:hover:text-green-300"
+                      >
+                        Mark all as read
+                      </button>
                     </div>
                   )}
                 </div>

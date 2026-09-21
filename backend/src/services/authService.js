@@ -32,4 +32,25 @@ const login = async ({ email, password }) => {
   };
 };
 
-module.exports = { login };
+const changePassword = async (farmerId, { currentPassword, newPassword }) => {
+  const farmer = await prisma.farmer.findUnique({ where: { id: farmerId } });
+  if (!farmer) {
+    throw new Error('Farmer profile not found');
+  }
+
+  const isMatch = await bcrypt.compare(currentPassword, farmer.passwordHash);
+  if (!isMatch) {
+    throw new Error('Current password is incorrect');
+  }
+
+  const newHash = await bcrypt.hash(newPassword, 10);
+  await prisma.farmer.update({
+    where: { id: farmerId },
+    data: { passwordHash: newHash }
+  });
+
+  return { message: 'Password updated successfully' };
+};
+
+module.exports = { login, changePassword };
+

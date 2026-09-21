@@ -4,20 +4,8 @@ import { Scale, AlertTriangle, ArrowUpRight, ArrowDownRight, CheckCircle2, Plus,
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { StatCard } from '../components/StatCard';
 import cowIcon from '../assets/cow.png';
+import { authService } from '../services/authService';
 
-const allWeightData = {
-  '7days': [
-    { day: 'Mon', weight: 1120 }, { day: 'Tue', weight: 1150 }, { day: 'Wed', weight: 1140 },
-    { day: 'Thu', weight: 1190 }, { day: 'Fri', weight: 1220 }, { day: 'Sat', weight: 1260 }, { day: 'Sun', weight: 1280 }
-  ],
-  '30days': [
-    { day: 'Week 1', weight: 1100 }, { day: 'Week 2', weight: 1150 }, { day: 'Week 3', weight: 1210 }, { day: 'Week 4', weight: 1280 }
-  ],
-  'year': [
-    { day: 'Jan', weight: 900 }, { day: 'Feb', weight: 950 }, { day: 'Mar', weight: 1000 }, { day: 'Apr', weight: 1050 },
-    { day: 'May', weight: 1100 }, { day: 'Jun', weight: 1150 }, { day: 'Jul', weight: 1200 }, { day: 'Aug', weight: 1280 }
-  ]
-};
 interface HomeProps {
   onNavigate?: (tab: string) => void;
 }
@@ -29,6 +17,21 @@ export function Home({ onNavigate }: HomeProps) {
   const [isWeighInModalOpen, setIsWeighInModalOpen] = useState(false);
   const timeFilterRef = useRef<HTMLDivElement>(null);
 
+  const [summaryData, setSummaryData] = useState<{
+    totalCows: number;
+    avgWeightKg: number;
+    alertCount: number;
+    recentActivity: any[];
+  }>({
+    totalCows: 0,
+    avgWeightKg: 0,
+    alertCount: 0,
+    recentActivity: []
+  });
+
+  const [trendPoints, setTrendPoints] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (timeFilterRef.current && !timeFilterRef.current.contains(event.target as Node)) {
@@ -39,22 +42,67 @@ export function Home({ onNavigate }: HomeProps) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Fetch real summary and trend data from backend
+  useEffect(() => {
+    const token = authService.getToken();
+    if (!token) return;
+
+    setIsLoading(true);
+
+    Promise.all([
+      fetch('/api/v1/dashboard/summary', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      }).then(res => res.ok ? res.json() : null),
+      fetch('/api/v1/dashboard/trends', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      }).then(res => res.ok ? res.json() : null)
+    ])
+    .then(([summary, trends]) => {
+      if (summary) {
+        const recent = (summary.recentActivity || []).map((m: any) => ({
+          id: m.cow?.cowId || m.cowId || `TAG-${m.id}`,
+          weight: Math.round(m.weightKg),
+          status: m.healthStatus === 'OVERWEIGHT' ? t('status.overweight') :
+                  m.healthStatus === 'CRITICAL' ? t('status.critical') :
+                  m.healthStatus === 'UNDERWEIGHT' ? t('status.warning') : t('status.normal'),
+          time: new Date(m.measuredAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          trend: 'stable'
+        }));
+
+        const totalCowsCount = summary.totalCows || 0;
+        const totalWeight = recent.reduce((sum: number, item: any) => sum + item.weight, 0);
+        const avgKg = recent.length > 0 ? Math.round(totalWeight / recent.length) : 0;
+        const alerts = recent.filter((r: any) => r.status !== t('status.normal')).length;
+
+        setSummaryData({
+          totalCows: totalCowsCount,
+          avgWeightKg: avgKg,
+          alertCount: alerts,
+          recentActivity: recent
+        });
+      }
+
+      if (trends && trends.points) {
+        const points = trends.points.map((pt: any) => ({
+          day: pt.date ? pt.date.slice(5) : 'Day',
+          weight: Math.round(pt.average_weight_kg || 0)
+        }));
+        setTrendPoints(points);
+      }
+    })
+    .catch(err => console.error('Dashboard fetch error:', err))
+    .finally(() => setIsLoading(false));
+  }, [t]);
+
   const timeFilterOptions = [
     { value: '7days', label: t('timeFilter.last7Days') },
     { value: '30days', label: t('timeFilter.last30Days') },
     { value: 'year', label: t('timeFilter.thisYear') },
   ];
 
-  const recentWeighIns = [
-    { id: 'TAG-8921', weight: 1450, status: t('status.overweight'), time: `10 mins ${t('time.ago', { defaultValue: 'ago' })}`, trend: 'up' },
-    { id: 'TAG-1142', weight: 1120, status: t('status.normal'), time: `45 mins ${t('time.ago', { defaultValue: 'ago' })}`, trend: 'stable' },
-    { id: 'TAG-9932', weight: 1520, status: t('status.critical'), time: `1 hour ${t('time.ago', { defaultValue: 'ago' })}`, trend: 'up' },
-    { id: 'TAG-0021', weight: 1180, status: t('status.normal'), time: `2 hours ${t('time.ago', { defaultValue: 'ago' })}`, trend: 'down' },
-    { id: 'TAG-4431', weight: 1390, status: t('status.warning'), time: `3 hours ${t('time.ago', { defaultValue: 'ago' })}`, trend: 'down' },
-  ];
-
   const handleExport = (title: string) => {
-    const data = title.includes('Weight') ? allWeightData[timeFilter] : recentWeighIns;
+    const data = summaryData.recentActivity;
+    if (data.length === 0) return;
     
     const csvContent = "data:text/csv;charset=utf-8," 
       + Object.keys(data[0]).join(",") + "\n"
@@ -75,8 +123,8 @@ export function Home({ onNavigate }: HomeProps) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <StatCard
           title={t('dashboard.totalCows')}
-          value="1,248"
-          trend="+12 this week"
+          value={summaryData.totalCows.toLocaleString()}
+          trend="Registered cows"
           trendUp={true}
           icon={<div className="w-6 h-6 bg-current text-gray-600 dark:text-gray-300" style={{ WebkitMaskImage: `url(${cowIcon})`, maskImage: `url(${cowIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />}
           color="bg-gray-100 dark:bg-gray-700"
@@ -85,9 +133,9 @@ export function Home({ onNavigate }: HomeProps) {
         />
         <StatCard
           title={t('dashboard.avgWeight')}
-          value="1,180 lbs"
-          trend="-5 lbs from last month"
-          trendUp={false}
+          value={summaryData.avgWeightKg > 0 ? `${summaryData.avgWeightKg.toLocaleString()} kg` : '0 kg'}
+          trend="Latest average"
+          trendUp={true}
           icon={<Scale className="w-6 h-6 text-gray-600 dark:text-gray-300" />}
           color="bg-gray-100 dark:bg-gray-700"
           onExport={() => handleExport(t('dashboard.avgWeight'))}
@@ -95,10 +143,10 @@ export function Home({ onNavigate }: HomeProps) {
         />
         <StatCard
           title={t('dashboard.overweightAlerts')}
-          value="24"
-          trend="+3 since yesterday"
-          trendUp={true}
-          isAlert={true}
+          value={summaryData.alertCount.toString()}
+          trend="Active alerts"
+          trendUp={summaryData.alertCount === 0}
+          isAlert={summaryData.alertCount > 0}
           icon={<AlertTriangle className="w-6 h-6 text-red-600 dark:text-red-400" />}
           color="bg-red-100 dark:bg-red-900/30"
           onExport={() => handleExport(t('dashboard.overweightAlerts'))}
@@ -112,7 +160,7 @@ export function Home({ onNavigate }: HomeProps) {
           <div className="flex justify-between items-center mb-6">
             <div>
               <h3 className="text-lg font-bold text-gray-900 dark:text-white">Average Weight Trend</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Trailing {timeFilter === '7days' ? '7 days' : timeFilter === '30days' ? '30 days' : 'year'} across all active scales</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">Live backend measurements across your herd</p>
             </div>
             
             <div className="relative" ref={timeFilterRef}>
@@ -143,39 +191,44 @@ export function Home({ onNavigate }: HomeProps) {
             </div>
           </div>
 
-          <div className="h-[300px] w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={allWeightData[timeFilter]} margin={{ top: 10, right: 10, left: -20, bottom: 0 }} accessibilityLayer={false} style={{ outline: 'none' }}>
-                <defs>
-                  <linearGradient id="colorWeight" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#22c55e" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="#22c55e" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" className="dark:opacity-10" />
-                <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#6b7280', fontSize: 12 }} dy={10} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#6b7280', fontSize: 12 }} />
-                <Tooltip
-                  cursor={{ stroke: '#22c55e', strokeWidth: 1, strokeDasharray: '4 4', opacity: 0.4 }}
-                  animationDuration={300}
-                  animationEasing="ease-out"
-                  contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)', backgroundColor: 'var(--tw-prose-body, white)', color: '#111827' }}
-                  itemStyle={{ color: '#16a34a', fontWeight: 'bold' }}
-                />
-                <Area 
-                  type="monotone" 
-                  dataKey="weight" 
-                  stroke="#22c55e" 
-                  strokeWidth={3} 
-                  fillOpacity={1} 
-                  fill="url(#colorWeight)" 
-                  isAnimationActive={true}
-                  animationDuration={800}
-                  animationEasing="ease-in-out"
-                  activeDot={{ r: 6, fill: '#22c55e', stroke: '#ffffff', strokeWidth: 3, style: { filter: 'drop-shadow(0px 2px 4px rgba(34,197,94,0.4))', transition: 'all 0.2s ease' } }}
-                />
-              </AreaChart>
-            </ResponsiveContainer>
+          <div className="h-[300px] w-full flex items-center justify-center">
+            {trendPoints.length > 0 ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={trendPoints} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <defs>
+                    <linearGradient id="colorWeight" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#22c55e" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="#22c55e" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" className="dark:opacity-10" />
+                  <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: '#6b7280', fontSize: 12 }} dy={10} />
+                  <YAxis axisLine={false} tickLine={false} tick={{ fill: '#6b7280', fontSize: 12 }} />
+                  <Tooltip
+                    cursor={{ stroke: '#22c55e', strokeWidth: 1, strokeDasharray: '4 4', opacity: 0.4 }}
+                    animationDuration={300}
+                    animationEasing="ease-out"
+                    contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', backgroundColor: 'white', color: '#111827' }}
+                    itemStyle={{ color: '#16a34a', fontWeight: 'bold' }}
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="weight" 
+                    stroke="#22c55e" 
+                    strokeWidth={3} 
+                    fillOpacity={1} 
+                    fill="url(#colorWeight)" 
+                    isAnimationActive={true}
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="text-center text-gray-400 py-12">
+                <Scale className="w-12 h-12 mx-auto mb-3 opacity-30" />
+                <p className="text-sm font-medium">No weight measurements recorded yet</p>
+                <p className="text-xs text-gray-400 mt-1">Connect an IoT scale or add cows in the Herd tab</p>
+              </div>
+            )}
           </div>
           
           {/* Quick Actions Panel */}
@@ -183,14 +236,14 @@ export function Home({ onNavigate }: HomeProps) {
             <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h4>
             <div className="flex gap-3">
               <button 
-                onClick={() => setIsWeighInModalOpen(true)}
-                className="flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/50 transition-colors font-medium text-sm border border-green-200 dark:border-green-800"
+                onClick={() => onNavigate?.('herd')}
+                className="flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/50 transition-colors font-medium text-sm border border-green-200 dark:border-green-800 cursor-pointer"
               >
-                <Plus size={16} /> New Weigh-in
+                <Plus size={16} /> Manage Herd
               </button>
               <button 
                 onClick={() => handleExport('report')}
-                className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors font-medium text-sm border border-gray-200 dark:border-gray-600 shadow-sm"
+                className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors font-medium text-sm border border-gray-200 dark:border-gray-600 shadow-sm cursor-pointer"
               >
                 Generate Report
               </button>
@@ -202,108 +255,61 @@ export function Home({ onNavigate }: HomeProps) {
         <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm flex flex-col h-[520px] transition-colors">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-lg font-bold text-gray-900 dark:text-white">{t('dashboard.recentWeighIns')}</h3>
-            <button className="text-green-600 dark:text-green-400 text-sm font-medium flex items-center gap-1 hover:text-green-700 dark:hover:text-green-300 transition-colors">
+            <button 
+              onClick={() => onNavigate?.('herd')}
+              className="text-green-600 dark:text-green-400 text-sm font-medium flex items-center gap-1 hover:text-green-700 dark:hover:text-green-300 transition-colors cursor-pointer"
+            >
               {t('dashboard.viewAll')} <ArrowRight size={14} />
             </button>
           </div>
 
           <div className="flex-1 overflow-y-auto pr-2 space-y-3 custom-scrollbar">
-            {recentWeighIns.map((cow, idx) => (
-              <div key={idx} className="flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-700 transition-all border border-transparent hover:border-green-200 dark:hover:border-green-800 hover:shadow-sm cursor-pointer group">
-                <div className="flex items-center space-x-4">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${cow.status === t('status.critical') ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 group-hover:bg-red-200 dark:group-hover:bg-red-900/50' :
-                    cow.status === t('status.overweight') || cow.status === t('status.warning') ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50' :
-                      'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 group-hover:bg-green-200 dark:group-hover:bg-green-900/50'
-                    }`}>
-                    <div className="w-6 h-6 bg-current" style={{ WebkitMaskImage: `url(${cowIcon})`, maskImage: `url(${cowIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
-                  </div>
-                  <div>
-                    <p className="font-bold text-gray-900 dark:text-gray-100 text-base">{cow.id}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{cow.time}</p>
-                  </div>
-                </div>
-
-                <div className="text-right">
-                  <p className="font-bold text-gray-900 dark:text-gray-100 text-base">{cow.weight} <span className="text-xs font-medium text-gray-500 dark:text-gray-400">lbs</span></p>
-                  <div className="flex items-center justify-end space-x-1 mt-1">
-                    {cow.trend === 'up' ? (
-                      <ArrowUpRight size={14} className="text-green-500" />
-                    ) : cow.trend === 'down' ? (
-                      <ArrowDownRight size={14} className="text-red-500" />
-                    ) : (
-                      <CheckCircle2 size={14} className="text-gray-400 dark:text-gray-500" />
-                    )}
-                    <span className={`text-xs font-semibold ${cow.trend === 'up' ? 'text-green-600 dark:text-green-400' :
-                      cow.trend === 'down' ? 'text-red-600 dark:text-red-400' :
-                        'text-gray-500 dark:text-gray-400'
+            {summaryData.recentActivity.length > 0 ? (
+              summaryData.recentActivity.map((cow, idx) => (
+                <div 
+                  key={idx} 
+                  onClick={() => onNavigate?.('herd')}
+                  className="flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-gray-700/50 hover:bg-white dark:hover:bg-gray-700 transition-all border border-transparent hover:border-green-200 dark:hover:border-green-800 hover:shadow-sm cursor-pointer group"
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${cow.status === t('status.critical') ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400' :
+                      cow.status === t('status.overweight') || cow.status === t('status.warning') ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400' :
+                        'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400'
                       }`}>
-                      {cow.status}
-                    </span>
+                      <div className="w-6 h-6 bg-current" style={{ WebkitMaskImage: `url(${cowIcon})`, maskImage: `url(${cowIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-900 dark:text-gray-100 text-base">{cow.id}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">{cow.time}</p>
+                    </div>
+                  </div>
+
+                  <div className="text-right">
+                    <p className="font-bold text-gray-900 dark:text-gray-100 text-base">{cow.weight} <span className="text-xs font-medium text-gray-500 dark:text-gray-400">kg</span></p>
+                    <div className="flex items-center justify-end space-x-1 mt-1">
+                      <CheckCircle2 size={14} className="text-gray-400 dark:text-gray-500" />
+                      <span className="text-xs font-semibold text-gray-600 dark:text-gray-300">
+                        {cow.status}
+                      </span>
+                    </div>
                   </div>
                 </div>
+              ))
+            ) : (
+              <div className="h-full flex flex-col items-center justify-center text-center p-6 text-gray-400">
+                <Scale className="w-10 h-10 mb-2 opacity-30" />
+                <p className="text-sm font-medium">No recent weigh-ins</p>
+                <button
+                  onClick={() => onNavigate?.('herd')}
+                  className="mt-3 px-4 py-2 bg-green-500 text-white rounded-xl text-xs font-medium hover:bg-green-600 transition-colors"
+                >
+                  View Herd
+                </button>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>
-
-      {/* New Weigh-in Modal */}
-      {isWeighInModalOpen && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200">
-            <div className="px-6 py-4 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">New Manual Weigh-in</h3>
-              <button 
-                onClick={() => setIsWeighInModalOpen(false)}
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-              >
-                &times;
-              </button>
-            </div>
-            <div className="p-6">
-              <form onSubmit={(e) => {
-                e.preventDefault();
-                setIsWeighInModalOpen(false);
-                alert("Weigh-in recorded successfully!");
-              }} className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Cow ID (Tag)</label>
-                  <input 
-                    type="text" 
-                    required 
-                    placeholder="e.g. TAG-8921"
-                    className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 outline-none text-gray-900 dark:text-white"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Weight (lbs)</label>
-                  <input 
-                    type="number" 
-                    required 
-                    placeholder="e.g. 1250"
-                    className="w-full px-4 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 outline-none text-gray-900 dark:text-white"
-                  />
-                </div>
-                <div className="pt-4 flex gap-3">
-                  <button 
-                    type="button"
-                    onClick={() => setIsWeighInModalOpen(false)}
-                    className="flex-1 px-4 py-2.5 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                  >
-                    Cancel
-                  </button>
-                  <button 
-                    type="submit"
-                    className="flex-1 px-4 py-2.5 bg-green-600 text-white rounded-xl font-medium hover:bg-green-700 transition-colors"
-                  >
-                    Save Record
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 }

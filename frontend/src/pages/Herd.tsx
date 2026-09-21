@@ -5,15 +5,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import cowIcon from '../assets/cow.png';
 import { authService } from '../services/authService';
 
-const initialMockHerd = [
-  { id: 'TAG-8921', weight: 1450, status: 'overweight', lastSync: '10 mins ago', trend: 'up', age: '3 yrs', breed: 'Brahman', health: 'Good', gender: 'Male' },
-  { id: 'TAG-1142', weight: 320, status: 'normal', lastSync: '45 mins ago', trend: 'stable', age: '2 yrs', breed: 'Hariana', health: 'Excellent', gender: 'Female' },
-  { id: 'TAG-9932', weight: 1520, status: 'critical', lastSync: '1 hour ago', trend: 'up', age: '4 yrs', breed: 'Brahman', health: 'Attention Required', gender: 'Male' },
-  { id: 'TAG-0021', weight: 1180, status: 'normal', lastSync: '2 hours ago', trend: 'down', age: '2.5 yrs', breed: 'Brahman', health: 'Good', gender: 'Female' },
-  { id: 'TAG-4431', weight: 1390, status: 'warning', lastSync: '3 hours ago', trend: 'up', age: '3.5 yrs', breed: 'Brahman', health: 'Monitor', gender: 'Female' },
-  { id: 'TAG-7721', weight: 300, status: 'normal', lastSync: '5 hours ago', trend: 'stable', age: '2 yrs', breed: 'Kor Khmer', health: 'Good', gender: 'Male' },
-  { id: 'TAG-8812', weight: 280, status: 'normal', lastSync: '5 hours ago', trend: 'down', age: '2 yrs', breed: 'Kor Khmer', health: 'Good', gender: 'Female' },
-];
+const initialMockHerd: any[] = [];
 
 const mockHistoryData = [
   { month: 'Jan', weight: 1100 },
@@ -37,9 +29,9 @@ interface HerdProps {
 
 export function Herd({ onNavigateToScale }: HerdProps) {
   const { t } = useTranslation();
-  const [herdData, setHerdData] = useState(initialMockHerd);
+  const [herdData, setHerdData] = useState<any[]>(initialMockHerd);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCow, setSelectedCow] = useState<typeof initialMockHerd[0] | null>(null);
+  const [selectedCow, setSelectedCow] = useState<any | null>(null);
   const [showScaleModal, setShowScaleModal] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const [showAddCowModal, setShowAddCowModal] = useState(false);
@@ -50,8 +42,10 @@ export function Herd({ onNavigateToScale }: HerdProps) {
 
   const fetchCows = async () => {
     try {
+      const token = authService.getToken();
+      if (!token) return;
       const res = await fetch('/api/v1/cows', {
-        headers: { 'Authorization': `Bearer ${authService.getToken()}` }
+        headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) {
         const data = await res.json();
@@ -67,9 +61,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
           health: cow.latestStatus || (cow.breed ? 'Pending Weigh-in' : 'Needs Registration'),
           gender: cow.sex || 'Unknown'
         }));
-        if (mappedCows.length > 0) {
-          setHerdData(mappedCows);
-        }
+        setHerdData(mappedCows);
       }
     } catch (e) {
       console.error('Error fetching cows:', e);

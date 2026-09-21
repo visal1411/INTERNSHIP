@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
-import { User, Wifi, Save, CheckCircle2, Bell, ChevronDown, HelpCircle, Phone, Mail, Lock, Check, AlertTriangle, LogOut } from 'lucide-react';
-import { FarmerUser } from '../services/authService';
+import { User, Wifi, Save, CheckCircle2, Bell, ChevronDown, HelpCircle, Phone, Mail, Lock, Check, AlertTriangle, LogOut, Eye, EyeOff } from 'lucide-react';
+import { FarmerUser, authService } from '../services/authService';
 
 const settingsSchema = z.object({
   profile: z.object({
@@ -114,13 +114,58 @@ export function Settings({ user, onLogout }: SettingsProps) {
     }
   }, [user]);
 
+  const [passwordForm, setPasswordForm] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [passwordSuccess, setPasswordSuccess] = useState<string | null>(null);
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+
+  const handlePasswordChange = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPasswordError(null);
+    setPasswordSuccess(null);
+
+    if (!passwordForm.currentPassword) {
+      setPasswordError('Please enter your current password.');
+      return;
+    }
+    if (!passwordForm.newPassword) {
+      setPasswordError('Please enter a new password.');
+      return;
+    }
+    if (passwordForm.newPassword.length < 6) {
+      setPasswordError('New password must be at least 6 characters long.');
+      return;
+    }
+    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+      setPasswordError('New password and confirm password do not match.');
+      return;
+    }
+
+    setIsChangingPassword(true);
+    try {
+      await authService.changePassword(passwordForm.currentPassword, passwordForm.newPassword);
+      setPasswordSuccess('Password updated successfully in database!');
+      setPasswordForm({ currentPassword: '', newPassword: '', confirmPassword: '' });
+      setTimeout(() => setPasswordSuccess(null), 5000);
+    } catch (err: any) {
+      setPasswordError(err.message || 'Failed to change password.');
+    } finally {
+      setIsChangingPassword(false);
+    }
+  };
+
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     try {
       settingsSchema.parse(formData);
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 3000);
-      // Here you would normally send formData to backend
       console.log("Settings saved:", formData);
     } catch (err) {
       if (err instanceof z.ZodError) {
@@ -273,27 +318,106 @@ export function Settings({ user, onLogout }: SettingsProps) {
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-gray-100 dark:border-gray-700">
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">{t('settings.profile.security', 'Security')}</h4>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t('settings.profile.password', 'New Password')}</label>
-                    <input 
-                      type="password" 
-                      placeholder="••••••••"
-                      value={formData.profile.password}
-                      onChange={(e) => updateNestedState('profile', 'password', e.target.value)}
-                      className="w-full max-w-sm px-4 py-2.5 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-shadow"
-                    />
-                  </div>
-                </div>
-
                 <div className="pt-4 flex justify-start">
                   <button type="submit" className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
                     <Save size={18} />
-                    <span>{t('settings.save', 'Save Changes')}</span>
+                    <span>{t('settings.save', 'Save Profile')}</span>
                   </button>
                 </div>
               </form>
+
+              {/* Strict Security & Password Change Section */}
+              <div className="mt-10 pt-8 border-t border-gray-100 dark:border-gray-700">
+                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Security & Password</h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-6">
+                  You must verify your current password before saving a new password to your account database.
+                </p>
+
+                {passwordError && (
+                  <div className="mb-4 p-3.5 bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800 rounded-xl text-sm flex items-start gap-2">
+                    <AlertTriangle size={18} className="shrink-0 mt-0.5" />
+                    <span>{passwordError}</span>
+                  </div>
+                )}
+
+                {passwordSuccess && (
+                  <div className="mb-4 p-3.5 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800 rounded-xl text-sm flex items-start gap-2">
+                    <CheckCircle2 size={18} className="shrink-0 mt-0.5" />
+                    <span>{passwordSuccess}</span>
+                  </div>
+                )}
+
+                <form onSubmit={handlePasswordChange} className="space-y-4 max-w-md">
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+                      Current Password <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showCurrentPassword ? 'text' : 'password'}
+                        required
+                        placeholder="Enter current password"
+                        value={passwordForm.currentPassword}
+                        onChange={(e) => setPasswordForm(prev => ({ ...prev, currentPassword: e.target.value }))}
+                        className="w-full pl-4 pr-10 py-2.5 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-green-500 outline-none text-sm"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+                      >
+                        {showCurrentPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+                      New Password (Min 6 characters) <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showNewPassword ? 'text' : 'password'}
+                        required
+                        placeholder="Enter new password"
+                        value={passwordForm.newPassword}
+                        onChange={(e) => setPasswordForm(prev => ({ ...prev, newPassword: e.target.value }))}
+                        className="w-full pl-4 pr-10 py-2.5 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-green-500 outline-none text-sm"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowNewPassword(!showNewPassword)}
+                        className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+                      >
+                        {showNewPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
+                      Confirm New Password <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="password"
+                      required
+                      placeholder="Confirm new password"
+                      value={passwordForm.confirmPassword}
+                      onChange={(e) => setPasswordForm(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                      className="w-full px-4 py-2.5 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-green-500 outline-none text-sm"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isChangingPassword || !passwordForm.currentPassword || !passwordForm.newPassword || !passwordForm.confirmPassword}
+                    className="flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                  >
+                    <Lock size={16} />
+                    <span>{isChangingPassword ? 'Updating Password...' : 'Update Password'}</span>
+                  </button>
+                </form>
+              </div>
             </div>
           )}
 

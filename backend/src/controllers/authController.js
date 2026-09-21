@@ -1,4 +1,4 @@
-const { loginSchema } = require('../schemas/auth.schema');
+const { loginSchema, changePasswordSchema } = require('../schemas/auth.schema');
 const authService = require('../services/authService');
 
 const login = async (req, res) => {
@@ -28,4 +28,23 @@ const logout = async (req, res) => {
   }
 };
 
-module.exports = { login, logout };
+const changePassword = async (req, res) => {
+  try {
+    const validatedData = changePasswordSchema.parse(req.body);
+    const result = await authService.changePassword(req.farmerId, validatedData);
+    if (req.log) {
+      req.log.info({ farmerId: req.farmerId }, 'Farmer password updated successfully');
+    }
+    return res.json(result);
+  } catch (err) {
+    if (err.name === 'ZodError') {
+      return res.status(400).json({ error: { code: 'VALIDATION_ERROR', message: err.errors } });
+    }
+    if (err.message.includes('incorrect') || err.message.includes('Invalid') || err.message.includes('not found')) {
+      return res.status(400).json({ error: { code: 'BAD_REQUEST', message: err.message } });
+    }
+    return res.status(500).json({ error: { code: 'INTERNAL_ERROR', message: err.message } });
+  }
+};
+
+module.exports = { login, logout, changePassword };

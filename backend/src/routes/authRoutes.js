@@ -74,4 +74,39 @@ router.post('/logout', (req, res, next) => {
   next();
 }, authController.logout);
 
+/**
+ * @openapi
+ * /api/v1/auth/password:
+ *   put:
+ *     summary: Change farmer account password
+ *     description: Validates current password and updates password hash in PostgreSQL database.
+ *     tags:
+ *       - Authentication
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - currentPassword
+ *               - newPassword
+ *             properties:
+ *               currentPassword:
+ *                 type: string
+ *               newPassword:
+ *                 type: string
+ *                 minLength: 6
+ *     responses:
+ *       200:
+ *         description: Password updated successfully
+ *       400:
+ *         description: Incorrect current password or validation error
+ *       401:
+ *         description: Unauthorized
+ */
+router.put('/password', farmerAuth, authController.changePassword);
+
 module.exports = router;

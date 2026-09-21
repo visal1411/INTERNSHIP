@@ -63,7 +63,7 @@ const resources = {
         export: "Export",
         table: {
           tagId: "Tag ID",
-          weight: "Weight (lbs)",
+          weight: "Weight (kg)",
           status: "Status",
           lastSync: "Last Sync",
           actions: "Actions"
@@ -177,7 +177,7 @@ const resources = {
         export: "នាំចេញ",
         table: {
           tagId: "លេខកូដ",
-          weight: "ទម្ងន់ (lbs)",
+          weight: "ទម្ងន់ (kg)",
           status: "ស្ថានភាព",
           lastSync: "សមកាលកម្មចុងក្រោយ",
           actions: "សកម្មភាព"
