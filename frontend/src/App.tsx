@@ -173,17 +173,23 @@ export default function App() {
     return () => clearInterval(interval);
   }, [isAuthenticated]);
 
-  const handleAddDevice = (name: string) => {
-    const newDevice = {
-      id: 'SCALE-' + Math.floor(1000 + Math.random() * 9000),
-      name: name,
-      status: 'online',
-      battery: 100,
-      lastSync: 'Just now',
-      currentReading: '0 kg'
-    };
-    setScalesData(prev => [...prev, newDevice as any]);
-    setToastMessage("Device added successfully");
+  const handleAddDevice = async (deviceId: string, name?: string) => {
+    try {
+      await deviceService.registerDevice(deviceId, name);
+      const devices = await deviceService.fetchDevices();
+      const mappedDevices: ScaleInterface[] = devices.map(d => ({
+        id: d.id,
+        name: d.name,
+        status: d.status,
+        battery: d.battery,
+        lastSync: d.lastSync ? new Date(d.lastSync).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Never',
+        currentReading: '0 kg'
+      }));
+      setScalesData(mappedDevices);
+      setToastMessage("Scale device registered successfully!");
+    } catch (err: any) {
+      setToastMessage(err.message || "Failed to register device");
+    }
     setTimeout(() => setToastMessage(null), 3000);
   };
   
@@ -357,7 +363,7 @@ export default function App() {
         <div className="flex-1 overflow-auto p-4 md:p-6 lg:p-10 mb-16 md:mb-0">
           <div key={activeTab} className="animate-in fade-in slide-in-from-bottom-2 duration-300 h-full">
             {activeTab === 'home' && <Home onNavigate={setActiveTab} />}
-            {activeTab === 'devices' && <Devices scalesData={scalesData} onRemoveDevice={handleRemoveDevice} activeScaleId={activeScaleId} setActiveScaleId={setActiveScaleId} weighingCowId={weighingCowId} setWeighingCowId={setWeighingCowId} />}
+            {activeTab === 'devices' && <Devices scalesData={scalesData} onAddDevice={handleAddDevice} onRemoveDevice={handleRemoveDevice} activeScaleId={activeScaleId} setActiveScaleId={setActiveScaleId} weighingCowId={weighingCowId} setWeighingCowId={setWeighingCowId} />}
             {activeTab === 'herd' && <Herd onNavigateToScale={navigateToScale} />}
             {activeTab === 'settings' && <Settings user={user} onLogout={logout} />}
           </div>

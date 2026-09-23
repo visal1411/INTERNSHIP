@@ -31,15 +31,13 @@ const registerDevice = async (farmerId, { deviceId, name }) => {
   });
 
   if (existing) {
-    if (existing.farmerId !== farmerId) {
-      const error = new Error('Device is already registered to another farmer');
-      error.code = 'CONFLICT';
-      throw error;
-    }
-    // Update name if re-registering
+    // Re-assign/bind device to current logged-in farmer
     const updated = await prisma.device.update({
       where: { id: existing.id },
-      data: { name: name || existing.name }
+      data: {
+        farmerId,
+        name: name || existing.name
+      }
     });
     return updated;
   }

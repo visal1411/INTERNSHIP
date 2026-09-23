@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Wifi, WifiOff, ArrowLeft, Activity, RefreshCw, CheckCircle2, Trash2 } from 'lucide-react';
+import { Wifi, WifiOff, ArrowLeft, Activity, RefreshCw, CheckCircle2, Trash2, Plus, X } from 'lucide-react';
 
 export interface Scale {
   id: string;
@@ -25,12 +25,31 @@ interface DevicesProps {
   weighingCowId?: string | null;
   setWeighingCowId?: (id: string | null) => void;
   onRemoveDevice?: (id: string) => void;
+  onAddDevice?: (deviceId: string, name?: string) => Promise<void> | void;
 }
 
-export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = () => {}, weighingCowId = null, setWeighingCowId = () => {}, onRemoveDevice }: DevicesProps) {
+export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = () => {}, weighingCowId = null, setWeighingCowId = () => {}, onRemoveDevice, onAddDevice }: DevicesProps) {
   const { t } = useTranslation();
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [deviceIdInput, setDeviceIdInput] = useState('esp32-gateway-01');
+  const [deviceNameInput, setDeviceNameInput] = useState('Main Barn Scale');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const selectedScale = activeScaleId ? scalesData.find(s => s.id === activeScaleId) || null : null;
+
+  const handleRegisterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!deviceIdInput.trim()) return;
+    try {
+      setIsSubmitting(true);
+      await onAddDevice?.(deviceIdInput.trim(), deviceNameInput.trim());
+      setShowAddModal(false);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   if (selectedScale) {
     return (
@@ -173,6 +192,13 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t('devices.title')}</h2>
           <p className="text-gray-500 dark:text-gray-400 mt-1">Manage your connected weighing hardware across all pastures.</p>
         </div>
+        <button
+          onClick={() => setShowAddModal(true)}
+          className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2.5 rounded-xl font-medium transition-colors shadow-sm"
+        >
+          <Plus size={18} />
+          <span>Add Scale Device</span>
+        </button>
       </div>
 
       {scalesData.length > 0 ? (
@@ -237,9 +263,92 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
             <WifiOff className="w-8 h-8 text-gray-400 dark:text-gray-500" />
           </div>
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No Devices Connected</h3>
-          <p className="text-gray-500 dark:text-gray-400 max-w-md">
+          <p className="text-gray-500 dark:text-gray-400 max-w-md mb-6">
             You don't have any smart scales registered to your farm yet. Devices will appear here automatically once configured on the network.
           </p>
+          <button
+            onClick={() => setShowAddModal(true)}
+            className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-xl font-medium transition-colors shadow-sm"
+          >
+            <Plus size={18} />
+            <span>Add Scale Device</span>
+          </button>
+        </div>
+      )}
+
+      {/* Add Device Modal */}
+      {showAddModal && (
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60] flex items-center justify-center p-4 animate-in fade-in duration-200">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200 border border-gray-200 dark:border-gray-700">
+            <div className="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-800/50">
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">Add Scale Device</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Register hardware scale to your farm account</p>
+              </div>
+              <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors">
+                <X size={20} />
+              </button>
+            </div>
+
+            <form onSubmit={handleRegisterSubmit} className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Device ID / Hardware Serial</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. esp32-gateway-01"
+                  value={deviceIdInput}
+                  onChange={(e) => setDeviceIdInput(e.target.value)}
+                  className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 font-mono bg-white dark:bg-gray-700 text-gray-900 dark:text-white outline-none"
+                />
+                <div className="mt-2 flex gap-2">
+                  <span className="text-xs text-gray-500 dark:text-gray-400">Quick fill:</span>
+                  <button
+                    type="button"
+                    onClick={() => setDeviceIdInput('esp32-gateway-01')}
+                    className="text-xs text-green-600 dark:text-green-400 hover:underline font-mono"
+                  >
+                    esp32-gateway-01
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setDeviceIdInput('esp32-gateway-02')}
+                    className="text-xs text-green-600 dark:text-green-400 hover:underline font-mono"
+                  >
+                    esp32-gateway-02
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Scale Display Name</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Main Pasture Gate Scale"
+                  value={deviceNameInput}
+                  onChange={(e) => setDeviceNameInput(e.target.value)}
+                  className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white outline-none"
+                />
+              </div>
+
+              <div className="pt-4 flex justify-end gap-3 border-t border-gray-100 dark:border-gray-700 mt-6">
+                <button
+                  type="button"
+                  onClick={() => setShowAddModal(false)}
+                  className="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-5 py-2.5 bg-green-600 text-white rounded-xl hover:bg-green-700 font-medium transition-colors shadow-sm disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Registering...' : 'Register Device'}
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       )}
     </div>
