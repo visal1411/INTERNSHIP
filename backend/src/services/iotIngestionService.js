@@ -4,14 +4,27 @@ const classificationService = require('./classificationService');
 const ingestMeasurement = async (payload) => {
   const { device_id, cow_id, weight_kg, measured_at } = payload;
 
-  const device = await prisma.device.findUnique({
+  let device = await prisma.device.findUnique({
     where: { deviceId: device_id }
   });
 
   if (!device) {
-    const error = new Error('Device not found or not registered');
-    error.code = 'UNAUTHORIZED';
-    throw error;
+    const defaultFarmer = await prisma.farmer.findFirst({ orderBy: { id: 'asc' } });
+    if (defaultFarmer) {
+      device = await prisma.device.create({
+        data: {
+          deviceId: device_id,
+          name: 'Smart Scale Gateway',
+          farmerId: defaultFarmer.id,
+          status: 'online',
+          lastSeenAt: new Date()
+        }
+      });
+    } else {
+      const error = new Error('Device not found or not registered');
+      error.code = 'UNAUTHORIZED';
+      throw error;
+    }
   }
   // Triggering reload for Prisma client update
 
@@ -85,14 +98,33 @@ const ingestMeasurement = async (payload) => {
 
 const recordHeartbeat = async (payload) => {
   const { device_id, battery } = payload;
-  const device = await prisma.device.findUnique({
+  let device = await prisma.device.findUnique({
     where: { deviceId: device_id }
   });
 
   if (!device) {
-    const error = new Error('Device not found or not registered');
-    error.code = 'UNAUTHORIZED';
-    throw error;
+    const defaultFarmer = await prisma.farmer.findFirst({ orderBy: { id: 'asc' } });
+    if (defaultFarmer) {
+      device = await prisma.device.create({
+        data: {
+          deviceId: device_id,
+          name: 'Smart Scale Gateway',
+          farmerId: defaultFarmer.id,
+          status: 'online',
+          battery: battery !== undefined && battery !== null ? Math.min(100, Math.max(0, parseInt(battery, 10) || 100)) : 100,
+          lastSeenAt: new Date()
+        }
+      });
+      return {
+        success: true,
+        deviceId: device.deviceId,
+        lastSeenAt: device.lastSeenAt
+      };
+    } else {
+      const error = new Error('Device not found or not registered');
+      error.code = 'UNAUTHORIZED';
+      throw error;
+    }
   }
 
   const updateData = { lastSeenAt: new Date() };
