@@ -27,6 +27,8 @@ import { Herd } from './pages/Herd';
 import { Settings } from './pages/Settings';
 import { Login } from './pages/Login';
 import { NavItem } from './components/NavItem';
+import { authService } from './services/authService';
+import { deviceService } from './services/deviceService';
 
 // --- Main App Component ---
 export default function App() {
@@ -147,12 +149,36 @@ export default function App() {
     fetchNotifications();
   }, [isAuthenticated]);
 
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    const loadDevices = async () => {
+      try {
+        const devices = await deviceService.fetchDevices();
+        const mappedDevices: ScaleInterface[] = devices.map(d => ({
+          id: d.id,
+          name: d.name,
+          status: d.status,
+          battery: d.battery,
+          lastSync: d.lastSync ? new Date(d.lastSync).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Never',
+          currentReading: '0 kg'
+        }));
+        setScalesData(mappedDevices);
+      } catch (err) {
+        console.error('Failed to load scale devices from backend:', err);
+      }
+    };
+
+    loadDevices();
+    const interval = setInterval(loadDevices, 10000);
+    return () => clearInterval(interval);
+  }, [isAuthenticated]);
+
   const handleAddDevice = (name: string) => {
     const newDevice = {
       id: 'SCALE-' + Math.floor(1000 + Math.random() * 9000),
       name: name,
       status: 'online',
-      battery: '100%',
+      battery: 100,
       lastSync: 'Just now',
       currentReading: '0 kg'
     };
@@ -161,10 +187,14 @@ export default function App() {
     setTimeout(() => setToastMessage(null), 3000);
   };
   
-  const handleRemoveDevice = (id: string) => {
-    // Local device card removal
-    setScalesData(prev => prev.filter(scale => scale.id !== id));
-    setToastMessage("Device removed successfully");
+  const handleRemoveDevice = async (id: string) => {
+    try {
+      await deviceService.removeDevice(id);
+      setScalesData(prev => prev.filter(scale => scale.id !== id));
+      setToastMessage("Device removed successfully");
+    } catch (err: any) {
+      setToastMessage(err.message || "Failed to remove device");
+    }
     setTimeout(() => setToastMessage(null), 3000);
   };
 

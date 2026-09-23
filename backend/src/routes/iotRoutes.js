@@ -60,5 +60,6 @@ const deviceAuth = require('../middleware/deviceAuth');
  *               $ref: '#/components/schemas/ErrorResponse'
  */
 router.post('/measurements', deviceAuth, iotController.ingest);
+router.post('/heartbeat', deviceAuth, iotController.heartbeat);
 
 module.exports = router;

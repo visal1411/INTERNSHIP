@@ -8,6 +8,7 @@ const authRoutes = require('./routes/authRoutes');
 const iotRoutes = require('./routes/iotRoutes');
 const cowRoutes = require('./routes/cowRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
+const deviceRoutes = require('./routes/deviceRoutes');
 const healthRoutes = require('./routes/healthRoutes');
 
 const farmerAuth = require('./middleware/farmerAuth');
@@ -71,6 +72,7 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/iot', iotRoutes);
 app.use('/api/v1/cows', farmerAuth, cowRoutes);
 app.use('/api/v1/dashboard', farmerAuth, dashboardRoutes);
+app.use('/api/v1/devices', farmerAuth, deviceRoutes);
 
 app.use(errorHandler);
 

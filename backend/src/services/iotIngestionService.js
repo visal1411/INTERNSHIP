@@ -70,6 +70,12 @@ const ingestMeasurement = async (payload) => {
     }
   });
 
+  // Update device lastSeenAt timestamp
+  await prisma.device.update({
+    where: { id: device.id },
+    data: { lastSeenAt: new Date() }
+  });
+
   return {
     measurement_id: measurement.id,
     cow_id: cow.cowId,
@@ -77,4 +83,33 @@ const ingestMeasurement = async (payload) => {
   };
 };
 
-module.exports = { ingestMeasurement };
+const recordHeartbeat = async (payload) => {
+  const { device_id, battery } = payload;
+  const device = await prisma.device.findUnique({
+    where: { deviceId: device_id }
+  });
+
+  if (!device) {
+    const error = new Error('Device not found or not registered');
+    error.code = 'UNAUTHORIZED';
+    throw error;
+  }
+
+  const updateData = { lastSeenAt: new Date() };
+  if (battery !== undefined && battery !== null) {
+    updateData.battery = Math.min(100, Math.max(0, parseInt(battery, 10) || 100));
+  }
+
+  const updatedDevice = await prisma.device.update({
+    where: { id: device.id },
+    data: updateData
+  });
+
+  return {
+    success: true,
+    deviceId: updatedDevice.deviceId,
+    lastSeenAt: updatedDevice.lastSeenAt
+  };
+};
+
+module.exports = { ingestMeasurement, recordHeartbeat };

@@ -26,4 +26,25 @@ const ingest = async (req, res) => {
   }
 };
 
-module.exports = { ingest };
+const heartbeat = async (req, res) => {
+  try {
+    const { device_id, battery } = req.body || {};
+    if (!device_id) {
+      return res.status(400).json({ error: { code: 'VALIDATION_ERROR', message: 'device_id is required' } });
+    }
+    const result = await iotIngestionService.recordHeartbeat({ device_id, battery });
+    return res.status(200).json(result);
+  } catch (err) {
+    if (err.code === 'UNAUTHORIZED') {
+      return res.status(401).json({ error: { code: err.code, message: err.message } });
+    }
+    if (req && req.log) {
+      req.log.error(err, '🔥 IoT Heartbeat Error');
+    } else {
+      logger.error(err, '🔥 IoT Heartbeat Error');
+    }
+    return res.status(500).json({ error: { code: 'INTERNAL_ERROR', message: err.message || 'Internal Server Error' } });
+  }
+};
+
+module.exports = { ingest, heartbeat };
