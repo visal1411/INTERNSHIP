@@ -378,50 +378,64 @@ void loop() {
   bool is_stable = (avgCount == AVG_WINDOW) && (stable_counter >= STABLE_COUNT);
   prev_display = display;
 
-  float displayKg = display / 1000.0f;
+  // Convert display to Kg for all threshold checks
+  float currentKg = (display > 500.0f) ? (display / 1000.0f) : display;
 
-  Serial.print("Weight: "); Serial.print(displayKg, 2); Serial.print("kg");
-  Serial.print("  ("); Serial.print(display, 1); Serial.print("g, raw: "); Serial.print(raw_sample, 1); Serial.print("g)");
+  Serial.print("Weight: "); Serial.print(currentKg, 2); Serial.print("kg");
+  Serial.print("  (raw: "); Serial.print(raw_sample, 1); Serial.print(")");
   if (is_stable) Serial.print("  [STABLE]");
   Serial.println();
 
-  bool isNewReading = is_stable && display > ZERO_BAND_G &&
-                       fabsf(display - lastProcessedWeight) > 5.0f;
+  const float MIN_COW_WEIGHT_KG = 5.0f; // Filter out noise/hands/drift (< 5 kg)
+  static bool sessionSent = false;     // Session lock: send only ONE measurement per cow
 
-  switch (gateState) {
-    case IDLE:
-      if (isNewReading) {
+  if (currentKg < MIN_COW_WEIGHT_KG) {
+    // Scale is empty / cow stepped off -> Reset session lock
+    if (sessionSent) {
+      Serial.println("[Scale] Scale cleared. Ready for next cow.");
+    }
+    sessionSent = false;
+    lastCowID   = "";
+    gateState   = IDLE;
+  } else if (is_stable && !sessionSent) {
+    switch (gateState) {
+      case IDLE: {
         bool haveCowID = (lastCowID != "") &&
                          (millis() - lastCowIDTime <= COW_ID_VALID_WINDOW_MS);
         if (haveCowID) {
-          Serial.println("[Consolidate] cow_id=" + lastCowID + " weight=" + String(displayKg, 2) + "kg");
-          bool ok = sendCowWeight(lastCowID, display);
-          Serial.println(ok ? "[HTTP] send ok" : "[HTTP] send failed");
-          lastProcessedWeight = display;
+          Serial.println("[Consolidate] Sending cow_id=" + lastCowID + " weight=" + String(currentKg, 2) + "kg");
+          bool ok = sendCowWeight(lastCowID, currentKg);
+          if (ok) {
+            Serial.println("[HTTP] Send success! Lock active until cow steps off scale.");
+            sessionSent = true; // LOCK SESSION: Will not send again until weight drops < 5kg
+          } else {
+            Serial.println("[HTTP] Send failed. Will retry next stable sample.");
+          }
         } else {
-          Serial.println("[Wait] No cow_id yet, waiting up to " + String(LORA_WAIT_MS/1000) + "s...");
+          Serial.println("[Wait] Valid weight (" + String(currentKg, 2) + "kg) detected! Waiting for cow_id via LoRa...");
           gateState     = WAITING_FOR_LORA;
           waitStartTime = millis();
-          pendingWeight = display;
+          pendingWeight = currentKg;
         }
+        break;
       }
-      break;
 
-    case WAITING_FOR_LORA: {
-      bool receivedDuringWait = (lastCowID != "") && (lastCowIDTime >= waitStartTime);
-      if (receivedDuringWait) {
-        float pendingKg = pendingWeight / 1000.0f;
-        Serial.println("[Consolidate] cow_id=" + lastCowID + " weight=" + String(pendingKg, 2) + "kg");
-        bool ok = sendCowWeight(lastCowID, pendingWeight);
-        Serial.println(ok ? "[HTTP] send ok" : "[HTTP] send failed");
-        lastProcessedWeight = pendingWeight;
-        gateState = IDLE;
-      } else if (millis() - waitStartTime > LORA_WAIT_MS) {
-        Serial.println("[Discard] No cow_id received in time. Reading discarded.");
-        lastProcessedWeight = pendingWeight;
-        gateState = IDLE;
+      case WAITING_FOR_LORA: {
+        bool receivedDuringWait = (lastCowID != "") && (lastCowIDTime >= waitStartTime);
+        if (receivedDuringWait) {
+          Serial.println("[Consolidate] Received cow_id=" + lastCowID + "! Sending weight=" + String(pendingWeight, 2) + "kg");
+          bool ok = sendCowWeight(lastCowID, pendingWeight);
+          if (ok) {
+            Serial.println("[HTTP] Send success! Lock active until cow steps off scale.");
+            sessionSent = true; // LOCK SESSION
+          }
+          gateState = IDLE;
+        } else if (millis() - waitStartTime > LORA_WAIT_MS) {
+          Serial.println("[Discard] No cow_id received within 4s timeout. Measurement ignored.");
+          gateState = IDLE;
+        }
+        break;
       }
-      break;
     }
   }
 
