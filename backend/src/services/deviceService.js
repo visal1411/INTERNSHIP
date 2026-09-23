@@ -6,12 +6,12 @@ const getDevices = async (farmerId) => {
     orderBy: { createdAt: 'desc' }
   });
 
-  const FIVE_MINUTES_MS = 5 * 60 * 1000;
+  const ONLINE_THRESHOLD_MS = 90 * 1000; // 90 seconds threshold
   const now = Date.now();
 
   return devices.map(device => {
     const lastSeenMs = device.lastSeenAt ? new Date(device.lastSeenAt).getTime() : 0;
-    const isOnline = (now - lastSeenMs) < FIVE_MINUTES_MS;
+    const isOnline = (now - lastSeenMs) < ONLINE_THRESHOLD_MS;
 
     return {
       id: device.deviceId,
