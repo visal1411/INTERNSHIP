@@ -21,7 +21,7 @@ const char*    BACKEND_HOST  = "agroscale-backend.onrender.com";
 const uint16_t BACKEND_PORT  = 443;                   // 443 for HTTPS (Render), 3002 for local HTTP
 const bool     USE_HTTPS     = true;                  // true for https://agroscale-backend.onrender.com
 const char*    DEVICE_ID     = "esp32-gateway-01";
-const char*    IOT_API_KEY   = "your_iot_key";
+const char*    IOT_API_KEY   = "your-secret-iot-api-key";
 
 // ── LoRa pins ────────────────────────────────────────────────
 #define LORA_SS   5
@@ -308,6 +308,11 @@ void setup() {
   }
   Serial.println();
   if (WiFi.status() == WL_CONNECTED) {
+    // Configure fallback public DNS (Google 8.8.8.8) to prevent router DNS lookup failures
+    IPAddress dns1(8, 8, 8, 8);
+    IPAddress dns2(8, 8, 4, 4);
+    WiFi.config(INADDR_NONE, INADDR_NONE, INADDR_NONE, dns1, dns2);
+
     Serial.println("[WiFi] Connected. IP: " + WiFi.localIP().toString());
     sendStartupHeartbeat();
   } else {
