@@ -225,13 +225,14 @@ bool sendStartupHeartbeat() {
 // ────────────────────────────────────────────────────────────
 //  Sends weight measurement payload to backend (POST /api/v1/iot/measurements)
 // ────────────────────────────────────────────────────────────
-bool sendCowWeight(String cowID, float weightGrams) {
+bool sendCowWeight(String cowID, float weightInput) {
   if (WiFi.status() != WL_CONNECTED) {
     Serial.println("[HTTP] Skipped: WiFi not connected");
     return false;
   }
 
-  float weightKg = weightGrams / 1000.0f;
+  // Smart unit safety: if reading is already in Kg (< 500), use as-is; if in Grams (>= 500), divide by 1000
+  float weightKg = (weightInput > 500.0f) ? (weightInput / 1000.0f) : weightInput;
 
   String path = "/api/v1/iot/measurements";
   String payload = "{\"device_id\":\"" + String(DEVICE_ID) +
