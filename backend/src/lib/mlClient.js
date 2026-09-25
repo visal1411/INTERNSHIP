@@ -22,11 +22,16 @@ const predictWeightStatus = async (breed, gender, age_months, weight_kg) => {
     const data = await response.json();
     return {
       label: data.label,
-      confidence: data.confidence
+      confidence: data.confidence,
+      isAnomaly: data.is_anomaly,
+      anomalyScore: data.anomaly_score,
+      flag: data.flag,
+      topAnomalyDriver: data.top_anomaly_driver
     };
   } finally {
     clearTimeout(timeoutId);
   }
 };
+
 
 module.exports = { predictWeightStatus };

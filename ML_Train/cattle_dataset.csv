@@ -1,1001 +1,1601 @@
-Breed,Age,Gender,Weight,Status
-Brahman,130,Male,843.7,Healthy
-Kor Khmer,30,Female,221.3,Healthy
-Brahman,39,Male,776.0,Healthy
-Brahman,228,Male,682.1,Underweight
-Kor Khmer,35,Male,280.0,Healthy
-Kor Khmer,151,Male,344.9,Healthy
-Brahman,222,Female,483.5,Healthy
-Hariana,5,Male,146.6,Healthy
-Brahman,65,Male,961.0,Overweight
-Brahman,211,Female,617.0,Healthy
-Brahman,219,Male,831.9,Healthy
-Brahman,74,Male,965.6,Healthy
-Kor Khmer,3,Female,53.7,Healthy
-Brahman,78,Male,814.0,Healthy
-Hariana,133,Female,305.0,Healthy
-Kor Khmer,117,Female,242.2,Healthy
-Hariana,112,Female,312.0,Healthy
-Hariana,93,Female,329.4,Healthy
-Hariana,229,Male,472.5,Healthy
-Hariana,178,Female,325.1,Healthy
-Kor Khmer,61,Male,356.3,Healthy
-Kor Khmer,184,Male,391.7,Healthy
-Hariana,193,Male,509.1,Healthy
-Hariana,78,Male,392.5,Healthy
-Kor Khmer,202,Male,260.6,Underweight
-Kor Khmer,135,Male,382.6,Healthy
-Kor Khmer,25,Male,237.6,Healthy
-Brahman,178,Male,830.9,Healthy
-Brahman,172,Male,750.5,Healthy
-Brahman,43,Male,645.9,Underweight
-Hariana,132,Female,342.5,Healthy
-Brahman,69,Female,582.8,Healthy
-Hariana,153,Female,306.2,Healthy
-Hariana,117,Male,344.2,Underweight
-Brahman,67,Female,511.1,Healthy
-Hariana,18,Female,230.8,Healthy
-Brahman,211,Female,468.7,Healthy
-Brahman,224,Male,865.6,Healthy
-Kor Khmer,19,Male,242.5,Healthy
-Brahman,112,Male,898.2,Healthy
-Kor Khmer,139,Male,354.1,Healthy
-Brahman,46,Female,466.7,Healthy
-Brahman,0,Female,31.4,Healthy
-Kor Khmer,89,Female,244.9,Healthy
-Kor Khmer,141,Female,249.3,Healthy
-Brahman,63,Male,753.7,Healthy
-Hariana,37,Male,398.6,Healthy
-Kor Khmer,36,Male,283.8,Healthy
-Hariana,125,Female,319.2,Healthy
-Hariana,138,Male,544.5,Overweight
-Hariana,99,Male,400.2,Healthy
-Kor Khmer,76,Female,207.6,Underweight
-Hariana,234,Female,372.8,Healthy
-Kor Khmer,2,Male,51.8,Healthy
-Hariana,160,Male,433.9,Healthy
-Brahman,133,Male,938.1,Healthy
-Brahman,177,Male,798.5,Healthy
-Kor Khmer,9,Male,183.0,Overweight
-Brahman,4,Male,218.9,Healthy
-Brahman,150,Female,523.1,Healthy
-Hariana,137,Female,395.0,Overweight
-Kor Khmer,171,Female,234.8,Healthy
-Hariana,129,Male,499.3,Healthy
-Hariana,12,Female,182.8,Healthy
-Hariana,167,Male,525.5,Healthy
-Hariana,129,Male,537.4,Overweight
-Hariana,83,Female,324.0,Healthy
-Hariana,64,Male,421.2,Healthy
-Hariana,62,Male,475.2,Healthy
-Kor Khmer,100,Female,232.5,Healthy
-Brahman,72,Female,652.4,Overweight
-Hariana,16,Female,211.8,Healthy
-Hariana,8,Male,185.1,Healthy
-Hariana,202,Female,331.0,Healthy
-Hariana,142,Female,281.2,Healthy
-Hariana,151,Male,419.8,Healthy
-Hariana,37,Female,327.2,Healthy
-Brahman,162,Female,513.8,Healthy
-Brahman,93,Female,490.7,Healthy
-Hariana,94,Male,488.3,Healthy
-Brahman,48,Male,899.3,Healthy
-Kor Khmer,68,Male,369.1,Healthy
-Hariana,61,Male,498.8,Healthy
-Kor Khmer,187,Female,231.1,Healthy
-Kor Khmer,235,Male,300.2,Healthy
-Hariana,177,Male,534.8,Overweight
-Brahman,77,Female,527.3,Healthy
-Kor Khmer,116,Female,243.5,Healthy
-Hariana,119,Female,367.9,Healthy
-Kor Khmer,202,Male,369.5,Healthy
-Kor Khmer,136,Male,365.9,Healthy
-Kor Khmer,161,Male,425.7,Overweight
-Kor Khmer,75,Female,231.5,Healthy
-Brahman,226,Female,601.0,Healthy
-Kor Khmer,34,Male,308.2,Healthy
-Kor Khmer,0,Female,14.4,Healthy
-Kor Khmer,39,Female,262.0,Overweight
-Brahman,63,Female,565.4,Healthy
-Kor Khmer,149,Male,368.8,Healthy
-Kor Khmer,59,Female,269.2,Healthy
-Brahman,63,Female,518.4,Healthy
-Brahman,92,Male,775.7,Healthy
-Brahman,71,Male,750.8,Healthy
-Kor Khmer,10,Female,96.8,Underweight
-Brahman,104,Female,661.9,Overweight
-Brahman,228,Male,756.2,Healthy
-Kor Khmer,13,Male,192.1,Healthy
-Brahman,59,Female,520.0,Healthy
-Kor Khmer,29,Female,215.0,Healthy
-Hariana,34,Female,308.9,Healthy
-Brahman,212,Female,597.3,Healthy
-Hariana,164,Male,437.9,Healthy
-Kor Khmer,4,Female,63.3,Healthy
-Brahman,82,Female,561.6,Healthy
-Kor Khmer,122,Male,341.1,Healthy
-Hariana,77,Female,373.8,Overweight
-Kor Khmer,153,Male,367.1,Healthy
-Brahman,61,Female,576.0,Healthy
-Brahman,131,Female,586.2,Healthy
-Hariana,88,Male,517.1,Healthy
-Kor Khmer,236,Male,356.3,Healthy
-Brahman,41,Female,439.9,Healthy
-Hariana,88,Female,336.4,Healthy
-Brahman,145,Female,514.1,Healthy
-Brahman,39,Male,730.3,Healthy
-Kor Khmer,71,Female,261.1,Healthy
-Brahman,38,Male,861.0,Healthy
-Kor Khmer,103,Male,350.0,Healthy
-Brahman,13,Female,320.3,Healthy
-Hariana,31,Male,463.8,Overweight
-Brahman,178,Female,563.2,Healthy
-Kor Khmer,124,Female,314.9,Overweight
-Kor Khmer,165,Female,264.1,Healthy
-Hariana,96,Female,267.0,Underweight
-Brahman,22,Female,441.5,Healthy
-Brahman,62,Male,861.8,Healthy
-Hariana,142,Male,524.9,Healthy
-Brahman,224,Female,587.0,Healthy
-Brahman,152,Female,542.3,Healthy
-Kor Khmer,144,Male,307.1,Healthy
-Brahman,224,Male,832.2,Healthy
-Brahman,238,Male,777.7,Healthy
-Hariana,193,Male,438.0,Healthy
-Hariana,205,Female,344.1,Healthy
-Kor Khmer,52,Female,279.6,Overweight
-Brahman,103,Male,881.8,Healthy
-Brahman,103,Female,483.3,Healthy
-Brahman,178,Male,887.8,Healthy
-Kor Khmer,38,Female,252.9,Healthy
-Kor Khmer,178,Male,328.7,Healthy
-Hariana,197,Female,320.6,Healthy
-Kor Khmer,133,Male,350.4,Healthy
-Brahman,66,Male,768.9,Healthy
-Brahman,134,Female,585.5,Healthy
-Kor Khmer,178,Male,345.8,Healthy
-Brahman,199,Female,573.1,Healthy
-Brahman,41,Female,460.5,Healthy
-Kor Khmer,191,Male,334.7,Healthy
-Kor Khmer,14,Female,158.8,Healthy
-Brahman,110,Female,528.8,Healthy
-Brahman,156,Female,644.9,Overweight
-Brahman,32,Female,454.5,Healthy
-Hariana,221,Female,332.3,Healthy
-Hariana,230,Male,508.4,Healthy
-Hariana,154,Female,278.9,Healthy
-Kor Khmer,163,Female,206.0,Underweight
-Hariana,156,Female,275.4,Underweight
-Kor Khmer,37,Female,252.7,Healthy
-Kor Khmer,184,Female,236.2,Healthy
-Hariana,96,Male,582.2,Overweight
-Hariana,228,Female,306.7,Healthy
-Hariana,154,Male,473.5,Healthy
-Brahman,182,Male,981.1,Overweight
-Hariana,32,Male,480.7,Overweight
-Brahman,195,Male,1025.2,Overweight
-Kor Khmer,85,Female,278.6,Healthy
-Brahman,65,Male,918.7,Healthy
-Hariana,9,Male,220.3,Healthy
-Kor Khmer,4,Female,69.4,Healthy
-Kor Khmer,122,Female,236.1,Healthy
-Kor Khmer,73,Female,226.8,Healthy
-Brahman,96,Male,847.1,Healthy
-Hariana,117,Female,319.2,Healthy
-Kor Khmer,37,Female,214.2,Healthy
-Kor Khmer,140,Male,374.3,Healthy
-Kor Khmer,158,Female,273.9,Healthy
-Brahman,46,Female,521.5,Healthy
-Brahman,227,Female,631.3,Healthy
-Hariana,108,Female,287.5,Healthy
-Brahman,215,Male,833.5,Healthy
-Kor Khmer,179,Female,232.1,Healthy
-Hariana,183,Female,264.3,Underweight
-Kor Khmer,14,Male,203.7,Healthy
-Kor Khmer,156,Female,246.9,Healthy
-Brahman,135,Male,978.4,Overweight
-Hariana,4,Female,92.1,Healthy
-Brahman,156,Male,762.9,Healthy
-Brahman,46,Male,946.1,Overweight
-Hariana,67,Male,512.9,Healthy
-Kor Khmer,75,Male,366.4,Healthy
-Kor Khmer,172,Female,244.3,Healthy
-Hariana,129,Male,420.2,Healthy
-Kor Khmer,154,Female,240.7,Healthy
-Hariana,94,Male,513.9,Healthy
-Hariana,114,Male,552.1,Overweight
-Brahman,163,Male,981.1,Overweight
-Hariana,35,Female,273.8,Healthy
-Brahman,25,Male,592.4,Healthy
-Kor Khmer,42,Female,234.3,Healthy
-Kor Khmer,26,Female,165.0,Underweight
-Kor Khmer,68,Female,254.0,Healthy
-Kor Khmer,147,Female,246.3,Healthy
-Brahman,10,Female,251.2,Healthy
-Kor Khmer,73,Female,207.6,Underweight
-Hariana,103,Female,341.0,Healthy
-Hariana,37,Female,276.5,Healthy
-Hariana,133,Female,286.9,Healthy
-Brahman,199,Male,605.9,Underweight
-Kor Khmer,22,Male,259.8,Healthy
-Kor Khmer,46,Male,387.1,Overweight
-Kor Khmer,89,Male,406.3,Overweight
-Brahman,45,Male,758.6,Healthy
-Hariana,106,Female,304.9,Healthy
-Hariana,139,Female,340.2,Healthy
-Kor Khmer,217,Female,225.0,Healthy
-Hariana,140,Female,334.7,Healthy
-Hariana,103,Female,349.2,Healthy
-Brahman,189,Female,617.5,Healthy
-Brahman,209,Female,544.5,Healthy
-Brahman,216,Male,832.7,Healthy
-Brahman,224,Male,775.4,Healthy
-Kor Khmer,110,Male,320.6,Healthy
-Brahman,103,Male,829.1,Healthy
-Hariana,59,Female,327.8,Healthy
-Kor Khmer,170,Female,272.8,Healthy
-Hariana,203,Female,298.9,Healthy
-Hariana,235,Male,534.4,Healthy
-Hariana,99,Female,315.4,Healthy
-Brahman,239,Female,548.8,Healthy
-Brahman,67,Female,500.2,Healthy
-Kor Khmer,132,Male,265.1,Underweight
-Kor Khmer,119,Female,271.9,Healthy
-Brahman,36,Male,811.1,Healthy
-Hariana,71,Male,445.9,Healthy
-Kor Khmer,126,Male,352.2,Healthy
-Brahman,105,Male,892.3,Healthy
-Brahman,240,Female,464.1,Underweight
-Brahman,91,Male,801.7,Healthy
-Hariana,30,Male,423.2,Healthy
-Brahman,121,Female,480.7,Healthy
-Brahman,136,Female,566.0,Healthy
-Brahman,50,Male,699.4,Healthy
-Brahman,28,Female,473.8,Healthy
-Kor Khmer,205,Male,348.8,Healthy
-Kor Khmer,39,Male,266.4,Underweight
-Brahman,40,Male,865.9,Healthy
-Hariana,213,Male,430.8,Healthy
-Kor Khmer,10,Female,110.7,Healthy
-Brahman,150,Male,866.9,Healthy
-Kor Khmer,0,Female,15.6,Healthy
-Kor Khmer,45,Female,210.4,Healthy
-Hariana,100,Female,326.2,Healthy
-Brahman,148,Female,573.5,Healthy
-Brahman,89,Male,904.7,Healthy
-Hariana,109,Female,330.3,Healthy
-Hariana,163,Male,447.9,Healthy
-Brahman,181,Female,504.5,Healthy
-Brahman,214,Female,554.7,Healthy
-Hariana,56,Male,401.5,Healthy
-Kor Khmer,0,Male,10.6,Underweight
-Kor Khmer,62,Male,356.8,Healthy
-Hariana,181,Female,354.4,Healthy
-Kor Khmer,54,Female,183.9,Underweight
-Hariana,114,Male,417.6,Healthy
-Kor Khmer,167,Male,371.7,Healthy
-Kor Khmer,142,Male,421.9,Overweight
-Brahman,148,Male,851.7,Healthy
-Brahman,174,Female,509.9,Healthy
-Kor Khmer,200,Male,343.6,Healthy
-Kor Khmer,52,Male,381.3,Healthy
-Brahman,136,Male,794.9,Healthy
-Brahman,201,Male,782.1,Healthy
-Brahman,179,Female,523.4,Healthy
-Hariana,56,Male,406.8,Healthy
-Kor Khmer,116,Female,252.8,Healthy
-Brahman,153,Male,988.0,Overweight
-Kor Khmer,168,Male,361.3,Healthy
-Hariana,34,Female,278.4,Healthy
-Hariana,62,Male,441.1,Healthy
-Brahman,24,Female,359.7,Underweight
-Hariana,89,Female,352.1,Healthy
-Kor Khmer,74,Male,343.4,Healthy
-Brahman,37,Female,484.4,Healthy
-Kor Khmer,129,Female,329.7,Overweight
-Kor Khmer,134,Female,257.4,Healthy
-Hariana,209,Female,300.6,Healthy
-Hariana,218,Female,311.1,Healthy
-Hariana,161,Female,362.3,Healthy
-Hariana,90,Female,327.3,Healthy
-Hariana,16,Female,178.9,Healthy
-Brahman,127,Male,927.7,Healthy
-Kor Khmer,170,Male,326.6,Healthy
-Kor Khmer,186,Female,296.8,Overweight
-Kor Khmer,107,Male,387.2,Healthy
-Kor Khmer,178,Female,238.8,Healthy
-Hariana,181,Female,366.6,Healthy
-Kor Khmer,151,Male,352.3,Healthy
-Brahman,24,Female,462.7,Healthy
-Brahman,198,Female,576.7,Healthy
-Kor Khmer,179,Female,228.8,Healthy
-Kor Khmer,197,Female,233.9,Healthy
-Brahman,87,Male,932.7,Healthy
-Brahman,160,Female,531.6,Healthy
-Hariana,176,Female,311.9,Healthy
-Brahman,28,Female,409.5,Healthy
-Hariana,62,Male,473.6,Healthy
-Hariana,234,Female,392.0,Overweight
-Hariana,149,Male,415.3,Healthy
-Hariana,153,Male,466.1,Healthy
-Hariana,155,Female,370.9,Healthy
-Kor Khmer,113,Female,247.7,Healthy
-Brahman,212,Male,888.4,Healthy
-Hariana,48,Female,275.3,Healthy
-Brahman,198,Male,886.4,Healthy
-Brahman,80,Male,827.5,Healthy
-Hariana,83,Female,354.7,Healthy
-Kor Khmer,104,Female,279.2,Healthy
-Hariana,176,Male,585.4,Overweight
-Kor Khmer,147,Male,370.2,Healthy
-Brahman,117,Male,876.9,Healthy
-Kor Khmer,85,Male,354.7,Healthy
-Kor Khmer,219,Female,241.2,Healthy
-Kor Khmer,62,Female,252.5,Healthy
-Brahman,188,Female,533.7,Healthy
-Brahman,103,Female,558.2,Healthy
-Kor Khmer,48,Female,267.9,Healthy
-Kor Khmer,70,Male,310.3,Healthy
-Hariana,0,Female,24.5,Healthy
-Kor Khmer,223,Female,282.9,Healthy
-Hariana,140,Female,321.1,Healthy
-Kor Khmer,221,Female,197.0,Underweight
-Hariana,214,Female,305.2,Healthy
-Brahman,178,Male,960.2,Healthy
-Kor Khmer,122,Male,349.0,Healthy
-Kor Khmer,183,Male,315.0,Healthy
-Kor Khmer,210,Female,237.4,Healthy
-Kor Khmer,61,Male,370.1,Healthy
-Hariana,31,Male,418.0,Healthy
-Kor Khmer,157,Female,244.0,Healthy
-Brahman,28,Female,436.1,Healthy
-Brahman,48,Female,500.3,Healthy
-Kor Khmer,172,Male,317.7,Healthy
-Brahman,220,Male,987.3,Overweight
-Kor Khmer,29,Female,201.9,Healthy
-Kor Khmer,143,Female,280.4,Healthy
-Brahman,167,Male,979.3,Overweight
-Kor Khmer,18,Male,259.8,Healthy
-Brahman,17,Female,346.2,Healthy
-Hariana,0,Female,22.9,Healthy
-Kor Khmer,77,Male,345.9,Healthy
-Hariana,114,Female,295.3,Healthy
-Brahman,174,Male,877.5,Healthy
-Hariana,193,Male,410.2,Healthy
-Hariana,219,Male,520.2,Healthy
-Brahman,112,Male,809.6,Healthy
-Hariana,113,Female,331.2,Healthy
-Hariana,221,Female,334.2,Healthy
-Brahman,165,Male,828.0,Healthy
-Hariana,178,Male,492.3,Healthy
-Brahman,62,Male,790.7,Healthy
-Hariana,131,Male,505.3,Healthy
-Brahman,128,Male,735.3,Healthy
-Brahman,7,Female,209.6,Healthy
-Hariana,156,Female,388.0,Overweight
-Hariana,54,Female,281.8,Healthy
-Hariana,102,Female,302.4,Healthy
-Kor Khmer,130,Male,367.8,Healthy
-Kor Khmer,31,Male,303.2,Healthy
-Kor Khmer,9,Male,160.2,Healthy
-Brahman,201,Male,891.6,Healthy
-Hariana,210,Male,494.5,Healthy
-Brahman,109,Female,610.2,Healthy
-Kor Khmer,161,Male,364.3,Healthy
-Hariana,123,Female,317.0,Healthy
-Brahman,224,Female,587.0,Healthy
-Hariana,86,Female,384.7,Overweight
-Brahman,54,Female,522.5,Healthy
-Hariana,219,Male,419.7,Healthy
-Kor Khmer,31,Female,236.9,Healthy
-Kor Khmer,177,Female,247.0,Healthy
-Hariana,134,Female,254.3,Underweight
-Brahman,92,Male,918.5,Healthy
-Kor Khmer,7,Male,122.9,Healthy
-Kor Khmer,64,Male,339.7,Healthy
-Kor Khmer,56,Female,249.8,Healthy
-Hariana,66,Female,325.3,Healthy
-Hariana,215,Male,498.0,Healthy
-Brahman,214,Female,526.0,Healthy
-Brahman,186,Male,893.6,Healthy
-Brahman,71,Male,816.7,Healthy
-Hariana,53,Female,335.5,Healthy
-Hariana,238,Female,345.0,Healthy
-Brahman,228,Female,498.6,Healthy
-Brahman,66,Female,598.7,Healthy
-Hariana,50,Male,419.3,Healthy
-Brahman,96,Male,915.9,Healthy
-Kor Khmer,91,Male,361.4,Healthy
-Hariana,238,Male,550.5,Overweight
-Brahman,7,Male,304.3,Healthy
-Hariana,161,Female,313.6,Healthy
-Kor Khmer,34,Male,305.8,Healthy
-Hariana,95,Male,449.5,Healthy
-Hariana,87,Male,499.6,Healthy
-Hariana,77,Female,270.0,Underweight
-Hariana,31,Female,248.6,Healthy
-Kor Khmer,119,Female,223.1,Healthy
-Hariana,45,Female,333.6,Healthy
-Hariana,234,Male,544.5,Overweight
-Brahman,143,Male,841.0,Healthy
-Hariana,195,Female,319.5,Healthy
-Brahman,164,Female,553.8,Healthy
-Kor Khmer,181,Male,390.7,Healthy
-Kor Khmer,212,Male,317.5,Healthy
-Kor Khmer,141,Female,255.9,Healthy
-Kor Khmer,222,Female,274.4,Healthy
-Brahman,54,Female,556.1,Healthy
-Hariana,175,Female,331.2,Healthy
-Kor Khmer,209,Male,385.0,Healthy
-Hariana,6,Male,114.8,Underweight
-Brahman,73,Male,896.7,Healthy
-Brahman,6,Female,173.7,Healthy
-Brahman,160,Female,449.3,Underweight
-Kor Khmer,150,Male,367.8,Healthy
-Hariana,84,Male,525.6,Healthy
-Hariana,146,Male,458.5,Healthy
-Hariana,111,Male,508.7,Healthy
-Brahman,124,Female,638.3,Overweight
-Kor Khmer,146,Male,396.0,Healthy
-Brahman,35,Male,872.5,Overweight
-Brahman,28,Male,748.9,Healthy
-Hariana,187,Male,468.5,Healthy
-Brahman,81,Male,708.5,Underweight
-Hariana,1,Male,48.5,Healthy
-Kor Khmer,128,Male,320.3,Healthy
-Hariana,46,Female,372.2,Overweight
-Kor Khmer,196,Female,245.6,Healthy
-Hariana,147,Female,329.0,Healthy
-Brahman,10,Female,278.1,Healthy
-Brahman,233,Male,853.7,Healthy
-Kor Khmer,129,Female,292.3,Overweight
-Kor Khmer,194,Female,234.4,Healthy
-Kor Khmer,214,Male,356.8,Healthy
-Hariana,118,Male,430.1,Healthy
-Hariana,139,Female,282.0,Healthy
-Kor Khmer,19,Female,163.8,Healthy
-Brahman,4,Male,204.2,Healthy
-Hariana,36,Female,277.6,Healthy
-Hariana,165,Male,432.8,Healthy
-Hariana,221,Male,399.6,Healthy
-Kor Khmer,136,Male,347.0,Healthy
-Kor Khmer,225,Male,297.3,Underweight
-Kor Khmer,52,Female,257.8,Healthy
-Kor Khmer,171,Male,352.9,Healthy
-Kor Khmer,98,Male,298.2,Healthy
-Brahman,85,Female,529.9,Healthy
-Brahman,107,Male,784.8,Healthy
-Kor Khmer,23,Female,196.7,Healthy
-Hariana,80,Female,365.7,Healthy
-Kor Khmer,201,Female,203.1,Underweight
-Brahman,157,Male,859.7,Healthy
-Brahman,119,Female,540.8,Healthy
-Hariana,58,Female,336.9,Healthy
-Brahman,237,Male,868.1,Healthy
-Kor Khmer,214,Female,231.2,Healthy
-Hariana,127,Female,314.5,Healthy
-Kor Khmer,223,Female,230.1,Healthy
-Kor Khmer,208,Female,276.9,Healthy
-Hariana,113,Female,325.3,Healthy
-Kor Khmer,114,Male,416.1,Overweight
-Brahman,208,Female,546.7,Healthy
-Kor Khmer,13,Female,131.8,Healthy
-Hariana,8,Male,163.0,Underweight
-Hariana,39,Male,346.3,Underweight
-Hariana,193,Male,391.3,Underweight
-Kor Khmer,236,Female,256.7,Healthy
-Hariana,24,Male,378.9,Healthy
-Hariana,102,Female,273.1,Underweight
-Kor Khmer,200,Female,272.4,Healthy
-Brahman,21,Male,587.6,Healthy
-Kor Khmer,234,Male,355.1,Healthy
-Hariana,237,Female,377.4,Overweight
-Hariana,3,Male,105.3,Healthy
-Kor Khmer,153,Female,243.3,Healthy
-Brahman,185,Male,774.2,Healthy
-Hariana,28,Male,300.4,Underweight
-Hariana,108,Male,430.9,Healthy
-Hariana,97,Female,317.3,Healthy
-Kor Khmer,214,Male,315.4,Healthy
-Hariana,36,Female,286.2,Healthy
-Brahman,74,Female,548.0,Healthy
-Hariana,69,Female,313.0,Healthy
-Hariana,145,Female,303.8,Healthy
-Brahman,127,Male,863.9,Healthy
-Hariana,84,Female,337.3,Healthy
-Kor Khmer,41,Female,204.8,Healthy
-Kor Khmer,99,Male,398.4,Healthy
-Kor Khmer,40,Female,226.3,Healthy
-Brahman,165,Male,851.6,Healthy
-Hariana,33,Female,303.2,Healthy
-Kor Khmer,16,Male,226.9,Healthy
-Brahman,164,Female,602.4,Healthy
-Hariana,152,Male,478.3,Healthy
-Brahman,229,Female,516.3,Healthy
-Kor Khmer,121,Female,258.9,Healthy
-Kor Khmer,75,Male,306.7,Healthy
-Kor Khmer,86,Male,351.9,Healthy
-Brahman,116,Male,846.4,Healthy
-Brahman,105,Male,830.8,Healthy
-Kor Khmer,85,Female,245.4,Healthy
-Brahman,212,Female,446.5,Underweight
-Kor Khmer,26,Male,264.3,Healthy
-Kor Khmer,56,Female,244.0,Healthy
-Hariana,30,Male,398.4,Healthy
-Brahman,133,Male,762.4,Healthy
-Kor Khmer,218,Female,281.6,Healthy
-Kor Khmer,167,Female,228.3,Healthy
-Brahman,97,Female,601.6,Healthy
-Hariana,11,Female,175.6,Healthy
-Hariana,236,Female,304.0,Healthy
-Kor Khmer,52,Female,282.1,Overweight
-Brahman,198,Female,484.3,Healthy
-Hariana,137,Male,507.6,Healthy
-Brahman,172,Male,935.0,Healthy
-Brahman,144,Male,792.9,Healthy
-Kor Khmer,153,Male,398.7,Healthy
-Hariana,212,Male,453.4,Healthy
-Kor Khmer,219,Female,257.2,Healthy
-Hariana,189,Male,477.1,Healthy
-Hariana,121,Male,458.4,Healthy
-Hariana,45,Male,470.7,Healthy
-Hariana,63,Male,491.0,Healthy
-Hariana,129,Male,383.5,Underweight
-Brahman,53,Male,922.3,Healthy
-Kor Khmer,106,Male,291.3,Underweight
-Brahman,192,Female,606.8,Healthy
-Hariana,50,Female,344.8,Healthy
-Kor Khmer,180,Male,311.8,Healthy
-Hariana,35,Female,276.1,Healthy
-Kor Khmer,114,Female,222.1,Healthy
-Brahman,25,Female,424.2,Healthy
-Kor Khmer,28,Female,199.7,Healthy
-Kor Khmer,148,Male,377.2,Healthy
-Kor Khmer,10,Female,136.3,Healthy
-Kor Khmer,39,Female,259.0,Healthy
-Kor Khmer,10,Female,113.7,Healthy
-Hariana,163,Male,455.2,Healthy
-Kor Khmer,112,Male,290.7,Underweight
-Kor Khmer,186,Male,321.8,Healthy
-Brahman,38,Male,840.0,Healthy
-Kor Khmer,231,Male,406.5,Overweight
-Brahman,226,Male,745.1,Healthy
-Hariana,53,Male,420.2,Healthy
-Kor Khmer,97,Female,248.6,Healthy
-Brahman,54,Female,544.4,Healthy
-Brahman,110,Female,504.8,Healthy
-Hariana,151,Male,484.7,Healthy
-Kor Khmer,149,Male,333.4,Healthy
-Kor Khmer,68,Male,343.8,Healthy
-Brahman,55,Male,864.5,Healthy
-Kor Khmer,32,Male,301.1,Healthy
-Brahman,35,Female,464.9,Healthy
-Kor Khmer,238,Female,247.3,Healthy
-Brahman,147,Male,842.4,Healthy
-Kor Khmer,210,Male,337.0,Healthy
-Hariana,226,Male,453.0,Healthy
-Kor Khmer,234,Male,406.0,Overweight
-Kor Khmer,80,Female,262.0,Healthy
-Hariana,189,Male,451.3,Healthy
-Kor Khmer,108,Male,373.8,Healthy
-Hariana,234,Male,449.5,Healthy
-Kor Khmer,225,Male,391.1,Healthy
-Brahman,200,Female,570.3,Healthy
-Brahman,153,Male,840.8,Healthy
-Kor Khmer,193,Male,365.7,Healthy
-Kor Khmer,72,Female,208.1,Underweight
-Kor Khmer,200,Female,221.8,Healthy
-Brahman,39,Female,440.1,Healthy
-Kor Khmer,16,Male,224.9,Healthy
-Brahman,128,Male,996.8,Overweight
-Hariana,216,Female,397.5,Overweight
-Brahman,60,Female,569.9,Healthy
-Brahman,170,Female,577.5,Healthy
-Hariana,103,Female,266.0,Underweight
-Brahman,41,Female,478.0,Healthy
-Kor Khmer,24,Female,178.8,Healthy
-Kor Khmer,38,Male,296.1,Healthy
-Brahman,34,Male,730.9,Healthy
-Kor Khmer,130,Male,333.3,Healthy
-Brahman,228,Female,441.1,Underweight
-Kor Khmer,107,Female,268.3,Healthy
-Kor Khmer,171,Female,223.2,Healthy
-Brahman,178,Female,563.1,Healthy
-Kor Khmer,221,Female,301.9,Overweight
-Brahman,101,Female,498.3,Healthy
-Kor Khmer,97,Male,260.7,Underweight
-Kor Khmer,11,Male,171.8,Healthy
-Hariana,18,Female,246.6,Healthy
-Hariana,100,Male,554.8,Overweight
-Brahman,43,Female,447.7,Healthy
-Hariana,186,Male,488.1,Healthy
-Brahman,48,Female,496.5,Healthy
-Hariana,188,Female,321.6,Healthy
-Kor Khmer,16,Male,280.4,Overweight
-Brahman,73,Male,713.5,Underweight
-Brahman,56,Female,545.4,Healthy
-Kor Khmer,54,Female,252.0,Healthy
-Brahman,240,Male,942.3,Healthy
-Brahman,46,Male,805.9,Healthy
-Hariana,11,Female,173.6,Healthy
-Brahman,61,Male,796.4,Healthy
-Kor Khmer,79,Female,254.6,Healthy
-Hariana,215,Female,313.8,Healthy
-Hariana,82,Female,342.9,Healthy
-Kor Khmer,7,Female,91.4,Healthy
-Kor Khmer,222,Male,363.2,Healthy
-Hariana,148,Male,463.6,Healthy
-Brahman,80,Male,938.2,Healthy
-Hariana,214,Male,462.6,Healthy
-Kor Khmer,228,Male,287.9,Underweight
-Hariana,117,Male,523.2,Healthy
-Kor Khmer,207,Male,318.3,Healthy
-Hariana,197,Female,303.8,Healthy
-Brahman,199,Male,799.4,Healthy
-Hariana,24,Male,410.1,Healthy
-Hariana,209,Female,255.6,Underweight
-Kor Khmer,88,Male,457.6,Overweight
-Kor Khmer,11,Male,195.5,Healthy
-Kor Khmer,142,Female,255.5,Healthy
-Hariana,58,Male,448.9,Healthy
-Brahman,153,Male,874.2,Healthy
-Kor Khmer,232,Male,368.2,Healthy
-Kor Khmer,108,Female,265.7,Healthy
-Hariana,25,Male,387.0,Healthy
-Kor Khmer,46,Male,331.7,Healthy
-Brahman,31,Female,459.5,Healthy
-Brahman,9,Male,366.5,Healthy
-Kor Khmer,15,Female,151.0,Healthy
-Kor Khmer,198,Female,278.3,Healthy
-Hariana,144,Male,492.5,Healthy
-Brahman,150,Female,388.2,Underweight
-Brahman,25,Female,462.0,Healthy
-Kor Khmer,212,Male,356.8,Healthy
-Hariana,85,Female,322.5,Healthy
-Brahman,134,Female,528.5,Healthy
-Brahman,13,Male,527.4,Healthy
-Hariana,78,Male,504.6,Healthy
-Hariana,116,Male,428.7,Healthy
-Brahman,6,Female,193.4,Healthy
-Brahman,136,Male,767.2,Healthy
-Hariana,114,Female,279.9,Healthy
-Brahman,175,Female,515.5,Healthy
-Kor Khmer,71,Female,267.9,Healthy
-Kor Khmer,58,Female,265.9,Healthy
-Hariana,214,Female,341.7,Healthy
-Hariana,220,Female,348.6,Healthy
-Hariana,81,Female,339.3,Healthy
-Kor Khmer,222,Male,327.5,Healthy
-Brahman,221,Male,886.7,Healthy
-Kor Khmer,115,Female,269.8,Healthy
-Brahman,166,Female,591.5,Healthy
-Kor Khmer,226,Male,391.6,Healthy
-Brahman,145,Female,588.9,Healthy
-Kor Khmer,186,Male,362.3,Healthy
-Hariana,233,Male,514.8,Healthy
-Kor Khmer,102,Male,348.3,Healthy
-Brahman,16,Female,319.3,Healthy
-Kor Khmer,13,Female,139.5,Healthy
-Kor Khmer,158,Male,323.9,Healthy
-Kor Khmer,151,Male,326.3,Healthy
-Hariana,226,Male,458.3,Healthy
-Kor Khmer,107,Male,321.8,Healthy
-Hariana,187,Male,450.7,Healthy
-Hariana,44,Female,245.9,Underweight
-Kor Khmer,97,Male,356.4,Healthy
-Kor Khmer,130,Female,249.9,Healthy
-Kor Khmer,36,Male,285.9,Healthy
-Brahman,170,Female,586.2,Healthy
-Kor Khmer,167,Female,273.4,Healthy
-Hariana,217,Female,272.8,Underweight
-Kor Khmer,182,Female,230.9,Healthy
-Brahman,214,Female,507.7,Healthy
-Kor Khmer,107,Female,226.2,Healthy
-Brahman,38,Male,829.7,Healthy
-Brahman,14,Female,318.4,Healthy
-Kor Khmer,119,Male,340.5,Healthy
-Hariana,240,Female,259.9,Underweight
-Brahman,3,Female,121.2,Healthy
-Kor Khmer,92,Male,305.5,Healthy
-Kor Khmer,213,Female,251.5,Healthy
-Hariana,152,Male,477.8,Healthy
-Brahman,140,Male,965.4,Healthy
-Brahman,209,Male,738.7,Healthy
-Kor Khmer,160,Male,244.3,Underweight
-Kor Khmer,15,Female,156.9,Healthy
-Hariana,236,Female,383.5,Overweight
-Hariana,169,Male,522.6,Healthy
-Brahman,107,Female,560.7,Healthy
-Brahman,125,Female,522.7,Healthy
-Kor Khmer,193,Male,378.2,Healthy
-Brahman,54,Female,478.0,Healthy
-Hariana,226,Male,487.2,Healthy
-Hariana,169,Male,488.5,Healthy
-Kor Khmer,33,Female,240.5,Healthy
-Hariana,157,Female,414.7,Overweight
-Hariana,12,Female,184.5,Healthy
-Hariana,140,Male,441.2,Healthy
-Hariana,17,Male,305.2,Healthy
-Kor Khmer,159,Female,205.8,Underweight
-Kor Khmer,95,Female,231.9,Healthy
-Brahman,226,Female,527.5,Healthy
-Hariana,122,Female,307.8,Healthy
-Brahman,38,Male,777.8,Healthy
-Kor Khmer,45,Female,214.9,Healthy
-Kor Khmer,28,Male,319.8,Healthy
-Kor Khmer,189,Male,350.0,Healthy
-Kor Khmer,240,Female,249.8,Healthy
-Kor Khmer,220,Female,241.8,Healthy
-Kor Khmer,61,Female,247.7,Healthy
-Kor Khmer,235,Male,378.9,Healthy
-Hariana,184,Female,296.8,Healthy
-Brahman,15,Female,315.5,Healthy
-Kor Khmer,183,Male,339.4,Healthy
-Hariana,235,Female,281.3,Healthy
-Hariana,238,Male,426.9,Healthy
-Brahman,120,Female,523.4,Healthy
-Kor Khmer,9,Male,168.3,Healthy
-Brahman,157,Female,564.4,Healthy
-Kor Khmer,152,Female,254.8,Healthy
-Hariana,102,Male,503.5,Healthy
-Hariana,83,Male,455.6,Healthy
-Hariana,132,Female,337.6,Healthy
-Hariana,64,Male,450.8,Healthy
-Brahman,221,Male,872.6,Healthy
-Kor Khmer,176,Male,329.6,Healthy
-Kor Khmer,2,Male,40.0,Underweight
-Brahman,172,Female,542.6,Healthy
-Kor Khmer,141,Female,285.5,Healthy
-Hariana,119,Male,507.7,Healthy
-Kor Khmer,157,Male,383.8,Healthy
-Hariana,67,Male,513.6,Healthy
-Brahman,145,Male,857.4,Healthy
-Kor Khmer,189,Female,254.9,Healthy
-Brahman,36,Female,459.5,Healthy
-Kor Khmer,152,Male,338.9,Healthy
-Hariana,175,Male,493.6,Healthy
-Brahman,192,Male,952.3,Healthy
-Kor Khmer,180,Female,246.5,Healthy
-Hariana,237,Male,444.1,Healthy
-Brahman,206,Female,550.0,Healthy
-Brahman,72,Male,889.5,Healthy
-Kor Khmer,142,Female,213.9,Healthy
-Kor Khmer,48,Male,255.1,Underweight
-Kor Khmer,120,Female,236.1,Healthy
-Hariana,87,Male,406.1,Healthy
-Kor Khmer,195,Male,332.2,Healthy
-Brahman,139,Male,837.2,Healthy
-Brahman,186,Female,525.1,Healthy
-Kor Khmer,36,Male,356.6,Healthy
-Kor Khmer,60,Female,251.5,Healthy
-Brahman,228,Female,566.5,Healthy
-Hariana,170,Male,493.9,Healthy
-Kor Khmer,123,Male,310.0,Healthy
-Kor Khmer,197,Male,386.4,Healthy
-Brahman,38,Female,492.8,Healthy
-Kor Khmer,183,Male,373.5,Healthy
-Hariana,62,Female,283.6,Healthy
-Brahman,45,Female,434.9,Underweight
-Kor Khmer,87,Male,376.7,Healthy
-Brahman,10,Male,415.0,Healthy
-Kor Khmer,61,Male,310.6,Healthy
-Kor Khmer,76,Male,316.4,Healthy
-Kor Khmer,225,Male,389.4,Healthy
-Hariana,152,Male,409.6,Healthy
-Hariana,198,Female,378.4,Overweight
-Brahman,51,Female,478.2,Healthy
-Kor Khmer,3,Female,56.3,Healthy
-Kor Khmer,58,Male,328.5,Healthy
-Hariana,71,Female,340.1,Healthy
-Kor Khmer,147,Female,236.4,Healthy
-Hariana,92,Female,318.5,Healthy
-Kor Khmer,62,Female,245.3,Healthy
-Brahman,53,Female,475.3,Healthy
-Kor Khmer,116,Male,375.6,Healthy
-Kor Khmer,236,Male,332.0,Healthy
-Hariana,109,Female,317.1,Healthy
-Kor Khmer,73,Female,222.5,Healthy
-Kor Khmer,106,Female,185.6,Underweight
-Hariana,225,Male,456.1,Healthy
-Brahman,56,Male,1019.7,Overweight
-Brahman,217,Female,593.2,Healthy
-Hariana,168,Male,464.1,Healthy
-Hariana,240,Male,452.8,Healthy
-Hariana,2,Female,56.4,Healthy
-Hariana,119,Male,490.1,Healthy
-Hariana,5,Male,122.0,Healthy
-Brahman,4,Female,154.9,Healthy
-Brahman,4,Male,219.6,Healthy
-Hariana,53,Male,478.7,Healthy
-Kor Khmer,46,Female,245.4,Healthy
-Hariana,214,Male,465.9,Healthy
-Kor Khmer,176,Male,373.5,Healthy
-Hariana,8,Female,145.6,Healthy
-Hariana,98,Female,312.7,Healthy
-Brahman,19,Female,361.1,Healthy
-Kor Khmer,121,Male,353.3,Healthy
-Kor Khmer,240,Female,288.7,Overweight
-Brahman,60,Male,725.0,Healthy
-Brahman,122,Female,469.0,Healthy
-Brahman,233,Male,864.0,Healthy
-Brahman,162,Female,552.8,Healthy
-Kor Khmer,177,Female,254.3,Healthy
-Kor Khmer,81,Female,254.2,Healthy
-Hariana,61,Female,310.1,Healthy
-Hariana,144,Male,534.2,Healthy
-Brahman,215,Female,461.9,Underweight
-Brahman,2,Female,79.8,Healthy
-Brahman,159,Male,841.2,Healthy
-Hariana,226,Female,271.6,Underweight
-Hariana,229,Male,456.8,Healthy
-Hariana,12,Female,207.0,Overweight
-Hariana,119,Female,325.4,Healthy
-Hariana,124,Female,332.3,Healthy
-Hariana,238,Male,406.4,Healthy
-Hariana,88,Female,303.5,Healthy
-Brahman,72,Female,522.7,Healthy
-Brahman,67,Female,523.5,Healthy
-Brahman,141,Male,958.7,Healthy
-Brahman,100,Male,895.3,Healthy
-Hariana,97,Female,288.1,Healthy
-Kor Khmer,10,Male,170.2,Healthy
-Hariana,104,Female,340.6,Healthy
-Kor Khmer,183,Female,278.5,Healthy
-Brahman,66,Female,625.4,Overweight
-Hariana,122,Female,291.8,Healthy
-Brahman,219,Female,505.4,Healthy
-Hariana,28,Female,234.8,Healthy
-Brahman,136,Female,537.0,Healthy
-Kor Khmer,194,Male,366.3,Healthy
-Kor Khmer,152,Male,384.5,Healthy
-Kor Khmer,225,Male,347.3,Healthy
-Hariana,75,Male,445.4,Healthy
-Kor Khmer,169,Male,355.3,Healthy
-Hariana,8,Male,176.1,Healthy
-Kor Khmer,206,Male,423.1,Overweight
-Kor Khmer,39,Female,190.7,Underweight
-Hariana,24,Female,257.9,Healthy
-Hariana,4,Female,104.2,Overweight
-Kor Khmer,138,Female,250.1,Healthy
-Hariana,186,Male,456.2,Healthy
-Kor Khmer,225,Male,337.5,Healthy
-Hariana,215,Female,319.1,Healthy
-Brahman,123,Female,625.1,Healthy
-Brahman,206,Male,662.0,Underweight
-Brahman,37,Female,569.0,Overweight
-Brahman,71,Female,465.4,Healthy
-Brahman,132,Female,535.1,Healthy
-Kor Khmer,175,Female,239.3,Healthy
-Brahman,89,Male,895.9,Healthy
-Brahman,145,Female,462.0,Underweight
-Brahman,197,Female,575.4,Healthy
-Brahman,36,Male,908.4,Overweight
-Hariana,59,Male,390.6,Healthy
-Kor Khmer,175,Female,254.7,Healthy
-Brahman,204,Male,793.7,Healthy
-Brahman,27,Female,465.7,Healthy
-Brahman,196,Female,551.0,Healthy
-Kor Khmer,204,Male,327.5,Healthy
-Hariana,80,Female,338.2,Healthy
-Kor Khmer,113,Female,294.8,Overweight
-Hariana,39,Female,290.2,Healthy
-Brahman,44,Female,549.7,Healthy
-Brahman,223,Male,740.1,Healthy
-Kor Khmer,61,Male,308.7,Healthy
-Kor Khmer,92,Female,260.8,Healthy
-Hariana,114,Male,533.5,Healthy
-Hariana,185,Female,336.6,Healthy
-Kor Khmer,66,Female,237.8,Healthy
-Hariana,55,Female,313.8,Healthy
-Kor Khmer,39,Female,198.8,Healthy
-Hariana,97,Female,343.7,Healthy
-Kor Khmer,39,Male,345.8,Healthy
-Kor Khmer,90,Female,237.7,Healthy
-Kor Khmer,204,Male,333.5,Healthy
-Hariana,236,Male,477.4,Healthy
-Hariana,32,Female,268.3,Healthy
-Hariana,5,Female,99.9,Healthy
-Kor Khmer,215,Female,302.5,Overweight
-Hariana,146,Female,316.9,Healthy
-Hariana,79,Female,310.8,Healthy
-Kor Khmer,167,Male,327.3,Healthy
-Brahman,91,Female,588.5,Healthy
-Kor Khmer,96,Female,244.7,Healthy
-Hariana,58,Male,422.1,Healthy
-Kor Khmer,58,Male,384.6,Healthy
-Brahman,47,Female,592.5,Healthy
-Kor Khmer,168,Male,329.0,Healthy
-Hariana,12,Female,144.4,Underweight
-Brahman,106,Male,934.1,Healthy
-Hariana,44,Male,403.8,Healthy
-Brahman,88,Female,590.6,Healthy
-Brahman,180,Male,682.5,Underweight
-Kor Khmer,169,Male,381.2,Healthy
-Kor Khmer,99,Male,306.8,Healthy
-Hariana,190,Male,499.0,Healthy
-Kor Khmer,154,Male,350.5,Healthy
-Kor Khmer,165,Male,316.6,Healthy
-Brahman,187,Female,527.6,Healthy
-Kor Khmer,6,Female,91.2,Healthy
-Brahman,132,Male,858.7,Healthy
-Brahman,234,Female,582.1,Healthy
-Brahman,44,Female,614.1,Overweight
-Hariana,57,Female,265.8,Underweight
-Hariana,30,Male,455.5,Overweight
-Hariana,22,Female,246.6,Healthy
-Brahman,169,Male,773.6,Healthy
-Hariana,137,Female,281.7,Healthy
-Hariana,159,Male,456.2,Healthy
-Kor Khmer,106,Male,381.6,Healthy
-Hariana,180,Female,320.8,Healthy
-Hariana,157,Female,374.1,Overweight
-Brahman,38,Male,654.9,Healthy
-Brahman,158,Female,549.3,Healthy
-Brahman,81,Female,477.6,Healthy
-Brahman,99,Female,568.6,Healthy
-Brahman,1,Male,84.6,Healthy
-Brahman,205,Male,814.2,Healthy
-Hariana,76,Female,238.0,Underweight
-Brahman,220,Female,560.9,Healthy
-Brahman,11,Female,292.4,Healthy
-Kor Khmer,38,Male,328.5,Healthy
-Hariana,193,Male,522.5,Healthy
-Hariana,223,Female,290.2,Healthy
-Hariana,12,Female,189.6,Healthy
-Brahman,45,Female,576.3,Healthy
-Brahman,154,Female,452.1,Underweight
-Brahman,112,Female,566.9,Healthy
-Kor Khmer,232,Female,237.4,Healthy
-Brahman,16,Male,531.7,Healthy
-Kor Khmer,103,Female,258.2,Healthy
-Hariana,222,Male,442.3,Healthy
-Brahman,97,Female,511.4,Healthy
-Kor Khmer,187,Female,250.9,Healthy
-Kor Khmer,191,Male,311.9,Healthy
-Brahman,87,Male,753.8,Healthy
-Hariana,108,Male,495.9,Healthy
-Hariana,162,Male,411.6,Healthy
-Hariana,239,Female,346.7,Healthy
-Kor Khmer,69,Male,360.6,Healthy
-Kor Khmer,210,Female,206.9,Underweight
-Kor Khmer,157,Male,326.3,Healthy
-Kor Khmer,198,Female,279.9,Healthy
-Hariana,73,Female,289.7,Healthy
-Brahman,232,Female,524.5,Healthy
-Kor Khmer,223,Female,261.6,Healthy
-Kor Khmer,225,Female,269.6,Healthy
-Hariana,62,Female,309.7,Healthy
-Brahman,155,Male,799.1,Healthy
-Brahman,59,Female,610.9,Healthy
-Hariana,78,Male,541.1,Overweight
-Hariana,221,Male,510.5,Healthy
-Brahman,36,Female,494.0,Healthy
-Kor Khmer,220,Male,321.7,Healthy
-Brahman,21,Female,368.6,Healthy
-Hariana,195,Male,489.3,Healthy
-Kor Khmer,147,Female,260.4,Healthy
-Kor Khmer,95,Male,397.8,Healthy
-Hariana,227,Female,346.1,Healthy
-Hariana,67,Female,271.5,Underweight
-Hariana,218,Female,359.2,Healthy
-Brahman,191,Female,495.1,Healthy
-Brahman,16,Male,515.4,Healthy
-Kor Khmer,11,Female,131.2,Healthy
-Hariana,149,Male,557.7,Overweight
-Kor Khmer,144,Male,458.8,Overweight
-Kor Khmer,137,Male,371.1,Healthy
-Kor Khmer,117,Female,245.2,Healthy
-Kor Khmer,192,Male,368.7,Healthy
-Hariana,21,Male,370.1,Healthy
-Kor Khmer,217,Male,338.8,Healthy
-Hariana,119,Female,383.1,Overweight
-Hariana,209,Female,332.5,Healthy
-Brahman,49,Male,846.8,Healthy
-Hariana,13,Female,198.5,Healthy
-Brahman,191,Female,573.2,Healthy
-Hariana,174,Male,504.0,Healthy
-Hariana,28,Male,359.2,Healthy
-Hariana,203,Female,306.9,Healthy
-Brahman,163,Male,756.4,Healthy
-Brahman,226,Female,574.2,Healthy
-Kor Khmer,179,Female,269.5,Healthy
+Breed	Age	Gender	Weight	ExpectedWeight	PctOfExpected	Label	IsolationForest_Score	IsolationForest_Flag	
+Brahman Cross	9	Female	110.9	103.4	107.3	Normal	0.0396	Normal	
+Local Zebu	19	Female	120.6	122.6	98.4	Normal	0.1352	Normal	
+Local Zebu	60	Male	364.5	354.8	102.7	Normal	0.0734	Normal	
+Local Zebu	9	Female	96.7	73.9	130.9	Overweight	0.1039	Normal	
+Sahiwal	59	Male	439	442.6	99.2	Normal	0.0317	Normal	
+Holstein Cross	6	Female	87.3	90.8	96.1	Normal	0.0356	Normal	
+Red Chittagong	41	Male	259.7	236	110	Normal	0.0795	Normal	
+Red Chittagong	17	Female	116.9	105.4	110.9	Normal	0.1032	Normal	
+Red Chittagong	39	Female	198.4	205.4	96.6	Normal	0.1093	Normal	
+Pabna	54	Male	352.2	344.1	102.4	Normal	0.07	Normal	
+Brahman Cross	52	Female	389.9	396.9	98.2	Normal	0.06	Normal	
+Local Zebu	35	Female	193.6	200.6	96.5	Normal	0.139	Normal	
+Holstein Cross	18	Female	184.2	180.5	102	Normal	0.0792	Normal	
+Holstein Cross	26	Female	211.7	240.4	88.1	Normal	0.0927	Normal	
+Local Zebu	15	Female	77.3	103.1	75	Underweight	0.104	Normal	
+Sahiwal	26	Female	190.1	198.5	95.8	Normal	0.1058	Normal	
+Sindhi Cross	34	Female	219.7	234.9	93.5	Normal	0.0666	Normal	
+Sahiwal	35	Female	258.8	254.1	101.8	Normal	0.1015	Normal	
+Red Chittagong	14	Male	87.2	100.9	86.4	Normal	0.0341	Normal	
+Holstein Cross	46	Male	407.7	428.8	95.1	Normal	0.0355	Normal	
+Sindhi Cross	64	Male	473.4	451.4	104.9	Normal	-0.0169	Flagged - Unusual, Needs Review	
+Sahiwal	39	Female	275.4	278.8	98.8	Normal	0.0991	Normal	
+Brahman Cross	52	Male	437.6	436.6	100.2	Normal	0.0142	Normal	
+Pabna	17	Female	99	120.4	82.2	Normal	0.0968	Normal	
+Local Zebu	26	Female	148.6	156.8	94.8	Normal	0.139	Normal	
+Local Zebu	54	Female	294.9	293.2	100.6	Normal	0.1382	Normal	
+Local Zebu	7	Female	46.9	64.1	73.2	Underweight	0.0313	Normal	
+Sindhi Cross	40	Female	275.6	270	102.1	Normal	0.0676	Normal	
+Red Chittagong	26	Female	137.3	146.3	93.8	Normal	0.1017	Normal	
+Holstein Cross	39	Female	333.1	337.5	98.7	Normal	0.0747	Normal	
+Pabna	19	Female	121.8	130.8	93.1	Normal	0.1146	Normal	
+Brahman Cross	31	Male	306.7	278.9	110	Normal	0.0155	Normal	
+Pabna	6	Female	63	63.2	99.7	Normal	0.0323	Normal	
+Local Zebu	52	Female	267.6	283.5	94.4	Normal	0.1408	Normal	
+Red Chittagong	13	Male	108.2	95.9	112.8	Normal	0.0484	Normal	
+Local Zebu	68	Female	343.2	361.5	94.9	Normal	0.102	Normal	
+Pabna	22	Male	164.2	161	102	Normal	0.066	Normal	
+Pabna	39	Female	205.4	234.8	87.5	Normal	0.119	Normal	
+Sindhi Cross	31	Female	197.4	217.4	90.8	Normal	0.0648	Normal	
+Brahman Cross	53	Female	406.7	403.7	100.7	Normal	0.0551	Normal	
+Local Zebu	34	Male	327.6	215.3	152.2	Overweight	0.0634	Normal	
+Local Zebu	13	Male	105.3	102.7	102.5	Normal	0.0646	Normal	
+Holstein Cross	15	Female	156.4	158.1	98.9	Normal	0.0861	Normal	
+Pabna	22	Female	141.9	146.4	96.9	Normal	0.117	Normal	
+Brahman Cross	37	Female	272.3	294.5	92.5	Normal	0.0742	Normal	
+Local Zebu	18	Female	107	117.8	90.8	Normal	0.1275	Normal	
+Red Chittagong	12	Female	75.7	82.6	91.6	Normal	0.0699	Normal	
+Local Zebu	57	Female	323.7	307.9	105.1	Normal	0.1354	Normal	
+Local Zebu	30	Male	199	193.9	102.6	Normal	0.0857	Normal	
+Red Chittagong	41	Female	188.1	214.6	87.7	Normal	0.107	Normal	
+Local Zebu	18	Male	134.4	129.5	103.8	Normal	0.082	Normal	
+Holstein Cross	17	Female	167.3	173.1	96.6	Normal	0.0858	Normal	
+Local Zebu	68	Female	351.3	361.5	97.2	Normal	0.1026	Normal	
+Sindhi Cross	27	Female	203.1	194	104.7	Normal	0.0629	Normal	
+Local Zebu	64	Male	391.7	376.2	104.1	Normal	0.0595	Normal	
+Sahiwal	68	Male	517.7	503.7	102.8	Normal	-0.0268	Flagged - Unusual, Needs Review	
+Sindhi Cross	13	Female	141.9	112	126.7	Overweight	0.0381	Normal	
+Holstein Cross	26	Male	259.7	264.4	98.2	Normal	0.0389	Normal	
+Holstein Cross	14	Female	155.6	150.6	103.3	Normal	0.0806	Normal	
+Local Zebu	21	Female	147	132.4	111	Normal	0.1439	Normal	
+Brahman Cross	11	Female	109.9	117.1	93.9	Normal	0.0503	Normal	
+Brahman Cross	72	Male	584	586.7	99.5	Normal	-0.071	Flagged - Potential Sickness	
+Brahman Cross	46	Male	374.9	391.5	95.8	Normal	0.0287	Normal	
+Brahman Cross	44	Female	324.4	342.3	94.8	Normal	0.0745	Normal	
+Sindhi Cross	7	Female	89.1	77	115.7	Normal	0.0012	Normal	
+Sindhi Cross	15	Female	144.1	123.8	116.4	Normal	0.0472	Normal	
+Local Zebu	50	Female	272.7	273.8	99.6	Normal	0.1392	Normal	
+Red Chittagong	26	Female	161.4	146.3	110.3	Normal	0.1175	Normal	
+Red Chittagong	7	Female	65.3	59.8	109.2	Normal	0.041	Normal	
+Sindhi Cross	19	Female	137.5	147.2	93.4	Normal	0.0538	Normal	
+Local Zebu	19	Female	128	122.6	104.4	Normal	0.1389	Normal	
+Red Chittagong	32	Female	196.7	173.6	113.3	Normal	0.1216	Normal	
+Brahman Cross	39	Female	307.6	308.2	99.8	Normal	0.0706	Normal	
+Sindhi Cross	12	Male	140.3	116.8	120.1	Overweight	0.0009	Normal	
+Local Zebu	6	Male	25.9	65.2	39.7	Underweight	-0.0246	Flagged - Potential Sickness	
+Sindhi Cross	26	Female	200.4	188.1	106.5	Normal	0.0636	Normal	
+Red Chittagong	7	Male	67.1	65.8	102	Normal	0.0023	Normal	
+Sahiwal	25	Female	187.9	192.4	97.7	Normal	0.1079	Normal	
+Brahman Cross	24	Female	138.4	205.8	67.2	Underweight	0.0658	Normal	
+Sindhi Cross	11	Female	70.5	100.4	70.2	Underweight	0.0057	Normal	
+Local Zebu	19	Female	119.3	122.6	97.3	Normal	0.1348	Normal	
+Holstein Cross	25	Female	238.2	232.9	102.3	Normal	0.0841	Normal	
+Local Zebu	28	Female	261	166.5	156.8	Overweight	0.1136	Normal	
+Sindhi Cross	37	Male	269.9	277.7	97.2	Normal	0.0234	Normal	
+Local Zebu	10	Female	66.6	78.8	84.5	Normal	0.0832	Normal	
+Holstein Cross	64	Male	569.3	576.8	98.7	Normal	-0.0341	Flagged - Potential Sickness	
+Holstein Cross	34	Male	343.9	330.2	104.1	Normal	0.0307	Normal	
+Red Chittagong	14	Female	96.6	91.7	105.3	Normal	0.0894	Normal	
+Brahman Cross	57	Female	423.1	431	98.2	Normal	0.05	Normal	
+Red Chittagong	9	Male	83.5	75.8	110.2	Normal	0.0283	Normal	
+Local Zebu	39	Male	243.6	242.1	100.6	Normal	0.0934	Normal	
+Red Chittagong	46	Female	251.8	237.3	106.1	Normal	0.1217	Normal	
+Local Zebu	30	Male	183.3	193.9	94.5	Normal	0.0841	Normal	
+Local Zebu	31	Female	176.2	181.1	97.3	Normal	0.1423	Normal	
+Brahman Cross	48	Female	363.7	369.6	98.4	Normal	0.0725	Normal	
+Local Zebu	44	Female	222.5	244.5	91	Normal	0.1336	Normal	
+Red Chittagong	43	Female	228.1	223.6	102	Normal	0.1244	Normal	
+Brahman Cross	54	Female	414.5	410.6	100.9	Normal	0.0521	Normal	
+Brahman Cross	44	Female	342.4	342.3	100	Normal	0.0715	Normal	
+Red Chittagong	32	Female	170.1	173.6	98	Normal	0.1167	Normal	
+Brahman Cross	65	Female	464.4	485.6	95.6	Normal	0.0269	Normal	
+Pabna	27	Female	166.1	172.4	96.3	Normal	0.1204	Normal	
+Brahman Cross	48	Male	401.4	406.6	98.7	Normal	0.0205	Normal	
+Local Zebu	45	Male	262.3	274.3	95.6	Normal	0.0971	Normal	
+Local Zebu	37	Female	208	210.4	98.9	Normal	0.1402	Normal	
+Sahiwal	64	Female	439.3	433.2	101.4	Normal	0.0619	Normal	
+Local Zebu	55	Female	326.4	298.1	109.5	Normal	0.1336	Normal	
+Brahman Cross	6	Female	85.6	83	103.1	Normal	0.0099	Normal	
+Sindhi Cross	60	Male	429.6	425.7	100.9	Normal	-0.0041	Flagged - Unusual, Needs Review	
+Sahiwal	65	Male	482.2	483.3	99.8	Normal	-0.0005	Flagged - Potential Sickness	
+Holstein Cross	64	Male	548.1	576.8	95	Normal	-0.023	Flagged - Potential Sickness	
+Pabna	46	Female	270.8	271.2	99.9	Normal	0.1266	Normal	
+Brahman Cross	70	Female	520.7	519.8	100.2	Normal	-0.0046	Flagged - Possible Pregnancy or Overweight	
+Pabna	26	Female	204.1	167.2	122.1	Overweight	0.1189	Normal	
+Local Zebu	37	Female	207.5	210.4	98.6	Normal	0.1402	Normal	
+Sahiwal	68	Female	462.4	457.9	101	Normal	0.0378	Normal	
+Local Zebu	42	Male	257.7	258.2	99.8	Normal	0.098	Normal	
+Sindhi Cross	16	Male	125	142.6	87.7	Normal	0.0052	Normal	
+Sahiwal	33	Male	283.1	266	106.4	Normal	0.0485	Normal	
+Pabna	59	Male	384	372.7	103	Normal	0.0623	Normal	
+Red Chittagong	8	Female	76.3	64.4	118.5	Normal	0.0623	Normal	
+Red Chittagong	6	Female	41.7	55.3	75.4	Underweight	-0.0088	Flagged - Potential Sickness	
+Red Chittagong	59	Female	317.5	296.4	107.1	Normal	0.1073	Normal	
+Sahiwal	34	Female	226.9	248	91.5	Normal	0.1068	Normal	
+Pabna	55	Male	358.6	349.8	102.5	Normal	0.072	Normal	
+Red Chittagong	27	Female	183.7	150.8	121.8	Overweight	0.1171	Normal	
+Sindhi Cross	9	Female	73.8	88.6	83.3	Normal	0.0027	Normal	
+Brahman Cross	16	Female	142.7	151.2	94.4	Normal	0.0688	Normal	
+Pabna	12	Male	105.3	103.8	101.4	Normal	0.0399	Normal	
+Pabna	49	Female	279.2	286.8	97.4	Normal	0.1216	Normal	
+Sahiwal	59	Male	419.3	442.6	94.7	Normal	0.0382	Normal	
+Local Zebu	12	Female	89.5	88.5	101.1	Normal	0.1172	Normal	
+Brahman Cross	11	Female	101.1	117.1	86.3	Normal	0.0455	Normal	
+Local Zebu	8	Female	76.1	69	110.3	Normal	0.0928	Normal	
+Pabna	20	Female	122.2	136	89.9	Normal	0.1116	Normal	
+Sahiwal	53	Male	425.1	401.8	105.8	Normal	0.0309	Normal	
+Sahiwal	20	Female	149.8	161.5	92.8	Normal	0.0926	Normal	
+Red Chittagong	9	Female	64.1	68.9	93	Normal	0.0466	Normal	
+Sindhi Cross	54	Female	364.1	351.9	103.5	Normal	0.0531	Normal	
+Local Zebu	37	Male	212.9	231.4	92	Normal	0.0873	Normal	
+Holstein Cross	21	Female	206.4	203	101.7	Normal	0.0869	Normal	
+Local Zebu	60	Female	342.1	322.5	106.1	Normal	0.1292	Normal	
+Brahman Cross	7	Female	65.7	89.8	73.2	Underweight	0.0055	Normal	
+Local Zebu	52	Female	286.3	283.5	101	Normal	0.1423	Normal	
+Sahiwal	61	Male	460	456.1	100.9	Normal	0.0198	Normal	
+Brahman Cross	67	Female	511	499.3	102.3	Normal	0.0113	Normal	
+Brahman Cross	47	Female	344.2	362.8	94.9	Normal	0.0758	Normal	
+Local Zebu	63	Male	351	370.8	94.7	Normal	0.0657	Normal	
+Brahman Cross	54	Male	459.4	451.6	101.7	Normal	0.0076	Normal	
+Red Chittagong	68	Male	375.6	371.1	101.2	Normal	0.0279	Normal	
+Red Chittagong	41	Female	218.3	214.6	101.7	Normal	0.1192	Normal	
+Local Zebu	36	Female	210.7	205.5	102.5	Normal	0.141	Normal	
+Sahiwal	66	Female	435.3	445.6	97.7	Normal	0.057	Normal	
+Sahiwal	17	Male	160.8	157.3	102.2	Normal	0.0484	Normal	
+Local Zebu	53	Female	292.8	288.4	101.5	Normal	0.1413	Normal	
+Red Chittagong	48	Female	235.7	246.4	95.7	Normal	0.1152	Normal	
+Red Chittagong	35	Male	234	206	113.6	Normal	0.078	Normal	
+Local Zebu	29	Male	195.6	188.5	103.8	Normal	0.0844	Normal	
+Local Zebu	42	Female	216.9	234.8	92.4	Normal	0.1378	Normal	
+Red Chittagong	52	Male	165.3	291.1	56.8	Underweight	0.0308	Normal	
+Sindhi Cross	43	Female	272.9	287.6	94.9	Normal	0.0712	Normal	
+Holstein Cross	68	Male	364.3	609.7	59.8	Underweight	0.0085	Normal	
+Red Chittagong	12	Male	108.2	90.9	119	Normal	0.0476	Normal	
+Local Zebu	14	Female	85.9	98.2	87.5	Normal	0.1139	Normal	
+Brahman Cross	12	Male	150.7	136.3	110.6	Normal	0.0095	Normal	
+Sindhi Cross	16	Female	135.8	129.6	104.8	Normal	0.0509	Normal	
+Sahiwal	34	Female	260.3	248	105	Normal	0.0995	Normal	
+Sindhi Cross	44	Female	321.9	293.4	109.7	Normal	0.0619	Normal	
+Red Chittagong	13	Female	83.5	87.1	95.9	Normal	0.0771	Normal	
+Sindhi Cross	32	Female	211.9	223.2	94.9	Normal	0.0634	Normal	
+Local Zebu	36	Male	212.7	226	94.1	Normal	0.0891	Normal	
+Local Zebu	63	Female	324.9	337.1	96.4	Normal	0.126	Normal	
+Local Zebu	42	Female	233.6	234.8	99.5	Normal	0.1403	Normal	
+Pabna	35	Female	219.1	214	102.4	Normal	0.1263	Normal	
+Brahman Cross	31	Female	257.7	253.6	101.6	Normal	0.0749	Normal	
+Brahman Cross	40	Female	327.4	315	103.9	Normal	0.0648	Normal	
+Local Zebu	45	Female	249.6	249.4	100.1	Normal	0.1385	Normal	
+Sindhi Cross	62	Male	460.4	438.6	105	Normal	-0.0118	Flagged - Unusual, Needs Review	
+Sahiwal	40	Female	281	285	98.6	Normal	0.0991	Normal	
+Local Zebu	11	Female	124.4	83.6	148.8	Overweight	0.1131	Normal	
+Brahman Cross	9	Male	123.2	113.8	108.3	Normal	-0.008	Flagged - Unusual, Needs Review	
+Holstein Cross	8	Female	92.9	105.8	87.8	Normal	0.0554	Normal	
+Local Zebu	11	Female	67.6	83.6	80.9	Normal	0.0888	Normal	
+Pabna	62	Female	361.6	354.4	102	Normal	0.1014	Normal	
+Brahman Cross	68	Female	502.7	506.1	99.3	Normal	0.0135	Normal	
+Red Chittagong	47	Female	252.6	241.8	104.5	Normal	0.1189	Normal	
+Red Chittagong	69	Male	383.2	376.1	101.9	Normal	0.0204	Normal	
+Holstein Cross	10	Female	119.7	120.7	99.2	Normal	0.0673	Normal	
+Red Chittagong	57	Female	274.6	287.3	95.6	Normal	0.1038	Normal	
+Local Zebu	65	Female	324.2	346.9	93.5	Normal	0.1165	Normal	
+Red Chittagong	69	Female	335.3	342	98	Normal	0.0719	Normal	
+Local Zebu	22	Female	150.1	137.2	109.4	Normal	0.1431	Normal	
+Sahiwal	21	Male	187.7	184.4	101.8	Normal	0.0507	Normal	
+Sahiwal	26	Male	107.9	218.4	49.4	Underweight	0.0175	Normal	
+Holstein Cross	20	Female	198.1	195.5	101.3	Normal	0.0845	Normal	
+Holstein Cross	69	Female	567.6	561.8	101	Normal	-0.014	Flagged - Possible Pregnancy or Overweight	
+Sahiwal	59	Female	389.1	402.3	96.7	Normal	0.0754	Normal	
+Local Zebu	24	Female	149.3	147	101.6	Normal	0.1474	Normal	
+Pabna	23	Female	152.5	151.6	100.6	Normal	0.1251	Normal	
+Sahiwal	59	Male	425.4	442.6	96.1	Normal	0.0367	Normal	
+Local Zebu	6	Male	70.5	65.2	108.1	Normal	0.005	Normal	
+Brahman Cross	68	Female	514.5	506.1	101.7	Normal	0.0098	Normal	
+Pabna	48	Female	297.8	281.6	105.8	Normal	0.1198	Normal	
+Pabna	47	Female	292.2	276.4	105.7	Normal	0.1206	Normal	
+Local Zebu	55	Male	307.3	327.9	93.7	Normal	0.0916	Normal	
+Local Zebu	66	Female	337.7	351.8	96	Normal	0.1122	Normal	
+Red Chittagong	25	Female	90.6	141.8	63.9	Underweight	0.0708	Normal	
+Holstein Cross	62	Male	568.1	560.4	101.4	Normal	-0.0301	Flagged - Unusual, Needs Review	
+Local Zebu	24	Female	154.7	147	105.2	Normal	0.1464	Normal	
+Local Zebu	66	Female	409.5	351.8	116.4	Normal	0.0803	Normal	
+Brahman Cross	56	Female	432.8	424.2	102	Normal	0.0392	Normal	
+Holstein Cross	54	Female	466.7	449.6	103.8	Normal	0.0346	Normal	
+Sindhi Cross	68	Female	275	433.8	63.4	Underweight	0.0143	Normal	
+Sindhi Cross	35	Female	250.5	240.8	104	Normal	0.0655	Normal	
+Local Zebu	18	Female	113	117.8	95.9	Normal	0.1339	Normal	
+Sindhi Cross	11	Male	70.3	110.4	63.7	Underweight	-0.0291	Flagged - Potential Sickness	
+Local Zebu	58	Female	301.2	312.8	96.3	Normal	0.1284	Normal	
+Local Zebu	16	Female	104.4	108	96.7	Normal	0.1279	Normal	
+Sahiwal	69	Female	456.8	464.1	98.4	Normal	0.0364	Normal	
+Pabna	38	Female	230.8	229.6	100.5	Normal	0.1246	Normal	
+Sindhi Cross	65	Female	451	416.2	108.4	Normal	0.029	Normal	
+Local Zebu	62	Female	304.2	332.2	91.6	Normal	0.1194	Normal	
+Red Chittagong	60	Female	311.3	301	103.4	Normal	0.1047	Normal	
+Red Chittagong	55	Female	254.1	278.2	91.3	Normal	0.1049	Normal	
+Red Chittagong	51	Female	253	260	97.3	Normal	0.1123	Normal	
+Red Chittagong	56	Male	327.4	311.1	105.2	Normal	0.062	Normal	
+Sahiwal	12	Female	113.1	112.1	100.9	Normal	0.0745	Normal	
+Holstein Cross	42	Female	343.8	360	95.5	Normal	0.0777	Normal	
+Holstein Cross	34	Female	289.4	300.2	96.4	Normal	0.0729	Normal	
+Brahman Cross	23	Female	209.2	199	105.1	Normal	0.0737	Normal	
+Brahman Cross	45	Female	177.1	349.1	50.7	Underweight	0.0447	Normal	
+Sindhi Cross	47	Female	314.2	311	101	Normal	0.0634	Normal	
+Local Zebu	52	Female	284.2	283.5	100.2	Normal	0.1415	Normal	
+Holstein Cross	38	Female	320.3	330	97.1	Normal	0.0738	Normal	
+Sindhi Cross	43	Female	319.7	287.6	111.2	Normal	0.0623	Normal	
+Local Zebu	15	Male	122.9	113.4	108.4	Normal	0.0728	Normal	
+Holstein Cross	56	Female	434.2	464.6	93.5	Normal	0.0477	Normal	
+Red Chittagong	56	Male	313.9	311.1	100.9	Normal	0.0635	Normal	
+Pabna	39	Female	224.9	234.8	95.8	Normal	0.124	Normal	
+Sindhi Cross	19	Female	159.9	147.2	108.6	Normal	0.0571	Normal	
+Brahman Cross	47	Female	350.9	362.8	96.7	Normal	0.0757	Normal	
+Local Zebu	65	Female	345.2	346.9	99.5	Normal	0.1179	Normal	
+Red Chittagong	23	Male	204	145.9	139.8	Overweight	0.069	Normal	
+Local Zebu	23	Female	155.1	142.1	109.1	Normal	0.1454	Normal	
+Sindhi Cross	59	Female	363.1	381.2	95.3	Normal	0.051	Normal	
+Sindhi Cross	18	Female	136.3	141.3	96.5	Normal	0.0556	Normal	
+Sindhi Cross	41	Male	296.3	303.4	97.7	Normal	0.0239	Normal	
+Pabna	36	Female	209.4	219.2	95.5	Normal	0.1249	Normal	
+Sahiwal	51	Male	414.7	388.2	106.8	Normal	0.0328	Normal	
+Sindhi Cross	64	Male	457.5	451.4	101.4	Normal	-0.0108	Flagged - Unusual, Needs Review	
+Brahman Cross	8	Male	87.3	106.3	82.1	Normal	-0.0213	Flagged - Potential Sickness	
+Sindhi Cross	32	Male	259.3	245.5	105.6	Normal	0.0192	Normal	
+Local Zebu	33	Female	222.7	190.9	116.7	Normal	0.1364	Normal	
+Sahiwal	6	Male	98	82.6	118.6	Normal	-0.0102	Flagged - Unusual, Needs Review	
+Sindhi Cross	38	Female	235.5	258.3	91.2	Normal	0.0668	Normal	
+Holstein Cross	22	Male	224.2	231.5	96.8	Normal	0.0431	Normal	
+Local Zebu	47	Male	304	285	106.7	Normal	0.0978	Normal	
+Local Zebu	59	Female	307	317.6	96.7	Normal	0.1264	Normal	
+Pabna	52	Female	309.1	302.4	102.2	Normal	0.1224	Normal	
+Pabna	11	Female	100.8	89.2	113	Normal	0.0917	Normal	
+Brahman Cross	44	Female	328.4	342.3	95.9	Normal	0.0746	Normal	
+Local Zebu	67	Female	355.7	356.6	99.7	Normal	0.1078	Normal	
+Local Zebu	62	Male	316.9	365.5	86.7	Normal	0.0615	Normal	
+Brahman Cross	14	Male	135.9	151.3	89.8	Normal	0.0178	Normal	
+Brahman Cross	47	Female	359	362.8	99	Normal	0.0747	Normal	
+Red Chittagong	70	Female	327.8	346.5	94.6	Normal	0.0585	Normal	
+Sahiwal	33	Female	266.3	241.8	110.1	Normal	0.0941	Normal	
+Red Chittagong	64	Female	297.7	319.2	93.3	Normal	0.093	Normal	
+Red Chittagong	46	Female	230.7	237.3	97.2	Normal	0.1192	Normal	
+Local Zebu	66	Male	388.9	386.9	100.5	Normal	0.0537	Normal	
+Local Zebu	18	Female	139.4	117.8	118.3	Normal	0.1386	Normal	
+Local Zebu	13	Female	71.8	93.4	76.9	Underweight	0.0951	Normal	
+Red Chittagong	21	Female	141	123.6	114.1	Normal	0.1069	Normal	
+Sindhi Cross	60	Female	387.2	387	100.1	Normal	0.0535	Normal	
+Sindhi Cross	45	Female	284.5	299.2	95.1	Normal	0.0727	Normal	
+Local Zebu	67	Male	399.2	392.3	101.8	Normal	0.0468	Normal	
+Holstein Cross	53	Male	489.4	486.4	100.6	Normal	0.0034	Normal	
+Local Zebu	60	Female	313.5	322.5	97.2	Normal	0.1306	Normal	
+Holstein Cross	9	Female	114.3	113.3	100.9	Normal	0.0629	Normal	
+Sahiwal	9	Male	97.2	102.9	94.5	Normal	0.0132	Normal	
+Red Chittagong	49	Female	252.7	251	100.7	Normal	0.1139	Normal	
+Local Zebu	57	Male	348.6	338.7	102.9	Normal	0.0875	Normal	
+Sindhi Cross	17	Female	159.2	135.5	117.5	Normal	0.0565	Normal	
+Red Chittagong	49	Male	257.5	276	93.3	Normal	0.0628	Normal	
+Red Chittagong	16	Female	132.8	100.8	131.7	Overweight	0.1009	Normal	
+Sahiwal	12	Female	82.8	112.1	73.9	Underweight	0.053	Normal	
+Brahman Cross	68	Female	503.8	506.1	99.5	Normal	0.0134	Normal	
+Local Zebu	71	Male	422.6	413.7	102.2	Normal	0.0078	Normal	
+Red Chittagong	68	Female	341.6	337.4	101.2	Normal	0.077	Normal	
+Local Zebu	13	Male	93.4	102.7	90.9	Normal	0.0597	Normal	
+Local Zebu	23	Female	139	142.1	97.8	Normal	0.1418	Normal	
+Local Zebu	69	Female	359	366.4	98	Normal	0.096	Normal	
+Red Chittagong	35	Female	178.4	187.2	95.3	Normal	0.1146	Normal	
+Holstein Cross	15	Female	170.9	158.1	108.1	Normal	0.0783	Normal	
+Pabna	64	Female	370.2	364.8	101.5	Normal	0.0943	Normal	
+Brahman Cross	57	Female	420.6	431	97.6	Normal	0.0483	Normal	
+Local Zebu	8	Female	82.5	69	119.6	Normal	0.0978	Normal	
+Sindhi Cross	64	Female	415	410.4	101.1	Normal	0.0535	Normal	
+Local Zebu	19	Male	147.1	134.9	109	Normal	0.0843	Normal	
+Pabna	56	Female	332.6	323.2	102.9	Normal	0.1131	Normal	
+Local Zebu	27	Male	165.4	177.8	93	Normal	0.0816	Normal	
+Pabna	30	Female	179.6	188	95.5	Normal	0.1285	Normal	
+Sahiwal	24	Male	216	204.8	105.5	Normal	0.0495	Normal	
+Local Zebu	25	Female	161	151.9	106	Normal	0.1453	Normal	
+Local Zebu	69	Female	366.1	366.4	99.9	Normal	0.0881	Normal	
+Brahman Cross	47	Female	364.5	362.8	100.5	Normal	0.0708	Normal	
+Local Zebu	14	Female	117.4	98.2	119.6	Normal	0.13	Normal	
+Sahiwal	13	Female	109.4	118.3	92.5	Normal	0.0743	Normal	
+Pabna	10	Male	100.6	92.4	108.9	Normal	0.0339	Normal	
+Local Zebu	17	Female	109.8	112.9	97.3	Normal	0.132	Normal	
+Pabna	11	Female	85.9	89.2	96.3	Normal	0.0887	Normal	
+Brahman Cross	47	Female	379.3	362.8	104.5	Normal	0.0663	Normal	
+Sindhi Cross	63	Male	457.4	445	102.8	Normal	-0.0095	Flagged - Unusual, Needs Review	
+Red Chittagong	16	Female	113	100.8	112.1	Normal	0.103	Normal	
+Local Zebu	62	Female	351.8	332.2	105.9	Normal	0.1239	Normal	
+Brahman Cross	52	Female	397.2	396.9	100.1	Normal	0.0554	Normal	
+Red Chittagong	49	Female	361.4	251	144	Overweight	0.0896	Normal	
+Red Chittagong	55	Male	301.4	306.1	98.5	Normal	0.0686	Normal	
+Brahman Cross	25	Male	238.7	233.9	102.1	Normal	0.0297	Normal	
+Local Zebu	50	Male	299.2	301.1	99.4	Normal	0.0944	Normal	
+Brahman Cross	22	Female	193.6	192.2	100.7	Normal	0.0692	Normal	
+Red Chittagong	54	Female	282.6	273.7	103.3	Normal	0.1119	Normal	
+Local Zebu	17	Female	100.6	112.9	89.1	Normal	0.1223	Normal	
+Red Chittagong	52	Male	322.4	291.1	110.8	Normal	0.0697	Normal	
+Red Chittagong	68	Male	356	371.1	95.9	Normal	0.0256	Normal	
+Local Zebu	43	Female	221.4	239.6	92.4	Normal	0.1372	Normal	
+Sahiwal	10	Female	117.1	99.8	117.3	Normal	0.061	Normal	
+Brahman Cross	54	Male	463.5	451.6	102.6	Normal	0.0058	Normal	
+Sahiwal	27	Female	134.8	204.7	65.9	Underweight	0.0789	Normal	
+Sindhi Cross	42	Female	291.1	281.7	103.3	Normal	0.0706	Normal	
+Local Zebu	36	Male	225.9	226	100	Normal	0.0919	Normal	
+Pabna	30	Female	174.5	188	92.8	Normal	0.1263	Normal	
+Sindhi Cross	65	Female	417.4	416.2	100.3	Normal	0.0477	Normal	
+Pabna	59	Female	328.6	338.8	97	Normal	0.11	Normal	
+Holstein Cross	23	Female	131.8	217.9	60.5	Underweight	0.0885	Normal	
+Sindhi Cross	72	Female	455	457.2	99.5	Normal	-0.007	Flagged - Potential Sickness	
+Sahiwal	40	Female	272.6	285	95.6	Normal	0.1016	Normal	
+Holstein Cross	17	Female	168.3	173.1	97.2	Normal	0.0852	Normal	
+Pabna	50	Female	298.2	292	102.1	Normal	0.1195	Normal	
+Red Chittagong	53	Male	287.6	296.1	97.1	Normal	0.0694	Normal	
+Red Chittagong	9	Male	63.5	75.8	83.8	Normal	0.0059	Normal	
+Sahiwal	48	Female	338.1	334.4	101.1	Normal	0.0884	Normal	
+Red Chittagong	66	Female	332	328.3	101.1	Normal	0.0857	Normal	
+Sahiwal	63	Female	419.4	427	98.2	Normal	0.0728	Normal	
+Local Zebu	33	Female	183.8	190.9	96.3	Normal	0.1369	Normal	
+Sahiwal	60	Male	452.8	449.4	100.8	Normal	0.0294	Normal	
+Red Chittagong	12	Male	69.1	90.9	76	Underweight	0.0167	Normal	
+Brahman Cross	14	Male	130.2	151.3	86.1	Normal	0.0162	Normal	
+Brahman Cross	8	Female	85.8	96.6	88.8	Normal	0.0282	Normal	
+Sahiwal	43	Female	300.3	303.5	98.9	Normal	0.0968	Normal	
+Local Zebu	59	Male	354.1	349.4	101.3	Normal	0.0777	Normal	
+Pabna	52	Male	354.8	332.6	106.7	Normal	0.0705	Normal	
+Pabna	70	Female	408.9	396	103.3	Normal	0.0497	Normal	
+Pabna	55	Female	315.6	318	99.2	Normal	0.117	Normal	
+Local Zebu	14	Male	107.8	108.1	99.7	Normal	0.0673	Normal	
+Brahman Cross	48	Male	391.5	406.6	96.3	Normal	0.0249	Normal	
+Red Chittagong	28	Female	155.1	155.4	99.8	Normal	0.1137	Normal	
+Sindhi Cross	67	Female	423.6	428	99	Normal	0.0386	Normal	
+Local Zebu	64	Male	381	376.2	101.3	Normal	0.0639	Normal	
+Sahiwal	11	Male	104.1	116.5	89.4	Normal	0.0243	Normal	
+Red Chittagong	66	Male	368.9	361.1	102.2	Normal	0.033	Normal	
+Local Zebu	51	Female	412.7	278.6	148.1	Overweight	0.0743	Normal	
+Sahiwal	61	Female	413	414.7	99.6	Normal	0.0704	Normal	
+Sindhi Cross	55	Male	399.6	393.5	101.6	Normal	0.0027	Normal	
+Sahiwal	53	Female	375.6	365.3	102.8	Normal	0.0827	Normal	
+Holstein Cross	60	Male	537.9	543.9	98.9	Normal	-0.0144	Flagged - Potential Sickness	
+Holstein Cross	43	Male	407.5	404.2	100.8	Normal	0.0348	Normal	
+Brahman Cross	45	Female	349.3	349.1	100.1	Normal	0.0741	Normal	
+Local Zebu	62	Female	463.2	332.2	139.4	Overweight	0.0607	Normal	
+Sindhi Cross	41	Female	264.3	275.8	95.8	Normal	0.0673	Normal	
+Local Zebu	57	Female	308.2	307.9	100.1	Normal	0.1345	Normal	
+Brahman Cross	9	Male	121.2	113.8	106.5	Normal	-0.0075	Flagged - Unusual, Needs Review	
+Sahiwal	10	Male	131.5	109.7	119.9	Normal	0.0193	Normal	
+Brahman Cross	52	Female	411.3	396.9	103.6	Normal	0.0541	Normal	
+Brahman Cross	63	Female	504.3	472	106.8	Normal	0.0189	Normal	
+Sahiwal	23	Female	168.5	180	93.6	Normal	0.1009	Normal	
+Brahman Cross	37	Female	182.5	294.5	62	Underweight	0.0616	Normal	
+Sindhi Cross	21	Male	177.5	174.7	101.6	Normal	0.0177	Normal	
+Pabna	42	Female	283.2	250.4	113.1	Normal	0.1215	Normal	
+Local Zebu	23	Female	130	142.1	91.5	Normal	0.1359	Normal	
+Sindhi Cross	62	Female	386.1	398.7	96.8	Normal	0.0545	Normal	
+Sindhi Cross	46	Female	296.1	305.1	97.1	Normal	0.0702	Normal	
+Pabna	43	Female	223.7	255.6	87.5	Normal	0.1221	Normal	
+Sahiwal	28	Female	203	210.9	96.3	Normal	0.1074	Normal	
+Local Zebu	31	Female	169.7	181.1	93.7	Normal	0.1396	Normal	
+Pabna	52	Female	304.7	302.4	100.8	Normal	0.122	Normal	
+Holstein Cross	22	Female	215.6	210.4	102.5	Normal	0.0824	Normal	
+Red Chittagong	67	Female	361	332.8	108.5	Normal	0.0798	Normal	
+Holstein Cross	15	Male	188.2	173.9	108.2	Normal	0.0289	Normal	
+Local Zebu	65	Female	338.2	346.9	97.5	Normal	0.1199	Normal	
+Holstein Cross	29	Female	249.3	262.8	94.9	Normal	0.082	Normal	
+Pabna	13	Female	107	99.6	107.4	Normal	0.0987	Normal	
+Red Chittagong	26	Male	141.1	160.9	87.7	Normal	0.062	Normal	
+Red Chittagong	72	Female	383.1	355.6	107.7	Normal	0.0385	Normal	
+Local Zebu	41	Male	270.6	252.9	107	Normal	0.097	Normal	
+Pabna	70	Female	389	396	98.2	Normal	0.0595	Normal	
+Brahman Cross	27	Female	200.6	226.3	88.6	Normal	0.0803	Normal	
+Brahman Cross	11	Female	84.6	117.1	72.2	Underweight	0.0382	Normal	
+Brahman Cross	32	Female	258.7	260.4	99.3	Normal	0.0752	Normal	
+Brahman Cross	69	Female	531.5	512.9	103.6	Normal	-0.006	Flagged - Possible Pregnancy or Overweight	
+Brahman Cross	44	Female	318.4	342.3	93	Normal	0.0744	Normal	
+Sahiwal	44	Female	300.7	309.7	97.1	Normal	0.0968	Normal	
+Local Zebu	59	Female	317.7	317.6	100	Normal	0.131	Normal	
+Brahman Cross	46	Female	356.7	356	100.2	Normal	0.0727	Normal	
+Sindhi Cross	50	Female	321.7	328.5	97.9	Normal	0.0564	Normal	
+Red Chittagong	19	Male	135.2	125.9	107.4	Normal	0.0618	Normal	
+Local Zebu	37	Male	326.6	231.4	141.1	Overweight	0.0664	Normal	
+Red Chittagong	26	Female	144.2	146.3	98.6	Normal	0.1059	Normal	
+Sahiwal	30	Female	225.1	223.2	100.9	Normal	0.1052	Normal	
+Pabna	69	Female	398.5	390.8	102	Normal	0.0636	Normal	
+Local Zebu	56	Female	313.7	303	103.5	Normal	0.1387	Normal	
+Local Zebu	51	Male	289.6	306.5	94.5	Normal	0.0954	Normal	
+Brahman Cross	66	Male	271.9	541.7	50.2	Underweight	-0.0213	Flagged - Potential Sickness	
+Local Zebu	52	Female	302.7	283.5	106.8	Normal	0.1411	Normal	
+Red Chittagong	30	Female	169.5	164.5	103	Normal	0.1194	Normal	
+Red Chittagong	63	Female	303.4	314.6	96.4	Normal	0.0975	Normal	
+Sindhi Cross	21	Male	198	174.7	113.3	Normal	0.0161	Normal	
+Red Chittagong	49	Female	252.7	251	100.7	Normal	0.1139	Normal	
+Local Zebu	71	Female	247.5	376.1	65.8	Underweight	0.046	Normal	
+Holstein Cross	72	Female	585.2	584.2	100.2	Normal	-0.0396	Flagged - Possible Pregnancy or Overweight	
+Pabna	47	Female	307.3	276.4	111.2	Normal	0.1163	Normal	
+Red Chittagong	44	Female	254.5	228.2	111.5	Normal	0.1244	Normal	
+Pabna	68	Female	381.9	385.6	99	Normal	0.0786	Normal	
+Holstein Cross	53	Male	501	486.4	103	Normal	0.0002	Normal	
+Red Chittagong	45	Female	242.4	232.7	104.2	Normal	0.1242	Normal	
+Sahiwal	9	Female	114.1	93.6	121.9	Overweight	0.0565	Normal	
+Brahman Cross	35	Female	266.4	280.9	94.8	Normal	0.0746	Normal	
+Local Zebu	54	Male	332.9	322.6	103.2	Normal	0.0929	Normal	
+Local Zebu	20	Male	156.1	140.2	111.3	Normal	0.0885	Normal	
+Red Chittagong	58	Female	265.5	291.9	91	Normal	0.0925	Normal	
+Sahiwal	66	Female	427.8	445.6	96	Normal	0.0618	Normal	
+Local Zebu	23	Female	111.5	142.1	78.5	Underweight	0.1226	Normal	
+Sindhi Cross	67	Female	423.9	428	99	Normal	0.0386	Normal	
+Local Zebu	49	Female	279.6	268.9	104	Normal	0.1381	Normal	
+Holstein Cross	39	Female	360.1	337.5	106.7	Normal	0.0626	Normal	
+Local Zebu	44	Male	270.1	269	100.4	Normal	0.0993	Normal	
+Red Chittagong	42	Female	243.5	219.1	111.1	Normal	0.127	Normal	
+Pabna	67	Male	397.7	418.4	95.1	Normal	0.0388	Normal	
+Sahiwal	41	Male	294.7	320.3	92	Normal	0.0553	Normal	
+Pabna	56	Female	322.4	323.2	99.8	Normal	0.1172	Normal	
+Holstein Cross	43	Male	409.9	404.2	101.4	Normal	0.0348	Normal	
+Local Zebu	62	Female	331.8	332.2	99.9	Normal	0.1277	Normal	
+Local Zebu	40	Female	194	225	86.2	Normal	0.1297	Normal	
+Local Zebu	36	Male	224.7	226	99.4	Normal	0.0921	Normal	
+Pabna	35	Male	215.8	235.4	91.7	Normal	0.0688	Normal	
+Sahiwal	18	Female	159.2	149.2	106.7	Normal	0.0948	Normal	
+Sindhi Cross	26	Female	193.6	188.1	102.9	Normal	0.0661	Normal	
+Holstein Cross	67	Female	532.7	546.8	97.4	Normal	0.0094	Normal	
+Red Chittagong	42	Female	211.4	219.1	96.5	Normal	0.1181	Normal	
+Local Zebu	35	Female	184.7	200.6	92.1	Normal	0.1359	Normal	
+Sindhi Cross	28	Female	198.9	199.8	99.5	Normal	0.0637	Normal	
+Sindhi Cross	10	Female	108.8	94.5	115.1	Normal	0.0261	Normal	
+Pabna	43	Female	319.5	255.6	125	Overweight	0.105	Normal	
+Sindhi Cross	42	Female	289.3	281.7	102.7	Normal	0.072	Normal	
+Pabna	23	Female	143.6	151.6	94.7	Normal	0.1205	Normal	
+Local Zebu	20	Male	128.4	140.2	91.6	Normal	0.0784	Normal	
+Brahman Cross	29	Male	262.3	263.9	99.4	Normal	0.0226	Normal	
+Red Chittagong	30	Male	165.4	181	91.4	Normal	0.0675	Normal	
+Sindhi Cross	60	Female	378.7	387	97.9	Normal	0.0522	Normal	
+Brahman Cross	29	Female	222	239.9	92.5	Normal	0.0822	Normal	
+Sindhi Cross	6	Male	107.7	78.2	137.7	Overweight	-0.0283	Flagged - Unusual, Needs Review	
+Sahiwal	48	Male	368.4	367.8	100.2	Normal	0.037	Normal	
+Local Zebu	52	Female	273	283.5	96.3	Normal	0.1413	Normal	
+Local Zebu	45	Male	277.5	274.3	101.2	Normal	0.1011	Normal	
+Sindhi Cross	45	Female	297.6	299.2	99.5	Normal	0.0708	Normal	
+Sindhi Cross	53	Female	342.7	346	99	Normal	0.0549	Normal	
+Local Zebu	25	Female	161.1	151.9	106.1	Normal	0.1457	Normal	
+Red Chittagong	66	Female	339.7	328.3	103.5	Normal	0.0863	Normal	
+Holstein Cross	37	Female	314.6	322.6	97.5	Normal	0.0709	Normal	
+Sahiwal	63	Female	418.4	427	98	Normal	0.0729	Normal	
+Sindhi Cross	20	Male	164.2	168.3	97.6	Normal	0.0175	Normal	
+Pabna	25	Male	143.7	178.2	80.6	Normal	0.0597	Normal	
+Pabna	32	Female	175.7	198.4	88.6	Normal	0.1204	Normal	
+Sindhi Cross	63	Female	425.1	404.6	105.1	Normal	0.0505	Normal	
+Pabna	64	Female	389.5	364.8	106.8	Normal	0.0881	Normal	
+Brahman Cross	45	Female	345.4	349.1	98.9	Normal	0.075	Normal	
+Holstein Cross	33	Female	154.1	292.7	52.6	Underweight	0.0727	Normal	
+Sindhi Cross	14	Female	122.6	117.9	104	Normal	0.0476	Normal	
+Red Chittagong	29	Female	206.1	160	128.8	Overweight	0.1177	Normal	
+Sindhi Cross	59	Female	397.9	381.2	104.4	Normal	0.0505	Normal	
+Pabna	54	Female	310.9	312.8	99.4	Normal	0.1179	Normal	
+Brahman Cross	23	Female	184.6	199	92.8	Normal	0.0725	Normal	
+Local Zebu	56	Female	278.9	303	92	Normal	0.129	Normal	
+Local Zebu	6	Female	62.3	59.2	105.2	Normal	0.0509	Normal	
+Pabna	60	Female	332.7	344	96.7	Normal	0.1111	Normal	
+Local Zebu	50	Male	279.8	301.1	92.9	Normal	0.093	Normal	
+Holstein Cross	20	Male	205.4	215	95.5	Normal	0.04	Normal	
+Brahman Cross	8	Male	90	106.3	84.7	Normal	-0.0195	Flagged - Potential Sickness	
+Brahman Cross	63	Female	497.3	472	105.4	Normal	0.0225	Normal	
+Local Zebu	11	Female	96.8	83.6	115.8	Normal	0.1149	Normal	
+Local Zebu	13	Male	102.6	102.7	99.9	Normal	0.0643	Normal	
+Local Zebu	46	Female	276.4	254.2	108.7	Normal	0.1417	Normal	
+Holstein Cross	36	Male	347.8	346.6	100.3	Normal	0.0298	Normal	
+Brahman Cross	34	Female	261.1	274	95.3	Normal	0.0749	Normal	
+Brahman Cross	28	Female	255.9	233.1	109.8	Normal	0.07	Normal	
+Pabna	50	Female	300.1	292	102.8	Normal	0.1202	Normal	
+Sahiwal	46	Female	306.5	322	95.2	Normal	0.0985	Normal	
+Red Chittagong	29	Female	157.1	160	98.2	Normal	0.113	Normal	
+Holstein Cross	44	Female	361.8	374.9	96.5	Normal	0.073	Normal	
+Pabna	13	Female	78.9	99.6	79.2	Underweight	0.0833	Normal	
+Brahman Cross	23	Female	212.9	199	107	Normal	0.0729	Normal	
+Red Chittagong	16	Female	129.4	100.8	128.4	Overweight	0.1016	Normal	
+Local Zebu	30	Male	172.9	193.9	89.2	Normal	0.0815	Normal	
+Brahman Cross	11	Female	125.5	117.1	107.2	Normal	0.0544	Normal	
+Sahiwal	33	Female	232	241.8	95.9	Normal	0.1082	Normal	
+Red Chittagong	7	Male	58.5	65.8	88.9	Normal	-0.0115	Flagged - Potential Sickness	
+Sahiwal	67	Female	442.8	451.7	98	Normal	0.0505	Normal	
+Sahiwal	56	Female	370.8	383.8	96.6	Normal	0.0834	Normal	
+Sahiwal	54	Female	372.2	371.4	100.2	Normal	0.0844	Normal	
+Red Chittagong	52	Female	252.1	264.6	95.3	Normal	0.1103	Normal	
+Local Zebu	66	Female	355.8	351.8	101.1	Normal	0.1115	Normal	
+Local Zebu	46	Female	253.5	254.2	99.7	Normal	0.1387	Normal	
+Local Zebu	24	Male	158.1	161.7	97.8	Normal	0.0879	Normal	
+Brahman Cross	59	Male	475.5	489.1	97.2	Normal	0.0001	Normal	
+Local Zebu	37	Female	201.7	210.4	95.9	Normal	0.1392	Normal	
+Sahiwal	38	Female	284	272.6	104.2	Normal	0.0935	Normal	
+Sahiwal	68	Female	465.4	457.9	101.6	Normal	0.0331	Normal	
+Red Chittagong	23	Female	118	132.6	89	Normal	0.0989	Normal	
+Sindhi Cross	13	Female	113.5	112	101.3	Normal	0.0419	Normal	
+Local Zebu	12	Female	99.8	88.5	112.8	Normal	0.1211	Normal	
+Holstein Cross	35	Male	313.3	338.4	92.6	Normal	0.0407	Normal	
+Local Zebu	64	Female	350.2	342	102.4	Normal	0.1221	Normal	
+Brahman Cross	67	Female	280.9	499.3	56.3	Underweight	0.0221	Normal	
+Local Zebu	41	Female	238.4	229.9	103.7	Normal	0.1396	Normal	
+Pabna	61	Female	337.8	349.2	96.7	Normal	0.11	Normal	
+Local Zebu	18	Female	90.7	117.8	77	Underweight	0.1094	Normal	
+Brahman Cross	38	Female	276.9	301.4	91.9	Normal	0.076	Normal	
+Red Chittagong	53	Female	269.9	269.2	100.3	Normal	0.1101	Normal	
+Local Zebu	34	Male	219.2	215.3	101.8	Normal	0.0924	Normal	
+Local Zebu	10	Male	73.1	86.6	84.4	Normal	0.032	Normal	
+Brahman Cross	13	Female	140.3	130.7	107.3	Normal	0.0609	Normal	
+Local Zebu	61	Female	302.5	327.4	92.4	Normal	0.1208	Normal	
+Sindhi Cross	18	Female	140.3	141.3	99.3	Normal	0.0561	Normal	
+Local Zebu	66	Male	368.8	386.9	95.3	Normal	0.0547	Normal	
+Sahiwal	41	Female	281.4	291.2	96.6	Normal	0.1005	Normal	
+Local Zebu	46	Male	280.4	279.7	100.3	Normal	0.1006	Normal	
+Local Zebu	56	Female	290.1	303	95.7	Normal	0.1342	Normal	
+Brahman Cross	55	Female	411.6	417.4	98.6	Normal	0.0514	Normal	
+Red Chittagong	23	Female	147.7	132.6	111.4	Normal	0.1135	Normal	
+Local Zebu	50	Male	292.5	301.1	97.1	Normal	0.094	Normal	
+Holstein Cross	49	Female	424.8	412.3	103	Normal	0.051	Normal	
+Brahman Cross	47	Male	382.1	399.1	95.7	Normal	0.0284	Normal	
+Sindhi Cross	68	Male	485.1	477.2	101.7	Normal	-0.0333	Flagged - Unusual, Needs Review	
+Red Chittagong	29	Female	181.6	160	113.5	Normal	0.1202	Normal	
+Local Zebu	43	Female	202.6	239.6	84.6	Normal	0.1334	Normal	
+Local Zebu	25	Female	139.9	151.9	92.1	Normal	0.1397	Normal	
+Local Zebu	55	Male	336.6	327.9	102.7	Normal	0.0942	Normal	
+Local Zebu	45	Female	246.3	249.4	98.8	Normal	0.1384	Normal	
+Local Zebu	17	Male	129.7	124.2	104.4	Normal	0.0793	Normal	
+Brahman Cross	58	Male	472.6	481.6	98.1	Normal	0.001	Normal	
+Brahman Cross	47	Female	233.1	362.8	64.3	Underweight	0.0646	Normal	
+Sahiwal	37	Female	264.1	266.5	99.1	Normal	0.0985	Normal	
+Red Chittagong	23	Male	163.4	145.9	112	Normal	0.0772	Normal	
+Local Zebu	27	Female	165.4	161.6	102.4	Normal	0.141	Normal	
+Pabna	15	Female	115.1	110	104.6	Normal	0.1089	Normal	
+Sahiwal	69	Female	457.9	464.1	98.7	Normal	0.036	Normal	
+Local Zebu	44	Male	261.6	269	97.2	Normal	0.0983	Normal	
+Holstein Cross	54	Female	443.2	449.6	98.6	Normal	0.0442	Normal	
+Red Chittagong	23	Male	151.8	145.9	104	Normal	0.0761	Normal	
+Sahiwal	67	Male	490.6	496.9	98.7	Normal	-0.0135	Flagged - Potential Sickness	
+Sindhi Cross	43	Female	291.9	287.6	101.5	Normal	0.0705	Normal	
+Sindhi Cross	37	Male	308.8	277.7	111.2	Normal	0.0116	Normal	
+Sahiwal	52	Male	408.1	395	103.3	Normal	0.0372	Normal	
+Brahman Cross	29	Female	235	239.9	98	Normal	0.081	Normal	
+Sindhi Cross	65	Female	434.3	416.2	104.3	Normal	0.0387	Normal	
+Sahiwal	14	Female	118.3	124.4	95.1	Normal	0.0834	Normal	
+Red Chittagong	69	Male	345.6	376.1	91.9	Normal	0.017	Normal	
+Local Zebu	25	Female	136.8	151.9	90.1	Normal	0.1367	Normal	
+Local Zebu	67	Female	328.6	356.6	92.1	Normal	0.105	Normal	
+Sindhi Cross	59	Female	375.9	381.2	98.6	Normal	0.0525	Normal	
+Red Chittagong	16	Male	111.2	110.9	100.3	Normal	0.0487	Normal	
+Brahman Cross	27	Female	369.4	226.3	163.2	Overweight	0.0182	Normal	
+Red Chittagong	48	Female	251.3	246.4	102	Normal	0.1176	Normal	
+Local Zebu	39	Male	238.9	242.1	98.7	Normal	0.0933	Normal	
+Brahman Cross	34	Female	286.5	274	104.6	Normal	0.0627	Normal	
+Sahiwal	70	Male	484.1	517.3	93.6	Normal	-0.0224	Flagged - Potential Sickness	
+Pabna	43	Female	259.1	255.6	101.4	Normal	0.1256	Normal	
+Local Zebu	24	Male	173.3	161.7	107.2	Normal	0.0892	Normal	
+Sahiwal	72	Female	460.4	482.6	95.4	Normal	0.0114	Normal	
+Pabna	63	Male	412.7	395.6	104.3	Normal	0.0424	Normal	
+Holstein Cross	20	Male	220.1	215	102.4	Normal	0.0372	Normal	
+Local Zebu	27	Female	155.4	161.6	96.2	Normal	0.1397	Normal	
+Pabna	26	Male	193.4	183.9	105.2	Normal	0.0668	Normal	
+Pabna	57	Female	362.5	328.4	110.4	Normal	0.0993	Normal	
+Brahman Cross	56	Male	469.3	466.6	100.6	Normal	0.0071	Normal	
+Local Zebu	60	Female	326.2	322.5	101.1	Normal	0.1317	Normal	
+Local Zebu	14	Female	91.4	98.2	93.1	Normal	0.1182	Normal	
+Pabna	52	Male	319.9	332.6	96.2	Normal	0.0733	Normal	
+Local Zebu	68	Female	374	361.5	103.5	Normal	0.0911	Normal	
+Brahman Cross	56	Female	411.4	424.2	97	Normal	0.0499	Normal	
+Holstein Cross	28	Female	256.4	255.3	100.4	Normal	0.0793	Normal	
+Red Chittagong	16	Female	93.6	100.8	92.9	Normal	0.0855	Normal	
+Local Zebu	20	Male	147.4	140.2	105.1	Normal	0.0869	Normal	
+Pabna	59	Female	343.8	338.8	101.5	Normal	0.1068	Normal	
+Red Chittagong	68	Female	353	337.4	104.6	Normal	0.0758	Normal	
+Brahman Cross	28	Female	225.4	233.1	96.7	Normal	0.0841	Normal	
+Local Zebu	46	Female	250.2	254.2	98.4	Normal	0.1377	Normal	
+Holstein Cross	7	Female	83.6	98.3	85	Normal	0.0477	Normal	
+Red Chittagong	70	Female	339.8	346.5	98.1	Normal	0.0583	Normal	
+Pabna	62	Female	360.1	354.4	101.6	Normal	0.1023	Normal	
+Local Zebu	34	Male	226.7	215.3	105.3	Normal	0.0929	Normal	
+Pabna	27	Female	158.6	172.4	92	Normal	0.1195	Normal	
+Sahiwal	69	Female	477.1	464.1	102.8	Normal	0.0193	Normal	
+Local Zebu	52	Female	303.8	283.5	107.2	Normal	0.141	Normal	
+Sahiwal	62	Female	427.1	420.8	101.5	Normal	0.0675	Normal	
+Local Zebu	37	Male	259.6	231.4	112.2	Normal	0.0912	Normal	
+Pabna	50	Female	280.4	292	96	Normal	0.1205	Normal	
+Holstein Cross	21	Female	184.3	203	90.8	Normal	0.0916	Normal	
+Holstein Cross	50	Female	393.1	419.7	93.7	Normal	0.0661	Normal	
+Red Chittagong	23	Female	155.1	132.6	117	Normal	0.1157	Normal	
+Holstein Cross	50	Female	429.6	419.7	102.4	Normal	0.0477	Normal	
+Local Zebu	43	Male	262.8	263.6	99.7	Normal	0.0986	Normal	
+Holstein Cross	18	Male	202.8	198.6	102.1	Normal	0.034	Normal	
+Red Chittagong	13	Female	70.3	87.1	80.7	Normal	0.0632	Normal	
+Local Zebu	22	Male	187.7	151	124.3	Overweight	0.0878	Normal	
+Holstein Cross	56	Female	466.5	464.6	100.4	Normal	0.0392	Normal	
+Local Zebu	59	Female	319.3	317.6	100.5	Normal	0.131	Normal	
+Sahiwal	17	Female	153.9	143	107.6	Normal	0.0932	Normal	
+Sahiwal	53	Female	372.5	365.3	102	Normal	0.0845	Normal	
+Brahman Cross	17	Female	161.4	158	102.2	Normal	0.0683	Normal	
+Brahman Cross	51	Female	378.2	390.1	96.9	Normal	0.0651	Normal	
+Red Chittagong	60	Female	308.1	301	102.4	Normal	0.1048	Normal	
+Red Chittagong	42	Male	269.2	241	111.7	Normal	0.0795	Normal	
+Brahman Cross	68	Female	526.3	506.1	104	Normal	0.0022	Normal	
+Sahiwal	11	Male	140.4	116.5	120.5	Overweight	0.0265	Normal	
+Pabna	21	Female	133.5	141.2	94.5	Normal	0.1161	Normal	
+Pabna	60	Male	363.6	378.4	96.1	Normal	0.0604	Normal	
+Local Zebu	44	Male	267.1	269	99.3	Normal	0.0993	Normal	
+Local Zebu	52	Male	312.7	311.8	100.3	Normal	0.0961	Normal	
+Sindhi Cross	27	Male	229.8	213.3	107.7	Normal	0.0155	Normal	
+Sahiwal	35	Female	228.7	254.1	90	Normal	0.109	Normal	
+Local Zebu	33	Female	213.8	190.9	112	Normal	0.1382	Normal	
+Local Zebu	62	Male	363.1	365.5	99.3	Normal	0.0698	Normal	
+Holstein Cross	60	Female	488.1	494.5	98.7	Normal	0.0341	Normal	
+Local Zebu	17	Female	97.7	112.9	86.5	Normal	0.1198	Normal	
+Red Chittagong	44	Male	226.2	251	90.1	Normal	0.0662	Normal	
+Sahiwal	23	Female	192.4	180	106.9	Normal	0.1012	Normal	
+Local Zebu	7	Female	65.2	64.1	101.7	Normal	0.0692	Normal	
+Red Chittagong	33	Female	158.8	178.1	89.2	Normal	0.1084	Normal	
+Red Chittagong	62	Female	290.7	310.1	93.7	Normal	0.0971	Normal	
+Local Zebu	21	Female	127.3	132.4	96.1	Normal	0.1382	Normal	
+Sindhi Cross	46	Female	330.1	305.1	108.2	Normal	0.0599	Normal	
+Brahman Cross	37	Female	290.6	294.5	98.7	Normal	0.0688	Normal	
+Brahman Cross	9	Female	80.9	103.4	78.2	Underweight	0.0299	Normal	
+Red Chittagong	72	Female	351.9	355.6	99	Normal	0.0414	Normal	
+Red Chittagong	12	Female	78.5	82.6	95	Normal	0.0748	Normal	
+Local Zebu	55	Male	287.5	327.9	87.7	Normal	0.0884	Normal	
+Brahman Cross	7	Female	89	89.8	99.1	Normal	0.0227	Normal	
+Local Zebu	59	Female	314.2	317.6	98.9	Normal	0.1312	Normal	
+Sahiwal	15	Male	154.1	143.7	107.2	Normal	0.0418	Normal	
+Local Zebu	11	Female	111.4	83.6	133.3	Overweight	0.1175	Normal	
+Red Chittagong	42	Female	236	219.1	107.7	Normal	0.1271	Normal	
+Red Chittagong	57	Male	312.1	316.1	98.7	Normal	0.0599	Normal	
+Brahman Cross	41	Male	337.4	354	95.3	Normal	0.0248	Normal	
+Sindhi Cross	25	Female	220.9	182.2	121.2	Overweight	0.0565	Normal	
+Brahman Cross	14	Male	152.2	151.3	100.6	Normal	0.0163	Normal	
+Sindhi Cross	36	Male	271.5	271.3	100.1	Normal	0.023	Normal	
+Pabna	64	Female	533.7	364.8	146.3	Overweight	0.0108	Normal	
+Local Zebu	7	Female	67.1	64.1	104.7	Normal	0.0698	Normal	
+Local Zebu	50	Female	271.6	273.8	99.2	Normal	0.1397	Normal	
+Sahiwal	27	Female	196.1	204.7	95.8	Normal	0.1071	Normal	
+Holstein Cross	21	Female	266.5	203	131.3	Overweight	0.06	Normal	
+Local Zebu	15	Female	102.6	103.1	99.5	Normal	0.127	Normal	
+Local Zebu	27	Female	153.5	161.6	95	Normal	0.1382	Normal	
+Local Zebu	20	Male	129.6	140.2	92.4	Normal	0.0795	Normal	
+Local Zebu	7	Male	72.1	70.5	102.3	Normal	0.0174	Normal	
+Red Chittagong	25	Male	152.1	155.9	97.6	Normal	0.074	Normal	
+Local Zebu	59	Male	371.9	349.4	106.4	Normal	0.0753	Normal	
+Sindhi Cross	46	Male	295.8	335.6	88.1	Normal	0.0193	Normal	
+Red Chittagong	70	Female	215.1	346.5	62.1	Underweight	0.0245	Normal	
+Local Zebu	57	Male	357.4	338.7	105.5	Normal	0.0859	Normal	
+Red Chittagong	45	Male	224.9	256	87.9	Normal	0.0644	Normal	
+Local Zebu	31	Male	194.1	199.2	97.4	Normal	0.0863	Normal	
+Sahiwal	37	Female	260.9	266.5	97.9	Normal	0.0995	Normal	
+Pabna	31	Female	172.1	193.2	89.1	Normal	0.1247	Normal	
+Sahiwal	25	Male	199.9	211.6	94.5	Normal	0.0574	Normal	
+Local Zebu	50	Female	257.1	273.8	93.9	Normal	0.1343	Normal	
+Local Zebu	48	Male	316.7	290.4	109.1	Normal	0.0934	Normal	
+Holstein Cross	45	Male	434.6	420.6	103.3	Normal	0.0239	Normal	
+Local Zebu	68	Female	380.6	361.5	105.3	Normal	0.0891	Normal	
+Local Zebu	41	Male	263.7	252.9	104.3	Normal	0.0965	Normal	
+Sindhi Cross	72	Female	440.3	457.2	96.3	Normal	-0.0035	Flagged - Potential Sickness	
+Pabna	16	Female	107.3	115.2	93.1	Normal	0.1055	Normal	
+Brahman Cross	56	Male	474	466.6	101.6	Normal	0.0051	Normal	
+Pabna	22	Male	142.7	161	88.6	Normal	0.0598	Normal	
+Red Chittagong	56	Female	293.5	282.8	103.8	Normal	0.1114	Normal	
+Red Chittagong	40	Male	227.4	231	98.4	Normal	0.0755	Normal	
+Local Zebu	19	Male	129.3	134.9	95.8	Normal	0.0794	Normal	
+Pabna	58	Male	377.6	367	102.9	Normal	0.0632	Normal	
+Sahiwal	63	Male	476.4	469.7	101.4	Normal	0.0124	Normal	
+Local Zebu	26	Female	151.3	156.8	96.5	Normal	0.1414	Normal	
+Sahiwal	11	Male	133.9	116.5	114.9	Normal	0.0261	Normal	
+Local Zebu	37	Female	194.2	210.4	92.3	Normal	0.1364	Normal	
+Local Zebu	44	Male	278.2	269	103.4	Normal	0.1006	Normal	
+Local Zebu	57	Female	316.8	307.9	102.9	Normal	0.1363	Normal	
+Brahman Cross	18	Female	160.2	164.8	97.2	Normal	0.0667	Normal	
+Local Zebu	7	Male	75.4	70.5	107	Normal	0.0216	Normal	
+Local Zebu	31	Female	162.4	181.1	89.7	Normal	0.1363	Normal	
+Brahman Cross	16	Female	165.1	151.2	109.2	Normal	0.0652	Normal	
+Holstein Cross	8	Female	103	105.8	97.4	Normal	0.0558	Normal	
+Brahman Cross	22	Male	203.5	211.4	96.3	Normal	0.0296	Normal	
+Holstein Cross	21	Male	239	223.3	107	Normal	0.0374	Normal	
+Local Zebu	61	Female	316.8	327.4	96.8	Normal	0.1276	Normal	
+Local Zebu	60	Male	333.6	354.8	94	Normal	0.0751	Normal	
+Local Zebu	41	Female	206.5	229.9	89.8	Normal	0.1344	Normal	
+Brahman Cross	37	Female	303.6	294.5	103.1	Normal	0.0642	Normal	
+Sindhi Cross	67	Male	451.5	470.7	95.9	Normal	-0.0199	Flagged - Potential Sickness	
+Local Zebu	31	Female	207.4	181.1	114.5	Normal	0.1434	Normal	
+Local Zebu	8	Female	37.8	69	54.8	Underweight	0.0295	Normal	
+Red Chittagong	68	Male	396.6	371.1	106.9	Normal	0.0261	Normal	
+Red Chittagong	40	Male	234.2	231	101.4	Normal	0.0754	Normal	
+Local Zebu	41	Male	251.4	252.9	99.4	Normal	0.0948	Normal	
+Pabna	35	Female	205.8	214	96.2	Normal	0.1251	Normal	
+Brahman Cross	40	Female	321	315	101.9	Normal	0.067	Normal	
+Sahiwal	34	Female	247.4	248	99.8	Normal	0.1029	Normal	
+Red Chittagong	28	Male	187.5	170.9	109.7	Normal	0.0695	Normal	
+Holstein Cross	51	Female	659.2	427.2	154.3	Overweight	-0.0354	Flagged - Possible Pregnancy or Overweight	
+Brahman Cross	30	Female	249	246.8	100.9	Normal	0.0787	Normal	
+Sindhi Cross	45	Male	196.9	329.2	59.8	Underweight	-0.0054	Flagged - Potential Sickness	
+Local Zebu	67	Male	391.4	392.3	99.8	Normal	0.0495	Normal	
+Local Zebu	22	Male	155.6	151	103	Normal	0.0893	Normal	
+Holstein Cross	47	Male	411.4	437.1	94.1	Normal	0.034	Normal	
+Sahiwal	24	Female	166	186.2	89.2	Normal	0.1025	Normal	
+Holstein Cross	15	Female	169.3	158.1	107.1	Normal	0.0787	Normal	
+Red Chittagong	18	Male	123.5	120.9	102.2	Normal	0.0559	Normal	
+Sindhi Cross	61	Female	390.1	392.8	99.3	Normal	0.0534	Normal	
+Brahman Cross	28	Female	233.4	233.1	100.1	Normal	0.0825	Normal	
+Sindhi Cross	51	Male	373	367.8	101.4	Normal	0.0103	Normal	
+Local Zebu	45	Female	241.3	249.4	96.8	Normal	0.1389	Normal	
+Local Zebu	6	Female	47.6	59.2	80.4	Normal	0.0202	Normal	
+Red Chittagong	10	Male	83.8	80.9	103.6	Normal	0.0317	Normal	
+Holstein Cross	34	Female	285.5	300.2	95.1	Normal	0.0739	Normal	
+Pabna	48	Female	287.7	281.6	102.2	Normal	0.1237	Normal	
+Sindhi Cross	27	Female	168.4	194	86.8	Normal	0.0589	Normal	
+Holstein Cross	48	Female	420.2	404.8	103.8	Normal	0.0504	Normal	
+Local Zebu	14	Female	105.3	98.2	107.2	Normal	0.1263	Normal	
+Sahiwal	12	Female	115.9	112.1	103.4	Normal	0.0748	Normal	
+Sindhi Cross	58	Female	390	375.3	103.9	Normal	0.0491	Normal	
+Pabna	18	Female	150.6	125.6	119.9	Normal	0.1132	Normal	
+Brahman Cross	34	Male	316.7	301.5	105	Normal	0.0178	Normal	
+Holstein Cross	43	Male	376.6	404.2	93.2	Normal	0.0459	Normal	
+Local Zebu	49	Male	276.6	295.8	93.5	Normal	0.094	Normal	
+Sahiwal	17	Male	147.9	157.3	94	Normal	0.0476	Normal	
+Sindhi Cross	9	Female	89	88.6	100.5	Normal	0.0123	Normal	
+Brahman Cross	61	Male	511.9	504.2	101.5	Normal	-0.0189	Flagged - Unusual, Needs Review	
+Local Zebu	30	Female	165.4	176.2	93.9	Normal	0.14	Normal	
+Sindhi Cross	39	Female	267	264.2	101.1	Normal	0.0651	Normal	
+Local Zebu	56	Female	291.7	303	96.3	Normal	0.135	Normal	
+Local Zebu	52	Male	302.7	311.8	97.1	Normal	0.0959	Normal	
+Holstein Cross	67	Male	320.7	601.5	53.3	Underweight	0.0058	Normal	
+Local Zebu	20	Male	126.4	140.2	90.2	Normal	0.0765	Normal	
+Pabna	39	Male	238	258.3	92.1	Normal	0.0705	Normal	
+Local Zebu	54	Female	278.6	293.2	95	Normal	0.1318	Normal	
+Local Zebu	65	Male	397.4	381.6	104.1	Normal	0.051	Normal	
+Brahman Cross	25	Female	198.4	212.6	93.3	Normal	0.0771	Normal	
+Local Zebu	50	Female	313.2	273.8	114.4	Normal	0.1352	Normal	
+Sahiwal	35	Female	261.5	254.1	102.9	Normal	0.1014	Normal	
+Holstein Cross	59	Female	489.8	487	100.6	Normal	0.0326	Normal	
+Sindhi Cross	36	Female	233.7	246.6	94.8	Normal	0.0685	Normal	
+Sindhi Cross	10	Female	105	94.5	111.1	Normal	0.0245	Normal	
+Holstein Cross	24	Male	239.3	247.9	96.5	Normal	0.0438	Normal	
+Local Zebu	27	Female	163.5	161.6	101.2	Normal	0.141	Normal	
+Local Zebu	60	Male	393.2	354.8	110.8	Normal	0.0686	Normal	
+Local Zebu	24	Female	145.6	147	99	Normal	0.1452	Normal	
+Sindhi Cross	14	Male	146.9	129.7	113.3	Normal	0.006	Normal	
+Brahman Cross	41	Female	311.3	321.8	96.7	Normal	0.0704	Normal	
+Local Zebu	72	Female	380.5	381	99.9	Normal	0.0515	Normal	
+Local Zebu	18	Female	144.3	117.8	122.5	Overweight	0.1375	Normal	
+Local Zebu	42	Female	225.3	234.8	96	Normal	0.1372	Normal	
+Holstein Cross	39	Female	364.7	337.5	108.1	Normal	0.0596	Normal	
+Brahman Cross	10	Male	131.9	121.3	108.7	Normal	0.0017	Normal	
+Brahman Cross	57	Male	465.7	474.1	98.2	Normal	0.0069	Normal	
+Red Chittagong	36	Male	220.5	211	104.5	Normal	0.0749	Normal	
+Local Zebu	53	Male	331.8	317.2	104.6	Normal	0.095	Normal	
+Red Chittagong	41	Female	223.9	214.6	104.3	Normal	0.1209	Normal	
+Sahiwal	35	Male	256	279.5	91.6	Normal	0.0553	Normal	
+Pabna	47	Male	293.1	304	96.4	Normal	0.0735	Normal	
+Brahman Cross	30	Female	243	246.8	98.5	Normal	0.0812	Normal	
+Red Chittagong	68	Female	336.3	337.4	99.7	Normal	0.077	Normal	
+Holstein Cross	71	Female	586	576.7	101.6	Normal	-0.0344	Flagged - Possible Pregnancy or Overweight	
+Sahiwal	57	Male	431.6	429	100.6	Normal	0.0335	Normal	
+Holstein Cross	9	Male	104.6	124.6	83.9	Normal	0.0121	Normal	
+Local Zebu	13	Male	108.4	102.7	105.6	Normal	0.0654	Normal	
+Sindhi Cross	31	Male	248.2	239.1	103.8	Normal	0.021	Normal	
+Pabna	21	Female	149.6	141.2	105.9	Normal	0.1207	Normal	
+Pabna	63	Male	411.8	395.6	104.1	Normal	0.0422	Normal	
+Brahman Cross	50	Male	434.1	421.6	103	Normal	0.0141	Normal	
+Local Zebu	17	Male	131.1	124.2	105.6	Normal	0.08	Normal	
+Local Zebu	33	Female	189.8	190.9	99.4	Normal	0.1373	Normal	
+Brahman Cross	40	Female	290.1	315	92.1	Normal	0.074	Normal	
+Holstein Cross	7	Female	104.8	98.3	106.6	Normal	0.0475	Normal	
+Local Zebu	7	Male	73.7	70.5	104.5	Normal	0.0177	Normal	
+Sindhi Cross	41	Female	279.9	275.8	101.5	Normal	0.0691	Normal	
+Red Chittagong	38	Male	201.8	221	91.3	Normal	0.0657	Normal	
+Pabna	56	Female	473.3	323.2	146.4	Overweight	0.0342	Normal	
+Holstein Cross	42	Male	411.7	395.9	104	Normal	0.0306	Normal	
+Local Zebu	41	Female	229.3	229.9	99.7	Normal	0.1376	Normal	
+Local Zebu	44	Male	279.2	269	103.8	Normal	0.1007	Normal	
+Local Zebu	13	Female	93.8	93.4	100.4	Normal	0.1179	Normal	
+Brahman Cross	46	Female	356.4	356	100.1	Normal	0.073	Normal	
+Brahman Cross	43	Male	383.1	369	103.8	Normal	0.0274	Normal	
+Red Chittagong	10	Female	65.8	73.5	89.5	Normal	0.0531	Normal	
+Holstein Cross	49	Female	413.7	412.3	100.3	Normal	0.0575	Normal	
+Pabna	66	Female	368.3	375.2	98.2	Normal	0.0877	Normal	
+Pabna	27	Female	165.9	172.4	96.2	Normal	0.1204	Normal	
+Local Zebu	18	Female	113.1	117.8	96	Normal	0.1339	Normal	
+Sahiwal	29	Female	220.4	217.1	101.5	Normal	0.103	Normal	
+Brahman Cross	34	Female	266.9	274	97.4	Normal	0.0735	Normal	
+Red Chittagong	48	Female	265.2	246.4	107.6	Normal	0.1179	Normal	
+Pabna	21	Female	127.8	141.2	90.5	Normal	0.1158	Normal	
+Brahman Cross	15	Female	141.6	144.4	98.1	Normal	0.0676	Normal	
+Local Zebu	54	Female	286.7	293.2	97.8	Normal	0.135	Normal	
+Holstein Cross	25	Male	277.9	256.2	108.5	Normal	0.0351	Normal	
+Red Chittagong	64	Male	354.1	351.1	100.9	Normal	0.0418	Normal	
+Local Zebu	16	Female	123.5	108	114.4	Normal	0.1339	Normal	
+Local Zebu	13	Male	80.4	102.7	78.3	Underweight	0.0479	Normal	
+Sahiwal	27	Female	208.7	204.7	102	Normal	0.1037	Normal	
+Sahiwal	17	Male	170.6	157.3	108.5	Normal	0.0451	Normal	
+Red Chittagong	60	Female	302.2	301	100.4	Normal	0.1029	Normal	
+Local Zebu	31	Female	197.1	181.1	108.8	Normal	0.1446	Normal	
+Sindhi Cross	30	Male	305.1	232.6	131.2	Overweight	0.0034	Normal	
+Holstein Cross	45	Male	441.8	420.6	105	Normal	0.0202	Normal	
+Brahman Cross	27	Male	400.7	248.9	161	Overweight	-0.0135	Flagged - Unusual, Needs Review	
+Pabna	49	Female	281.4	286.8	98.1	Normal	0.121	Normal	
+Local Zebu	68	Female	354.8	361.5	98.1	Normal	0.1032	Normal	
+Sindhi Cross	57	Male	428.2	406.4	105.4	Normal	-0.0059	Flagged - Unusual, Needs Review	
+Sindhi Cross	33	Female	252.7	229	110.3	Normal	0.0595	Normal	
+Local Zebu	52	Female	275.7	283.5	97.2	Normal	0.1419	Normal	
+Red Chittagong	38	Female	194.6	200.9	96.9	Normal	0.1121	Normal	
+Brahman Cross	12	Female	119.7	123.9	96.6	Normal	0.0592	Normal	
+Local Zebu	20	Female	107.3	127.5	84.2	Normal	0.1209	Normal	
+Pabna	66	Female	361.4	375.2	96.3	Normal	0.0916	Normal	
+Sahiwal	7	Male	74.3	89.3	83.2	Normal	-0.016	Flagged - Potential Sickness	
+Brahman Cross	40	Female	303.5	315	96.3	Normal	0.072	Normal	
+Red Chittagong	19	Female	113.9	114.4	99.6	Normal	0.1019	Normal	
+Red Chittagong	19	Female	118	114.4	103.1	Normal	0.1037	Normal	
+Sahiwal	72	Female	505.9	482.6	104.8	Normal	-0.0177	Flagged - Possible Pregnancy or Overweight	
+Red Chittagong	26	Male	146	160.9	90.7	Normal	0.0667	Normal	
+Local Zebu	67	Male	621.5	392.3	158.4	Overweight	-0.049	Flagged - Unusual, Needs Review	
+Holstein Cross	69	Male	614.7	618	99.5	Normal	-0.0642	Flagged - Potential Sickness	
+Pabna	18	Female	124.9	125.6	99.4	Normal	0.1145	Normal	
+Pabna	43	Male	442.3	281.2	157.3	Overweight	0.0134	Normal	
+Holstein Cross	52	Female	417.9	434.7	96.1	Normal	0.0562	Normal	
+Sahiwal	18	Female	154.9	149.2	103.8	Normal	0.0946	Normal	
+Local Zebu	23	Female	144.6	142.1	101.8	Normal	0.1441	Normal	
+Red Chittagong	62	Female	317.5	310.1	102.4	Normal	0.1035	Normal	
+Sahiwal	53	Female	369.6	365.3	101.2	Normal	0.0846	Normal	
+Red Chittagong	64	Male	387.9	351.1	110.5	Normal	0.0409	Normal	
+Holstein Cross	59	Female	477.5	487	98	Normal	0.0388	Normal	
+Local Zebu	13	Female	85.4	93.4	91.4	Normal	0.1143	Normal	
+Local Zebu	67	Female	347.3	356.6	97.4	Normal	0.108	Normal	
+Local Zebu	54	Female	284.9	293.2	97.2	Normal	0.1333	Normal	
+Holstein Cross	22	Female	200.9	210.4	95.5	Normal	0.0886	Normal	
+Sindhi Cross	62	Male	456.4	438.6	104.1	Normal	-0.0094	Flagged - Unusual, Needs Review	
+Red Chittagong	34	Female	204	182.7	111.7	Normal	0.1228	Normal	
+Red Chittagong	72	Female	347	355.6	97.6	Normal	0.0421	Normal	
+Pabna	37	Female	211.9	224.4	94.4	Normal	0.124	Normal	
+Brahman Cross	25	Female	219.7	212.6	103.3	Normal	0.0806	Normal	
+Sindhi Cross	12	Male	108.5	116.8	92.9	Normal	-0.0008	Flagged - Potential Sickness	
+Pabna	66	Female	384.7	375.2	102.5	Normal	0.0848	Normal	
+Local Zebu	68	Male	400.7	397.7	100.8	Normal	0.0403	Normal	
+Local Zebu	70	Male	385.6	408.4	94.4	Normal	0.0263	Normal	
+Red Chittagong	36	Male	234.2	211	111	Normal	0.0768	Normal	
+Brahman Cross	17	Female	185	158	117.1	Normal	0.059	Normal	
+Local Zebu	69	Female	180.9	366.4	49.4	Underweight	0.0396	Normal	
+Pabna	17	Female	114.6	120.4	95.2	Normal	0.1111	Normal	
+Brahman Cross	71	Female	530.9	526.6	100.8	Normal	-0.0199	Flagged - Possible Pregnancy or Overweight	
+Pabna	49	Female	169.8	286.8	59.2	Underweight	0.0782	Normal	
+Brahman Cross	66	Female	502.3	492.4	102	Normal	0.0143	Normal	
+Pabna	18	Female	155.8	125.6	124	Overweight	0.1122	Normal	
+Red Chittagong	43	Female	221	223.6	98.8	Normal	0.1216	Normal	
+Local Zebu	27	Female	149.7	161.6	92.6	Normal	0.1384	Normal	
+Sahiwal	58	Male	415.1	435.8	95.3	Normal	0.0354	Normal	
+Local Zebu	56	Male	322.3	333.3	96.7	Normal	0.087	Normal	
+Local Zebu	49	Male	295.3	295.8	99.8	Normal	0.0951	Normal	
+Sindhi Cross	21	Female	185.8	158.8	117	Normal	0.0611	Normal	
+Brahman Cross	70	Male	564	571.7	98.7	Normal	-0.0565	Flagged - Potential Sickness	
+Pabna	12	Female	97.8	94.4	103.6	Normal	0.0916	Normal	
+Brahman Cross	71	Female	526.3	526.6	99.9	Normal	-0.0162	Flagged - Potential Sickness	
+Sahiwal	28	Female	228.7	210.9	108.4	Normal	0.1004	Normal	
+Red Chittagong	47	Female	279.8	241.8	115.7	Normal	0.1203	Normal	
+Sindhi Cross	37	Male	269.7	277.7	97.1	Normal	0.0234	Normal	
+Sindhi Cross	63	Female	397.2	404.6	98.2	Normal	0.0534	Normal	
+Brahman Cross	71	Male	594.9	579.2	102.7	Normal	-0.0683	Flagged - Unusual, Needs Review	
+Holstein Cross	33	Male	332.2	321.9	103.2	Normal	0.0326	Normal	
+Red Chittagong	50	Female	283.2	255.5	110.8	Normal	0.1166	Normal	
+Sahiwal	28	Female	219.7	210.9	104.2	Normal	0.1012	Normal	
+Red Chittagong	20	Female	113.6	119	95.5	Normal	0.0979	Normal	
+Brahman Cross	59	Female	453.5	444.7	102	Normal	0.0368	Normal	
+Pabna	60	Female	360.6	344	104.8	Normal	0.1024	Normal	
+Local Zebu	24	Male	111.6	161.7	69	Underweight	0.0598	Normal	
+Sindhi Cross	38	Male	291.7	284.1	102.7	Normal	0.0212	Normal	
+Sahiwal	32	Female	333.5	235.6	141.6	Overweight	0.0612	Normal	
+Holstein Cross	34	Female	317.7	300.2	105.8	Normal	0.0629	Normal	
+Local Zebu	42	Female	146.9	234.8	62.6	Underweight	0.1072	Normal	
+Sahiwal	46	Female	448.2	322	139.2	Overweight	0.0269	Normal	
+Holstein Cross	62	Female	506.9	509.4	99.5	Normal	0.0291	Normal	
+Sahiwal	53	Female	367.5	365.3	100.6	Normal	0.0847	Normal	
+Brahman Cross	30	Male	289.5	271.4	106.7	Normal	0.0208	Normal	
+Sahiwal	29	Female	204.8	217.1	94.3	Normal	0.1078	Normal	
+Local Zebu	11	Female	89.2	83.6	106.7	Normal	0.1144	Normal	
+Local Zebu	38	Male	230.9	236.8	97.5	Normal	0.0895	Normal	
+Sindhi Cross	11	Male	110.8	110.4	100.4	Normal	0	Normal	
+Local Zebu	44	Female	263.7	244.5	107.9	Normal	0.1405	Normal	
+Red Chittagong	46	Female	240.2	237.3	101.2	Normal	0.1211	Normal	
+Pabna	70	Male	436.3	435.6	100.2	Normal	0.0018	Normal	
+Red Chittagong	50	Male	260.7	281	92.8	Normal	0.064	Normal	
+Red Chittagong	52	Male	302.3	291.1	103.8	Normal	0.0738	Normal	
+Brahman Cross	66	Female	502.1	492.4	102	Normal	0.0143	Normal	
+Sindhi Cross	7	Male	117.1	84.6	138.4	Overweight	-0.0226	Flagged - Unusual, Needs Review	
+Local Zebu	37	Female	205.8	210.4	97.8	Normal	0.1403	Normal	
+Red Chittagong	20	Female	122.3	119	102.8	Normal	0.1019	Normal	
+Red Chittagong	72	Female	359.3	355.6	101	Normal	0.0429	Normal	
+Holstein Cross	63	Female	540.6	516.9	104.6	Normal	0.0097	Normal	
+Brahman Cross	47	Female	361.3	362.8	99.6	Normal	0.0726	Normal	
+Local Zebu	6	Female	63.4	59.2	107.1	Normal	0.0523	Normal	
+Brahman Cross	33	Female	276.3	267.2	103.4	Normal	0.0692	Normal	
+Local Zebu	61	Female	330.2	327.4	100.9	Normal	0.1286	Normal	
+Sahiwal	25	Male	204.9	211.6	96.8	Normal	0.0559	Normal	
+Local Zebu	15	Male	116.3	113.4	102.6	Normal	0.0697	Normal	
+Brahman Cross	35	Female	297	280.9	105.7	Normal	0.0606	Normal	
+Pabna	57	Female	448.8	328.4	136.7	Overweight	0.0511	Normal	
+Brahman Cross	14	Female	139.5	137.6	101.4	Normal	0.0659	Normal	
+Sahiwal	15	Female	120.1	130.6	92	Normal	0.085	Normal	
+Red Chittagong	44	Female	246.1	228.2	107.8	Normal	0.1256	Normal	
+Sindhi Cross	54	Female	329.1	351.9	93.5	Normal	0.056	Normal	
+Pabna	34	Male	221.3	229.7	96.3	Normal	0.0682	Normal	
+Sahiwal	43	Female	309.2	303.5	101.9	Normal	0.0968	Normal	
+Brahman Cross	53	Female	570.5	403.7	141.3	Overweight	-0.0202	Flagged - Possible Pregnancy or Overweight	
+Local Zebu	56	Female	302	303	99.7	Normal	0.1363	Normal	
+Red Chittagong	50	Male	272.7	281	97	Normal	0.068	Normal	
+Holstein Cross	24	Male	276.2	247.9	111.4	Normal	0.0333	Normal	
+Holstein Cross	30	Male	275.6	297.3	92.7	Normal	0.0424	Normal	
+Brahman Cross	12	Female	90.9	123.9	73.4	Underweight	0.047	Normal	
+Sindhi Cross	65	Female	422.9	416.2	101.6	Normal	0.0469	Normal	
+Brahman Cross	38	Male	324	331.5	97.7	Normal	0.0219	Normal	
+Pabna	48	Female	266.3	281.6	94.6	Normal	0.1215	Normal	
+Local Zebu	42	Female	245.4	234.8	104.5	Normal	0.1411	Normal	
+Red Chittagong	63	Male	349.8	346.1	101.1	Normal	0.0417	Normal	
+Sahiwal	25	Female	183.9	192.4	95.6	Normal	0.1078	Normal	
+Red Chittagong	60	Male	311.9	331.1	94.2	Normal	0.049	Normal	
+Sahiwal	61	Male	469.2	456.1	102.9	Normal	0.0163	Normal	
+Brahman Cross	48	Female	379.4	369.6	102.7	Normal	0.0673	Normal	
+Red Chittagong	45	Female	231.3	232.7	99.4	Normal	0.1224	Normal	
+Brahman Cross	16	Female	178.9	151.2	118.3	Normal	0.0597	Normal	
+Local Zebu	31	Male	183.2	199.2	92	Normal	0.0849	Normal	
+Local Zebu	15	Female	80.2	103.1	77.8	Underweight	0.1093	Normal	
+Brahman Cross	57	Female	420.6	431	97.6	Normal	0.0483	Normal	
+Local Zebu	39	Female	219.4	220.1	99.7	Normal	0.1367	Normal	
+Pabna	25	Female	165.7	162	102.3	Normal	0.1255	Normal	
+Sahiwal	43	Male	330.3	333.9	98.9	Normal	0.0439	Normal	
+Local Zebu	52	Female	288.8	283.5	101.9	Normal	0.1429	Normal	
+Holstein Cross	27	Female	229.1	247.8	92.5	Normal	0.0852	Normal	
+Local Zebu	24	Female	168.7	147	114.8	Normal	0.1404	Normal	
+Red Chittagong	34	Female	181.5	182.7	99.3	Normal	0.1175	Normal	
+Local Zebu	35	Male	237.4	220.7	107.6	Normal	0.0924	Normal	
+Sindhi Cross	52	Female	345.3	340.2	101.5	Normal	0.0532	Normal	
+Sindhi Cross	11	Female	107.2	100.4	106.8	Normal	0.0326	Normal	
+Sahiwal	72	Female	491.1	482.6	101.8	Normal	-0.0129	Flagged - Possible Pregnancy or Overweight	
+Sahiwal	28	Female	217.6	210.9	103.2	Normal	0.1012	Normal	
+Brahman Cross	15	Female	154	144.4	106.6	Normal	0.0686	Normal	
+Sindhi Cross	72	Female	477.1	457.2	104.4	Normal	-0.0245	Flagged - Possible Pregnancy or Overweight	
+Red Chittagong	67	Female	473.5	332.8	142.3	Overweight	0.0333	Normal	
+Local Zebu	71	Female	386.8	376.1	102.8	Normal	0.0604	Normal	
+Local Zebu	52	Female	282.2	283.5	99.5	Normal	0.1419	Normal	
+Brahman Cross	59	Female	466.3	444.7	104.9	Normal	0.0337	Normal	
+Pabna	67	Female	370.3	380.4	97.3	Normal	0.0828	Normal	
+Brahman Cross	58	Male	681.7	481.6	141.5	Overweight	-0.0739	Flagged - Unusual, Needs Review	
+Brahman Cross	11	Female	116.5	117.1	99.5	Normal	0.0535	Normal	
+Local Zebu	29	Female	149.9	171.4	87.5	Normal	0.1364	Normal	
+Sindhi Cross	8	Female	84.7	82.8	102.3	Normal	0.0068	Normal	
+Holstein Cross	16	Male	171.9	182.2	94.3	Normal	0.0339	Normal	
+Pabna	67	Male	431	418.4	103	Normal	0.0264	Normal	
+Brahman Cross	29	Female	230.1	239.9	95.9	Normal	0.0811	Normal	
+Local Zebu	49	Female	262.2	268.9	97.5	Normal	0.1358	Normal	
+Local Zebu	54	Female	264.9	293.2	90.3	Normal	0.1283	Normal	
+Local Zebu	70	Female	364.5	371.2	98.2	Normal	0.0768	Normal	
+Brahman Cross	28	Female	196.7	233.1	84.4	Normal	0.0808	Normal	
+Local Zebu	70	Female	347.5	371.2	93.6	Normal	0.0813	Normal	
+Brahman Cross	6	Female	94.4	83	113.7	Normal	0.0124	Normal	
+Brahman Cross	72	Female	545.2	533.4	102.2	Normal	-0.0341	Flagged - Possible Pregnancy or Overweight	
+Sahiwal	60	Male	455.7	449.4	101.4	Normal	0.0268	Normal	
+Sahiwal	54	Female	356.9	371.4	96.1	Normal	0.0868	Normal	
+Sindhi Cross	18	Female	140.6	141.3	99.5	Normal	0.056	Normal	
+Sahiwal	16	Male	150.4	150.5	99.9	Normal	0.0452	Normal	
+Red Chittagong	30	Male	163.6	181	90.4	Normal	0.0677	Normal	
+Local Zebu	72	Male	650.2	419.1	155.1	Overweight	-0.0777	Flagged - Unusual, Needs Review	
+Red Chittagong	52	Male	304.2	291.1	104.5	Normal	0.0746	Normal	
+Brahman Cross	39	Female	304.9	308.2	98.9	Normal	0.0704	Normal	
+Red Chittagong	41	Female	215	214.6	100.2	Normal	0.1181	Normal	
+Local Zebu	67	Male	395.4	392.3	100.8	Normal	0.0481	Normal	
+Pabna	45	Female	235.4	266	88.5	Normal	0.1199	Normal	
+Red Chittagong	23	Female	128.9	132.6	97.2	Normal	0.1042	Normal	
+Sahiwal	63	Female	416.8	427	97.6	Normal	0.0731	Normal	
+Local Zebu	71	Female	361.1	376.1	96	Normal	0.0711	Normal	
+Brahman Cross	12	Male	132.1	136.3	96.9	Normal	0.012	Normal	
+Local Zebu	17	Female	139.8	112.9	123.8	Overweight	0.1361	Normal	
+Brahman Cross	17	Male	183.4	173.8	105.5	Normal	0.0159	Normal	
+Local Zebu	10	Female	70.2	78.8	89.1	Normal	0.091	Normal	
+Red Chittagong	72	Male	399.7	391.2	102.2	Normal	-0.0036	Flagged - Unusual, Needs Review	
+Local Zebu	28	Female	187.5	166.5	112.6	Normal	0.1431	Normal	
+Local Zebu	72	Male	618.7	419.1	147.6	Overweight	-0.0712	Flagged - Unusual, Needs Review	
+Local Zebu	27	Female	162.5	161.6	100.6	Normal	0.1411	Normal	
+Brahman Cross	26	Male	231.7	241.4	96	Normal	0.0305	Normal	
+Red Chittagong	56	Female	293.3	282.8	103.7	Normal	0.1109	Normal	
+Local Zebu	14	Female	104.2	98.2	106.1	Normal	0.1263	Normal	
+Sahiwal	50	Male	394.9	381.4	103.5	Normal	0.0352	Normal	
+Local Zebu	30	Female	185.8	176.2	105.4	Normal	0.1441	Normal	
+Local Zebu	28	Female	182.2	166.5	109.4	Normal	0.1418	Normal	
+Local Zebu	43	Male	255.6	263.6	97	Normal	0.0965	Normal	
+Pabna	38	Female	249.4	229.6	108.6	Normal	0.1194	Normal	
+Brahman Cross	62	Female	468.1	465.2	100.6	Normal	0.0314	Normal	
+Sahiwal	49	Female	371.7	340.6	109.1	Normal	0.0769	Normal	
+Pabna	9	Female	68.5	78.8	86.9	Normal	0.0642	Normal	
+Red Chittagong	34	Female	208.7	182.7	114.2	Normal	0.1229	Normal	
+Red Chittagong	51	Female	358.2	260	137.8	Overweight	0.0952	Normal	
+Local Zebu	49	Male	286	295.8	96.7	Normal	0.0964	Normal	
+Pabna	51	Male	319.7	326.9	97.8	Normal	0.0742	Normal	
+Local Zebu	30	Female	171.4	176.2	97.3	Normal	0.1414	Normal	
+Sahiwal	39	Male	313.1	306.7	102.1	Normal	0.0476	Normal	
+Local Zebu	51	Male	314.3	306.5	102.5	Normal	0.0963	Normal	
+Sindhi Cross	69	Female	431	439.6	98	Normal	0.0274	Normal	
+Pabna	11	Female	88.8	89.2	99.6	Normal	0.0899	Normal	
+Red Chittagong	41	Female	246.7	214.6	115	Normal	0.1235	Normal	
+Sindhi Cross	41	Female	301.8	275.8	109.4	Normal	0.0631	Normal	
+Local Zebu	60	Female	329	322.5	102	Normal	0.1317	Normal	
+Pabna	56	Female	323.8	323.2	100.2	Normal	0.1166	Normal	
+Pabna	21	Female	143	141.2	101.3	Normal	0.1186	Normal	
+Sahiwal	7	Female	90.4	81.2	111.3	Normal	0.038	Normal	
+Local Zebu	52	Female	268.2	283.5	94.6	Normal	0.1415	Normal	
+Pabna	36	Male	237.3	241.1	98.4	Normal	0.0708	Normal	
+Red Chittagong	29	Female	134.9	160	84.3	Normal	0.0951	Normal	
+Sahiwal	53	Female	371.3	365.3	101.6	Normal	0.0844	Normal	
+Pabna	22	Female	156.1	146.4	106.6	Normal	0.1216	Normal	
+Holstein Cross	40	Female	337.8	345	97.9	Normal	0.0763	Normal	
+Holstein Cross	31	Male	329.1	305.5	107.7	Normal	0.0295	Normal	
+Local Zebu	7	Male	52.2	70.5	74	Underweight	-0.004	Flagged - Potential Sickness	
+Sindhi Cross	72	Female	435.2	457.2	95.2	Normal	-0.0006	Flagged - Potential Sickness	
+Pabna	38	Female	233	229.6	101.5	Normal	0.1243	Normal	
+Red Chittagong	26	Male	176.6	160.9	109.8	Normal	0.0761	Normal	
+Pabna	18	Female	150.9	125.6	120.1	Overweight	0.1132	Normal	
+Red Chittagong	38	Male	214.1	221	96.9	Normal	0.0702	Normal	
+Red Chittagong	31	Female	185.2	169	109.6	Normal	0.1211	Normal	
+Pabna	42	Female	249.8	250.4	99.8	Normal	0.1261	Normal	
+Pabna	63	Female	357	359.6	99.3	Normal	0.1022	Normal	
+Red Chittagong	24	Female	150.5	137.2	109.7	Normal	0.1139	Normal	
+Sindhi Cross	59	Female	390.9	381.2	102.5	Normal	0.0526	Normal	
+Holstein Cross	15	Male	150.3	173.9	86.4	Normal	0.0339	Normal	
+Red Chittagong	43	Female	245.8	223.6	109.9	Normal	0.1267	Normal	
+Red Chittagong	62	Female	330.8	310.1	106.7	Normal	0.1009	Normal	
+Sahiwal	72	Female	473.2	482.6	98.1	Normal	0.0001	Normal	
+Local Zebu	8	Male	81.8	75.9	107.8	Normal	0.0361	Normal	
+Local Zebu	16	Male	126.2	118.8	106.2	Normal	0.0733	Normal	
+Local Zebu	66	Female	226.8	351.8	64.5	Underweight	0.0722	Normal	
+Local Zebu	39	Female	211.9	220.1	96.3	Normal	0.1363	Normal	
+Sindhi Cross	55	Male	383.5	393.5	97.5	Normal	0.0077	Normal	
+Red Chittagong	22	Male	140.5	140.9	99.7	Normal	0.0639	Normal	
+Local Zebu	51	Female	296.2	278.6	106.3	Normal	0.1393	Normal	
+Pabna	40	Female	248.2	240	103.4	Normal	0.1214	Normal	
+Sindhi Cross	28	Female	194.2	199.8	97.2	Normal	0.0656	Normal	
+Sahiwal	61	Female	426.3	414.7	102.8	Normal	0.0646	Normal	
+Red Chittagong	50	Female	212.8	255.5	83.3	Normal	0.096	Normal	
+Local Zebu	45	Female	266.6	249.4	106.9	Normal	0.141	Normal	
+Red Chittagong	6	Female	29.2	55.3	52.8	Underweight	-0.0117	Flagged - Potential Sickness	
+Local Zebu	42	Female	352.4	234.8	150.1	Overweight	0.0981	Normal	
+Pabna	7	Female	51.6	68.4	75.4	Underweight	0.0229	Normal	
+Brahman Cross	6	Female	63.5	83	76.5	Underweight	-0.0089	Flagged - Potential Sickness	
+Sindhi Cross	61	Female	410.3	392.8	104.5	Normal	0.0492	Normal	
+Sahiwal	55	Female	370.6	377.6	98.1	Normal	0.0842	Normal	
+Local Zebu	36	Female	210.7	205.5	102.5	Normal	0.141	Normal	
+Brahman Cross	40	Male	345.8	346.5	99.8	Normal	0.0223	Normal	
+Holstein Cross	58	Male	534.7	527.5	101.4	Normal	-0.0131	Flagged - Unusual, Needs Review	
+Local Zebu	20	Female	128.7	127.5	100.9	Normal	0.1376	Normal	
+Local Zebu	68	Male	225.6	397.7	56.7	Underweight	0.0115	Normal	
+Local Zebu	19	Male	149.8	134.9	111	Normal	0.0854	Normal	
+Pabna	7	Male	67.8	75.2	90.2	Normal	-0.0024	Flagged - Potential Sickness	
+Pabna	49	Female	263.5	286.8	91.9	Normal	0.1181	Normal	
+Pabna	53	Female	301.2	307.6	97.9	Normal	0.1177	Normal	
+Red Chittagong	24	Male	173.4	150.9	114.9	Normal	0.0742	Normal	
+Local Zebu	66	Male	399.7	386.9	103.3	Normal	0.0498	Normal	
+Local Zebu	54	Female	288	293.2	98.2	Normal	0.1355	Normal	
+Sahiwal	37	Female	261.2	266.5	98	Normal	0.1004	Normal	
+Local Zebu	10	Male	81.8	86.6	94.5	Normal	0.0461	Normal	
+Local Zebu	32	Female	217.2	186	116.8	Normal	0.1383	Normal	
+Red Chittagong	47	Male	271.8	266	102.2	Normal	0.0713	Normal	
+Sahiwal	72	Male	537.3	530.9	101.2	Normal	-0.0538	Flagged - Unusual, Needs Review	
+Red Chittagong	52	Female	280.1	264.6	105.9	Normal	0.116	Normal	
+Local Zebu	20	Male	143.8	140.2	102.6	Normal	0.0844	Normal	
+Local Zebu	41	Female	226	229.9	98.3	Normal	0.1358	Normal	
+Local Zebu	11	Female	80.7	83.6	96.5	Normal	0.1094	Normal	
+Sahiwal	25	Female	191.3	192.4	99.4	Normal	0.1075	Normal	
+Local Zebu	17	Female	112.3	112.9	99.5	Normal	0.1325	Normal	
+Sindhi Cross	13	Male	134.2	123.3	108.8	Normal	0.0032	Normal	
+Sahiwal	19	Male	171.6	170.9	100.4	Normal	0.0475	Normal	
+Sindhi Cross	50	Female	339.5	328.5	103.3	Normal	0.0548	Normal	
+Local Zebu	54	Female	292	293.2	99.6	Normal	0.1366	Normal	
+Sindhi Cross	68	Female	435	433.8	100.3	Normal	0.0279	Normal	
+Pabna	68	Male	394.2	424.2	92.9	Normal	0.0347	Normal	
+Red Chittagong	65	Male	369.9	356.1	103.9	Normal	0.0364	Normal	
+Sindhi Cross	26	Male	212.1	206.9	102.5	Normal	0.0176	Normal	
+Red Chittagong	39	Female	220.4	205.4	107.3	Normal	0.1193	Normal	
+Sahiwal	70	Female	426.8	470.2	90.8	Normal	0.0364	Normal	
+Local Zebu	52	Female	314.8	283.5	111	Normal	0.1409	Normal	
+Sahiwal	55	Male	413.3	415.4	99.5	Normal	0.0394	Normal	
+Sahiwal	25	Female	209	192.4	108.6	Normal	0.103	Normal	
+Brahman Cross	20	Male	180.8	196.4	92.1	Normal	0.0249	Normal	
+Local Zebu	22	Male	85.6	151	56.7	Underweight	0.0456	Normal	
+Local Zebu	55	Female	282.3	298.1	94.7	Normal	0.1326	Normal	
+Sahiwal	38	Male	290.6	299.9	96.9	Normal	0.0531	Normal	
+Sahiwal	7	Female	109.9	81.2	135.3	Overweight	0.0413	Normal	
+Pabna	16	Female	112.3	115.2	97.5	Normal	0.1092	Normal	
+Red Chittagong	59	Female	299.7	296.4	101.1	Normal	0.1039	Normal	
+Local Zebu	40	Female	238.1	225	105.8	Normal	0.1376	Normal	
+Holstein Cross	15	Female	165.6	158.1	104.7	Normal	0.0801	Normal	
+Local Zebu	35	Female	202.9	200.6	101.1	Normal	0.1418	Normal	
+Pabna	37	Female	229.9	224.4	102.5	Normal	0.1251	Normal	
+Brahman Cross	59	Female	480.7	444.7	108.1	Normal	0.0292	Normal	
+Brahman Cross	64	Female	477.9	478.8	99.8	Normal	0.0268	Normal	
+Local Zebu	29	Female	174.4	171.4	101.8	Normal	0.1422	Normal	
+Brahman Cross	62	Female	480.9	465.2	103.4	Normal	0.0285	Normal	
+Brahman Cross	47	Female	379.4	362.8	104.6	Normal	0.0663	Normal	
+Brahman Cross	47	Female	380.6	362.8	104.9	Normal	0.0658	Normal	
+Local Zebu	38	Female	224.8	215.2	104.5	Normal	0.1357	Normal	
+Sindhi Cross	6	Female	54	71.1	75.9	Underweight	-0.0384	Flagged - Potential Sickness	
+Brahman Cross	72	Male	611.2	586.7	104.2	Normal	-0.0815	Flagged - Unusual, Needs Review	
+Local Zebu	34	Male	198.1	215.3	92	Normal	0.0837	Normal	
+Sahiwal	41	Female	295.7	291.2	101.5	Normal	0.0963	Normal	
+Brahman Cross	25	Male	222.6	233.9	95.2	Normal	0.0337	Normal	
+Local Zebu	39	Female	219.2	220.1	99.6	Normal	0.1362	Normal	
+Local Zebu	44	Male	273.9	269	101.8	Normal	0.0996	Normal	
+Sindhi Cross	15	Female	128.6	123.8	103.9	Normal	0.0488	Normal	
+Local Zebu	18	Female	124.1	117.8	105.3	Normal	0.1375	Normal	
+Sahiwal	54	Male	600.3	408.6	146.9	Overweight	-0.0417	Flagged - Unusual, Needs Review	
+Holstein Cross	59	Female	493.8	487	101.4	Normal	0.0335	Normal	
+Sahiwal	7	Female	77.6	81.2	95.6	Normal	0.0326	Normal	
+Local Zebu	11	Male	106.4	92	115.7	Normal	0.0623	Normal	
+Red Chittagong	34	Male	218.8	201	108.9	Normal	0.0765	Normal	
+Sindhi Cross	63	Female	386.1	404.6	95.4	Normal	0.0554	Normal	
+Local Zebu	61	Male	369.1	360.1	102.5	Normal	0.0715	Normal	
+Local Zebu	16	Female	118.5	108	109.7	Normal	0.1335	Normal	
+Pabna	39	Male	253.8	258.3	98.3	Normal	0.0725	Normal	
+Sahiwal	22	Female	194.5	173.8	111.9	Normal	0.0987	Normal	
+Local Zebu	56	Female	300.7	303	99.2	Normal	0.1362	Normal	
+Brahman Cross	37	Male	325.9	324	100.6	Normal	0.0168	Normal	
+Pabna	17	Male	129.8	132.4	98	Normal	0.0528	Normal	
+Red Chittagong	30	Male	181.2	181	100.1	Normal	0.0694	Normal	
+Local Zebu	45	Male	257.9	274.3	94	Normal	0.0958	Normal	
+Holstein Cross	62	Female	487.8	509.4	95.8	Normal	0.0345	Normal	
+Sindhi Cross	35	Male	288.7	264.8	109	Normal	0.0194	Normal	
+Sahiwal	16	Male	211.1	150.5	140.3	Overweight	0.0356	Normal	
+Holstein Cross	42	Male	381.1	395.9	96.3	Normal	0.0414	Normal	
+Local Zebu	63	Female	304.8	337.1	90.4	Normal	0.1168	Normal	
+Sahiwal	33	Male	256.4	266	96.4	Normal	0.0531	Normal	
+Local Zebu	67	Female	336.8	356.6	94.4	Normal	0.1072	Normal	
+Sahiwal	8	Female	112	87.4	128.1	Overweight	0.0517	Normal	
+Pabna	38	Male	267.7	252.6	106	Normal	0.0722	Normal	
+Sahiwal	40	Male	303.2	313.5	96.7	Normal	0.0535	Normal	
+Local Zebu	55	Female	331.9	298.1	111.3	Normal	0.1326	Normal	
+Sindhi Cross	52	Female	519	340.2	152.6	Overweight	-0.0183	Flagged - Possible Pregnancy or Overweight	
+Local Zebu	54	Female	288.4	293.2	98.4	Normal	0.1358	Normal	
+Sindhi Cross	68	Female	396.3	433.8	91.4	Normal	0.0367	Normal	
+Local Zebu	70	Female	405.6	371.2	109.3	Normal	0.0585	Normal	
+Sahiwal	11	Male	95.7	116.5	82.1	Normal	0.0181	Normal	
+Red Chittagong	56	Female	358.5	282.8	126.8	Overweight	0.0964	Normal	
+Red Chittagong	70	Male	396.5	381.2	104	Normal	0.0082	Normal	
+Local Zebu	55	Female	334.7	298.1	112.3	Normal	0.1319	Normal	
+Local Zebu	41	Male	273.6	252.9	108.2	Normal	0.0965	Normal	
+Red Chittagong	23	Male	154.4	145.9	105.8	Normal	0.0763	Normal	
+Sindhi Cross	35	Female	249.7	240.8	103.7	Normal	0.0667	Normal	
+Red Chittagong	45	Female	245.6	232.7	105.5	Normal	0.124	Normal	
+Pabna	32	Female	209.8	198.4	105.7	Normal	0.1236	Normal	
+Sahiwal	31	Female	233.6	229.4	101.8	Normal	0.1066	Normal	
+Sahiwal	23	Female	181.6	180	100.9	Normal	0.1026	Normal	
+Sahiwal	26	Male	217.5	218.4	99.6	Normal	0.0523	Normal	
+Sindhi Cross	21	Male	163.4	174.7	93.5	Normal	0.0194	Normal	
+Local Zebu	9	Female	69.7	73.9	94.3	Normal	0.0889	Normal	
+Red Chittagong	58	Male	295.7	321.1	92.1	Normal	0.0512	Normal	
+Holstein Cross	41	Male	386.2	387.7	99.6	Normal	0.0371	Normal	
+Local Zebu	9	Female	59	73.9	79.8	Underweight	0.0675	Normal	
+Local Zebu	35	Female	184.1	200.6	91.8	Normal	0.1344	Normal	
+Local Zebu	16	Female	110.7	108	102.5	Normal	0.1323	Normal	
+Pabna	66	Female	396.1	375.2	105.6	Normal	0.0763	Normal	
+Holstein Cross	68	Female	568.1	554.3	102.5	Normal	-0.0112	Flagged - Possible Pregnancy or Overweight	
+Local Zebu	58	Female	166.1	312.8	53.1	Underweight	0.0752	Normal	
+Sahiwal	31	Female	214.6	229.4	93.5	Normal	0.1066	Normal	
+Sindhi Cross	62	Female	412.8	398.7	103.5	Normal	0.0531	Normal	
+Red Chittagong	64	Female	304.5	319.2	95.4	Normal	0.0954	Normal	
+Sahiwal	54	Female	368.1	371.4	99.1	Normal	0.0846	Normal	
+Sindhi Cross	10	Female	102.8	94.5	108.8	Normal	0.0241	Normal	
+Holstein Cross	11	Female	113.7	128.2	88.7	Normal	0.0719	Normal	
+Pabna	11	Female	90.8	89.2	101.8	Normal	0.0895	Normal	
+Brahman Cross	12	Male	116.3	136.3	85.3	Normal	0.0063	Normal	
+Sindhi Cross	42	Female	272.7	281.7	96.8	Normal	0.0718	Normal	
+Brahman Cross	12	Female	128.7	123.9	103.9	Normal	0.0606	Normal	
+Pabna	63	Male	371.7	395.6	94	Normal	0.0521	Normal	
+Local Zebu	23	Female	148.7	142.1	104.6	Normal	0.1454	Normal	
+Local Zebu	64	Female	341.7	342	99.9	Normal	0.1258	Normal	
+Local Zebu	64	Male	384.5	376.2	102.2	Normal	0.0628	Normal	
+Brahman Cross	26	Female	222.8	219.4	101.5	Normal	0.08	Normal	
+Local Zebu	63	Female	357.6	337.1	106.1	Normal	0.1212	Normal	
+Sahiwal	71	Female	478.3	476.4	100.4	Normal	0	Flagged - Possible Pregnancy or Overweight	
+Brahman Cross	11	Female	110.6	117.1	94.4	Normal	0.0497	Normal	
+Brahman Cross	25	Male	235.7	233.9	100.8	Normal	0.0297	Normal	
+Sahiwal	12	Female	120.2	112.1	107.2	Normal	0.0747	Normal	
+Sahiwal	63	Male	470.5	469.7	100.2	Normal	0.0153	Normal	
+Sindhi Cross	31	Male	239.7	239.1	100.3	Normal	0.0225	Normal	
+Local Zebu	69	Female	355.8	366.4	97.1	Normal	0.0956	Normal	
+Local Zebu	69	Male	393.1	403	97.5	Normal	0.0334	Normal	
+Pabna	58	Female	312.6	333.6	93.7	Normal	0.1084	Normal	
+Local Zebu	41	Female	256.1	229.9	111.4	Normal	0.1366	Normal	
+Holstein Cross	12	Male	68.7	149.3	46	Underweight	-0.006	Flagged - Potential Sickness	
+Local Zebu	44	Male	258.6	269	96.1	Normal	0.0975	Normal	
+Local Zebu	28	Male	172.4	183.2	94.1	Normal	0.081	Normal	
+Brahman Cross	28	Female	246.5	233.1	105.7	Normal	0.0755	Normal	
+Red Chittagong	10	Male	76.4	80.9	94.4	Normal	0.0233	Normal	
+Red Chittagong	54	Female	292.4	273.7	106.8	Normal	0.1147	Normal	
+Holstein Cross	14	Male	155.6	165.7	93.9	Normal	0.0332	Normal	
+Sahiwal	41	Male	324.5	320.3	101.3	Normal	0.0445	Normal	
+Local Zebu	32	Female	173.5	186	93.3	Normal	0.1368	Normal	
+Sahiwal	17	Female	175.2	143	122.5	Overweight	0.0904	Normal	
+Sindhi Cross	42	Female	263.9	281.7	93.7	Normal	0.0701	Normal	
+Local Zebu	51	Female	283.3	278.6	101.7	Normal	0.1392	Normal	
+Pabna	69	Female	400.3	390.8	102.4	Normal	0.064	Normal	
+Brahman Cross	43	Female	209.3	335.5	62.4	Underweight	0.0663	Normal	
+Local Zebu	32	Female	183.2	186	98.5	Normal	0.139	Normal	
+Red Chittagong	48	Male	269.1	271	99.3	Normal	0.0695	Normal	
+Local Zebu	31	Female	181.8	181.1	100.4	Normal	0.1432	Normal	
+Local Zebu	44	Female	242.3	244.5	99.1	Normal	0.1403	Normal	
+Local Zebu	48	Male	304.9	290.4	105	Normal	0.0979	Normal	
+Brahman Cross	9	Female	136.6	103.4	132.1	Overweight	0.0412	Normal	
+Holstein Cross	67	Female	538.5	546.8	98.5	Normal	0.0067	Normal	
+Brahman Cross	67	Male	528.7	549.2	96.3	Normal	-0.0336	Flagged - Potential Sickness	
+Holstein Cross	48	Female	403.5	404.8	99.7	Normal	0.0593	Normal	
+Sindhi Cross	13	Female	150.7	112	134.6	Overweight	0.0376	Normal	
+Sahiwal	46	Female	428.7	322	133.1	Overweight	0.0377	Normal	
+Sindhi Cross	51	Male	392.4	367.8	106.7	Normal	0.006	Normal	
+Holstein Cross	49	Female	437.4	412.3	106.1	Normal	0.0408	Normal	
+Holstein Cross	55	Male	494.5	502.8	98.3	Normal	0.003	Normal	
+Sahiwal	45	Female	324.4	315.9	102.7	Normal	0.0927	Normal	
+Local Zebu	58	Male	368.5	344	107.1	Normal	0.0772	Normal	
+Red Chittagong	44	Male	245.3	251	97.7	Normal	0.0687	Normal	
+Local Zebu	10	Female	75.7	78.8	96.1	Normal	0.099	Normal	
+Pabna	9	Female	70.1	78.8	89	Normal	0.0672	Normal	
+Local Zebu	49	Female	253.7	268.9	94.3	Normal	0.1335	Normal	
+Pabna	47	Male	294.3	304	96.8	Normal	0.073	Normal	
+Holstein Cross	72	Female	565.8	584.2	96.9	Normal	-0.029	Flagged - Potential Sickness	
+Sahiwal	64	Female	433.7	433.2	100.1	Normal	0.0653	Normal	
+Local Zebu	45	Female	237.8	249.4	95.3	Normal	0.1378	Normal	
+Brahman Cross	17	Male	177.3	173.8	102	Normal	0.0178	Normal	
+Local Zebu	45	Male	251	274.3	91.5	Normal	0.0929	Normal	
+Brahman Cross	32	Male	291.4	286.4	101.7	Normal	0.0207	Normal	
+Local Zebu	46	Female	266.8	254.2	105	Normal	0.1401	Normal	
+Local Zebu	26	Male	203.6	172.4	118.1	Normal	0.0856	Normal	
+Local Zebu	50	Female	279.4	273.8	102	Normal	0.1381	Normal	
+Sindhi Cross	42	Female	300.1	281.7	106.5	Normal	0.0687	Normal	
+Red Chittagong	49	Female	154.3	251	61.5	Underweight	0.0665	Normal	
+Local Zebu	55	Male	353	327.9	107.7	Normal	0.0916	Normal	
+Local Zebu	63	Female	343.4	337.1	101.9	Normal	0.1263	Normal	
+Holstein Cross	16	Female	155	165.6	93.6	Normal	0.0889	Normal	
+Pabna	22	Male	160.2	161	99.5	Normal	0.0653	Normal	
+Sahiwal	18	Female	157.5	149.2	105.6	Normal	0.0949	Normal	
+Sahiwal	65	Female	440.5	439.4	100.3	Normal	0.0566	Normal	
+Local Zebu	39	Female	228.2	220.1	103.7	Normal	0.1372	Normal	
+Sahiwal	48	Female	320.6	334.4	95.9	Normal	0.0928	Normal	
+Pabna	9	Male	89.2	86.7	102.9	Normal	0.0268	Normal	
+Pabna	27	Male	168.4	189.6	88.8	Normal	0.0637	Normal	
+Brahman Cross	71	Male	577.6	579.2	99.7	Normal	-0.0648	Flagged - Potential Sickness	
+Sahiwal	47	Female	314.7	328.2	95.9	Normal	0.0948	Normal	
+Red Chittagong	65	Female	312.7	323.8	96.6	Normal	0.089	Normal	
+Brahman Cross	26	Female	238	219.4	108.5	Normal	0.0733	Normal	
+Red Chittagong	61	Female	321.9	305.5	105.4	Normal	0.103	Normal	
+Sahiwal	36	Male	295.5	286.3	103.2	Normal	0.0494	Normal	
+Sahiwal	68	Male	487.3	503.7	96.7	Normal	-0.0117	Flagged - Potential Sickness	
+Red Chittagong	18	Female	105.2	109.9	95.7	Normal	0.0938	Normal	
+Sindhi Cross	14	Female	136.1	117.9	115.4	Normal	0.0452	Normal	
+Brahman Cross	54	Male	453.7	451.6	100.5	Normal	0.0116	Normal	
+Local Zebu	33	Female	225.7	190.9	118.2	Normal	0.1355	Normal	
+Sindhi Cross	6	Female	77	71.1	108.3	Normal	-0.0146	Flagged - Possible Pregnancy or Overweight	
+Pabna	43	Female	258.5	255.6	101.1	Normal	0.1248	Normal	
+Local Zebu	46	Male	275	279.7	98.3	Normal	0.0989	Normal	
+Brahman Cross	61	Female	460.3	458.3	100.4	Normal	0.0345	Normal	
+Sindhi Cross	7	Female	74.7	77	97	Normal	-0.0075	Flagged - Potential Sickness	
+Holstein Cross	43	Male	414.8	404.2	102.6	Normal	0.0317	Normal	
+Sindhi Cross	6	Female	85.5	71.1	120.3	Overweight	-0.0091	Flagged - Possible Pregnancy or Overweight	
+Red Chittagong	42	Female	207.3	219.1	94.6	Normal	0.1151	Normal	
+Sahiwal	56	Female	363.8	383.8	94.8	Normal	0.085	Normal	
+Red Chittagong	61	Female	278	305.5	91	Normal	0.0929	Normal	
+Pabna	30	Female	195.6	188	104	Normal	0.1297	Normal	
+Red Chittagong	59	Male	309.5	326.1	94.9	Normal	0.05	Normal	
+Brahman Cross	23	Male	186.6	218.9	85.2	Normal	0.0328	Normal	
+Local Zebu	68	Female	367.3	361.5	101.6	Normal	0.0948	Normal	
+Local Zebu	23	Female	179.5	142.1	126.3	Overweight	0.1392	Normal	
+Pabna	60	Female	343.9	344	100	Normal	0.1078	Normal	
+Red Chittagong	63	Female	327.2	314.6	104	Normal	0.1014	Normal	
+Red Chittagong	6	Female	56.5	55.3	102.2	Normal	0.0134	Normal	
+Local Zebu	70	Male	406.9	408.4	99.6	Normal	0.0175	Normal	
+Brahman Cross	10	Female	124	110.2	112.5	Normal	0.049	Normal	
+Sahiwal	20	Female	157.1	161.5	97.3	Normal	0.0954	Normal	
+Local Zebu	41	Female	233.9	229.9	101.7	Normal	0.1381	Normal	
+Sindhi Cross	17	Male	153.8	149	103.2	Normal	0.0188	Normal	
+Brahman Cross	15	Female	134.4	144.4	93.1	Normal	0.068	Normal	
+Brahman Cross	12	Female	138.8	123.9	112	Normal	0.0589	Normal	
+Local Zebu	64	Female	339.4	342	99.2	Normal	0.1257	Normal	
+Sahiwal	59	Female	391	402.3	97.2	Normal	0.0742	Normal	
+Red Chittagong	27	Male	174	165.9	104.9	Normal	0.0692	Normal	
+Sahiwal	39	Male	293.2	306.7	95.6	Normal	0.0532	Normal	
+Local Zebu	12	Female	88.9	88.5	100.5	Normal	0.1165	Normal	
+Sahiwal	9	Male	102.8	102.9	99.9	Normal	0.0164	Normal	
+Pabna	41	Male	286	269.7	106	Normal	0.0765	Normal	
+Local Zebu	38	Male	243.9	236.8	103	Normal	0.0914	Normal	
+Local Zebu	25	Female	151.5	151.9	99.7	Normal	0.1459	Normal	
+Local Zebu	36	Female	217.8	205.5	106	Normal	0.1416	Normal	
+Holstein Cross	49	Female	433.1	412.3	105	Normal	0.0404	Normal	
+Brahman Cross	25	Female	221	212.6	104	Normal	0.0805	Normal	
+Red Chittagong	55	Male	306.2	306.1	100	Normal	0.069	Normal	
+Brahman Cross	32	Female	240.7	260.4	92.4	Normal	0.0816	Normal	
+Local Zebu	39	Female	204.1	220.1	92.7	Normal	0.1364	Normal	
+Local Zebu	57	Female	303.3	307.9	98.5	Normal	0.1339	Normal	
+Sindhi Cross	35	Female	231.6	240.8	96.2	Normal	0.0685	Normal	
+Pabna	24	Female	154	156.8	98.2	Normal	0.1259	Normal	
+Red Chittagong	63	Female	315.5	314.6	100.3	Normal	0.1017	Normal	
+Pabna	11	Male	106.1	98.1	108.2	Normal	0.0392	Normal	
+Red Chittagong	61	Female	304.5	305.5	99.7	Normal	0.1023	Normal	
+Local Zebu	40	Male	254.8	247.5	102.9	Normal	0.0963	Normal	
+Brahman Cross	56	Female	425.2	424.2	100.2	Normal	0.0476	Normal	
+Local Zebu	30	Female	146.6	176.2	83.2	Normal	0.1313	Normal	
+Sindhi Cross	46	Female	291	305.1	95.4	Normal	0.0699	Normal	
+Holstein Cross	7	Female	96.2	98.3	97.9	Normal	0.0469	Normal	
+Sahiwal	50	Male	363.3	381.4	95.3	Normal	0.0429	Normal	
+Local Zebu	9	Female	126.3	73.9	170.9	Overweight	0.0982	Normal	
+Local Zebu	21	Female	155.3	132.4	117.3	Normal	0.1404	Normal	
+Holstein Cross	22	Female	228.7	210.4	108.7	Normal	0.0768	Normal	
+Brahman Cross	29	Female	236.7	239.9	98.7	Normal	0.0806	Normal	
+Local Zebu	65	Female	369.2	346.9	106.4	Normal	0.1058	Normal	
+Pabna	41	Female	247.4	245.2	100.9	Normal	0.1223	Normal	
+Brahman Cross	47	Male	394	399.1	98.7	Normal	0.0254	Normal	
+Local Zebu	13	Female	84.2	93.4	90.1	Normal	0.1135	Normal	
+Local Zebu	39	Male	237.6	242.1	98.1	Normal	0.0927	Normal	
+Sindhi Cross	31	Female	211.5	217.4	97.3	Normal	0.064	Normal	
+Pabna	24	Female	159.4	156.8	101.7	Normal	0.1261	Normal	
+Brahman Cross	19	Female	174.1	171.7	101.4	Normal	0.0638	Normal	
+Local Zebu	15	Male	113.5	113.4	100.1	Normal	0.0688	Normal	
+Sahiwal	8	Female	94	87.4	107.6	Normal	0.0478	Normal	
+Brahman Cross	10	Female	128.1	110.2	116.2	Normal	0.0478	Normal	
+Sahiwal	56	Female	398	383.8	103.7	Normal	0.0734	Normal	
+Sindhi Cross	68	Female	411.5	433.8	94.9	Normal	0.0376	Normal	
+Sahiwal	14	Female	129.5	124.4	104.1	Normal	0.0831	Normal	
+Pabna	51	Male	340.9	326.9	104.3	Normal	0.0748	Normal	
+Local Zebu	17	Female	92.4	112.9	81.8	Normal	0.1139	Normal	
+Red Chittagong	64	Female	315.8	319.2	98.9	Normal	0.0999	Normal	
+Local Zebu	11	Female	66.1	83.6	79.1	Underweight	0.0853	Normal	
+Red Chittagong	55	Female	251.2	278.2	90.3	Normal	0.104	Normal	
+Red Chittagong	16	Female	108.9	100.8	108	Normal	0.1018	Normal	
+Local Zebu	10	Male	98	86.6	113.2	Normal	0.0562	Normal	
+Brahman Cross	68	Female	497.5	506.1	98.3	Normal	0.0154	Normal	
+Brahman Cross	69	Female	474.1	512.9	92.4	Normal	0.0163	Normal	
+Pabna	8	Male	95.4	81	117.8	Normal	0.0218	Normal	
+Local Zebu	72	Female	386.9	381	101.5	Normal	0.0514	Normal	
+Holstein Cross	25	Female	210.7	232.9	90.5	Normal	0.0954	Normal	
+Local Zebu	24	Female	217.9	147	148.2	Overweight	0.1261	Normal	
+Local Zebu	22	Male	150.7	151	99.8	Normal	0.0891	Normal	
+Sindhi Cross	18	Female	150	141.3	106.2	Normal	0.0573	Normal	
+Brahman Cross	19	Male	190.6	188.8	101	Normal	0.0186	Normal	
+Brahman Cross	14	Female	123	137.6	89.4	Normal	0.0673	Normal	
+Holstein Cross	57	Male	537.2	519.3	103.4	Normal	-0.0135	Flagged - Unusual, Needs Review	
+Brahman Cross	23	Male	216.5	218.9	98.9	Normal	0.032	Normal	
+Local Zebu	11	Female	83.2	83.6	99.5	Normal	0.1122	Normal	
+Local Zebu	24	Female	133	147	90.5	Normal	0.1373	Normal	
+Red Chittagong	27	Female	144.2	150.8	95.6	Normal	0.1031	Normal	
+Local Zebu	18	Female	104.5	117.8	88.7	Normal	0.1264	Normal	
+Red Chittagong	26	Male	158.3	160.9	98.4	Normal	0.0728	Normal	
+Local Zebu	28	Female	192.2	166.5	115.4	Normal	0.1415	Normal	
+Brahman Cross	42	Female	308.1	328.7	93.7	Normal	0.0777	Normal	
+Sahiwal	22	Male	167	191.2	87.3	Normal	0.0524	Normal	
+Pabna	58	Male	389	367	106	Normal	0.06	Normal	
+Sahiwal	29	Female	213.9	217.1	98.5	Normal	0.105	Normal	
+Local Zebu	44	Male	134.9	269	50.1	Underweight	0.0503	Normal	
+Pabna	18	Female	141.2	125.6	112.4	Normal	0.1157	Normal	
+Sindhi Cross	70	Male	481	490	98.2	Normal	-0.0434	Flagged - Potential Sickness	
+Brahman Cross	41	Male	381.4	354	107.7	Normal	0.0213	Normal	
+Local Zebu	66	Female	361.9	351.8	102.9	Normal	0.1078	Normal	
+Sindhi Cross	12	Female	98.9	106.2	93.1	Normal	0.0301	Normal	
+Pabna	48	Female	314	281.6	111.5	Normal	0.1177	Normal	
+Pabna	19	Female	121.7	130.8	93	Normal	0.1146	Normal	
+Local Zebu	9	Female	85	73.9	115	Normal	0.107	Normal	
+Sindhi Cross	62	Female	403.2	398.7	101.1	Normal	0.0514	Normal	
+Local Zebu	47	Male	304.6	285	106.9	Normal	0.0974	Normal	
+Local Zebu	36	Female	228.9	205.5	111.4	Normal	0.1393	Normal	
+Red Chittagong	34	Male	201.5	201	100.2	Normal	0.0709	Normal	
+Local Zebu	61	Male	348.8	360.1	96.9	Normal	0.0737	Normal	
+Pabna	55	Female	324.9	318	102.2	Normal	0.115	Normal	
+Local Zebu	51	Female	268.5	278.6	96.4	Normal	0.1406	Normal	
+Local Zebu	13	Male	132.9	102.7	129.4	Overweight	0.0689	Normal	
+Pabna	59	Male	374.7	372.7	100.5	Normal	0.0622	Normal	
+Sindhi Cross	26	Female	182.6	188.1	97.1	Normal	0.0656	Normal	
+Brahman Cross	27	Female	229	226.3	101.2	Normal	0.0789	Normal	
+Local Zebu	58	Female	292.5	312.8	93.5	Normal	0.1277	Normal	
+Sindhi Cross	66	Female	407.5	422.1	96.5	Normal	0.0448	Normal	
+Sahiwal	37	Male	311.1	293.1	106.1	Normal	0.0438	Normal	
+Local Zebu	25	Female	142	151.9	93.5	Normal	0.1412	Normal	
+Red Chittagong	11	Male	70.2	85.9	81.7	Normal	0.0187	Normal	
+Sahiwal	10	Female	107.8	99.8	108	Normal	0.0604	Normal	
+Holstein Cross	18	Female	198.3	180.5	109.9	Normal	0.0763	Normal	
+Brahman Cross	7	Female	100.6	89.8	112	Normal	0.0239	Normal	
+Local Zebu	51	Male	321.4	306.5	104.9	Normal	0.0956	Normal	
+Local Zebu	67	Female	345.3	356.6	96.8	Normal	0.1073	Normal	
+Pabna	9	Female	57.5	78.8	73	Underweight	0.0434	Normal	
+Local Zebu	57	Male	361.2	338.7	106.6	Normal	0.0855	Normal	
+Brahman Cross	6	Female	78.1	83	94.1	Normal	0.0055	Normal	
+Sindhi Cross	48	Female	313	316.8	98.8	Normal	0.0632	Normal	
+Sahiwal	32	Female	255.5	235.6	108.4	Normal	0.0966	Normal	
+Sindhi Cross	13	Female	120.4	112	107.5	Normal	0.0418	Normal	
+Red Chittagong	12	Male	97.7	90.9	107.5	Normal	0.0413	Normal	
+Brahman Cross	52	Female	429.4	396.9	108.2	Normal	0.045	Normal	
+Sahiwal	32	Male	249.5	259.2	96.3	Normal	0.0531	Normal	
+Pabna	67	Female	394.3	380.4	103.7	Normal	0.0743	Normal	
+Holstein Cross	32	Female	286.1	285.2	100.3	Normal	0.0715	Normal	
+Red Chittagong	40	Female	214	210	101.9	Normal	0.1168	Normal	
+Local Zebu	53	Male	340.1	317.2	107.2	Normal	0.0961	Normal	
+Pabna	21	Female	148.8	141.2	105.4	Normal	0.1214	Normal	
+Holstein Cross	43	Female	375.5	367.4	102.2	Normal	0.0649	Normal	
+Brahman Cross	14	Male	167.4	151.3	110.6	Normal	0.0114	Normal	
+Local Zebu	56	Female	297.5	303	98.2	Normal	0.1361	Normal	
+Sindhi Cross	19	Male	149.3	161.9	92.2	Normal	0.0183	Normal	
+Local Zebu	25	Female	136.2	151.9	89.7	Normal	0.1357	Normal	
+Brahman Cross	43	Female	306	335.5	91.2	Normal	0.0808	Normal	
+Sindhi Cross	66	Male	495.2	464.3	106.7	Normal	-0.038	Flagged - Unusual, Needs Review	
+Brahman Cross	43	Male	531.8	369	144.1	Overweight	-0.0245	Flagged - Unusual, Needs Review	
+Pabna	48	Female	278.3	281.6	98.8	Normal	0.1233	Normal	
+Brahman Cross	47	Female	358.6	362.8	98.8	Normal	0.0747	Normal	
+Pabna	62	Female	359	354.4	101.3	Normal	0.1028	Normal	
+Sindhi Cross	45	Male	341.4	329.2	103.7	Normal	0.0144	Normal	
+Pabna	42	Female	153.3	250.4	61.2	Underweight	0.0907	Normal	
+Local Zebu	26	Female	148	156.8	94.4	Normal	0.139	Normal	
+Sindhi Cross	25	Male	198	200.5	98.8	Normal	0.021	Normal	
+Sindhi Cross	22	Female	168.9	164.7	102.6	Normal	0.0611	Normal	
+Local Zebu	10	Female	75	78.8	95.2	Normal	0.0982	Normal	
+Local Zebu	63	Female	361.2	337.1	107.1	Normal	0.1187	Normal	
+Red Chittagong	9	Female	76.3	68.9	110.7	Normal	0.0648	Normal	
+Local Zebu	64	Female	353	342	103.2	Normal	0.1212	Normal	
+Sindhi Cross	70	Male	500	490	102	Normal	-0.0526	Flagged - Unusual, Needs Review	
+Pabna	43	Female	273.2	255.6	106.9	Normal	0.1263	Normal	
+Sindhi Cross	24	Female	179.1	176.4	101.5	Normal	0.0656	Normal	
+Sindhi Cross	49	Female	303.2	322.7	94	Normal	0.0597	Normal	
+Sindhi Cross	23	Female	176.5	170.6	103.5	Normal	0.0664	Normal	
+Local Zebu	34	Female	186	195.8	95	Normal	0.136	Normal	
+Local Zebu	30	Female	168.3	176.2	95.5	Normal	0.1393	Normal	
+Sindhi Cross	41	Male	312.2	303.4	102.9	Normal	0.0155	Normal	
+Holstein Cross	17	Female	191.6	173.1	110.7	Normal	0.077	Normal	
+Pabna	71	Female	401.5	401.2	100.1	Normal	0.0432	Normal	
+Red Chittagong	24	Female	141.8	137.2	103.4	Normal	0.1083	Normal	
+Red Chittagong	7	Male	91.4	65.8	138.9	Overweight	0.0189	Normal	
+Sindhi Cross	17	Male	152.6	149	102.4	Normal	0.0189	Normal	
+Sahiwal	59	Female	441.4	402.3	109.7	Normal	0.0538	Normal	
+Holstein Cross	60	Female	503	494.5	101.7	Normal	0.0306	Normal	
+Holstein Cross	17	Male	164	190.4	86.1	Normal	0.0389	Normal	
+Sindhi Cross	48	Male	359.8	348.5	103.2	Normal	0.0097	Normal	
+Sahiwal	17	Male	163	157.3	103.6	Normal	0.0472	Normal	
+Local Zebu	28	Female	185.8	166.5	111.6	Normal	0.1434	Normal	
+Sahiwal	23	Male	208.1	198	105.1	Normal	0.0516	Normal	
+Red Chittagong	68	Male	369.1	371.1	99.5	Normal	0.026	Normal	
+Holstein Cross	44	Female	356.5	374.9	95.1	Normal	0.0786	Normal	
+Local Zebu	6	Male	62	65.2	95.1	Normal	-0.0047	Flagged - Potential Sickness	
+Brahman Cross	66	Male	528.9	541.7	97.6	Normal	-0.0334	Flagged - Potential Sickness	
+Red Chittagong	28	Female	146.7	155.4	94.4	Normal	0.1077	Normal	
+Local Zebu	21	Female	141.2	132.4	106.6	Normal	0.1419	Normal	
+Sindhi Cross	52	Female	365.2	340.2	107.3	Normal	0.0505	Normal	
+Holstein Cross	66	Female	545.3	539.3	101.1	Normal	0.0045	Normal	
+Red Chittagong	8	Female	46.5	64.4	72.2	Underweight	0.0167	Normal	
+Local Zebu	46	Female	260.9	254.2	102.6	Normal	0.14	Normal	
+Red Chittagong	12	Male	108.8	90.9	119.7	Normal	0.0482	Normal	
+Sindhi Cross	51	Male	358.6	367.8	97.5	Normal	0.0143	Normal	
+Brahman Cross	15	Female	142.4	144.4	98.6	Normal	0.0673	Normal	
+Local Zebu	18	Female	118	117.8	100.2	Normal	0.1359	Normal	
+Red Chittagong	46	Female	225.5	237.3	95	Normal	0.116	Normal	
+Red Chittagong	52	Male	300.8	291.1	103.3	Normal	0.0736	Normal	
+Holstein Cross	7	Male	106.3	108.2	98.2	Normal	-0.0006	Flagged - Potential Sickness	
+Sahiwal	58	Male	442.1	435.8	101.4	Normal	0.0261	Normal	
+Local Zebu	25	Female	138.6	151.9	91.2	Normal	0.1387	Normal	
+Sahiwal	20	Female	154.9	161.5	95.9	Normal	0.0941	Normal	
+Local Zebu	22	Female	148.1	137.2	107.9	Normal	0.1422	Normal	
+Red Chittagong	52	Male	285.5	291.1	98.1	Normal	0.0721	Normal	
+Sindhi Cross	72	Female	483.1	457.2	105.7	Normal	-0.0278	Flagged - Possible Pregnancy or Overweight	
+Sahiwal	9	Female	87.6	93.6	93.6	Normal	0.0483	Normal	
+Local Zebu	24	Female	150.4	147	102.3	Normal	0.1478	Normal	
+Local Zebu	16	Female	122	108	113	Normal	0.1331	Normal	
+Local Zebu	8	Female	47.7	69	69.1	Underweight	0.0405	Normal	
+Local Zebu	19	Male	108.5	134.9	80.4	Normal	0.0663	Normal	
+Brahman Cross	66	Male	518.8	541.7	95.8	Normal	-0.0267	Flagged - Potential Sickness	
+Local Zebu	7	Female	83.1	64.1	129.6	Overweight	0.0899	Normal	
+Sindhi Cross	32	Female	214.9	223.2	96.3	Normal	0.0628	Normal	
+Brahman Cross	9	Male	152.1	113.8	133.7	Overweight	-0.0059	Flagged - Unusual, Needs Review	
+Sindhi Cross	50	Female	320	328.5	97.4	Normal	0.0567	Normal	
+Sahiwal	36	Female	263.1	260.3	101.1	Normal	0.0988	Normal	
+Holstein Cross	7	Female	121.5	98.3	123.6	Overweight	0.0462	Normal	
+Sindhi Cross	27	Female	224	194	115.5	Normal	0.0563	Normal	
+Sindhi Cross	18	Female	172.2	141.3	121.9	Overweight	0.0589	Normal	
+Holstein Cross	66	Female	557.5	539.3	103.4	Normal	0.002	Normal	
+Pabna	19	Male	159.2	143.9	110.6	Normal	0.0593	Normal	
+Red Chittagong	33	Female	187	178.1	105	Normal	0.1211	Normal	
+Sahiwal	46	Male	365.9	354.3	103.3	Normal	0.0367	Normal	
+Local Zebu	52	Female	275.2	283.5	97.1	Normal	0.141	Normal	
+Local Zebu	47	Female	246.9	259.1	95.3	Normal	0.1343	Normal	
+Pabna	45	Female	265.9	266	100	Normal	0.1247	Normal	
+Local Zebu	58	Male	341.5	344	99.3	Normal	0.0818	Normal	
+Local Zebu	14	Female	91.5	98.2	93.2	Normal	0.1182	Normal	
+Sindhi Cross	53	Male	391.1	380.7	102.7	Normal	0.0077	Normal	
+Pabna	19	Female	145.1	130.8	110.9	Normal	0.1177	Normal	
+Brahman Cross	21	Male	205.2	203.9	100.6	Normal	0.0257	Normal	
+Brahman Cross	19	Female	193.8	171.7	112.9	Normal	0.0596	Normal	
+Local Zebu	52	Female	266.4	283.5	94	Normal	0.1391	Normal	
+Brahman Cross	57	Male	471.2	474.1	99.4	Normal	0.0056	Normal	
+Sahiwal	41	Female	280.4	291.2	96.3	Normal	0.1016	Normal	
+Brahman Cross	57	Female	403	431	93.5	Normal	0.0509	Normal	
+Sindhi Cross	68	Female	432.6	433.8	99.7	Normal	0.0307	Normal	
+Pabna	21	Male	153.5	155.3	98.8	Normal	0.0647	Normal	
+Brahman Cross	23	Male	241.6	218.9	110.4	Normal	0.0245	Normal	
+Holstein Cross	69	Female	571.2	561.8	101.7	Normal	-0.017	Flagged - Possible Pregnancy or Overweight	
+Red Chittagong	47	Male	250.7	266	94.2	Normal	0.0632	Normal	
+Local Zebu	15	Female	130.9	103.1	127	Overweight	0.1281	Normal	
+Pabna	65	Male	425.3	407	104.5	Normal	0.0311	Normal	
+Pabna	39	Female	243.5	234.8	103.7	Normal	0.1229	Normal	
+Pabna	8	Female	46.7	73.6	63.5	Underweight	0.0212	Normal	
+Red Chittagong	46	Female	222.9	237.3	93.9	Normal	0.1135	Normal	
+Local Zebu	28	Female	160.9	166.5	96.6	Normal	0.1429	Normal	
+Red Chittagong	27	Female	167.2	150.8	110.9	Normal	0.1161	Normal	
+Sahiwal	68	Female	486.2	457.9	106.2	Normal	0.017	Normal	
+Pabna	66	Female	398.3	375.2	106.2	Normal	0.0736	Normal	
+Pabna	56	Male	348.2	355.5	97.9	Normal	0.0682	Normal	
+Red Chittagong	51	Female	243.3	260	93.6	Normal	0.1111	Normal	
+Local Zebu	11	Male	94.1	92	102.3	Normal	0.0583	Normal	
+Holstein Cross	9	Female	86.7	113.3	76.5	Underweight	0.0596	Normal	
+Red Chittagong	60	Male	335.9	331.1	101.4	Normal	0.0504	Normal	
+Red Chittagong	37	Male	213.8	216	99	Normal	0.0717	Normal	
+Brahman Cross	14	Female	130.6	137.6	94.9	Normal	0.0668	Normal	
+Local Zebu	47	Male	261.1	285	91.6	Normal	0.0928	Normal	
+Red Chittagong	71	Female	358.8	351	102.2	Normal	0.0504	Normal	
+Sahiwal	8	Female	79.4	87.4	90.8	Normal	0.0432	Normal	
+Red Chittagong	18	Female	92.4	109.9	84.1	Normal	0.0808	Normal	
+Brahman Cross	49	Female	333.3	376.4	88.5	Normal	0.0732	Normal	
+Brahman Cross	27	Female	225.9	226.3	99.8	Normal	0.0801	Normal	
+Pabna	69	Female	417.4	390.8	106.8	Normal	0.0585	Normal	
+Local Zebu	33	Male	329	210	156.7	Overweight	0.0616	Normal	
+Local Zebu	17	Female	106	112.9	93.9	Normal	0.1273	Normal	
+Brahman Cross	40	Male	337.5	346.5	97.4	Normal	0.0241	Normal	
+Pabna	32	Male	225.3	218.2	103.3	Normal	0.0697	Normal	
+Holstein Cross	70	Female	554.3	569.2	97.4	Normal	-0.0113	Flagged - Potential Sickness	
+Pabna	31	Female	197.7	193.2	102.3	Normal	0.1273	Normal	
+Pabna	29	Female	194.3	182.8	106.3	Normal	0.1261	Normal	
+Pabna	29	Female	201.2	182.8	110.1	Normal	0.1258	Normal	
+Sindhi Cross	65	Male	456.4	457.9	99.7	Normal	-0.0145	Flagged - Potential Sickness	
+Holstein Cross	61	Female	498.9	502	99.4	Normal	0.0332	Normal	
+Local Zebu	31	Female	168	181.1	92.8	Normal	0.1379	Normal	
+Local Zebu	44	Female	232.1	244.5	94.9	Normal	0.138	Normal	
+Holstein Cross	14	Female	147.3	150.6	97.8	Normal	0.0799	Normal	
+Local Zebu	42	Female	240.3	234.8	102.3	Normal	0.1426	Normal	
+Brahman Cross	57	Male	487.8	474.1	102.9	Normal	-0.0018	Flagged - Unusual, Needs Review	
+Local Zebu	45	Female	237.3	249.4	95.1	Normal	0.1378	Normal	
+Pabna	10	Male	114.8	92.4	124.2	Overweight	0.0351	Normal	
+Local Zebu	41	Female	225.8	229.9	98.2	Normal	0.1352	Normal	
+Holstein Cross	68	Female	763.7	554.3	137.8	Overweight	-0.0485	Flagged - Possible Pregnancy or Overweight	
+Red Chittagong	14	Female	80.5	91.7	87.8	Normal	0.0779	Normal	
+Red Chittagong	17	Female	69	105.4	65.5	Underweight	0.0602	Normal	
+Holstein Cross	36	Male	359.9	346.6	103.8	Normal	0.0271	Normal	
+Sindhi Cross	72	Female	468.3	457.2	102.4	Normal	-0.0175	Flagged - Possible Pregnancy or Overweight	
+Sahiwal	38	Female	268.4	272.6	98.5	Normal	0.0989	Normal	
+Brahman Cross	46	Male	392.5	391.5	100.3	Normal	0.0278	Normal	
+Red Chittagong	36	Female	199.5	191.8	104	Normal	0.1178	Normal	
+Local Zebu	33	Female	167.4	190.9	87.7	Normal	0.129	Normal	
+Local Zebu	13	Female	85.4	93.4	91.4	Normal	0.1143	Normal	
+Sindhi Cross	46	Female	317	305.1	103.9	Normal	0.0657	Normal	
+Local Zebu	41	Female	211.1	229.9	91.8	Normal	0.1349	Normal	
+Red Chittagong	53	Female	397.1	269.2	147.5	Overweight	0.0719	Normal	
+Holstein Cross	12	Female	115.4	135.7	85	Normal	0.0791	Normal	
+Local Zebu	55	Male	334.9	327.9	102.1	Normal	0.0937	Normal	
+Red Chittagong	21	Female	123	123.6	99.5	Normal	0.1033	Normal	
+Pabna	7	Female	44.2	68.4	64.6	Underweight	0.0116	Normal	
+Sindhi Cross	38	Male	301.6	284.1	106.2	Normal	0.0195	Normal	
+Sahiwal	44	Male	329.7	340.7	96.8	Normal	0.0448	Normal	
+Sindhi Cross	46	Female	292.9	305.1	96	Normal	0.0707	Normal	
+Red Chittagong	10	Male	83.9	80.9	103.7	Normal	0.0318	Normal	
+Sahiwal	68	Female	475.1	457.9	103.8	Normal	0.026	Normal	
+Holstein Cross	60	Female	479.3	494.5	96.9	Normal	0.0394	Normal	
+Holstein Cross	39	Female	338.5	337.5	100.3	Normal	0.0742	Normal	
+Brahman Cross	47	Female	227.2	362.8	62.6	Underweight	0.0615	Normal	
+Brahman Cross	23	Male	229.3	218.9	104.8	Normal	0.0272	Normal	
+Red Chittagong	16	Male	113.5	110.9	102.3	Normal	0.05	Normal	
+Sahiwal	22	Female	168.3	173.8	96.8	Normal	0.0984	Normal	
+Sahiwal	46	Female	309.6	322	96.1	Normal	0.0981	Normal	
+Local Zebu	28	Female	167.8	166.5	100.8	Normal	0.1423	Normal	
+Sahiwal	31	Male	236.3	252.4	93.6	Normal	0.0534	Normal	
+Red Chittagong	54	Female	229.9	273.7	84	Normal	0.1007	Normal	
+Local Zebu	8	Female	75.5	69	109.4	Normal	0.0923	Normal	
+Brahman Cross	17	Female	171.6	158	108.6	Normal	0.0643	Normal	
+Sahiwal	27	Male	189.8	225.2	84.3	Normal	0.0536	Normal	
+Brahman Cross	25	Male	218.7	233.9	93.5	Normal	0.0333	Normal	
+Sindhi Cross	21	Male	184	174.7	105.3	Normal	0.0162	Normal	
+Sahiwal	64	Female	464.1	433.2	107.1	Normal	0.048	Normal	
+Local Zebu	32	Male	204.9	204.6	100.1	Normal	0.0882	Normal	
+Sahiwal	42	Female	286.4	297.3	96.3	Normal	0.1029	Normal	

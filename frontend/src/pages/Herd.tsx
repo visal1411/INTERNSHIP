@@ -203,10 +203,15 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                       className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-0 text-gray-900 dark:text-white transition-colors"
                     >
                       <option value="All">{t('herd.filterAllBreeds', 'All Breeds')}</option>
-                      <option value="Brahman">Brahman</option>
-                      <option value="Kor Khmer">Kor Khmer</option>
-                      <option value="Hariana">Hariana</option>
+                      <option value="Brahman Cross">Brahman Cross</option>
+                      <option value="Local Zebu">Local Zebu</option>
+                      <option value="Sahiwal">Sahiwal</option>
+                      <option value="Holstein Cross">Holstein Cross</option>
+                      <option value="Red Chittagong">Red Chittagong</option>
+                      <option value="Pabna">Pabna</option>
+                      <option value="Sindhi Cross">Sindhi Cross</option>
                     </select>
+
                   </div>
                 </div>
                 {(genderFilter !== 'All' || breedFilter !== 'All') && (
@@ -537,12 +542,17 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                 </div>
                 <div className="col-span-2 sm:col-span-1">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Breed</label>
-                  <select name="breed" className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white outline-none transition-colors">
-                    <option value="Brahman">Brahman</option>
-                    <option value="Kor Khmer">Kor Khmer</option>
-                    <option value="Hariana">Hariana</option>
+                  <select name="breed" defaultValue={selectedCow?.breed || 'Brahman Cross'} className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white outline-none transition-colors">
+                    <option value="Brahman Cross">Brahman Cross</option>
+                    <option value="Local Zebu">Local Zebu</option>
+                    <option value="Sahiwal">Sahiwal</option>
+                    <option value="Holstein Cross">Holstein Cross</option>
+                    <option value="Red Chittagong">Red Chittagong</option>
+                    <option value="Pabna">Pabna</option>
+                    <option value="Sindhi Cross">Sindhi Cross</option>
                     <option value="Other">Other</option>
                   </select>
+
                 </div>
                 <div className="col-span-2 sm:col-span-1">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Date of Birth</label>
@@ -550,7 +560,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                 </div>
                 <div className="col-span-2 sm:col-span-1">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Gender</label>
-                  <select name="gender" className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white outline-none transition-colors">
+                  <select name="gender" defaultValue={selectedCow?.gender || 'Female'} className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white outline-none transition-colors">
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                   </select>

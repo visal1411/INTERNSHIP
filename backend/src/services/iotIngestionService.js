@@ -76,12 +76,15 @@ const ingestMeasurement = async (payload) => {
       deviceId: device_id,
       weightKg: weight_kg,
       ageMonthsAtMeasurement: age_months || 0, // Default to 0 if unknown
-      status: classification ? classification.label : null,
+      status: (classification && classification.isAnomaly && classification.flag && classification.flag !== 'Normal') 
+        ? classification.flag 
+        : (classification ? classification.label : null),
       confidence: classification ? classification.confidence : null,
       measuredAt: measureTime,
       receivedAt: new Date()
     }
   });
+
 
   // Update device lastSeenAt timestamp
   await prisma.device.update({

@@ -43,8 +43,12 @@ const resources = {
         overweight: "Overweight",
         normal: "Normal",
         critical: "Critical",
-        warning: "Warning"
+        warning: "Warning",
+        potentialSickness: "Potential Sickness",
+        possiblePregnancy: "Possible Pregnancy / Overweight",
+        unusualReview: "Unusual - Needs Review"
       },
+
       timeFilter: {
         last7Days: "Last 7 days",
         last30Days: "Last 30 days",
@@ -157,8 +161,12 @@ const resources = {
         overweight: "លើសទម្ងន់",
         normal: "ធម្មតា",
         critical: "ធ្ងន់ធ្ងរ",
-        warning: "ព្រមាន"
+        warning: "ព្រមាន",
+        potentialSickness: "អាចមានជំងឺ",
+        possiblePregnancy: "អាចមានផ្ទៃពោះ/លើសទម្ងន់",
+        unusualReview: "មិនធម្មតា - ត្រូវពិនិត្យ"
       },
+
       timeFilter: {
         last7Days: "៧ថ្ងៃចុងក្រោយ",
         last30Days: "៣០ថ្ងៃចុងក្រោយ",
