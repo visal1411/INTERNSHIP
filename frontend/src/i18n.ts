@@ -40,6 +40,8 @@ const resources = {
         logDetails: "Details"
       },
       status: {
+        healthy: "Healthy",
+        underweight: "Underweight",
         overweight: "Overweight",
         normal: "Normal",
         critical: "Critical",
@@ -158,6 +160,8 @@ const resources = {
         logDetails: "ព័ត៌មានលម្អិត"
       },
       status: {
+        healthy: "សុខភាពល្អ",
+        underweight: "ស្គម/ខ្វះទម្ងន់",
         overweight: "លើសទម្ងន់",
         normal: "ធម្មតា",
         critical: "ធ្ងន់ធ្ងរ",

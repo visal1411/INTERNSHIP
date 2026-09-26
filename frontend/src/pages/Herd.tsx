@@ -289,14 +289,27 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                     </div>
                   </td>
                   <td className="py-4 px-6">
-                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                      cow.status === 'critical' ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400' :
-                      cow.status === 'incomplete' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400' :
-                      cow.status === 'overweight' || cow.status === 'warning' ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400' :
-                      'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'
-                    }`}>
-                      {cow.status === 'incomplete' ? 'Incomplete' : t(`status.${cow.status}`)}
-                    </span>
+                    <div className="flex flex-col space-y-1.5 items-start">
+                      {/* Model 1: Weight Classification */}
+                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                        cow.status === 'critical' ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400' :
+                        cow.status === 'incomplete' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400' :
+                        cow.status === 'overweight' || cow.status === 'warning' ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400' :
+                        'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'
+                      }`}>
+                        {cow.status === 'incomplete' ? 'Incomplete' : t(`status.${cow.status}`, cow.health)}
+                        {cow.confidence && <span className="ml-1 opacity-75 font-mono text-[10px]">({cow.confidence})</span>}
+                      </span>
+                      {/* Model 2: Isolation Forest Anomaly Detection */}
+                      {cow.breed && cow.anomalyFlag && (
+                        <span className={`inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium ${
+                          cow.isAnomaly ? 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300 font-semibold border border-red-200 dark:border-red-800' :
+                          'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
+                        }`}>
+                          {cow.isAnomaly ? '⚠️' : '🛡️'} {cow.anomalyFlag}
+                        </span>
+                      )}
+                    </div>
                   </td>
                   <td className="py-4 px-6 text-sm text-gray-500 dark:text-gray-400">{cow.lastSync}</td>
                   <td className="py-4 px-6 text-right">
@@ -338,7 +351,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
             </div>
 
             <div className="flex-1 overflow-y-auto p-6 space-y-8 custom-scrollbar">
-              {/* Stats */}
+              {/* Stats - Dual Model Display */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
                   <div className="flex items-center space-x-2 text-gray-500 dark:text-gray-400 mb-2">
@@ -351,11 +364,20 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                   </div>
                 </div>
                 <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 border border-gray-100 dark:border-gray-700">
-                  <div className="flex items-center space-x-2 text-gray-500 dark:text-gray-400 mb-2">
-                    <Heart size={16} />
-                    <span className="text-sm font-medium">{t('herd.detail.healthStatus', 'Health Status')}</span>
+                  <div className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 mb-1">
+                    <Heart size={14} />
+                    <span className="text-[11px] font-semibold uppercase tracking-wider">Model 1: Classification</span>
                   </div>
-                  <div className="text-lg font-bold text-gray-900 dark:text-white">{selectedCow.health}</div>
+                  <div className="text-base font-bold text-gray-900 dark:text-white capitalize">
+                    {selectedCow.health}
+                    {selectedCow.confidence && <span className="ml-1 text-xs text-green-600 dark:text-green-400 font-mono">({selectedCow.confidence})</span>}
+                  </div>
+                  <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-600">
+                    <div className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Model 2: Anomaly Detection</div>
+                    <div className={`text-xs font-bold mt-0.5 ${selectedCow.isAnomaly ? 'text-red-600 dark:text-red-400' : 'text-gray-700 dark:text-gray-300'}`}>
+                      {selectedCow.anomalyFlag || 'Normal'}
+                    </div>
+                  </div>
                 </div>
               </div>
 

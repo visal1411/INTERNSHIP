@@ -1,6 +1,33 @@
 const prisma = require('../lib/prisma');
 const logger = require('../lib/logger');
 
+const parseStatus = (statusRaw) => {
+  let label = null;
+  let flag = 'Normal';
+  let isAnomaly = false;
+
+  if (statusRaw) {
+    try {
+      const parsed = JSON.parse(statusRaw);
+      label = parsed.label;
+      flag = parsed.flag || 'Normal';
+      isAnomaly = parsed.isAnomaly || (flag !== 'Normal');
+    } catch (e) {
+      if (statusRaw.startsWith('Flagged')) {
+        flag = statusRaw;
+        isAnomaly = true;
+        label = statusRaw.includes('Pregnancy') || statusRaw.includes('Overweight') ? 'overweight' : 'underweight';
+      } else {
+        label = statusRaw;
+        flag = 'Normal';
+        isAnomaly = false;
+      }
+    }
+  }
+
+  return { label, flag, isAnomaly };
+};
+
 const getCows = async (farmerId) => {
   const cows = await prisma.cow.findMany({
     where: { farmerId },
@@ -13,16 +40,23 @@ const getCows = async (farmerId) => {
     }
   });
 
-  return cows.map(c => ({
-    id: c.id,
-    cowId: c.cowId,
-    breed: c.breed,
-    sex: c.sex,
-    dateOfBirth: c.dateOfBirth,
-    createdAt: c.createdAt,
-    latestWeight: c.measurements.length > 0 ? c.measurements[0].weightKg : 0,
-    latestStatus: c.measurements.length > 0 ? c.measurements[0].status : null
-  }));
+  return cows.map(c => {
+    const lastM = c.measurements.length > 0 ? c.measurements[0] : null;
+    const { label, flag, isAnomaly } = parseStatus(lastM ? lastM.status : null);
+    return {
+      id: c.id,
+      cowId: c.cowId,
+      breed: c.breed,
+      sex: c.sex,
+      dateOfBirth: c.dateOfBirth,
+      createdAt: c.createdAt,
+      latestWeight: lastM ? lastM.weightKg : 0,
+      latestStatus: label,
+      anomalyFlag: flag,
+      isAnomaly: isAnomaly,
+      confidence: lastM ? lastM.confidence : null
+    };
+  });
 };
 
 const getCowById = async (farmerId, id) => {
@@ -35,9 +69,19 @@ const getCowById = async (farmerId, id) => {
 
 const getMeasurements = async (farmerId, id) => {
   const cow = await getCowById(farmerId, id);
-  return prisma.weightMeasurement.findMany({
+  const rawMeasurements = await prisma.weightMeasurement.findMany({
     where: { cowId: cow.id },
     orderBy: { measuredAt: 'desc' }
+  });
+
+  return rawMeasurements.map(m => {
+    const { label, flag, isAnomaly } = parseStatus(m.status);
+    return {
+      ...m,
+      status: label,
+      anomalyFlag: flag,
+      isAnomaly: isAnomaly
+    };
   });
 };
 
@@ -101,14 +145,17 @@ const updateCow = async (farmerId, id, data) => {
         );
 
         if (mlResult) {
-          const finalStatus = (mlResult.isAnomaly && mlResult.flag && mlResult.flag !== 'Normal')
-            ? mlResult.flag
-            : mlResult.label;
+          const statusPayload = JSON.stringify({
+            label: mlResult.label,
+            flag: mlResult.flag || 'Normal',
+            isAnomaly: mlResult.isAnomaly || false,
+            anomalyScore: mlResult.anomalyScore || 0
+          });
 
           await prisma.weightMeasurement.update({
             where: { id: m.id },
             data: {
-              status: finalStatus,
+              status: statusPayload,
               confidence: mlResult.confidence,
               ageMonthsAtMeasurement: ageMonths
             }

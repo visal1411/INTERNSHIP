@@ -70,15 +70,20 @@ const ingestMeasurement = async (payload) => {
     measureTime = parsedTime;
   }
 
+  const statusPayload = classification ? JSON.stringify({
+    label: classification.label,
+    flag: classification.flag || 'Normal',
+    isAnomaly: classification.isAnomaly || false,
+    anomalyScore: classification.anomalyScore || 0
+  }) : null;
+
   const measurement = await prisma.weightMeasurement.create({
     data: {
       cowId: cow.id,
       deviceId: device_id,
       weightKg: weight_kg,
-      ageMonthsAtMeasurement: age_months || 0, // Default to 0 if unknown
-      status: (classification && classification.isAnomaly && classification.flag && classification.flag !== 'Normal') 
-        ? classification.flag 
-        : (classification ? classification.label : null),
+      ageMonthsAtMeasurement: age_months || 0,
+      status: statusPayload,
       confidence: classification ? classification.confidence : null,
       measuredAt: measureTime,
       receivedAt: new Date()
