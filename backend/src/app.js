@@ -25,6 +25,12 @@ for (const param of requiredParams) {
   }
 }
 
+if (!process.env.ML_SERVICE_URL || !process.env.ML_SERVICE_URL.trim()) {
+  logger.warn('⚠️ WARNING: ML_SERVICE_URL is not configured in environment variables. ML predictions will fall back to static database standard table.');
+} else {
+  logger.info(`🤖 ML Service URL active: ${process.env.ML_SERVICE_URL}`);
+}
+
 
 const app = express();
 app.use(requestLogger);

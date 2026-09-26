@@ -1,14 +1,20 @@
+const logger = require('./logger');
+
 const predictWeightStatus = async (breed, gender, age_months, weight_kg) => {
-  const url = process.env.ML_SERVICE_URL;
-  if (!url) {
-    throw new Error('ML_SERVICE_URL is not set');
+  const rawUrl = process.env.ML_SERVICE_URL;
+  if (!rawUrl || !rawUrl.trim()) {
+    throw new Error('ML_SERVICE_URL is not set in environment');
   }
 
+  const url = rawUrl.trim().replace(/\/$/, '');
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 3000);
+  const timeoutId = setTimeout(() => controller.abort(), 5000);
 
   try {
-    const response = await fetch(`${url}/predict`, {
+    const targetEndpoint = `${url}/predict`;
+    logger.info({ targetEndpoint, breed, gender, age_months, weight_kg }, '🚀 Sending POST request to ML Server...');
+
+    const response = await fetch(targetEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ breed, age_months, gender, weight_kg }),
