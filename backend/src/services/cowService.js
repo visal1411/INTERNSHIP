@@ -28,7 +28,56 @@ const parseStatus = (statusRaw) => {
   return { label, flag, isAnomaly };
 };
 
+const reclassifyUnclassifiedMeasurements = async (farmerId) => {
+  try {
+    const registeredCows = await prisma.cow.findMany({
+      where: {
+        farmerId,
+        NOT: [{ breed: null }, { sex: null }, { dateOfBirth: null }]
+      },
+      include: {
+        measurements: true
+      }
+    });
+
+    const classificationService = require('./classificationService');
+    const msPerMonth = 1000 * 60 * 60 * 24 * 30.44;
+
+    for (const cow of registeredCows) {
+      for (const m of cow.measurements) {
+        if (!m.status || !m.status.startsWith('{')) {
+          const ageMonths = Math.max(0, Math.floor((new Date(m.measuredAt) - new Date(cow.dateOfBirth)) / msPerMonth));
+          const mlResult = await classificationService.classify(cow.breed, cow.sex, ageMonths, m.weightKg);
+          if (mlResult) {
+            const statusPayload = JSON.stringify({
+              label: mlResult.label,
+              flag: mlResult.flag || 'Normal',
+              isAnomaly: mlResult.isAnomaly || false,
+              anomalyScore: mlResult.anomalyScore || 0
+            });
+
+            await prisma.weightMeasurement.update({
+              where: { id: m.id },
+              data: {
+                status: statusPayload,
+                confidence: mlResult.confidence,
+                ageMonthsAtMeasurement: ageMonths
+              }
+            });
+            m.status = statusPayload;
+            m.confidence = mlResult.confidence;
+          }
+        }
+      }
+    }
+  } catch (err) {
+    logger.error({ err }, 'Error in reclassifyUnclassifiedMeasurements');
+  }
+};
+
 const getCows = async (farmerId) => {
+  await reclassifyUnclassifiedMeasurements(farmerId);
+
   const cows = await prisma.cow.findMany({
     where: { farmerId },
     orderBy: { createdAt: 'desc' },
