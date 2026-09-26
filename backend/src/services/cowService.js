@@ -80,38 +80,42 @@ const updateCow = async (farmerId, id, data) => {
     }
   });
 
-  // Automatically trigger ML classification for the latest weight measurement 
-  // now that the cow has a breed/age/gender!
+  // Automatically trigger ML classification for any unclassified measurements
+  // now that the cow has breed/age/gender!
   if (updatedCow.breed && updatedCow.sex && updatedCow.dateOfBirth) {
-    const latestMeasurement = await prisma.weightMeasurement.findFirst({
-      where: { cowId: cow.id },
-      orderBy: { measuredAt: 'desc' }
+    const measurements = await prisma.weightMeasurement.findMany({
+      where: { cowId: cow.id }
     });
 
-    if (latestMeasurement) {
-      const classificationService = require('./classificationService');
-      const msPerMonth = 1000 * 60 * 60 * 24 * 30.44;
-      const ageMonths = Math.max(0, Math.floor((latestMeasurement.measuredAt - updatedCow.dateOfBirth) / msPerMonth));
-      
+    const classificationService = require('./classificationService');
+    const msPerMonth = 1000 * 60 * 60 * 24 * 30.44;
+
+    for (const m of measurements) {
+      const ageMonths = Math.max(0, Math.floor((m.measuredAt - new Date(updatedCow.dateOfBirth)) / msPerMonth));
       try {
         const mlResult = await classificationService.classify(
           updatedCow.breed,
           updatedCow.sex,
           ageMonths,
-          latestMeasurement.weightKg
+          m.weightKg
         );
-        
+
         if (mlResult) {
+          const finalStatus = (mlResult.isAnomaly && mlResult.flag && mlResult.flag !== 'Normal')
+            ? mlResult.flag
+            : mlResult.label;
+
           await prisma.weightMeasurement.update({
-            where: { id: latestMeasurement.id },
+            where: { id: m.id },
             data: {
-              status: mlResult.label,
-              confidence: mlResult.confidence
+              status: finalStatus,
+              confidence: mlResult.confidence,
+              ageMonthsAtMeasurement: ageMonths
             }
           });
         }
       } catch (err) {
-        logger.error({ err }, 'Failed to trigger ML classification after cow update');
+        logger.error({ err }, `Failed to re-classify measurement ${m.id} after cow update`);
       }
     }
   }

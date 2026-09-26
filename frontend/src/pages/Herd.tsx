@@ -49,18 +49,28 @@ export function Herd({ onNavigateToScale }: HerdProps) {
       });
       if (res.ok) {
         const data = await res.json();
-        const mappedCows = data.map((cow: any) => ({
-          internalId: cow.id,
-          id: cow.cowId,
-          weight: cow.latestWeight || 0, 
-          status: cow.breed ? 'normal' : 'incomplete',
-          lastSync: new Date(cow.createdAt).toLocaleDateString(),
-          trend: 'stable',
-          age: cow.dateOfBirth ? Math.floor((new Date().getTime() - new Date(cow.dateOfBirth).getTime()) / (1000 * 60 * 60 * 24 * 365.25)) + ' yrs' : 'Unknown',
-          breed: cow.breed || 'Unknown',
-          health: cow.latestStatus || (cow.breed ? 'Pending Weigh-in' : 'Needs Registration'),
-          gender: cow.sex || 'Unknown'
-        }));
+        const mappedCows = data.map((cow: any) => {
+          const rawStatus = (cow.latestStatus || '').toLowerCase();
+          let computedStatus = !cow.breed ? 'incomplete' : (cow.latestStatus || 'normal');
+          if (cow.breed && cow.latestStatus) {
+            if (rawStatus.includes('sickness') || rawStatus.includes('critical')) computedStatus = 'critical';
+            else if (rawStatus.includes('overweight')) computedStatus = 'overweight';
+            else if (rawStatus.includes('underweight')) computedStatus = 'warning';
+          }
+
+          return {
+            internalId: cow.id,
+            id: cow.cowId,
+            weight: cow.latestWeight || 0, 
+            status: computedStatus,
+            lastSync: new Date(cow.createdAt).toLocaleDateString(),
+            trend: 'stable',
+            age: cow.dateOfBirth ? Math.floor((new Date().getTime() - new Date(cow.dateOfBirth).getTime()) / (1000 * 60 * 60 * 24 * 365.25)) + ' yrs' : 'Unknown',
+            breed: cow.breed || 'Unknown',
+            health: cow.latestStatus || (cow.breed ? 'Pending Weigh-in' : 'Needs Registration'),
+            gender: cow.sex || 'Unknown'
+          };
+        });
         setHerdData(mappedCows);
       }
     } catch (e) {
@@ -543,13 +553,13 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                 <div className="col-span-2 sm:col-span-1">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Breed</label>
                   <select name="breed" defaultValue={selectedCow?.breed || 'Brahman Cross'} className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white outline-none transition-colors">
-                    <option value="Brahman Cross">Brahman Cross</option>
+                    <option value="Brahman Cross">Brahman / Brahman Cross</option>
                     <option value="Local Zebu">Local Zebu</option>
                     <option value="Sahiwal">Sahiwal</option>
-                    <option value="Holstein Cross">Holstein Cross</option>
+                    <option value="Holstein Cross">Holstein / Holstein Cross</option>
                     <option value="Red Chittagong">Red Chittagong</option>
                     <option value="Pabna">Pabna</option>
-                    <option value="Sindhi Cross">Sindhi Cross</option>
+                    <option value="Sindhi Cross">Sindhi / Sindhi Cross</option>
                     <option value="Other">Other</option>
                   </select>
 
