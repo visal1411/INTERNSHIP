@@ -75,7 +75,10 @@ def predict(req: PredictionRequest):
         }])
 
         anomaly_score = float(bundle["iso_forest"].decision_function(iso_features)[0])
-        is_anomaly = bool(bundle["iso_forest"].predict(iso_features)[0] == -1)
+        iso_anomaly = bool(bundle["iso_forest"].predict(iso_features)[0] == -1)
+        # Flag as anomaly if Isolation Forest detects outlier OR if cohort Z-Score is extreme (|Z| >= 1.5)
+        # This guarantees cows underweight or overweight from the start are properly flagged.
+        is_anomaly = iso_anomaly or (z_score <= -1.5) or (z_score >= 1.75)
         flag = refine_flag(is_anomaly, z_score, gender)
 
         top_driver = None
