@@ -4,9 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode development",
+    "dev:local": "vite --mode development",
+    "dev:prod": "vite --mode production",
     "server": "json-server --watch db.json --port 4000",
-    "build": "vite build",
+    "build": "vite build --mode production",
+    "build:local": "vite build --mode development",
+    "build:prod": "vite build --mode production",
     "lint": "eslint .",
     "preview": "vite preview"
   },

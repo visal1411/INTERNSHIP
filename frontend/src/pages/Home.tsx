@@ -124,7 +124,7 @@ export function Home({ onNavigate }: HomeProps) {
         <StatCard
           title={t('dashboard.totalCows')}
           value={summaryData.totalCows.toLocaleString()}
-          trend="Registered cows"
+          trend={t('dashboard.registeredCows', 'Registered cows')}
           trendUp={true}
           icon={<div className="w-6 h-6 bg-current text-gray-600 dark:text-gray-300" style={{ WebkitMaskImage: `url(${cowIcon})`, maskImage: `url(${cowIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />}
           color="bg-gray-100 dark:bg-gray-700"
@@ -134,7 +134,7 @@ export function Home({ onNavigate }: HomeProps) {
         <StatCard
           title={t('dashboard.avgWeight')}
           value={summaryData.avgWeightKg > 0 ? `${summaryData.avgWeightKg.toLocaleString()} kg` : '0 kg'}
-          trend="Latest average"
+          trend={t('dashboard.latestAverage', 'Latest average')}
           trendUp={true}
           icon={<Scale className="w-6 h-6 text-gray-600 dark:text-gray-300" />}
           color="bg-gray-100 dark:bg-gray-700"
@@ -144,7 +144,7 @@ export function Home({ onNavigate }: HomeProps) {
         <StatCard
           title={t('dashboard.overweightAlerts')}
           value={summaryData.alertCount.toString()}
-          trend="Active alerts"
+          trend={t('dashboard.activeAlerts', 'Active alerts')}
           trendUp={summaryData.alertCount === 0}
           isAlert={summaryData.alertCount > 0}
           icon={<AlertTriangle className="w-6 h-6 text-red-600 dark:text-red-400" />}
@@ -159,8 +159,8 @@ export function Home({ onNavigate }: HomeProps) {
         <div className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm transition-colors">
           <div className="flex justify-between items-center mb-6">
             <div>
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">Average Weight Trend</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">Live backend measurements across your herd</p>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white">{t('dashboard.weightTrend', 'Average Weight Trend')}</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{t('dashboard.weightTrendSubtitle', 'Live backend measurements across your herd')}</p>
             </div>
             
             <div className="relative" ref={timeFilterRef}>
@@ -225,27 +225,27 @@ export function Home({ onNavigate }: HomeProps) {
             ) : (
               <div className="text-center text-gray-400 py-12">
                 <Scale className="w-12 h-12 mx-auto mb-3 opacity-30" />
-                <p className="text-sm font-medium">No weight measurements recorded yet</p>
-                <p className="text-xs text-gray-400 mt-1">Connect an IoT scale or add cows in the Herd tab</p>
+                <p className="text-sm font-medium">{t('dashboard.noMeasurementsYet', 'No weight measurements recorded yet')}</p>
+                <p className="text-xs text-gray-400 mt-1">{t('dashboard.connectScaleHint', 'Connect an IoT scale or add cows in the Herd tab')}</p>
               </div>
             )}
           </div>
           
           {/* Quick Actions Panel */}
           <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
-            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h4>
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">{t('dashboard.quickActions', 'Quick Actions')}</h4>
             <div className="flex gap-3">
               <button 
                 onClick={() => onNavigate?.('herd')}
                 className="flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/50 transition-colors font-medium text-sm border border-green-200 dark:border-green-800 cursor-pointer"
               >
-                <Plus size={16} /> Manage Herd
+                <Plus size={16} /> {t('dashboard.manageHerd', 'Manage Herd')}
               </button>
               <button 
                 onClick={() => handleExport('report')}
                 className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors font-medium text-sm border border-gray-200 dark:border-gray-600 shadow-sm cursor-pointer"
               >
-                Generate Report
+                {t('dashboard.generateReport', 'Generate Report')}
               </button>
             </div>
           </div>
@@ -298,12 +298,12 @@ export function Home({ onNavigate }: HomeProps) {
             ) : (
               <div className="h-full flex flex-col items-center justify-center text-center p-6 text-gray-400">
                 <Scale className="w-10 h-10 mb-2 opacity-30" />
-                <p className="text-sm font-medium">No recent weigh-ins</p>
+                <p className="text-sm font-medium">{t('dashboard.noRecentWeighIns', 'No recent weigh-ins')}</p>
                 <button
                   onClick={() => onNavigate?.('herd')}
                   className="mt-3 px-4 py-2 bg-green-500 text-white rounded-xl text-xs font-medium hover:bg-green-600 transition-colors"
                 >
-                  View Herd
+                  {t('dashboard.viewHerd', 'View Herd')}
                 </button>
               </div>
             )}

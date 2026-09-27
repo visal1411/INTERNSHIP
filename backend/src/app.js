@@ -72,6 +72,9 @@ app.get('/api-docs.json', (req, res) => {
   res.send(swaggerSpec);
 });
 
+// Root route & Health check
+app.get('/', (req, res) => res.json({ name: 'AgroScale API', status: 'online', docs: '/api-docs', health: '/health' }));
+
 // Application Routes
 app.use('/health', healthRoutes);
 app.use('/api/v1/auth', authRoutes);

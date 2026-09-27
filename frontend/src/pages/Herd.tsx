@@ -66,9 +66,12 @@ export function Herd({ onNavigateToScale }: HerdProps) {
             lastSync: new Date(cow.createdAt).toLocaleDateString(),
             trend: 'stable',
             age: cow.dateOfBirth ? Math.floor((new Date().getTime() - new Date(cow.dateOfBirth).getTime()) / (1000 * 60 * 60 * 24 * 365.25)) + ' yrs' : 'Unknown',
-            breed: cow.breed || 'Unknown',
+            breed: cow.breed || 'Needs Registration',
             health: cow.latestStatus || (cow.breed ? 'Pending Weigh-in' : 'Needs Registration'),
-            gender: cow.sex || 'Unknown'
+            gender: cow.sex || 'Unknown',
+            confidence: cow.confidence || null,
+            anomalyFlag: cow.anomalyFlag || 'Normal',
+            isAnomaly: Boolean(cow.isAnomaly)
           };
         });
         setHerdData(mappedCows);
@@ -160,7 +163,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
           <p className="text-gray-500 dark:text-gray-400 mt-1">{t('herd.subtitle', 'Manage your livestock, view records, and track health.')}</p>
         </div>
         <div className="flex items-center text-sm text-gray-500 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700">
-          <span className="font-medium">💡 New tags are automatically added when scanned by the scale.</span>
+          <span className="font-medium">{t('herd.tagNotice')}</span>
         </div>
       </div>
 
@@ -194,7 +197,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
               <div className="absolute top-full left-0 mt-2 w-full sm:w-[26rem] bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-100 dark:border-gray-700 p-4 z-10 animate-in fade-in slide-in-from-top-2 duration-200 transition-colors">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="flex-1">
-                    <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Gender</label>
+                    <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">{t('herd.gender', 'Gender')}</label>
                     <select 
                       value={genderFilter}
                       onChange={(e) => setGenderFilter(e.target.value)}
@@ -206,7 +209,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                     </select>
                   </div>
                   <div className="flex-1">
-                    <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Breed</label>
+                    <label className="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">{t('herd.breed', 'Breed')}</label>
                     <select 
                       value={breedFilter}
                       onChange={(e) => setBreedFilter(e.target.value)}
@@ -234,7 +237,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                         }}
                         className="w-full px-4 py-2 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/40 text-red-600 dark:text-red-400 rounded-lg text-sm font-medium transition-colors"
                       >
-                        Clear Filters
+                        {t('herd.clearFilters', 'Clear Filters')}
                       </button>
                     </div>
                   )}
@@ -259,8 +262,10 @@ export function Herd({ onNavigateToScale }: HerdProps) {
             <thead>
               <tr className="bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-700">
                 <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.tagId', 'Tag ID')}</th>
+                <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.breed', 'Breed')}</th>
                 <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.weight', 'Weight (KG)')}</th>
-                <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.status', 'Status')}</th>
+                <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.status', 'Health Status (ML 1)')}</th>
+                <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.anomalyDetection', 'Anomaly Detector (ML 2)')}</th>
                 <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.lastSync', 'Last Sync')}</th>
                 <th className="py-4 px-6 text-right text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.actions', 'Actions')}</th>
               </tr>
@@ -268,6 +273,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
             <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
               {filteredHerd.length > 0 ? filteredHerd.map((cow) => (
                 <tr key={cow.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors group cursor-pointer" onClick={() => setSelectedCow(cow)}>
+                  {/* TAG ID */}
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-400">
@@ -276,51 +282,75 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                       <span className="font-semibold text-gray-900 dark:text-white">{cow.id}</span>
                     </div>
                   </td>
+
+                  {/* BREED */}
+                  <td className="py-4 px-6">
+                    <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold ${
+                      cow.breed === 'Needs Registration' || cow.breed === 'Unknown'
+                        ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800'
+                        : 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800'
+                    }`}>
+                      {cow.breed}
+                    </span>
+                  </td>
+
+                  {/* WEIGHT */}
                   <td className="py-4 px-6">
                     <div className="flex items-center space-x-2">
-                      <span className="font-bold text-gray-900 dark:text-white">{cow.weight}</span>
-                      {cow.trend === 'up' ? (
-                        <ArrowUpRight size={16} className="text-red-500 dark:text-red-400" />
-                      ) : cow.trend === 'down' ? (
-                        <ArrowDownRight size={16} className="text-green-500 dark:text-green-400" />
-                      ) : (
-                        <CheckCircle2 size={16} className="text-gray-400 dark:text-gray-500" />
+                      <span className="font-bold text-gray-900 dark:text-white">{cow.weight > 0 ? `${cow.weight}` : '--'}</span>
+                      {cow.weight > 0 && (
+                        cow.trend === 'up' ? (
+                          <ArrowUpRight size={16} className="text-red-500 dark:text-red-400" />
+                        ) : cow.trend === 'down' ? (
+                          <ArrowDownRight size={16} className="text-green-500 dark:text-green-400" />
+                        ) : (
+                          <CheckCircle2 size={16} className="text-gray-400 dark:text-gray-500" />
+                        )
                       )}
                     </div>
                   </td>
+
+                  {/* HEALTH STATUS (ML 1: Classification) */}
                   <td className="py-4 px-6">
-                    <div className="flex flex-col space-y-1.5 items-start">
-                      {/* Model 1: Weight Classification */}
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                        cow.status === 'critical' ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400' :
-                        cow.status === 'incomplete' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400' :
-                        cow.status === 'overweight' || cow.status === 'warning' ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400' :
-                        'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'
-                      }`}>
-                        {cow.status === 'incomplete' ? 'Incomplete' : t(`status.${cow.status}`, cow.health)}
-                        {cow.confidence && <span className="ml-1 opacity-75 font-mono text-[10px]">({cow.confidence})</span>}
-                      </span>
-                      {/* Model 2: Isolation Forest Anomaly Detection */}
-                      {cow.breed && cow.anomalyFlag && (
-                        <span className={`inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium ${
-                          cow.isAnomaly ? 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300 font-semibold border border-red-200 dark:border-red-800' :
-                          'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300'
-                        }`}>
-                          {cow.isAnomaly ? '⚠️' : '🛡️'} {cow.anomalyFlag}
-                        </span>
-                      )}
-                    </div>
+                    <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
+                      cow.status === 'incomplete' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-800' :
+                      cow.status === 'critical' ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800' :
+                      cow.status === 'overweight' || cow.status === 'warning' ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border border-orange-200 dark:border-orange-800' :
+                      'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800'
+                    }`}>
+                      {cow.status === 'incomplete' ? '⚠️ Needs Info' : t(`status.${cow.status}`, cow.health)}
+                      {cow.confidence && <span className="ml-1 opacity-75 font-mono text-[10px]">({cow.confidence})</span>}
+                    </span>
                   </td>
+
+                  {/* ANOMALY DETECTOR (ML 2: Isolation Forest) */}
+                  <td className="py-4 px-6">
+                    {cow.status === 'incomplete' || !cow.anomalyFlag ? (
+                      <span className="text-xs text-gray-400 dark:text-gray-500 italic">--</span>
+                    ) : (
+                      <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold ${
+                        cow.isAnomaly
+                          ? 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300 border border-rose-300 dark:border-rose-700 animate-pulse'
+                          : 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800'
+                      }`}>
+                        {cow.isAnomaly ? '🔴 ⚠️' : '🛡️'} {cow.anomalyFlag}
+                      </span>
+                    )}
+                  </td>
+
+                  {/* LAST SYNC */}
                   <td className="py-4 px-6 text-sm text-gray-500 dark:text-gray-400">{cow.lastSync}</td>
+
+                  {/* ACTIONS */}
                   <td className="py-4 px-6 text-right">
-                    <button className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={(e) => { e.stopPropagation(); /* Menu logic */ }}>
+                    <button className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={(e) => { e.stopPropagation(); setSelectedCow(cow); }}>
                       <MoreVertical size={18} />
                     </button>
                   </td>
                 </tr>
               )) : (
                 <tr>
-                  <td colSpan={5} className="py-12 text-center text-gray-500 dark:text-gray-400">
+                  <td colSpan={7} className="py-12 text-center text-gray-500 dark:text-gray-400">
                     {t('herd.noResults', 'No cows found matching your search.')}
                   </td>
                 </tr>

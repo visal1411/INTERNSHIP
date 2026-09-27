@@ -2,7 +2,7 @@ const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcrypt');
 const { PrismaPg } = require('@prisma/adapter-pg');
 const { Pool } = require('pg');
-require('dotenv').config();
+require('../src/config/env');
 
 const connectionString = process.env.DATABASE_URL;
 const pool = new Pool({ connectionString });

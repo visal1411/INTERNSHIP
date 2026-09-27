@@ -32,25 +32,39 @@ export const authService = {
   },
 
   async login(email: string, password: string): Promise<AuthResponse> {
-    const response = await fetch('/api/v1/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
-    });
+    try {
+      const response = await fetch('/api/v1/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
 
-    const data = await response.json();
+      let data: any = null;
+      try {
+        const text = await response.text();
+        data = text ? JSON.parse(text) : null;
+      } catch {
+        data = null;
+      }
 
-    if (!response.ok) {
-      const errorMsg = data.error?.message || 'Login failed. Please check your credentials.';
-      throw new Error(typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg));
+      if (!response.ok) {
+        const errorMsg = data?.error?.message || (response.status === 401 ? 'Invalid email address or password.' : 'Unable to connect to login server.');
+        throw new Error(typeof errorMsg === 'string' ? errorMsg : 'Login failed.');
+      }
+
+      if (!data || !data.token || !data.farmer) {
+        throw new Error('Server returned invalid authentication response.');
+      }
+
+      localStorage.setItem(TOKEN_KEY, data.token);
+      localStorage.setItem(USER_KEY, JSON.stringify(data.farmer));
+
+      return data;
+    } catch (err: any) {
+      throw err;
     }
-
-    localStorage.setItem(TOKEN_KEY, data.token);
-    localStorage.setItem(USER_KEY, JSON.stringify(data.farmer));
-
-    return data;
   },
 
   async logout(): Promise<void> {
@@ -88,10 +102,17 @@ export const authService = {
       body: JSON.stringify({ currentPassword, newPassword })
     });
 
-    const data = await response.json();
+    let data: any = null;
+    try {
+      const text = await response.text();
+      data = text ? JSON.parse(text) : null;
+    } catch {
+      data = null;
+    }
+
     if (!response.ok) {
-      const errorMsg = data.error?.message || 'Password update failed.';
-      throw new Error(typeof errorMsg === 'string' ? errorMsg : JSON.stringify(errorMsg));
+      const errorMsg = data?.error?.message || 'Password update failed.';
+      throw new Error(typeof errorMsg === 'string' ? errorMsg : 'Password update failed.');
     }
   }
 };

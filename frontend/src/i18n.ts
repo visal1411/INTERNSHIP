@@ -10,6 +10,21 @@ const resources = {
         devices: "Scale Devices",
         settings: "Settings",
       },
+      login: {
+        title: "Hello Again!",
+        subtitle: "Welcome Back to AgroScale",
+        demoTitle: "Quick Demo Account Prefill",
+        farmer1: "Farmer 1 (John Doe)",
+        farmer2: "Farmer 2 (Jane Smith)",
+        emailPlaceholder: "Email Address",
+        passwordPlaceholder: "Password",
+        rememberMe: "Remember me",
+        signIn: "Login",
+        signingIn: "Signing in...",
+        forgotPassword: "Forgot Password",
+        noAccount: "Don't have an account?",
+        contactAdmin: "Contact Administrator"
+      },
       dashboard: {
         overview: "Dashboard Overview",
         totalCows: "Total Active Cows",
@@ -19,7 +34,19 @@ const resources = {
         viewAll: "View All",
         trendUp: "up",
         trendDown: "down",
-        trendStable: "stable"
+        trendStable: "stable",
+        registeredCows: "Registered cows",
+        latestAverage: "Latest average",
+        activeAlerts: "Active alerts",
+        weightTrend: "Average Weight Trend",
+        weightTrendSubtitle: "Live backend measurements across your herd",
+        noMeasurementsYet: "No weight measurements recorded yet",
+        connectScaleHint: "Connect an IoT scale or add cows in the Herd tab",
+        quickActions: "Quick Actions",
+        manageHerd: "Manage Herd",
+        generateReport: "Generate Report",
+        noRecentWeighIns: "No recent weigh-ins",
+        viewHerd: "View Herd"
       },
       search: {
         placeholder: "Search by tag ID..."
@@ -37,7 +64,9 @@ const resources = {
         logsTitle: "Recent Activity",
         logTime: "Time",
         logType: "Event",
-        logDetails: "Details"
+        logDetails: "Details",
+        removeDevice: "Remove Device",
+        confirmRemove: "Are you sure you want to remove this device?"
       },
       status: {
         healthy: "Healthy",
@@ -50,7 +79,6 @@ const resources = {
         possiblePregnancy: "Possible Pregnancy / Overweight",
         unusualReview: "Unusual - Needs Review"
       },
-
       timeFilter: {
         last7Days: "Last 7 days",
         last30Days: "Last 30 days",
@@ -59,6 +87,7 @@ const resources = {
       herd: {
         title: "Herd Management",
         subtitle: "Manage your livestock, view records, and track health.",
+        tagNotice: "💡 New tags are automatically added when scanned by the scale.",
         addCow: "Add Cow",
         searchPlaceholder: "Search by Tag ID or Status...",
         filterAllGenders: "All Genders",
@@ -66,11 +95,18 @@ const resources = {
         filterFemale: "Female",
         filterAllBreeds: "All Breeds",
         filter: "Filter",
+        gender: "Gender",
+        breed: "Breed",
+        clearFilters: "Clear Filters",
         export: "Export",
+        needsInfo: "⚠️ Needs Info",
+        needsRegistration: "Needs Registration",
         table: {
           tagId: "Tag ID",
+          breed: "Breed",
           weight: "Weight (kg)",
-          status: "Status",
+          status: "Health Status (ML 1)",
+          anomalyDetection: "Anomaly Detector (ML 2)",
           lastSync: "Last Sync",
           actions: "Actions"
         },
@@ -80,7 +116,29 @@ const resources = {
           healthStatus: "Health Status",
           weightHistory: "Weight History (YTD)",
           editRecord: "Edit Record",
-          addWeighIn: "Add Weigh-in"
+          addWeighIn: "Add Weigh-in",
+          noHistory: "No measurement history yet.",
+          dateTime: "Date/Time",
+          scale: "Scale",
+          weight: "Weight",
+          status: "Status",
+          noWeighIns: "No recent weigh-ins found.",
+          completeRegistration: "Complete Registration",
+          exportCsv: "Export CSV"
+        },
+        scaleModal: {
+          title: "Select Scale",
+          subtitle: "Choose a scale for weigh-in"
+        },
+        addModal: {
+          title: "Register Cow Details",
+          subtitle: "Enter the details for the livestock",
+          tagId: "Tag ID",
+          breed: "Breed",
+          dob: "Date of Birth",
+          gender: "Gender",
+          cancel: "Cancel",
+          save: "Save Details"
         }
       },
       settings: {
@@ -119,6 +177,14 @@ const resources = {
           warning: "Warning notifications trigger",
           warningDesc: "Push notification banner visual indicators immediately on drastic weight drops."
         }
+      },
+      error: {
+        general: "An unexpected error occurred. Please try again.",
+        networkError: "Unable to connect to the server. Please check your internet connection.",
+        serverError: "The server encountered an error. Please try again later.",
+        invalidCredentials: "Invalid email address or password. Please try again.",
+        unauthorized: "Session expired. Please log in again.",
+        saveFailed: "Failed to save data. Please check your input and try again."
       }
     }
   },
@@ -130,6 +196,21 @@ const resources = {
         devices: "ឧបករណ៍ថ្លឹង",
         settings: "ការកំណត់",
       },
+      login: {
+        title: "សួស្តីឡើងវិញ!",
+        subtitle: "សូមស្វាគមន៍មកកាន់ AgroScale វិញ",
+        demoTitle: "គណនីសាកល្បងរហ័ស",
+        farmer1: "កសិករ ១ (John Doe)",
+        farmer2: "កសិករ ២ (Jane Smith)",
+        emailPlaceholder: "អាសយដ្ឋានអ៊ីមែល",
+        passwordPlaceholder: "ពាក្យសម្ងាត់",
+        rememberMe: "ចងចាំខ្ញុំ",
+        signIn: "ចូលប្រើប្រាស់",
+        signingIn: "កំពុងចូល...",
+        forgotPassword: "ភ្លេចពាក្យសម្ងាត់",
+        noAccount: "មិនទាន់មានគណនីមែនទេ?",
+        contactAdmin: "ទាក់ទងអ្នកគ្រប់គ្រង"
+      },
       dashboard: {
         overview: "ទិដ្ឋភាពទូទៅ",
         totalCows: "ចំនួនគោសរុប",
@@ -139,7 +220,19 @@ const resources = {
         viewAll: "មើលទាំងអស់",
         trendUp: "កើនឡើង",
         trendDown: "ថយចុះ",
-        trendStable: "ថេរ"
+        trendStable: "ថេរ",
+        registeredCows: "គោដែលបានចុះបញ្ជី",
+        latestAverage: "មធ្យមចុងក្រោយ",
+        activeAlerts: "ការព្រមានសកម្ម",
+        weightTrend: "និន្នាការទម្ងន់មធ្យម",
+        weightTrendSubtitle: "ទិន្នន័យថ្លឹងទម្ងន់ផ្ទាល់ពីហ្វូងគោរបស់អ្នក",
+        noMeasurementsYet: "មិនទាន់មានទិន្នន័យថ្លឹងទម្ងន់នៅឡើយទេ",
+        connectScaleHint: "ភ្ជាប់ជញ្ជីង IoT ឬបន្ថែមគោក្នុងទំព័រហ្វូងគោ",
+        quickActions: "សកម្មភាពរហ័ស",
+        manageHerd: "គ្រប់គ្រងហ្វូងគោ",
+        generateReport: "បង្កើតរបាយការណ៍",
+        noRecentWeighIns: "គ្មានទិន្នន័យថ្លឹងថ្មីៗ",
+        viewHerd: "មើលហ្វូងគោ"
       },
       search: {
         placeholder: "ស្វែងរកតាមលេខកូដ..."
@@ -157,7 +250,9 @@ const resources = {
         logsTitle: "សកម្មភាពថ្មីៗ",
         logTime: "ពេលវេលា",
         logType: "ព្រឹត្តិការណ៍",
-        logDetails: "ព័ត៌មានលម្អិត"
+        logDetails: "ព័ត៌មានលម្អិត",
+        removeDevice: "លុបឧបករណ៍",
+        confirmRemove: "តើអ្នកប្រាកដជាចង់លុបឧបករណ៍នេះមែនទេ?"
       },
       status: {
         healthy: "សុខភាពល្អ",
@@ -170,7 +265,6 @@ const resources = {
         possiblePregnancy: "អាចមានផ្ទៃពោះ/លើសទម្ងន់",
         unusualReview: "មិនធម្មតា - ត្រូវពិនិត្យ"
       },
-
       timeFilter: {
         last7Days: "៧ថ្ងៃចុងក្រោយ",
         last30Days: "៣០ថ្ងៃចុងក្រោយ",
@@ -179,6 +273,7 @@ const resources = {
       herd: {
         title: "ការគ្រប់គ្រងហ្វូង",
         subtitle: "គ្រប់គ្រងសត្វពាហនៈរបស់អ្នក មើលកំណត់ត្រា និងតាមដានសុខភាព។",
+        tagNotice: "💡 លេខកូដថ្មីនឹងត្រូវបន្ថែមដោយស្វ័យប្រវត្តិនៅពេលថ្លឹង។",
         addCow: "បន្ថែមសត្វគោ",
         searchPlaceholder: "ស្វែងរកតាមលេខកូដ ឬស្ថានភាព...",
         filterAllGenders: "ភេទទាំងអស់",
@@ -186,11 +281,18 @@ const resources = {
         filterFemale: "ញី",
         filterAllBreeds: "ពូជទាំងអស់",
         filter: "ចម្រោះ",
+        gender: "ភេទ",
+        breed: "ពូជ",
+        clearFilters: "សម្អាតចម្រោះ",
         export: "នាំចេញ",
+        needsInfo: "⚠️ ត្រូវបំពេញព័ត៌មាន",
+        needsRegistration: "ត្រូវចុះបញ្ជី",
         table: {
           tagId: "លេខកូដ",
+          breed: "ពូជ",
           weight: "ទម្ងន់ (kg)",
-          status: "ស្ថានភាព",
+          status: "ស្ថានភាពសុខភាព (ML 1)",
+          anomalyDetection: "ការរកឃើញភាពមិនប្រក្រតី (ML 2)",
           lastSync: "សមកាលកម្មចុងក្រោយ",
           actions: "សកម្មភាព"
         },
@@ -200,7 +302,29 @@ const resources = {
           healthStatus: "ស្ថានភាពសុខភាព",
           weightHistory: "ប្រវត្តិទម្ងន់ (ឆ្នាំនេះ)",
           editRecord: "កែសម្រួលកំណត់ត្រា",
-          addWeighIn: "បន្ថែមការថ្លឹង"
+          addWeighIn: "បន្ថែមការថ្លឹង",
+          noHistory: "មិនទាន់មានប្រវត្តិថ្លឹងទម្ងន់នៅឡើយទេ។",
+          dateTime: "កាលបរិច្ឆេទ/វេលា",
+          scale: "ជញ្ជីង",
+          weight: "ទម្ងន់",
+          status: "ស្ថានភាព",
+          noWeighIns: "រកមិនឃើញទិន្នន័យថ្លឹងថ្មីៗទេ។",
+          completeRegistration: "បំពេញការចុះបញ្ជី",
+          exportCsv: "នាំចេញ CSV"
+        },
+        scaleModal: {
+          title: "ជ្រើសរើសជញ្ជីង",
+          subtitle: "ជ្រើសរើសជញ្ជីងសម្រាប់ការថ្លឹង"
+        },
+        addModal: {
+          title: "ចុះបញ្ជីព័ត៌មានគោ",
+          subtitle: "បញ្ចូលព័ត៌មានសម្រាប់សត្វគោ",
+          tagId: "លេខកូដ",
+          breed: "ពូជ",
+          dob: "ថ្ងៃខែឆ្នាំកំណើត",
+          gender: "ភេទ",
+          cancel: "បោះបង់",
+          save: "រក្សាទុកព័ត៌មាន"
         }
       },
       settings: {
@@ -239,6 +363,14 @@ const resources = {
           warning: "ការព្រមានការជូនដំណឹង",
           warningDesc: "បង្ហាញបដាជូនដំណឹងភ្លាមៗនៅពេលទម្ងន់ធ្លាក់ចុះខ្លាំង។"
         }
+      },
+      error: {
+        general: "មានកំហុសមិនរំពឹងទុកមួយបានកើតឡើង។ សូមព្យាយាមម្តងទៀត។",
+        networkError: "មិនអាចភ្ជាប់ទៅកាន់ម៉ាស៊ីនបម្រើបានទេ។ សូមពិនិត្យមើលការភ្ជាប់អ៊ីនធឺណិតរបស់អ្នក។",
+        serverError: "ម៉ាស៊ីនបម្រើបានជួបប្រទះកំហុស។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។",
+        invalidCredentials: "អាសយដ្ឋានអ៊ីមែល ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវទេ។ សូមព្យាយាមម្តងទៀត។",
+        unauthorized: "វគ្គសកម្មភាពបានផុតកំណត់។ សូមចូលប្រើប្រាស់ម្តងទៀត។",
+        saveFailed: "ការរក្សាទុកទិន្នន័យមិនបានសម្រេច។ សូមពិនិត្យទិន្នន័យ ហើយព្យាយាមម្តងទៀត។"
       }
     }
   }

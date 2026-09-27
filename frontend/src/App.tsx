@@ -29,6 +29,7 @@ import { Login } from './pages/Login';
 import { NavItem } from './components/NavItem';
 import { authService } from './services/authService';
 import { deviceService } from './services/deviceService';
+import { sanitizeErrorMessage } from './utils/errorUtils';
 
 // --- Main App Component ---
 export default function App() {
@@ -188,7 +189,7 @@ export default function App() {
       setScalesData(mappedDevices);
       setToastMessage("Scale device registered successfully!");
     } catch (err: any) {
-      setToastMessage(err.message || "Failed to register device");
+      setToastMessage(sanitizeErrorMessage(err, 'error.saveFailed'));
     }
     setTimeout(() => setToastMessage(null), 3000);
   };
@@ -199,7 +200,7 @@ export default function App() {
       setScalesData(prev => prev.filter(scale => scale.id !== id));
       setToastMessage("Device removed successfully");
     } catch (err: any) {
-      setToastMessage(err.message || "Failed to remove device");
+      setToastMessage(sanitizeErrorMessage(err, 'error.general'));
     }
     setTimeout(() => setToastMessage(null), 3000);
   };
@@ -220,7 +221,16 @@ export default function App() {
         <div className="h-20 flex items-center px-6">
           <div className="flex items-center gap-3">
             <img src={logoImg} alt="AgroScale Logo" className="w-10 h-10 object-cover rounded-lg" />
-            <span className={`text-2xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>AgroScale</span>
+            <div className="flex flex-col">
+              <span className={`text-xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>AgroScale</span>
+              <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full inline-block w-max ${
+                import.meta.env.VITE_ENV_NAME === 'production' 
+                  ? 'bg-purple-500/10 text-purple-400 border border-purple-500/20'
+                  : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+              }`}>
+                {import.meta.env.VITE_ENV_NAME === 'production' ? '● Deployed' : '● Localhost'}
+              </span>
+            </div>
           </div>
         </div>
 

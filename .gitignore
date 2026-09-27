@@ -47,7 +47,7 @@ Thumbs.db
 *.sln
 *.sw?
 
-# Documentation - Ignore all markdown files except README
+# Documentation - Ignore all markdown files except README, AGENTS, and ENVIRONMENT_GUIDE
 *.md
 !README.md
 !README.MD
@@ -55,6 +55,8 @@ Thumbs.db
 !**/README.md
 !**/README.MD
 !**/readme.md
+!AGENTS.md
+!ENVIRONMENT_GUIDE.md
 
 # Python
 __pycache__/

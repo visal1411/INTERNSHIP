@@ -151,7 +151,7 @@ const createCow = async (farmerId, data) => {
   });
   if (existing) throw new Error('Cow with this Tag ID already exists');
 
-  return prisma.cow.create({
+  const cow = await prisma.cow.create({
     data: {
       farmerId,
       cowId: data.cowId,
@@ -160,6 +160,12 @@ const createCow = async (farmerId, data) => {
       dateOfBirth: data.birthDate ? new Date(data.birthDate) : null
     }
   });
+
+  if (cow.breed && cow.sex && cow.dateOfBirth) {
+    await reclassifyUnclassifiedMeasurements(farmerId);
+  }
+
+  return cow;
 };
 
 const updateCow = async (farmerId, id, data) => {

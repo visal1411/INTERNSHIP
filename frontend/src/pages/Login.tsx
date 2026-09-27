@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Mail, Lock, Eye, EyeOff, Loader2, AlertCircle, Sparkles } from 'lucide-react';
 import { AuthLayout } from '../components/AuthLayout';
+import { sanitizeErrorMessage } from '../utils/errorUtils';
 
 interface LoginProps {
   onLoginSuccess: (email: string, pass: string) => Promise<void>;
 }
 
 export function Login({ onLoginSuccess }: LoginProps) {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('farmer1@agroscale.com');
   const [password, setPassword] = useState('password123');
   const [showPassword, setShowPassword] = useState(false);
@@ -25,7 +28,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
     setError(null);
 
     if (!email || !password) {
-      setError('Please fill out all fields.');
+      setError(t('error.general', 'Please fill out all fields.'));
       return;
     }
 
@@ -34,14 +37,14 @@ export function Login({ onLoginSuccess }: LoginProps) {
     try {
       await onLoginSuccess(email.trim(), password);
     } catch (err: any) {
-      setError(err.message || 'Login failed. Please check your credentials or backend server.');
+      setError(sanitizeErrorMessage(err, 'error.invalidCredentials'));
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <AuthLayout title="Hello Again!" subtitle="Welcome Back to AgroScale">
+    <AuthLayout title={t('login.title', 'Hello Again!')} subtitle={t('login.subtitle', 'Welcome Back to AgroScale')}>
       {error && (
         <div className="mb-6 p-3 bg-red-50 text-red-700 rounded-lg flex items-start gap-2 text-sm border border-red-100">
           <AlertCircle size={18} className="shrink-0 mt-0.5" />
@@ -53,7 +56,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
       <div className="mb-6 p-3.5 bg-blue-50/80 border border-blue-100 rounded-2xl">
         <div className="flex items-center gap-1.5 text-xs font-semibold text-[#0062ff] mb-2">
           <Sparkles size={14} />
-          <span>Quick Demo Account Prefill</span>
+          <span>{t('login.demoTitle', 'Quick Demo Account Prefill')}</span>
         </div>
         <div className="flex flex-wrap gap-2">
           <button
@@ -65,7 +68,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
                 : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
             }`}
           >
-            Farmer 1 (John Doe)
+            {t('login.farmer1', 'Farmer 1 (John Doe)')}
           </button>
           <button
             type="button"
@@ -76,7 +79,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
                 : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
             }`}
           >
-            Farmer 2 (Jane Smith)
+            {t('login.farmer2', 'Farmer 2 (Jane Smith)')}
           </button>
         </div>
       </div>
@@ -90,7 +93,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
             id="email"
             type="email"
             required
-            placeholder="Email Address"
+            placeholder={t('login.emailPlaceholder', 'Email Address')}
             disabled={isLoading}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -106,7 +109,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
             id="password"
             type={showPassword ? 'text' : 'password'}
             required
-            placeholder="Password"
+            placeholder={t('login.passwordPlaceholder', 'Password')}
             disabled={isLoading}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -132,7 +135,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
               className="h-4 w-4 rounded border-gray-300 text-[#0062ff] focus:ring-[#0062ff] cursor-pointer"
             />
             <label htmlFor="remember" className="ml-2 block text-sm text-gray-500 cursor-pointer">
-              Remember me
+              {t('login.rememberMe', 'Remember me')}
             </label>
           </div>
         </div>
@@ -145,23 +148,23 @@ export function Login({ onLoginSuccess }: LoginProps) {
           {isLoading ? (
             <>
               <Loader2 size={18} className="animate-spin mr-2" />
-              <span>Signing in...</span>
+              <span>{t('login.signingIn', 'Signing in...')}</span>
             </>
           ) : (
-            'Login'
+            t('login.signIn', 'Login')
           )}
         </button>
       </form>
 
       <div className="mt-6 text-center">
         <button type="button" className="text-sm font-medium text-gray-500 hover:text-gray-700 transition-colors">
-          Forgot Password
+          {t('login.forgotPassword', 'Forgot Password')}
         </button>
       </div>
 
       <p className="mt-8 text-center text-sm text-gray-500">
-        Don't have an account?{' '}
-        <span className="font-medium text-[#0062ff]">Contact Administrator</span>
+        {t('login.noAccount', "Don't have an account?")}{' '}
+        <span className="font-medium text-[#0062ff]">{t('login.contactAdmin', 'Contact Administrator')}</span>
       </p>
     </AuthLayout>
   );
