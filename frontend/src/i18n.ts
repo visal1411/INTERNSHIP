@@ -53,7 +53,9 @@ const resources = {
       },
       devices: {
         title: "Scale Devices",
-        addDevice: "Add New Scale",
+        subtitle: "Manage your connected weighing hardware across all pastures.",
+        addDevice: "Add Scale Device",
+        addDeviceSub: "Register hardware scale to your farm account",
         statusOnline: "Online",
         statusOffline: "Offline",
         battery: "Battery",
@@ -66,7 +68,15 @@ const resources = {
         logType: "Event",
         logDetails: "Details",
         removeDevice: "Remove Device",
-        confirmRemove: "Are you sure you want to remove this device?"
+        confirmRemove: "Are you sure you want to remove this device?",
+        noDevices: "No Devices Connected",
+        noDevicesDesc: "You don't have any smart scales registered to your farm yet. Devices will appear here automatically once configured on the network.",
+        deviceId: "Device ID / Hardware Serial",
+        displayName: "Scale Display Name",
+        registering: "Registering...",
+        registerBtn: "Register Device",
+        cancel: "Cancel",
+        quickFill: "Quick fill:"
       },
       status: {
         healthy: "Healthy",
@@ -154,14 +164,25 @@ const resources = {
         subtitle: "Manage your account and configure your devices.",
         successMsg: "Settings saved successfully.",
         save: "Save Changes",
+        saveProfile: "Save Profile",
         profile: {
           tab: "Profile Information",
           title: "Profile Settings",
           fullName: "Full Name",
+          phone: "Phone Number",
           email: "Email Address",
           farmName: "Farm Name",
-          security: "Security",
-          password: "New Password"
+          security: "Security & Password",
+          securityDesc: "You must verify your current password before saving a new password to your account database.",
+          currentPassword: "Current Password",
+          enterCurrentPassword: "Enter current password",
+          newPassword: "New Password (Min 6 characters)",
+          enterNewPassword: "Enter new password",
+          confirmPassword: "Confirm New Password",
+          confirmPasswordPlaceholder: "Confirm new password",
+          updatePassword: "Update Password",
+          updatingPassword: "Updating Password...",
+          logOut: "Log Out"
         },
         wifi: {
           tab: "WiFi Configuration",
@@ -184,6 +205,20 @@ const resources = {
           beepDesc: "Plays confirmation chime on client browser as soon as stable loads are locked.",
           warning: "Warning notifications trigger",
           warningDesc: "Push notification banner visual indicators immediately on drastic weight drops."
+        },
+        help: {
+          tab: "Help & Support",
+          title: "Help & Support",
+          subtitle: "Get help with your hardware or software.",
+          callSupport: "Call Support",
+          callHours: "Available Mon-Fri, 9am - 5pm EST",
+          emailUs: "Email Us",
+          emailDesc: "We usually respond within 24 hours.",
+          faq: "Frequently Asked Questions",
+          q1: "How do I reconnect a scale?",
+          a1: "Go to the WiFi Configuration tab, generate a new config file, and place it on a USB drive plugged into your scale.",
+          q2: "Why is my cow marked as critical?",
+          a2: "A cow is marked critical if its weight drops more than 5% in a single week. Check the Herd tab for historical data."
         }
       },
       error: {
@@ -247,7 +282,9 @@ const resources = {
       },
       devices: {
         title: "ឧបករណ៍ថ្លឹង",
-        addDevice: "បន្ថែមឧបករណ៍ថ្មី",
+        subtitle: "គ្រប់គ្រងឧបករណ៍ថ្លឹងទម្ងន់ដែលបានភ្ជាប់នៅតាមវាលស្មៅទាំងអស់។",
+        addDevice: "បន្ថែមឧបករណ៍ថ្លឹង",
+        addDeviceSub: "ចុះបញ្ជីជញ្ជីង hardware ទៅកាន់គណនីកសិដ្ឋានរបស់អ្នក",
         statusOnline: "អនឡាញ",
         statusOffline: "អូហ្វឡាញ",
         battery: "ថ្ម",
@@ -260,7 +297,15 @@ const resources = {
         logType: "ព្រឹត្តិការណ៍",
         logDetails: "ព័ត៌មានលម្អិត",
         removeDevice: "លុបឧបករណ៍",
-        confirmRemove: "តើអ្នកប្រាកដជាចង់លុបឧបករណ៍នេះមែនទេ?"
+        confirmRemove: "តើអ្នកប្រាកដជាចង់លុបឧបករណ៍នេះមែនទេ?",
+        noDevices: "គ្មានឧបករណ៍បានភ្ជាប់ទេ",
+        noDevicesDesc: "អ្នកមិនទាន់មានជញ្ជីងឆ្លាតវៃដែលបានចុះបញ្ជីនៅក្នុងកសិដ្ឋាននៅឡើយទេ។ ឧបករណ៍នឹងបង្ហាញនៅទីនេះដោយស្វ័យប្រវត្តិ។",
+        deviceId: "លេខសម្គាល់ឧបករណ៍ / Serial",
+        displayName: "ឈ្មោះបង្ហាញឧបករណ៍ថ្លឹង",
+        registering: "កំពុងចុះបញ្ជី...",
+        registerBtn: "ចុះបញ្ជីឧបករណ៍",
+        cancel: "បោះបង់",
+        quickFill: "បំពេញរហ័ស៖"
       },
       status: {
         healthy: "សុខភាពល្អ",
@@ -348,14 +393,25 @@ const resources = {
         subtitle: "គ្រប់គ្រងគណនីរបស់អ្នក និងកំណត់រចនាសម្ព័ន្ធឧបករណ៍របស់អ្នក។",
         successMsg: "ការកំណត់ត្រូវបានរក្សាទុកដោយជោគជ័យ។",
         save: "រក្សាទុកការផ្លាស់ប្តូរ",
+        saveProfile: "រក្សាទុកប្រវត្តិរូប",
         profile: {
           tab: "ព័ត៌មានប្រវត្តិរូប",
           title: "ការកំណត់ប្រវត្តិរូប",
-          fullName: "ឈ្មោះ​ពេញ",
+          fullName: "ឈ្មោះពេញ",
+          phone: "លេខទូរស័ព្ទ",
           email: "អាសយដ្ឋានអ៊ីមែល",
           farmName: "ឈ្មោះកសិដ្ឋាន",
-          security: "សុវត្ថិភាព",
-          password: "ពាក្យសម្ងាត់ថ្មី"
+          security: "សុវត្ថិភាព និងពាក្យសម្ងាត់",
+          securityDesc: "អ្នកត្រូវតែផ្ទៀងផ្ទាត់ពាក្យសម្ងាត់បច្ចុប្បន្នរបស់អ្នក មុនពេលរក្សាទុកពាក្យសម្ងាត់ថ្មី។",
+          currentPassword: "ពាក្យសម្ងាត់បច្ចុប្បន្ន",
+          enterCurrentPassword: "បញ្ចូលពាក្យសម្ងាត់បច្ចុប្បន្ន",
+          newPassword: "ពាក្យសម្ងាត់ថ្មី (យ៉ាងហោចណាស់ ៦ តួអក្សរ)",
+          enterNewPassword: "បញ្ចូលពាក្យសម្ងាត់ថ្មី",
+          confirmPassword: "ផ្ទៀងផ្ទាត់ពាក្យសម្ងាត់ថ្មី",
+          confirmPasswordPlaceholder: "បញ្ចូលពាក្យសម្ងាត់ថ្មីម្តងទៀត",
+          updatePassword: "បច្ចុប្បន្នភាពពាក្យសម្ងាត់",
+          updatingPassword: "កំពុងបច្ចុប្បន្នភាពពាក្យសម្ងាត់...",
+          logOut: "ចាកចេញ"
         },
         wifi: {
           tab: "ការកំណត់វ៉ាយហ្វាយ (WiFi)",
@@ -377,7 +433,21 @@ const resources = {
           beep: "សំឡេងបញ្ជាក់ពេលថ្លឹង",
           beepDesc: "ចាក់សំឡេងបញ្ជាក់លើកម្មវិធីរុករកនៅពេលទម្ងន់មានស្ថេរភាព។",
           warning: "ការព្រមានការជូនដំណឹង",
-          warningDesc: "បង្ហាញបដាជូនដំណឹងភ្លាមៗនៅពេលទម្ងន់ធ្លាក់ចុះខ្លាំង។"
+          warningDesc: "បង្ហាញបដាជូនដំណឹងភ្លាមៗនៅពេលទម្ងន់ធ្លាក់ចុះខ្លាំង host."
+        },
+        help: {
+          tab: "ជំនួយ និងការគាំទ្រ",
+          title: "ជំនួយ និងការគាំទ្រ",
+          subtitle: "ទទួលបានជំនួយសម្រាប់ឧបករណ៍ ឬកម្មវិធីរបស់អ្នក។",
+          callSupport: "ហៅទូរស័ព្ទទៅកាន់ផ្នែកគាំទ្រ",
+          callHours: "ផ្តល់ជូនថ្ងៃច័ន្ទ-សុក្រ ម៉ោង ៩ព្រឹក - ៥ល្ងាច",
+          emailUs: "ផ្ញើអ៊ីមែលមកយើង",
+          emailDesc: "យើងជាទូទៅឆ្លើយតបក្នុងរយះពេល ២៤ ម៉ោង។",
+          faq: "សំណួរដែលសួរញឹកញាប់",
+          q1: "តើខ្ញុំត្រូវភ្ជាប់ជញ្ជីងឡើងវិញដោយរបៀបណា?",
+          a1: "ចូលទៅកាន់ទំព័រការកំណត់វ៉ាយហ្វាយ (WiFi) បង្កើតឯកសារកំណត់រចនាសម្ព័ន្ធថ្មី ហើយដាក់វាក្នុង USB ទៅភ្ជាប់ជាមួយជញ្ជីង។",
+          q2: "ហេតុអ្វីបានជាគោរបស់ខ្ញុំត្រូវកំណត់ថាធ្ងន់ធ្ងរ?",
+          a2: "សត្វគោត្រូវបានកំណត់ថាធ្ងន់ធ្ងរ ប្រសិនបើទម្ងន់របស់វាធ្លាក់ចុះលើសពី ៥% ក្នុងសប្តាហ៍តែមួយ។ សូមពិនិត្យមើលទំព័រហ្វូងគោសម្រាប់ទិន្នន័យប្រវត្តិ។"
         }
       },
       error: {

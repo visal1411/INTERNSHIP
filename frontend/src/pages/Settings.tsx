@@ -265,7 +265,7 @@ export function Settings({ user, onLogout }: SettingsProps) {
                 className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-colors text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 cursor-pointer mt-4"
               >
                 <LogOut size={20} className="text-rose-500" />
-                <span>Log Out</span>
+                <span>{t('settings.profile.logOut', 'Log Out')}</span>
               </button>
             )}
           </nav>
@@ -296,7 +296,7 @@ export function Settings({ user, onLogout }: SettingsProps) {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone Number</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t('settings.profile.phone', 'Phone Number')}</label>
                     <input 
                       type="text" 
                       value={formData.profile.phone}
@@ -321,16 +321,16 @@ export function Settings({ user, onLogout }: SettingsProps) {
                 <div className="pt-4 flex justify-start">
                   <button type="submit" className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-xl font-medium transition-colors shadow-sm">
                     <Save size={18} />
-                    <span>{t('settings.save', 'Save Profile')}</span>
+                    <span>{t('settings.saveProfile', 'Save Profile')}</span>
                   </button>
                 </div>
               </form>
 
               {/* Strict Security & Password Change Section */}
               <div className="mt-10 pt-8 border-t border-gray-100 dark:border-gray-700">
-                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">Security & Password</h4>
+                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{t('settings.profile.security', 'Security & Password')}</h4>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mb-6">
-                  You must verify your current password before saving a new password to your account database.
+                  {t('settings.profile.securityDesc', 'You must verify your current password before saving a new password to your account database.')}
                 </p>
 
                 {passwordError && (
@@ -350,13 +350,13 @@ export function Settings({ user, onLogout }: SettingsProps) {
                 <form onSubmit={handlePasswordChange} className="space-y-4 max-w-md">
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                      Current Password <span className="text-red-500">*</span>
+                      {t('settings.profile.currentPassword', 'Current Password')} <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
                       <input
                         type={showCurrentPassword ? 'text' : 'password'}
                         required
-                        placeholder="Enter current password"
+                        placeholder={t('settings.profile.enterCurrentPassword', 'Enter current password')}
                         value={passwordForm.currentPassword}
                         onChange={(e) => setPasswordForm(prev => ({ ...prev, currentPassword: e.target.value }))}
                         className="w-full pl-4 pr-10 py-2.5 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-green-500 outline-none text-sm"
@@ -373,13 +373,13 @@ export function Settings({ user, onLogout }: SettingsProps) {
 
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                      New Password (Min 6 characters) <span className="text-red-500">*</span>
+                      {t('settings.profile.newPassword', 'New Password (Min 6 characters)')} <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
                       <input
                         type={showNewPassword ? 'text' : 'password'}
                         required
-                        placeholder="Enter new password"
+                        placeholder={t('settings.profile.enterNewPassword', 'Enter new password')}
                         value={passwordForm.newPassword}
                         onChange={(e) => setPasswordForm(prev => ({ ...prev, newPassword: e.target.value }))}
                         className="w-full pl-4 pr-10 py-2.5 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-green-500 outline-none text-sm"
@@ -396,12 +396,12 @@ export function Settings({ user, onLogout }: SettingsProps) {
 
                   <div>
                     <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                      Confirm New Password <span className="text-red-500">*</span>
+                      {t('settings.profile.confirmPassword', 'Confirm New Password')} <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="password"
                       required
-                      placeholder="Confirm new password"
+                      placeholder={t('settings.profile.confirmPasswordPlaceholder', 'Confirm new password')}
                       value={passwordForm.confirmPassword}
                       onChange={(e) => setPasswordForm(prev => ({ ...prev, confirmPassword: e.target.value }))}
                       className="w-full px-4 py-2.5 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-xl focus:ring-2 focus:ring-green-500 outline-none text-sm"
@@ -414,7 +414,7 @@ export function Settings({ user, onLogout }: SettingsProps) {
                     className="flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                   >
                     <Lock size={16} />
-                    <span>{isChangingPassword ? 'Updating Password...' : 'Update Password'}</span>
+                    <span>{isChangingPassword ? t('settings.profile.updatingPassword', 'Updating Password...') : t('settings.profile.updatePassword', 'Update Password')}</span>
                   </button>
                 </form>
               </div>
@@ -600,8 +600,8 @@ export function Settings({ user, onLogout }: SettingsProps) {
                   <div className="w-12 h-12 bg-green-100 dark:bg-green-800 rounded-full flex items-center justify-center mb-4">
                     <Phone className="w-6 h-6 text-green-600 dark:text-green-400" />
                   </div>
-                  <h4 className="font-bold text-gray-900 dark:text-white mb-2">Call Support</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Available Mon-Fri, 9am - 5pm EST</p>
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-2">{t('settings.help.callSupport', 'Call Support')}</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{t('settings.help.callHours', 'Available Mon-Fri, 9am - 5pm EST')}</p>
                   <a href="tel:+1-800-COW-FIT1" className="text-green-600 dark:text-green-400 font-bold hover:underline">1-800-COW-FIT1</a>
                 </div>
                 
@@ -609,22 +609,22 @@ export function Settings({ user, onLogout }: SettingsProps) {
                   <div className="w-12 h-12 bg-gray-200 dark:bg-gray-600 rounded-full flex items-center justify-center mb-4">
                     <Mail className="w-6 h-6 text-gray-600 dark:text-gray-400" />
                   </div>
-                  <h4 className="font-bold text-gray-900 dark:text-white mb-2">Email Us</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">We usually respond within 24 hours.</p>
+                  <h4 className="font-bold text-gray-900 dark:text-white mb-2">{t('settings.help.emailUs', 'Email Us')}</h4>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{t('settings.help.emailDesc', 'We usually respond within 24 hours.')}</p>
                   <a href="mailto:support@cowfit.io" className="text-green-600 dark:text-green-400 font-bold hover:underline">support@cowfit.io</a>
                 </div>
               </div>
               
               <div className="border-t border-gray-100 dark:border-gray-700 pt-8">
-                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Frequently Asked Questions</h4>
+                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4">{t('settings.help.faq', 'Frequently Asked Questions')}</h4>
                 <div className="space-y-4">
                   <div className="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700 transition-colors">
-                    <h5 className="font-medium text-gray-900 dark:text-white mb-1">How do I reconnect a scale?</h5>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Go to the WiFi Configuration tab, generate a new config file, and place it on a USB drive plugged into your scale.</p>
+                    <h5 className="font-medium text-gray-900 dark:text-white mb-1">{t('settings.help.q1', 'How do I reconnect a scale?')}</h5>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{t('settings.help.a1', 'Go to the WiFi Configuration tab, generate a new config file, and place it on a USB drive plugged into your scale.')}</p>
                   </div>
                   <div className="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700 transition-colors">
-                    <h5 className="font-medium text-gray-900 dark:text-white mb-1">Why is my cow marked as critical?</h5>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">A cow is marked critical if its weight drops more than 5% in a single week. Check the Herd tab for historical data.</p>
+                    <h5 className="font-medium text-gray-900 dark:text-white mb-1">{t('settings.help.q2', 'Why is my cow marked as critical?')}</h5>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{t('settings.help.a2', 'A cow is marked critical if its weight drops more than 5% in a single week. Check the Herd tab for historical data.')}</p>
                   </div>
                 </div>
               </div>

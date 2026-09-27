@@ -189,15 +189,15 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
     <div className="transition-colors">
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t('devices.title')}</h2>
-          <p className="text-gray-500 dark:text-gray-400 mt-1">Manage your connected weighing hardware across all pastures.</p>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{t('devices.title', 'Scale Devices')}</h2>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">{t('devices.subtitle', 'Manage your connected weighing hardware across all pastures.')}</p>
         </div>
         <button
           onClick={() => setShowAddModal(true)}
           className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2.5 rounded-xl font-medium transition-colors shadow-sm"
         >
           <Plus size={18} />
-          <span>Add Scale Device</span>
+          <span>{t('devices.addDevice', 'Add Scale Device')}</span>
         </button>
       </div>
 
@@ -222,7 +222,7 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
                     <button 
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (window.confirm(`Are you sure you want to remove ${scale.name}?`)) {
+                        if (window.confirm(t('devices.confirmRemove', `Are you sure you want to remove ${scale.name}?`))) {
                           onRemoveDevice(scale.id);
                         }
                       }}
@@ -236,19 +236,19 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
 
               <div className="space-y-3 mb-6 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl border border-gray-100 dark:border-gray-600">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500 dark:text-gray-400">Status</span>
+                  <span className="text-gray-500 dark:text-gray-400">{t('herd.detail.status', 'Status')}</span>
                   <span className={`font-medium ${scale.status === 'online' ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}`}>
-                    {scale.status === 'online' ? t('devices.statusOnline') : t('devices.statusOffline')}
+                    {scale.status === 'online' ? t('devices.statusOnline', 'Online') : t('devices.statusOffline', 'Offline')}
                   </span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500 dark:text-gray-400">{t('devices.lastSync')}</span>
+                  <span className="text-gray-500 dark:text-gray-400">{t('devices.lastSync', 'Last Sync')}</span>
                   <span className="font-medium text-gray-700 dark:text-gray-300">{scale.lastSync}</span>
                 </div>
               </div>
 
               <div className="pt-2">
-                <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wider font-semibold">{t('devices.currentReading')}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 uppercase tracking-wider font-semibold">{t('devices.currentReading', 'Current Reading')}</p>
                 <div className="flex items-baseline space-x-2">
                   <span className="text-3xl font-bold text-gray-900 dark:text-white">{String(scale.currentReading || '0 kg').split(' ')[0]}</span>
                   <span className="text-gray-500 dark:text-gray-400 font-medium">{String(scale.currentReading || '0 kg').split(' ')[1] || 'kg'}</span>
@@ -262,16 +262,16 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
           <div className="w-16 h-16 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-4">
             <WifiOff className="w-8 h-8 text-gray-400 dark:text-gray-500" />
           </div>
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No Devices Connected</h3>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{t('devices.noDevices', 'No Devices Connected')}</h3>
           <p className="text-gray-500 dark:text-gray-400 max-w-md mb-6">
-            You don't have any smart scales registered to your farm yet. Devices will appear here automatically once configured on the network.
+            {t('devices.noDevicesDesc', "You don't have any smart scales registered to your farm yet. Devices will appear here automatically once configured on the network.")}
           </p>
           <button
             onClick={() => setShowAddModal(true)}
             className="flex items-center space-x-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-xl font-medium transition-colors shadow-sm"
           >
             <Plus size={18} />
-            <span>Add Scale Device</span>
+            <span>{t('devices.addDevice', 'Add Scale Device')}</span>
           </button>
         </div>
       )}
@@ -282,8 +282,8 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200 border border-gray-200 dark:border-gray-700">
             <div className="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-800/50">
               <div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">Add Scale Device</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Register hardware scale to your farm account</p>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white">{t('devices.addDevice', 'Add Scale Device')}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('devices.addDeviceSub', 'Register hardware scale to your farm account')}</p>
               </div>
               <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors">
                 <X size={20} />
@@ -292,7 +292,7 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
 
             <form onSubmit={handleRegisterSubmit} className="p-6 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Device ID / Hardware Serial</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('devices.deviceId', 'Device ID / Hardware Serial')}</label>
                 <input
                   type="text"
                   required
@@ -302,7 +302,7 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
                   className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 font-mono bg-white dark:bg-gray-700 text-gray-900 dark:text-white outline-none"
                 />
                 <div className="mt-2 flex gap-2">
-                  <span className="text-xs text-gray-500 dark:text-gray-400">Quick fill:</span>
+                  <span className="text-xs text-gray-500 dark:text-gray-400">{t('devices.quickFill', 'Quick fill:')}</span>
                   <button
                     type="button"
                     onClick={() => setDeviceIdInput('esp32-gateway-01')}
@@ -321,7 +321,7 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Scale Display Name</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{t('devices.displayName', 'Scale Display Name')}</label>
                 <input
                   type="text"
                   placeholder="e.g. Main Pasture Gate Scale"
@@ -337,14 +337,14 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
                   onClick={() => setShowAddModal(false)}
                   className="px-5 py-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 font-medium transition-colors"
                 >
-                  Cancel
+                  {t('devices.cancel', 'Cancel')}
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
                   className="px-5 py-2.5 bg-green-600 text-white rounded-xl hover:bg-green-700 font-medium transition-colors shadow-sm disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Registering...' : 'Register Device'}
+                  {isSubmitting ? t('devices.registering', 'Registering...') : t('devices.registerBtn', 'Register Device')}
                 </button>
               </div>
             </form>
