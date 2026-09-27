@@ -77,7 +77,9 @@ const resources = {
         warning: "Warning",
         potentialSickness: "Potential Sickness",
         possiblePregnancy: "Possible Pregnancy / Overweight",
-        unusualReview: "Unusual - Needs Review"
+        unusualReview: "Unusual - Needs Review",
+        flagged: "Flagged (Anomaly)",
+        needsInfo: "Needs Info"
       },
       timeFilter: {
         last7Days: "Last 7 days",
@@ -101,6 +103,7 @@ const resources = {
         export: "Export",
         needsInfo: "⚠️ Needs Info",
         needsRegistration: "Needs Registration",
+        yrs: "yrs",
         table: {
           tagId: "Tag ID",
           breed: "Breed",
@@ -114,17 +117,22 @@ const resources = {
         detail: {
           currentWeight: "Current Weight",
           healthStatus: "Health Status",
+          model1: "Model 1: Classification",
+          model2: "Model 2: Anomaly Detector",
           weightHistory: "Weight History (YTD)",
+          recentWeighIns: "Recent Weigh-ins",
           editRecord: "Edit Record",
           addWeighIn: "Add Weigh-in",
           noHistory: "No measurement history yet.",
-          dateTime: "Date/Time",
-          scale: "Scale",
+          dateTime: "Date / Time",
+          scale: "Scale ID",
           weight: "Weight",
           status: "Status",
           noWeighIns: "No recent weigh-ins found.",
           completeRegistration: "Complete Registration",
-          exportCsv: "Export CSV"
+          exportCsv: "Export CSV",
+          normal: "Normal",
+          flagged: "Flagged"
         },
         scaleModal: {
           title: "Select Scale",
@@ -263,7 +271,9 @@ const resources = {
         warning: "ព្រមាន",
         potentialSickness: "អាចមានជំងឺ",
         possiblePregnancy: "អាចមានផ្ទៃពោះ/លើសទម្ងន់",
-        unusualReview: "មិនធម្មតា - ត្រូវពិនិត្យ"
+        unusualReview: "មិនធម្មតា - ត្រូវពិនិត្យ",
+        flagged: "ប្រកាសអាសន្ន (មិនប្រក្រតី)",
+        needsInfo: "ត្រូវបំពេញព័ត៌មាន"
       },
       timeFilter: {
         last7Days: "៧ថ្ងៃចុងក្រោយ",
@@ -287,6 +297,7 @@ const resources = {
         export: "នាំចេញ",
         needsInfo: "⚠️ ត្រូវបំពេញព័ត៌មាន",
         needsRegistration: "ត្រូវចុះបញ្ជី",
+        yrs: "ឆ្នាំ",
         table: {
           tagId: "លេខកូដ",
           breed: "ពូជ",
@@ -300,17 +311,22 @@ const resources = {
         detail: {
           currentWeight: "ទម្ងន់បច្ចុប្បន្ន",
           healthStatus: "ស្ថានភាពសុខភាព",
+          model1: "ម៉ូដែល ១៖ ការរៀបថ្នាក់សុខភាព",
+          model2: "ម៉ូដែល ២៖ ការរកឃើញភាពមិនប្រក្រតី",
           weightHistory: "ប្រវត្តិទម្ងន់ (ឆ្នាំនេះ)",
+          recentWeighIns: "ការថ្លឹងទម្ងន់ថ្មីៗ",
           editRecord: "កែសម្រួលកំណត់ត្រា",
           addWeighIn: "បន្ថែមការថ្លឹង",
           noHistory: "មិនទាន់មានប្រវត្តិថ្លឹងទម្ងន់នៅឡើយទេ។",
-          dateTime: "កាលបរិច្ឆេទ/វេលា",
-          scale: "ជញ្ជីង",
+          dateTime: "កាលបរិច្ឆេទ / វេលា",
+          scale: "លេខកូដជញ្ជីង",
           weight: "ទម្ងន់",
           status: "ស្ថានភាព",
           noWeighIns: "រកមិនឃើញទិន្នន័យថ្លឹងថ្មីៗទេ។",
           completeRegistration: "បំពេញការចុះបញ្ជី",
-          exportCsv: "នាំចេញ CSV"
+          exportCsv: "នាំចេញ CSV",
+          normal: "ធម្មតា",
+          flagged: "មិនប្រក្រតី"
         },
         scaleModal: {
           title: "ជ្រើសរើសជញ្ជីង",
