@@ -23,6 +23,20 @@ const mockScales = [
   { id: 'SCALE-03', name: 'South Water Trough' },
 ];
 
+const STANDARD_BREEDS = [
+  'Brahman',
+  'Brahman Cross',
+  'Hariana',
+  'Local Zebu',
+  'Sahiwal',
+  'Holstein Cross',
+  'Red Chittagong',
+  'Pabna',
+  'Sindhi Cross',
+  'Angus',
+  'Hereford'
+];
+
 interface HerdProps {
   onNavigateToScale?: (scaleId: string, cowId?: string) => void;
 }
@@ -39,6 +53,11 @@ export function Herd({ onNavigateToScale }: HerdProps) {
   const [breedFilter, setBreedFilter] = useState('All');
   const [cowHistory, setCowHistory] = useState<any[]>([]);
   const filterRef = useRef<HTMLDivElement>(null);
+
+  const availableBreeds = Array.from(new Set([
+    ...herdData.map(c => c.breed).filter(b => b && b !== 'Needs Registration' && b !== 'Unknown'),
+    ...STANDARD_BREEDS
+  ])).sort();
 
   const formatConfidence = (rawConf: any) => {
     if (rawConf === null || rawConf === undefined) return null;
@@ -133,10 +152,19 @@ export function Herd({ onNavigateToScale }: HerdProps) {
   }, [selectedCow]);
 
   const filteredHerd = herdData.filter(cow => {
-    const matchesSearch = cow.id.toLowerCase().includes(searchQuery.toLowerCase()) || 
-      t(`status.${cow.status}`).toLowerCase().includes(searchQuery.toLowerCase());
+    const query = searchQuery.toLowerCase().trim();
+    const matchesSearch = !query || 
+      cow.id.toLowerCase().includes(query) || 
+      cow.breed.toLowerCase().includes(query) ||
+      t(`status.${cow.status}`).toLowerCase().includes(query);
     const matchesGender = genderFilter === 'All' || cow.gender === genderFilter;
-    const matchesBreed = breedFilter === 'All' || cow.breed === breedFilter;
+    const matchesBreed = breedFilter === 'All' || (() => {
+      if (!cow.breed) return false;
+      if (cow.breed === breedFilter) return true;
+      const normCow = cow.breed.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const normFilter = breedFilter.toLowerCase().replace(/[^a-z0-9]/g, '');
+      return normCow === normFilter || normCow.includes(normFilter) || normFilter.includes(normCow);
+    })();
     return matchesSearch && matchesGender && matchesBreed;
   });
 
@@ -232,13 +260,9 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                       className="w-full px-3 py-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-0 text-gray-900 dark:text-white transition-colors"
                     >
                       <option value="All">{t('herd.filterAllBreeds', 'All Breeds')}</option>
-                      <option value="Brahman Cross">Brahman Cross</option>
-                      <option value="Local Zebu">Local Zebu</option>
-                      <option value="Sahiwal">Sahiwal</option>
-                      <option value="Holstein Cross">Holstein Cross</option>
-                      <option value="Red Chittagong">Red Chittagong</option>
-                      <option value="Pabna">Pabna</option>
-                      <option value="Sindhi Cross">Sindhi Cross</option>
+                      {availableBreeds.map((b) => (
+                        <option key={b} value={b}>{b}</option>
+                      ))}
                     </select>
 
                   </div>
@@ -660,13 +684,12 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                 <div className="col-span-2 sm:col-span-1">
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Breed</label>
                   <select name="breed" defaultValue={selectedCow?.breed || 'Brahman Cross'} className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white outline-none transition-colors">
-                    <option value="Brahman Cross">Brahman / Brahman Cross</option>
-                    <option value="Local Zebu">Local Zebu</option>
-                    <option value="Sahiwal">Sahiwal</option>
-                    <option value="Holstein Cross">Holstein / Holstein Cross</option>
-                    <option value="Red Chittagong">Red Chittagong</option>
-                    <option value="Pabna">Pabna</option>
-                    <option value="Sindhi Cross">Sindhi / Sindhi Cross</option>
+                    {Array.from(new Set([
+                      ...STANDARD_BREEDS,
+                      ...(selectedCow?.breed && selectedCow.breed !== 'Needs Registration' && selectedCow.breed !== 'Unknown' ? [selectedCow.breed] : [])
+                    ])).sort().map(b => (
+                      <option key={b} value={b}>{b}</option>
+                    ))}
                     <option value="Other">Other</option>
                   </select>
 
