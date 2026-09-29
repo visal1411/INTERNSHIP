@@ -17,12 +17,13 @@ dist
 dist-ssr
 build
 
-# Environment files
+# Environment files & Secrets
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+!.env.*.example
+*.env
 *.local
-backend/.env
 
 # Temporary / Scratch Test Files & DB
 db.json
@@ -34,6 +35,11 @@ testOutput.txt
 backend/test.txt
 backend/testOutput.txt
 backend/testSwaggerVerification.js
+backend/prisma/reset-demo-data.js
+*.pem
+*.key
+*.crt
+*.pfx
 
 # Editor and OS files
 .vscode/*

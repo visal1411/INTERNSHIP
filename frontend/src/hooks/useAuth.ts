@@ -6,11 +6,21 @@ export function useAuth() {
   const [user, setUser] = useState<FarmerUser | null>(authService.getCurrentUser());
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(authService.isAuthenticated());
 
-  useEffect(() => {
+  const syncAuth = useCallback(() => {
+    const isAuth = authService.isAuthenticated();
     setToken(authService.getToken());
     setUser(authService.getCurrentUser());
-    setIsAuthenticated(authService.isAuthenticated());
+    setIsAuthenticated(isAuth);
   }, []);
+
+  useEffect(() => {
+    syncAuth();
+    const handleUnauthorized = () => syncAuth();
+    window.addEventListener('auth:unauthorized', handleUnauthorized);
+    return () => {
+      window.removeEventListener('auth:unauthorized', handleUnauthorized);
+    };
+  }, [syncAuth]);
 
   const login = useCallback(async (email: string, pass: string) => {
     const res = await authService.login(email, pass);

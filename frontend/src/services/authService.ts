@@ -12,6 +12,27 @@ export interface AuthResponse {
 const TOKEN_KEY = 'agroscale_farmer_token';
 const USER_KEY = 'agroscale_farmer_user';
 
+function isJwtExpired(token: string): boolean {
+  try {
+    const base64Url = token.split('.')[1];
+    if (!base64Url) return true;
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+        .join('')
+    );
+    const parsed = JSON.parse(jsonPayload);
+    if (parsed && typeof parsed.exp === 'number') {
+      return Date.now() >= parsed.exp * 1000;
+    }
+    return false;
+  } catch {
+    return true;
+  }
+}
+
 export const authService = {
   getToken(): string | null {
     return localStorage.getItem(TOKEN_KEY);
@@ -27,8 +48,24 @@ export const authService = {
     }
   },
 
+  clearLocalSession() {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
+  },
+
+  handleUnauthorized() {
+    this.clearLocalSession();
+    window.dispatchEvent(new Event('auth:unauthorized'));
+  },
+
   isAuthenticated(): boolean {
-    return !!this.getToken();
+    const token = this.getToken();
+    if (!token) return false;
+    if (isJwtExpired(token)) {
+      this.clearLocalSession();
+      return false;
+    }
+    return true;
   },
 
   async login(email: string, password: string): Promise<AuthResponse> {
@@ -82,8 +119,8 @@ export const authService = {
     } catch (err) {
       console.warn('Backend logout call failed:', err);
     } finally {
-      localStorage.removeItem(TOKEN_KEY);
-      localStorage.removeItem(USER_KEY);
+      this.clearLocalSession();
+      window.dispatchEvent(new Event('auth:unauthorized'));
     }
   },
 
@@ -102,6 +139,11 @@ export const authService = {
       body: JSON.stringify({ currentPassword, newPassword })
     });
 
+    if (response.status === 401) {
+      this.handleUnauthorized();
+      throw new Error('Session expired. Please log in again.');
+    }
+
     let data: any = null;
     try {
       const text = await response.text();
@@ -116,3 +158,4 @@ export const authService = {
     }
   }
 };
+

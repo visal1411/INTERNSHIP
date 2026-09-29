@@ -97,6 +97,10 @@ export default function App() {
         const res = await fetch('/api/v1/cows', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
+        if (res.status === 401) {
+          authService.handleUnauthorized();
+          return;
+        }
         if (res.ok) {
           const cows = await res.json();
           const newNotifs: NotificationItem[] = [];

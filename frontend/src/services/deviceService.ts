@@ -21,6 +21,11 @@ export const deviceService = {
       }
     });
 
+    if (response.status === 401) {
+      authService.handleUnauthorized();
+      return [];
+    }
+
     if (!response.ok) {
       console.error('Failed to fetch devices:', response.statusText);
       return [];
@@ -43,6 +48,11 @@ export const deviceService = {
       body: JSON.stringify({ deviceId, name })
     });
 
+    if (response.status === 401) {
+      authService.handleUnauthorized();
+      throw new Error('Session expired. Please log in again.');
+    }
+
     const data = await response.json();
     if (!response.ok) {
       throw new Error(data.error?.message || 'Failed to register device');
@@ -60,6 +70,11 @@ export const deviceService = {
         'Authorization': `Bearer ${token}`
       }
     });
+
+    if (response.status === 401) {
+      authService.handleUnauthorized();
+      throw new Error('Session expired. Please log in again.');
+    }
 
     if (!response.ok) {
       const data = await response.json();
