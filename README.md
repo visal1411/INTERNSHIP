@@ -17,23 +17,23 @@ An end-to-end IoT and AI-powered livestock management platform designed for real
 ## 🏗️ System Architecture
 
 ```mermaid
-flowchart TB
+flowchart TD
     subgraph Hardware ["📡 IoT Hardware Layer"]
-        ESP32["ESP32 Microcontroller\n+ HX711 Load Cell / LoRa"]
+        ESP32["ESP32 Microcontroller<br/>+ HX711 Load Cell / LoRa"]
     end
 
     subgraph BackendLayer ["⚙️ Core Backend Services (Node.js/Express)"]
-        API["Express API Server (:3002)\n- IoT Ingestion\n- JWT Auth\n- Cow Management"]
+        API["Express API Server (:3002)<br/>• IoT Telemetry Ingestion<br/>• JWT Authentication<br/>• Cow & Herd Management"]
         Prisma["Prisma ORM"]
-        DB[(PostgreSQL Database\n:5433 / agro_scale_db)]
+        DB[("PostgreSQL Database<br/>Port 5433 / agro_scale_db")]
     end
 
     subgraph MLService ["🧠 ML Microservice (FastAPI)"]
-        ML["FastAPI ML Engine (:5000)\n- Health Classification\n- Growth Benchmark Engine"]
+        ML["FastAPI ML Engine (:5000)<br/>• Health & Anomaly Classification<br/>• Growth Benchmark Engine"]
     end
 
     subgraph FrontendLayer ["💻 Web Dashboard (React + TypeScript)"]
-        UI["React 19 + Vite App (:5173)\n- Bilingual (EN / KM)\n- Live Herd Analytics\n- Weight Records & Trends"]
+        UI["React 19 + Vite App (:5173)<br/>• Bilingual Support (EN / KM)<br/>• Live Herd Analytics<br/>• Weight History & Trends"]
     end
 
     subgraph Monitoring ["📊 Observability & Monitoring"]
@@ -41,11 +41,13 @@ flowchart TB
         Grafana["Grafana Dashboard (:3001)"]
     end
 
-    ESP32 -->|HTTP REST / API Key| API
+    ESP32 -->|"HTTP REST / API Key"| API
+    UI -->|"REST API / JWT Bearer"| API
     API --> ML
-    API --> Prisma --> DB
-    API --> Loki --> Grafana
-    UI -->|REST API / JWT| API
+    API --> Prisma
+    Prisma --> DB
+    API --> Loki
+    Loki --> Grafana
 ```
 
 ---
