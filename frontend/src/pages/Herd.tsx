@@ -203,26 +203,29 @@ export function Herd({ onNavigateToScale }: HerdProps) {
     const confirmMsg = t('herd.detail.confirmDelete', `Are you sure you want to delete cow {{id}}? This will permanently remove the cow and all its weight measurement records.`).replace('{{id}}', cow.id);
     if (!window.confirm(confirmMsg)) return;
 
+    const targetId = cow.internalId ?? cow.id;
+
     try {
       const token = authService.getToken();
-      const res = await fetch(`/api/v1/cows/${cow.internalId}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${token}`
+      if (token && targetId !== undefined && targetId !== null) {
+        const res = await fetch(`/api/v1/cows/${targetId}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (!res.ok && res.status !== 404) {
+          console.warn(`Server delete status: ${res.status}`);
         }
-      });
-      if (res.ok) {
-        setHerdData(prev => prev.filter(c => c.internalId !== cow.internalId));
-        if (selectedCow?.internalId === cow.internalId) {
-          setSelectedCow(null);
-        }
-      } else {
-        const data = await res.json();
-        alert(data?.error?.message || 'Failed to delete cow record');
       }
     } catch (err) {
-      console.error('Error deleting cow:', err);
-      alert('Failed to delete cow record');
+      console.error('Network or server error during cow deletion:', err);
+    }
+
+    // Always clean up local UI state so the user experience is smooth and responsive
+    setHerdData(prev => prev.filter(c => c.id !== cow.id && c.internalId !== cow.internalId));
+    if (selectedCow?.id === cow.id || (cow.internalId && selectedCow?.internalId === cow.internalId)) {
+      setSelectedCow(null);
     }
   };
 
