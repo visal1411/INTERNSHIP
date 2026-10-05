@@ -138,7 +138,7 @@ export default function App() {
             newNotifs.push({
               id: 'all-healthy',
               type: 'info',
-              text: `All ${cows.length} cows in herd are in healthy weight range`,
+              text: `All ${cows.length} cows in herd are in normal weight range`,
               time: 'Just now',
               tab: 'herd'
             });
@@ -222,42 +222,33 @@ export default function App() {
     <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-800'} flex font-sans transition-colors duration-200`}>
       {/* Sidebar - Frontend v2 Style */}
       <aside className={`w-64 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-r flex-shrink-0 hidden md:flex flex-col transition-colors duration-200`} style={{ boxShadow: '0 3px 9px 0 rgba(169, 184, 200, .15)' }}>
-        <div className="h-20 flex items-center px-6">
+        <div className="h-16 flex items-center px-5 border-b border-gray-100 dark:border-gray-700/60">
           <div className="flex items-center gap-3">
-            <img src={logoImg} alt="AgroScale Logo" className="w-10 h-10 object-cover rounded-lg" />
-            <div className="flex flex-col">
-              <span className={`text-xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>AgroScale</span>
-              <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full inline-block w-max ${
-                import.meta.env.VITE_ENV_NAME === 'production' 
-                  ? 'bg-purple-500/10 text-purple-400 border border-purple-500/20'
-                  : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-              }`}>
-                {import.meta.env.VITE_ENV_NAME === 'production' ? '● Deployed' : '● Localhost'}
-              </span>
-            </div>
+            <img src={logoImg} alt="AgroScale Logo" className="w-9 h-9 object-cover rounded-lg shadow-sm" />
+            <span className={`text-lg font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>AgroScale</span>
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto py-6 pl-4 pr-0 custom-scrollbar">
+        <div className="flex-1 overflow-y-auto py-5 px-3 custom-scrollbar">
           <div className="space-y-1">
-            <h5 className="pl-4 text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Dashboard</h5>
-            <NavItem icon={<HomeIcon size={20} />} label={t('nav.home')} active={activeTab === 'home'} onClick={() => setActiveTab('home')} />
+            <h5 className="px-3 text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Dashboard</h5>
+            <NavItem icon={<HomeIcon size={18} />} label={t('nav.home')} active={activeTab === 'home'} onClick={() => setActiveTab('home')} />
             
-            <div className="my-4 border-t border-gray-100 dark:border-gray-700 pr-4"></div>
-            <h5 className="pl-4 text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Applications</h5>
+            <div className="my-4 border-t border-gray-100 dark:border-gray-700/60"></div>
+            <h5 className="px-3 text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Applications</h5>
             
-            <NavItem icon={<Users size={20} />} label={t('nav.herd')} active={activeTab === 'herd'} onClick={() => setActiveTab('herd')} />
-            <NavItem icon={<Cpu size={20} />} label={t('nav.devices')} active={activeTab === 'devices'} onClick={() => setActiveTab('devices')} />
+            <NavItem icon={<Users size={18} />} label={t('nav.herd')} active={activeTab === 'herd'} onClick={() => setActiveTab('herd')} />
+            <NavItem icon={<Cpu size={18} />} label={t('nav.devices')} active={activeTab === 'devices'} onClick={() => setActiveTab('devices')} />
             
-            <div className="my-4 border-t border-gray-100 dark:border-gray-700 pr-4"></div>
+            <div className="my-4 border-t border-gray-100 dark:border-gray-700/60"></div>
             
-            <NavItem icon={<SettingsIcon size={20} />} label={t('nav.settings')} active={activeTab === 'settings'} onClick={() => setActiveTab('settings')} />
+            <NavItem icon={<SettingsIcon size={18} />} label={t('nav.settings')} active={activeTab === 'settings'} onClick={() => setActiveTab('settings')} />
           </div>
         </div>
 
         <div className={`p-4 border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-100'}`}>
           <div className={`flex items-center p-2 rounded-xl ${isDarkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'} cursor-pointer`} onClick={() => setActiveTab('settings')}>
-            <div className="w-9 h-9 rounded-full bg-[#5f76e8] text-white flex items-center justify-center font-bold text-sm shadow-sm">
+            <div className="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shadow-sm">
               {initials}
             </div>
             <div className="ml-3 flex-1 min-w-0">
@@ -272,18 +263,18 @@ export default function App() {
       <main className="flex-1 flex flex-col h-screen overflow-hidden">
         {/* Header */}
         <header className={`h-16 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-b flex items-center justify-between px-6 lg:px-10 flex-shrink-0 transition-colors duration-200`}>
-          <div className={`flex items-center text-xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-800'} font-sans`}>
+          <div className={`flex items-center text-xl font-bold tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             {activeTab === 'home' && t('dashboard.overview')}
             {activeTab === 'devices' && t('nav.devices')}
             {activeTab === 'herd' && t('nav.herd')}
             {activeTab === 'settings' && t('nav.settings')}
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             {/* Dark Mode Toggle */}
             <button
               onClick={() => setIsDarkMode(!isDarkMode)}
-              className={`p-2 rounded-full transition-colors ${isDarkMode ? 'text-yellow-400 hover:bg-gray-700' : 'text-gray-500 hover:bg-gray-100'}`}
+              className={`p-2 rounded-lg transition-colors ${isDarkMode ? 'text-yellow-400 hover:bg-gray-700' : 'text-gray-500 hover:bg-gray-100'}`}
             >
               {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
@@ -291,7 +282,7 @@ export default function App() {
             {/* Language Toggle Button */}
             <button
               onClick={toggleLanguage}
-              className={`flex items-center space-x-2 px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${isDarkMode ? 'bg-gray-700 hover:bg-gray-600 text-gray-200' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'}`}
+              className={`flex items-center space-x-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${isDarkMode ? 'bg-gray-700 hover:bg-gray-600 text-gray-200' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'}`}
             >
               <Globe className="w-4 h-4" />
               <span>{currentLanguage === 'en' ? 'EN' : 'ខ្មែរ'}</span>
@@ -300,12 +291,12 @@ export default function App() {
             {/* Notification Bell */}
             <div className="relative" ref={notifRef}>
               <button 
-                className={`relative p-2 transition-colors rounded-full ${showNotifications ? (isDarkMode ? 'bg-gray-700 text-gray-200' : 'bg-gray-100 text-gray-700') : (isDarkMode ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-700' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50')}`}
+                className={`relative p-2 transition-colors rounded-lg ${showNotifications ? (isDarkMode ? 'bg-gray-700 text-gray-200' : 'bg-gray-100 text-gray-700') : (isDarkMode ? 'text-gray-400 hover:text-gray-200 hover:bg-gray-700' : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50')}`}
                 onClick={() => setShowNotifications(!showNotifications)}
               >
-                <Bell className="w-6 h-6" />
+                <Bell className="w-5 h-5" />
                 {unreadCount > 0 && (
-                  <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white dark:border-gray-800"></span>
+                  <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-emerald-500 rounded-full border border-white dark:border-gray-800"></span>
                 )}
               </button>
               
@@ -313,8 +304,8 @@ export default function App() {
               {showNotifications && (
                 <div className={`absolute right-0 mt-2 w-80 rounded-xl shadow-lg border overflow-hidden z-50 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
                   <div className={`p-4 border-b flex justify-between items-center ${isDarkMode ? 'border-gray-700 bg-gray-800/50' : 'border-gray-100 bg-gray-50/50'}`}>
-                    <h3 className={`font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Notifications</h3>
-                    <span className="text-xs bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 px-2 py-0.5 rounded-full font-medium">{unreadCount} new</span>
+                    <h3 className={`font-semibold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Notifications</h3>
+                    <span className="text-xs bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 px-2 py-0.5 rounded-md font-semibold">{unreadCount} new</span>
                   </div>
                   <div className="max-h-[300px] overflow-y-auto">
                     {notifications.length > 0 ? (

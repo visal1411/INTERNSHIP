@@ -68,7 +68,7 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
             <div>
               <div className="flex items-center space-x-3">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{selectedScale.name}</h2>
-                <span className={`px-2.5 py-1 text-xs font-semibold rounded-full ${selectedScale.status === 'online' ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}>
+                <span className={`px-2.5 py-1 text-xs font-semibold rounded-md ${selectedScale.status === 'online' ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600'}`}>
                   {selectedScale.status === 'online' ? t('devices.statusOnline') : t('devices.statusOffline')}
                 </span>
               </div>
@@ -165,10 +165,10 @@ export function Devices({ scalesData, activeScaleId = null, setActiveScaleId = (
                     <tr key={log.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
                       <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">{log.time}</td>
                       <td className="px-6 py-4">
-                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                          log.status === 'success' ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400' :
-                          log.status === 'error' ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-400' :
-                          'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400'
+                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold ${
+                          log.status === 'success' ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800' :
+                          log.status === 'error' ? 'bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-800' :
+                          'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600'
                         }`}>
                           {log.type}
                         </span>

@@ -79,10 +79,11 @@ const resources = {
         quickFill: "Quick fill:"
       },
       status: {
-        healthy: "Healthy",
+        healthy: "Normal Weight",
         underweight: "Underweight",
         overweight: "Overweight",
-        normal: "Normal",
+        normal: "Normal Weight",
+        normalweight: "Normal Weight",
         critical: "Critical",
         warning: "Warning",
         potentialSickness: "Potential Sickness",
@@ -308,10 +309,11 @@ const resources = {
         quickFill: "បំពេញរហ័ស៖"
       },
       status: {
-        healthy: "សុខភាពល្អ",
+        healthy: "ទម្ងន់ធម្មតា",
         underweight: "ស្គម/ខ្វះទម្ងន់",
         overweight: "លើសទម្ងន់",
-        normal: "ធម្មតា",
+        normal: "ទម្ងន់ធម្មតា",
+        normalweight: "ទម្ងន់ធម្មតា",
         critical: "ធ្ងន់ធ្ងរ",
         warning: "ព្រមាន",
         potentialSickness: "អាចមានជំងឺ",

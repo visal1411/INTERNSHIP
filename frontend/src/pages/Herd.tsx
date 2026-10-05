@@ -327,8 +327,8 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                   <td className="py-4 px-6">
                     <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold ${
                       cow.breed === 'Needs Registration' || cow.breed === 'Unknown'
-                        ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800'
-                        : 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800'
+                        ? 'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800'
+                        : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-600'
                     }`}>
                       {cow.breed}
                     </span>
@@ -340,9 +340,9 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                       <span className="font-bold text-gray-900 dark:text-white">{cow.weight > 0 ? `${cow.weight}` : '--'}</span>
                       {cow.weight > 0 && (
                         cow.trend === 'up' ? (
-                          <ArrowUpRight size={16} className="text-red-500 dark:text-red-400" />
+                          <ArrowUpRight size={16} className="text-rose-500 dark:text-rose-400" />
                         ) : cow.trend === 'down' ? (
-                          <ArrowDownRight size={16} className="text-green-500 dark:text-green-400" />
+                          <ArrowDownRight size={16} className="text-emerald-500 dark:text-emerald-400" />
                         ) : (
                           <CheckCircle2 size={16} className="text-gray-400 dark:text-gray-500" />
                         )
@@ -352,11 +352,11 @@ export function Herd({ onNavigateToScale }: HerdProps) {
 
                   {/* HEALTH STATUS (ML 1: Classification) */}
                   <td className="py-4 px-6">
-                    <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
-                      cow.status === 'incomplete' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-800' :
-                      cow.status === 'critical' ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800' :
-                      cow.status === 'overweight' || cow.status === 'warning' ? 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 border border-orange-200 dark:border-orange-800' :
-                      'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800'
+                    <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold ${
+                      cow.status === 'incomplete' ? 'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800' :
+                      cow.status === 'critical' ? 'bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-800' :
+                      cow.status === 'overweight' || cow.status === 'warning' ? 'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800' :
+                      'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800'
                     }`}>
                       {cow.status === 'incomplete' ? t('herd.needsInfo', '⚠️ Needs Info') : translateStatus(cow.status, cow.health)}
                       {cow.confidence && <span className="ml-1.5 opacity-75 font-mono text-[10px]">({formatConfidence(cow.confidence)})</span>}
@@ -370,7 +370,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                     ) : (
                       <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold ${
                         cow.isAnomaly
-                          ? 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300 border border-rose-300 dark:border-rose-700 animate-pulse'
+                          ? 'bg-rose-50 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300 border border-rose-200 dark:border-rose-700'
                           : 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800'
                       }`}>
                         {cow.isAnomaly ? '🔴 ⚠️' : '🛡️'} {cow.isAnomaly ? t('herd.detail.flagged', 'Flagged') : t('herd.detail.normal', 'Normal')}

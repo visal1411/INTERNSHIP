@@ -53,8 +53,8 @@ export function Login({ onLoginSuccess }: LoginProps) {
       )}
 
       {/* Quick Demo Credentials Prefill Box */}
-      <div className="mb-6 p-3.5 bg-blue-50/80 border border-blue-100 rounded-2xl">
-        <div className="flex items-center gap-1.5 text-xs font-semibold text-[#0062ff] mb-2">
+      <div className="mb-6 p-3.5 bg-emerald-50/80 border border-emerald-100 rounded-xl">
+        <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-700 mb-2">
           <Sparkles size={14} />
           <span>{t('login.demoTitle', 'Quick Demo Account Prefill')}</span>
         </div>
@@ -62,9 +62,9 @@ export function Login({ onLoginSuccess }: LoginProps) {
           <button
             type="button"
             onClick={() => fillDemoAccount('farmer1@agroscale.com')}
-            className={`px-3 py-1.5 text-xs rounded-full font-medium transition-colors border ${
+            className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-colors border ${
               email === 'farmer1@agroscale.com'
-                ? 'bg-[#0062ff] text-white border-[#0062ff]'
+                ? 'bg-emerald-600 text-white border-emerald-600'
                 : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
             }`}
           >
@@ -73,9 +73,9 @@ export function Login({ onLoginSuccess }: LoginProps) {
           <button
             type="button"
             onClick={() => fillDemoAccount('farmer2@agroscale.com')}
-            className={`px-3 py-1.5 text-xs rounded-full font-medium transition-colors border ${
+            className={`px-3 py-1.5 text-xs rounded-lg font-medium transition-colors border ${
               email === 'farmer2@agroscale.com'
-                ? 'bg-[#0062ff] text-white border-[#0062ff]'
+                ? 'bg-emerald-600 text-white border-emerald-600'
                 : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
             }`}
           >
@@ -97,7 +97,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
             disabled={isLoading}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full pl-11 pr-4 py-3.5 border border-gray-200 rounded-full focus:ring-2 focus:ring-[#0062ff] focus:border-[#0062ff] text-sm outline-none transition-colors disabled:bg-gray-50 disabled:text-gray-500 placeholder-gray-400"
+            className="w-full pl-11 pr-4 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm outline-none transition-colors disabled:bg-gray-50 disabled:text-gray-500 placeholder-gray-400"
           />
         </div>
 
@@ -113,7 +113,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
             disabled={isLoading}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full pl-11 pr-12 py-3.5 border border-gray-200 rounded-full focus:ring-2 focus:ring-[#0062ff] focus:border-[#0062ff] text-sm outline-none transition-colors disabled:bg-gray-50 disabled:text-gray-500 placeholder-gray-400"
+            className="w-full pl-11 pr-12 py-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm outline-none transition-colors disabled:bg-gray-50 disabled:text-gray-500 placeholder-gray-400"
           />
           <button
             type="button"
@@ -132,7 +132,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="h-4 w-4 rounded border-gray-300 text-[#0062ff] focus:ring-[#0062ff] cursor-pointer"
+              className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
             />
             <label htmlFor="remember" className="ml-2 block text-sm text-gray-500 cursor-pointer">
               {t('login.rememberMe', 'Remember me')}
@@ -143,7 +143,7 @@ export function Login({ onLoginSuccess }: LoginProps) {
         <button
           type="submit"
           disabled={isLoading || !email || !password}
-          className="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-[#0062ff] hover:bg-[#0052cc] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0062ff] disabled:opacity-70 disabled:cursor-not-allowed transition-colors mt-8"
+          className="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 disabled:opacity-70 disabled:cursor-not-allowed transition-colors mt-8 cursor-pointer"
         >
           {isLoading ? (
             <>
