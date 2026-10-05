@@ -59,6 +59,8 @@ const updateCow = async (req, res, next) => {
     }
     next(err);
   }
+};
+
 const deleteCow = async (req, res, next) => {
   try {
     const result = await cowService.deleteCow(req.farmerId, req.params.id);
