@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Search, Plus, X, ArrowUpRight, ArrowDownRight, CheckCircle2, MoreVertical, Calendar, Heart, FileText, Filter, Download } from 'lucide-react';
+import { Search, Plus, X, ArrowUpRight, ArrowDownRight, CheckCircle2, MoreVertical, Calendar, Heart, FileText, Filter, Download, ShieldCheck, AlertTriangle } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import cowIcon from '../assets/cow.png';
 import { authService } from '../services/authService';
@@ -324,57 +324,76 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                   </td>
 
                   {/* BREED */}
-                  <td className="py-4 px-6">
-                    <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold ${
-                      cow.breed === 'Needs Registration' || cow.breed === 'Unknown'
-                        ? 'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800'
-                        : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-600'
-                    }`}>
-                      {cow.breed}
-                    </span>
+                  <td className="py-4 px-6 text-sm">
+                    {cow.breed === 'Needs Registration' || cow.breed === 'Unknown' ? (
+                      <span className="inline-flex items-center gap-1.5 font-medium text-amber-600 dark:text-amber-400">
+                        <AlertTriangle size={14} className="shrink-0" />
+                        <span>Needs Registration</span>
+                      </span>
+                    ) : (
+                      <span className="text-gray-700 dark:text-gray-300 font-medium">
+                        {cow.breed}
+                      </span>
+                    )}
                   </td>
 
                   {/* WEIGHT */}
-                  <td className="py-4 px-6">
-                    <div className="flex items-center space-x-2">
-                      <span className="font-bold text-gray-900 dark:text-white">{cow.weight > 0 ? `${cow.weight}` : '--'}</span>
+                  <td className="py-4 px-6 text-sm">
+                    <div className="flex items-center space-x-1.5">
+                      <span className="font-semibold text-gray-900 dark:text-white font-mono">{cow.weight > 0 ? `${cow.weight}` : '--'}</span>
                       {cow.weight > 0 && (
                         cow.trend === 'up' ? (
-                          <ArrowUpRight size={16} className="text-rose-500 dark:text-rose-400" />
+                          <ArrowUpRight size={15} className="text-rose-500 dark:text-rose-400 shrink-0" />
                         ) : cow.trend === 'down' ? (
-                          <ArrowDownRight size={16} className="text-emerald-500 dark:text-emerald-400" />
+                          <ArrowDownRight size={15} className="text-emerald-500 dark:text-emerald-400 shrink-0" />
                         ) : (
-                          <CheckCircle2 size={16} className="text-gray-400 dark:text-gray-500" />
+                          <CheckCircle2 size={15} className="text-gray-400 dark:text-gray-500 shrink-0" />
                         )
                       )}
                     </div>
                   </td>
 
                   {/* HEALTH STATUS (ML 1: Classification) */}
-                  <td className="py-4 px-6">
-                    <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold ${
-                      cow.status === 'incomplete' ? 'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800' :
-                      cow.status === 'critical' ? 'bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-800' :
-                      cow.status === 'overweight' || cow.status === 'warning' ? 'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800' :
-                      'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800'
-                    }`}>
-                      {cow.status === 'incomplete' ? t('herd.needsInfo', '⚠️ Needs Info') : translateStatus(cow.status, cow.health)}
-                      {cow.confidence && <span className="ml-1.5 opacity-75 font-mono text-[10px]">({formatConfidence(cow.confidence)})</span>}
-                    </span>
+                  <td className="py-4 px-6 text-sm">
+                    {cow.status === 'incomplete' ? (
+                      <div className="inline-flex items-center gap-2 font-medium text-amber-600 dark:text-amber-400">
+                        <AlertTriangle size={15} className="shrink-0 text-amber-500" />
+                        <span>{t('herd.needsInfo', 'Needs Info')}</span>
+                      </div>
+                    ) : cow.status === 'critical' ? (
+                      <div className="inline-flex items-center gap-2 font-medium text-rose-600 dark:text-rose-400">
+                        <span className="w-2 h-2 rounded-full bg-rose-500 shrink-0 animate-pulse"></span>
+                        <span>{translateStatus(cow.status, cow.health)}</span>
+                      </div>
+                    ) : cow.status === 'overweight' || cow.status === 'warning' ? (
+                      <div className="inline-flex items-center gap-2 font-medium text-amber-600 dark:text-amber-400">
+                        <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+                        <span>{translateStatus(cow.status, cow.health)}</span>
+                        {cow.confidence && <span className="text-xs font-mono opacity-80 text-amber-600/80 dark:text-amber-400/80">({formatConfidence(cow.confidence)})</span>}
+                      </div>
+                    ) : (
+                      <div className="inline-flex items-center gap-2 font-medium text-emerald-600 dark:text-emerald-400">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+                        <span>{translateStatus(cow.status, cow.health)}</span>
+                        {cow.confidence && <span className="text-xs font-mono opacity-80 text-emerald-600/80 dark:text-emerald-400/80">({formatConfidence(cow.confidence)})</span>}
+                      </div>
+                    )}
                   </td>
 
                   {/* ANOMALY DETECTOR (ML 2: Isolation Forest) */}
-                  <td className="py-4 px-6">
+                  <td className="py-4 px-6 text-sm">
                     {cow.status === 'incomplete' || !cow.anomalyFlag ? (
                       <span className="text-xs text-gray-400 dark:text-gray-500 italic">--</span>
+                    ) : cow.isAnomaly ? (
+                      <div className="inline-flex items-center gap-1.5 font-medium text-rose-600 dark:text-rose-400">
+                        <AlertTriangle size={15} className="shrink-0 text-rose-500" />
+                        <span>{t('herd.detail.flagged', 'Flagged')}</span>
+                      </div>
                     ) : (
-                      <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold ${
-                        cow.isAnomaly
-                          ? 'bg-rose-50 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300 border border-rose-200 dark:border-rose-700'
-                          : 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800'
-                      }`}>
-                        {cow.isAnomaly ? '🔴 ⚠️' : '🛡️'} {cow.isAnomaly ? t('herd.detail.flagged', 'Flagged') : t('herd.detail.normal', 'Normal')}
-                      </span>
+                      <div className="inline-flex items-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400">
+                        <ShieldCheck size={16} className="shrink-0 text-emerald-500" />
+                        <span>{t('herd.detail.normal', 'Normal')}</span>
+                      </div>
                     )}
                   </td>
 
