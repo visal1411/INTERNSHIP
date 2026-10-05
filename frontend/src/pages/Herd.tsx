@@ -334,6 +334,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
               <tr className="bg-gray-50 dark:bg-gray-700/50 border-b border-gray-200 dark:border-gray-700">
                 <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.tagId', 'Tag ID')}</th>
                 <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.breed', 'Breed')}</th>
+                <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.gender', 'Gender')}</th>
                 <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.weight', 'Weight (KG)')}</th>
                 <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.status', 'Health Status (ML 1)')}</th>
                 <th className="py-4 px-6 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('herd.table.anomalyDetection', 'Anomaly Detector (ML 2)')}</th>
@@ -365,6 +366,18 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                       <span className="text-gray-700 dark:text-gray-300 font-medium">
                         {cow.breed}
                       </span>
+                    )}
+                  </td>
+
+                  {/* GENDER */}
+                  <td className="py-4 px-6 text-sm">
+                    {cow.gender && cow.gender !== 'Unknown' ? (
+                      <span className="inline-flex items-center gap-1 font-medium text-gray-700 dark:text-gray-300">
+                        {cow.gender === 'Male' ? <span className="text-blue-500 font-bold">♂</span> : <span className="text-pink-500 font-bold">♀</span>}
+                        <span>{cow.gender}</span>
+                      </span>
+                    ) : (
+                      <span className="text-gray-400 dark:text-gray-500 italic">--</span>
                     )}
                   </td>
 
@@ -449,7 +462,7 @@ export function Herd({ onNavigateToScale }: HerdProps) {
                 </tr>
               )) : (
                 <tr>
-                  <td colSpan={7} className="py-12 text-center text-gray-500 dark:text-gray-400">
+                  <td colSpan={8} className="py-12 text-center text-gray-500 dark:text-gray-400">
                     {t('herd.noResults', 'No cows found matching your search.')}
                   </td>
                 </tr>

@@ -118,6 +118,7 @@ const resources = {
         table: {
           tagId: "Tag ID",
           breed: "Breed",
+          gender: "Gender",
           weight: "Weight (kg)",
           status: "Health Status (ML 1)",
           anomalyDetection: "Anomaly Detector (ML 2)",
@@ -350,6 +351,7 @@ const resources = {
         table: {
           tagId: "លេខកូដ",
           breed: "ពូជ",
+          gender: "ភេទ",
           weight: "ទម្ងន់ (kg)",
           status: "ស្ថានភាពសុខភាព (ML 1)",
           anomalyDetection: "ការរកឃើញភាពមិនប្រក្រតី (ML 2)",
