@@ -225,4 +225,15 @@ const updateCow = async (farmerId, id, data) => {
   return updatedCow;
 };
 
-module.exports = { getCows, getCowById, getMeasurements, getGrowth, createCow, updateCow };
+const deleteCow = async (farmerId, id) => {
+  const cow = await getCowById(farmerId, id);
+  await prisma.weightMeasurement.deleteMany({
+    where: { cowId: cow.id }
+  });
+  await prisma.cow.delete({
+    where: { id: cow.id }
+  });
+  return { message: 'Cow deleted successfully' };
+};
+
+module.exports = { getCows, getCowById, getMeasurements, getGrowth, createCow, updateCow, deleteCow };

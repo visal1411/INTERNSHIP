@@ -200,4 +200,27 @@ router.post('/', cowController.createCow);
  */
 router.put('/:id', cowController.updateCow);
 
+/**
+ * @openapi
+ * /api/v1/cows/{id}:
+ *   delete:
+ *     summary: Delete cow record and its measurement history
+ *     tags:
+ *       - Cows
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Cow record deleted successfully
+ *       404:
+ *         description: Cow not found
+ */
+router.delete('/:id', cowController.deleteCow);
+
 module.exports = router;

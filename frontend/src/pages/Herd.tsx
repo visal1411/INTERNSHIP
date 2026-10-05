@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Search, Plus, X, ArrowUpRight, ArrowDownRight, CheckCircle2, MoreVertical, Calendar, Heart, FileText, Filter, Download, ShieldCheck, AlertTriangle } from 'lucide-react';
+import { Search, Plus, X, ArrowUpRight, ArrowDownRight, CheckCircle2, MoreVertical, Calendar, Heart, FileText, Filter, Download, ShieldCheck, AlertTriangle, Trash2 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import cowIcon from '../assets/cow.png';
 import { authService } from '../services/authService';
@@ -196,6 +196,34 @@ export function Herd({ onNavigateToScale }: HerdProps) {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handleDeleteCow = async (cow: any, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const confirmMsg = t('herd.detail.confirmDelete', `Are you sure you want to delete cow {{id}}? This will permanently remove the cow and all its weight measurement records.`).replace('{{id}}', cow.id);
+    if (!window.confirm(confirmMsg)) return;
+
+    try {
+      const token = authService.getToken();
+      const res = await fetch(`/api/v1/cows/${cow.internalId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      if (res.ok) {
+        setHerdData(prev => prev.filter(c => c.internalId !== cow.internalId));
+        if (selectedCow?.internalId === cow.internalId) {
+          setSelectedCow(null);
+        }
+      } else {
+        const data = await res.json();
+        alert(data?.error?.message || 'Failed to delete cow record');
+      }
+    } catch (err) {
+      console.error('Error deleting cow:', err);
+      alert('Failed to delete cow record');
+    }
   };
 
   return (
@@ -402,9 +430,18 @@ export function Herd({ onNavigateToScale }: HerdProps) {
 
                   {/* ACTIONS */}
                   <td className="py-4 px-6 text-right">
-                    <button className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={(e) => { e.stopPropagation(); setSelectedCow(cow); }}>
-                      <MoreVertical size={18} />
-                    </button>
+                    <div className="flex items-center justify-end space-x-1">
+                      <button 
+                        onClick={(e) => handleDeleteCow(cow, e)}
+                        title="Delete Cow Record"
+                        className="p-2 text-gray-400 hover:text-rose-600 dark:hover:text-rose-400 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                      <button className="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onClick={(e) => { e.stopPropagation(); setSelectedCow(cow); }}>
+                        <MoreVertical size={18} />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               )) : (
@@ -582,27 +619,43 @@ export function Herd({ onNavigateToScale }: HerdProps) {
               </div>
 
               {/* Action Buttons */}
-              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+              <div className="grid grid-cols-3 gap-3 pt-4 border-t border-gray-100 dark:border-gray-700">
                 {selectedCow.status === 'incomplete' ? (
-                  <button 
-                    onClick={() => { setShowAddCowModal(true); /* Reuse modal for updating */ }}
-                    className="px-4 py-3 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl font-medium transition-colors shadow-sm text-center col-span-2"
-                  >
-                    Complete Registration
-                  </button>
+                  <>
+                    <button 
+                      onClick={() => { setShowAddCowModal(true); }}
+                      className="px-3 py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-medium transition-colors shadow-sm text-center col-span-2 text-xs cursor-pointer"
+                    >
+                      Complete Registration
+                    </button>
+                    <button 
+                      onClick={() => handleDeleteCow(selectedCow)}
+                      className="px-3 py-2.5 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/50 text-rose-600 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-900/60 rounded-xl font-medium transition-colors text-xs text-center flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      <Trash2 size={15} />
+                      <span>Delete</span>
+                    </button>
+                  </>
                 ) : (
                   <>
                     <button 
                       onClick={handleExportCowHistory}
-                      className="px-4 py-3 bg-gray-100 dark:bg-gray-700 border border-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-xl font-medium transition-colors shadow-sm text-center flex items-center justify-center gap-2"
+                      className="px-3 py-2.5 bg-gray-100 dark:bg-gray-700 border border-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-xl font-medium transition-colors text-xs text-center flex items-center justify-center gap-1.5 cursor-pointer"
                     >
-                      <Download size={18} />
-                      Export CSV
+                      <Download size={15} />
+                      <span>Export CSV</span>
                     </button>
                     <button 
-                      onClick={() => { setShowAddCowModal(true); /* Edit Record */ }}
-                      className="px-4 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl font-medium transition-colors shadow-sm text-center">
-                      {t('herd.detail.editRecord', 'Edit Record')}
+                      onClick={() => { setShowAddCowModal(true); }}
+                      className="px-3 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl font-medium transition-colors text-xs text-center flex items-center justify-center gap-1.5 cursor-pointer">
+                      <span>{t('herd.detail.editRecord', 'Edit Record')}</span>
+                    </button>
+                    <button 
+                      onClick={() => handleDeleteCow(selectedCow)}
+                      className="px-3 py-2.5 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/50 text-rose-600 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-900/60 rounded-xl font-medium transition-colors text-xs text-center flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      <Trash2 size={15} />
+                      <span>{t('herd.detail.deleteRecord', 'Delete Cow')}</span>
                     </button>
                   </>
                 )}

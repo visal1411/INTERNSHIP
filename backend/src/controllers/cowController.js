@@ -59,6 +59,16 @@ const updateCow = async (req, res, next) => {
     }
     next(err);
   }
+const deleteCow = async (req, res, next) => {
+  try {
+    const result = await cowService.deleteCow(req.farmerId, req.params.id);
+    res.json(result);
+  } catch (err) {
+    if (err.message === 'Cow not found') {
+      return res.status(404).json({ error: { code: 'NOT_FOUND', message: err.message } });
+    }
+    next(err);
+  }
 };
 
-module.exports = { listCows, getCow, listMeasurements, getGrowth, createCow, updateCow };
+module.exports = { listCows, getCow, listMeasurements, getGrowth, createCow, updateCow, deleteCow };
