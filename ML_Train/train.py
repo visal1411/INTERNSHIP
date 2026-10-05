@@ -87,7 +87,7 @@ def train():
     })
 
     print("Fitting Decision Tree Classifier...")
-    clf = DecisionTreeClassifier(max_depth=5, random_state=42)
+    clf = DecisionTreeClassifier(max_depth=7, random_state=42)
     clf.fit(dt_features, df["Status"])
 
     acc = clf.score(dt_features, df["Status"])
